@@ -15,6 +15,8 @@ import axios from "axios";
 // markdown
 import ReactMarkdown from "react-markdown";
 
+import rehypeRaw from "rehype-raw";
+
 // icons
 import { HiChevronLeft } from "react-icons/hi";
 
@@ -27,7 +29,6 @@ import CustomLink from "../../../components/UI/CustomLink";
 dayjs.extend(advancedFormat);
 
 const Blog = ({ data }) => {
-  console.log(data);
   return (
     <>
       <Head>
@@ -94,7 +95,10 @@ const Blog = ({ data }) => {
       <chakra.main d="flex" mt={5} pb={20} px={generalPaddingX}>
         <Box w={{ md: "60%" }} m="auto">
           <chakra.p lineHeight={1.8} mb={1} fontSize="md">
-            <ReactMarkdown>{data?.content}</ReactMarkdown>
+            <ReactMarkdown
+              rehypePlugins={[rehypeRaw]}
+              children={data?.content}
+            />
           </chakra.p>
         </Box>
       </chakra.main>

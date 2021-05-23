@@ -9,13 +9,13 @@ import { generalPaddingX } from "../utils/chakra";
 
 // components
 import HomeIllustration from "./../svg/HomeIllustration";
-import CustomLink from "../components/CustomLink";
+import CustomLink from "../components/UI/CustomLink";
 
 export default function Home() {
   return (
     <>
       <Head>
-        <title>Bolub</title>
+        <title>Home - Bolub</title>
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
 

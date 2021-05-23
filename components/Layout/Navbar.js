@@ -14,11 +14,19 @@ const Navbar = () => {
         🙂
       </Text>
 
-      <HStack spacing={8} my="auto" ml="auto">
-        <CustomLink href="/">Home</CustomLink>
-        <CustomLink href="/blog">Blog</CustomLink>
-        <CustomLink href="/portfolio">Portfolio</CustomLink>
-        <CustomLink href="/cooking">Cooking</CustomLink>
+      <HStack spacing={8} my="auto" ml="auto" overflowX="auto">
+        <CustomLink fontSize={{ base: "sm", md: "md" }} href="/">
+          Home
+        </CustomLink>
+        <CustomLink fontSize={{ base: "sm", md: "md" }} href="/blog">
+          Blog
+        </CustomLink>
+        <CustomLink fontSize={{ base: "sm", md: "md" }} href="/portfolio">
+          Portfolio
+        </CustomLink>
+        <CustomLink fontSize={{ base: "sm", md: "md" }} href="/cooking">
+          Cooking
+        </CustomLink>
       </HStack>
     </chakra.nav>
   );

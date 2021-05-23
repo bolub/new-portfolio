@@ -117,7 +117,7 @@ export const getStaticPaths = async ({ params }) => {
     params: { id: JSON.stringify(post.id) },
   }));
 
-  return { paths, fallback: false };
+  return { paths, fallback: false, revalidate: 1 };
 };
 
 export const getStaticProps = async ({ params }) => {

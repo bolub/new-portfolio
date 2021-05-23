@@ -1,65 +1,90 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+// Nextjs
+import Head from "next/head";
+
+// chakra
+import { Box, Flex, chakra, Text } from "@chakra-ui/react";
+
+// utils
+import { generalPaddingX } from "../utils/chakra";
+
+// components
+import HomeIllustration from "./../svg/HomeIllustration";
+import CustomLink from "../components/CustomLink";
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Bolub</title>
+        {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+      <chakra.header
+        h={{ base: "100%", md: "75vh" }}
+        alignItems="center"
+        d="flex"
+        py={{ base: "10", md: 0 }}
+      >
+        <Flex
+          w="100%"
+          flexDir={{ base: "column", md: "row" }}
+          px={generalPaddingX}
         >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+          <Box
+            mb={{ base: 0, md: 0 }}
+            w={{ base: "100%", md: "45%" }}
+            my="auto"
+          >
+            <chakra.h1 fontWeight={700} fontSize={{ base: "3xl", md: "4xl" }}>
+              Hello, I'm
+              <Text as="span" color="brand.500">
+                {" "}
+                Bolu
+              </Text>
+            </chakra.h1>
+
+            <Text mt={4} mb={6} fontSize="17px">
+              Welcome to my ......., well you know.
+            </Text>
+
+            <Text mb={6} fontSize="17px">
+              Honestly doing this was a pain, but still did it anyways, gotta
+              have an online presence and all
+            </Text>
+
+            <Text mb={6} fontSize="17px">
+              Gonna be doing a bit of{" "}
+              <CustomLink active href="/blog">
+                blogging
+              </CustomLink>
+              , probably{" "}
+              <CustomLink active href="/cooking">
+                cooking
+              </CustomLink>
+              , and also uploading my{" "}
+              <CustomLink active href="/projects">
+                portfolio.
+              </CustomLink>
+            </Text>
+
+            <Text mb={6} fontSize="17px">
+              Not sure about how i feel about a logo for now though, an emoji
+              would suffice for now.
+            </Text>
+          </Box>
+
+          {/* Illustration */}
+          <Box w={{ base: "100%", md: "55%" }} my="auto" d="flex">
+            <HomeIllustration
+              m="auto"
+              height="350"
+              // borderTop="3px solid black"
+              // borderLeft="3px solid black"
+              // borderRight="3px solid black"
+            />
+          </Box>
+        </Flex>
+      </chakra.header>
+    </>
+  );
 }

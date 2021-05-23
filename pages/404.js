@@ -15,7 +15,7 @@ const Custom404 = () => {
     <Center
       height={{ base: "100%", md: "75vh" }}
       flexDir="column"
-      py={10}
+      py={{ base: 10, md: 6 }}
       textAlign="center"
       px={generalPaddingX}
     >

@@ -36,7 +36,7 @@ const Blog = ({ data }) => {
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
 
-      <chakra.header d="flex" pt={{ base: "10" }}>
+      <chakra.header d="flex" pt={{ base: "10" }} w="100%">
         {/* back button */}
 
         <Flex
@@ -61,7 +61,7 @@ const Blog = ({ data }) => {
             mb={{ base: 0, md: 0 }}
             d="flex"
             flexDir="column"
-            w={{ md: "60%" }}
+            w={{ base: "100%", md: "60%" }}
             m="auto"
           >
             <HStack mb={1} mx="auto">
@@ -92,8 +92,8 @@ const Blog = ({ data }) => {
         </Flex>
       </chakra.header>
 
-      <chakra.main d="flex" mt={5} pb={20} px={generalPaddingX}>
-        <Box w={{ md: "60%" }} m="auto">
+      <chakra.main d="flex" mt={5} pb={20} px={generalPaddingX} w="100%">
+        <Box w={{ base: "100%", md: "60%" }} m="auto">
           <chakra.p lineHeight={1.8} mb={1} fontSize="md">
             <ReactMarkdown
               rehypePlugins={[rehypeRaw]}

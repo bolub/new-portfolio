@@ -10,7 +10,7 @@ import CustomLink from "../UI/CustomLink";
 const Navbar = () => {
   return (
     <chakra.nav w="100%" height="10vh" d="flex" px={generalPaddingX}>
-      <Text fontWeight={900} my="auto" fontSize="2xl">
+      <Text fontWeight={900} my="auto" fontSize="2xl" mr={5}>
         🙂
       </Text>
 

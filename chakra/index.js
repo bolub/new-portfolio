@@ -14,6 +14,8 @@ const styles = {
     code: {
       width: "100%",
       display: "block",
+      overflowWrap: "break-word",
+      whiteSpace: "pre-wrap",
       background: "#f2f2f2",
       fontSize: "14px",
       p: 3,

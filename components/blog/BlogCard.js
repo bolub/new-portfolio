@@ -4,14 +4,15 @@ import { chakra, Flex, HStack, Image, Tag, Text, Box } from "@chakra-ui/react";
 // components
 import CustomLink from "../UI/CustomLink";
 
-const BlogCard = () => {
+const BlogCard = ({ data }) => {
   return (
     <Flex flexDir="column">
       <Image
-        src="https://images.unsplash.com/photo-1621624927461-58dece1cc511?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
+        src={`${process.env.NEXT_PUBLIC_BASE_URL}${data?.cover_image?.url}`}
         height="280px"
         w="100%"
         objectFit="cover"
+        borderWidth="1px"
         borderRadius="3px"
         mb={6}
       />
@@ -23,11 +24,11 @@ const BlogCard = () => {
       </HStack>
 
       <chakra.h2 fontWeight="bold" fontSize="lg" mb={5}>
-        Starting up with a React app and Cypress Testing Library
+        {data?.Title}
       </chakra.h2>
 
       <Box fontWeight="bold">
-        <CustomLink href="/post" fontSize="15px">
+        <CustomLink href={`/blog/${data?.id}`} fontSize="15px">
           Read more
         </CustomLink>
       </Box>

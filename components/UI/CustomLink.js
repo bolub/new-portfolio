@@ -10,7 +10,7 @@ const CustomLink = ({ href, children, active, fontSize }) => {
   const { pathname } = useRouter();
 
   // looks obvious enough
-  const isActive = active || pathname === href;
+  let isActive = active || pathname === href;
 
   return (
     <Link href={href} passHref>

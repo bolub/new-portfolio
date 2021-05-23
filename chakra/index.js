@@ -10,6 +10,14 @@ const styles = {
     "h1, h2, h3, h4, h5, h6": {
       fontFamily: "Space Grotesk",
     },
+
+    code: {
+      width: "100%",
+      display: "block",
+      background: "#f2f2f2",
+      fontSize: "14px",
+      p: 3,
+    },
   },
 };
 

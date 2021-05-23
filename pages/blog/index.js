@@ -7,17 +7,19 @@ import Head from "next/head";
 import { Box, Flex, chakra, Text, SimpleGrid } from "@chakra-ui/react";
 
 // utils
-import { generalPaddingX } from "../utils/chakra";
+import { generalPaddingX } from "../../utils/chakra";
 
-// icons
-import { HiArrowRight } from "react-icons/hi";
+// DATA FETCHING
+import axios from "axios";
 
 // components
-import BlogIllustration from "../svg/BlogIlustration";
-import CustomButton from "../components/UI/CustomButton";
-import BlogCard from "../components/blog/BlogCard";
+import BlogIllustration from "../../svg/BlogIlustration";
+import CustomButton from "../../components/UI/CustomButton";
+import BlogCard from "../../components/blog/BlogCard";
 
-const Blog = () => {
+const Blog = ({ data }) => {
+  console.log(data);
+
   return (
     <>
       <Head>
@@ -72,9 +74,9 @@ const Blog = () => {
 
         {/* Blog list */}
         <SimpleGrid id="posts" columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
-          <BlogCard />
-          <BlogCard />
-          <BlogCard />
+          {data?.map((postData) => {
+            return <BlogCard key={data?.slug} data={postData} />;
+          })}
         </SimpleGrid>
       </chakra.main>
     </>
@@ -82,3 +84,25 @@ const Blog = () => {
 };
 
 export default Blog;
+
+export async function getStaticProps(context) {
+  try {
+    const response = await axios.get(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/blog-posts`
+    );
+
+    return {
+      props: {
+        data: response.data,
+      }, // will be passed to the page component as props
+    };
+  } catch (error) {
+    return {
+      props: {
+        data: [],
+        status: "error",
+      }, // will be passed to the page component as props
+      revalidate: 1,
+    };
+  }
+}

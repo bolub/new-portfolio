@@ -5,7 +5,7 @@ import { chakra, Text, HStack } from "@chakra-ui/react";
 import { generalPaddingX } from "../../utils/chakra";
 
 // components
-import CustomLink from "../CustomLink";
+import CustomLink from "../UI/CustomLink";
 
 const Navbar = () => {
   return (

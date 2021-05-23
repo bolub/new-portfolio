@@ -1,10 +1,9 @@
 // chakra
 import { chakra } from "@chakra-ui/react";
 
-const PageNotFoundIllustration = ({ props }) => {
+const PageNotFoundIllustration = (props) => {
   return (
     <chakra.svg
-      height={{ base: "200", md: "300" }}
       viewBox="0 0 928 788"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

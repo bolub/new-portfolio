@@ -11,6 +11,15 @@ const Link = {
   },
 };
 
+const Button = {
+  baseStyle: {
+    fontWeight: "600",
+    borderRadius: "sm",
+    fontFamily: "Space Grotesk",
+  },
+};
+
 export const components = {
   Link,
+  Button,
 };

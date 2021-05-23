@@ -23,7 +23,7 @@ const Custom404 = () => {
         So you got lost, big whoop
       </chakra.h1>
 
-      <PageNotFoundIllustration />
+      <PageNotFoundIllustration height={{ base: "200", md: "300" }} />
 
       <Text mt={10}>
         Don't worry, you'll be fine, just go back to home or something

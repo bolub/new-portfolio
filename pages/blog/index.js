@@ -18,8 +18,6 @@ import CustomButton from "../../components/UI/CustomButton";
 import BlogCard from "../../components/blog/BlogCard";
 
 const Blog = ({ data }) => {
-  console.log(data);
-
   return (
     <>
       <Head>

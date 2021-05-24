@@ -20,5 +20,8 @@
     "react-icons": "^4.2.0",
     "react-markdown": "^6.0.2",
     "rehype-raw": "^5.1.0"
+  },
+  "devDependencies": {
+    "cypress": "^7.4.0"
   }
 }

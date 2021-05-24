@@ -73,7 +73,7 @@ const Blog = ({ data }) => {
         {/* Blog list */}
         <SimpleGrid id="posts" columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
           {data?.map((postData) => {
-            return <BlogCard key={data?.slug} data={postData} />;
+            return <BlogCard key={data?.id} data={postData} />;
           })}
         </SimpleGrid>
       </chakra.main>

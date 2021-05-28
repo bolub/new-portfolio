@@ -93,6 +93,7 @@ export async function getStaticProps(context) {
       props: {
         data: response.data,
       }, // will be passed to the page component as props
+      revalidate: 1,
     };
   } catch (error) {
     return {

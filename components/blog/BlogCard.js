@@ -8,7 +8,7 @@ const BlogCard = ({ data }) => {
   return (
     <Flex flexDir="column">
       <Image
-        src={`${process.env.NEXT_PUBLIC_BASE_URL}${data?.cover_image?.url}`}
+        src={data?.cover_image?.name}
         height="280px"
         w="100%"
         objectFit="cover"

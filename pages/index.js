@@ -7,7 +7,7 @@ import { Box, Flex, chakra, Text } from "@chakra-ui/react";
 // utils
 import { generalPaddingX } from "../utils/chakra";
 
-// components
+// componentss
 import HomeIllustration from "./../svg/HomeIllustration";
 import CustomLink from "../components/UI/CustomLink";
 

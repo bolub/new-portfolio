@@ -4,7 +4,7 @@ import { components } from "./components";
 const styles = {
   global: {
     "html, body": {
-      fontFamily: "Jost",
+      fontFamily: "Nunito Sans",
     },
 
     "h1, h2, h3, h4, h5, h6": {

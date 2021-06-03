@@ -23,3 +23,17 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add("seedAndVisit", (seedData = "fixture:blogPosts") => {
+  cy.server();
+  cy.route("GET", "/blog-posts", seedData).as("load");
+
+  // =====================================================================
+
+  cy.visit("http://localhost:3000/blog");
+
+  // Cypress only "visits" an endpoint for about 4s before it actually
+  // times out(default behavior), so we're basically telling cypress to
+  //chill till the request has been complete
+  cy.wait("@load");
+});

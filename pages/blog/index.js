@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 // Nextjs
 import Head from "next/head";
@@ -18,6 +18,24 @@ import CustomButton from "../../components/UI/CustomButton";
 import BlogCard from "../../components/blog/BlogCard";
 
 const Blog = ({ data }) => {
+  const [allPosts, setAllPosts] = useState([]);
+
+  const getDataForCypress = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/blog-posts`
+      );
+
+      setAllPosts(response.data);
+    } catch (error) {
+      return null;
+    }
+  };
+
+  useEffect(() => {
+    getDataForCypress();
+  }, []);
+
   return (
     <>
       <Head>
@@ -72,7 +90,7 @@ const Blog = ({ data }) => {
 
         {/* Blog list */}
         <SimpleGrid id="posts" columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
-          {data?.map((postData) => {
+          {allPosts?.map((postData) => {
             return <BlogCard key={data?.id} data={postData} />;
           })}
         </SimpleGrid>
@@ -93,6 +111,7 @@ export async function getStaticProps(context) {
       props: {
         data: response.data,
       }, // will be passed to the page component as props
+      revalidate: 1,
     };
   } catch (error) {
     return {

@@ -86,7 +86,8 @@ const Blog = ({ data }) => {
             <Image
               mt={5}
               w="100%"
-              src={`${process.env.NEXT_PUBLIC_BASE_URL}${data?.cover_image?.url}`}
+              // src={`${process.env.NEXT_PUBLIC_BASE_URL}${data?.cover_image?.url}`}
+              src={`${data?.cover_image?.name}`}
             />
           </Box>
         </Flex>

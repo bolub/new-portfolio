@@ -1,16 +1,17 @@
 describe("Test backend", () => {
-  it("visits the backend and tests our login details", () => {
-    // Visit the backend server
+  // basically what happens before each test runs i.e before each individual "it"
+  beforeEach(() => {
     cy.visit("/");
-
-    // check the focused element and see if it has an id of email
-    cy.focused().should("have.id", "email");
   });
 
-  it.only("accepts email input", () => {
+  // it("checks if the email field has an id of 'email'", () => {
+  //   // check the focused element and see if it has an id of email
+  //   cy.focused().should("have.id", "email");
+  // });
+
+  it("accepts email input", () => {
     const typedEmail = "abiol5202@gmail.com";
 
-    cy.visit("/");
     cy.get("#email").type(typedEmail).should("have.value", typedEmail);
   });
 });

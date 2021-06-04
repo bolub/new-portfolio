@@ -15,7 +15,7 @@ const Button = {
   baseStyle: {
     fontWeight: "600",
     borderRadius: "sm",
-    fontFamily: "Space Grotesk",
+    // fontFamily: "Space Grotesk",
   },
 };
 

@@ -71,9 +71,9 @@ const Playground = ({ saving }) => {
 
       {!saving.start && (
         <>
-          <Accordion defaultIndex={[0]} allowMultiple>
+          <Accordion allowMultiple>
             <AccordionItem>
-              <AccordionButton boxShadow="none">
+              <AccordionButton boxShadow="none" _focus={{ boxShadow: "none" }}>
                 <Box d="flex" w="100%" textAlign="left">
                   <chakra.svg
                     w="22px"
@@ -227,7 +227,7 @@ const Playground = ({ saving }) => {
             </AccordionItem>
 
             <AccordionItem>
-              <AccordionButton boxShadow="none">
+              <AccordionButton boxShadow="none" _focus={{ boxShadow: "none" }}>
                 <Box d="flex" w="100%" textAlign="left">
                   <Text as="span" my="auto" mr={2}>
                     🚝{" "}

@@ -1,12 +1,13 @@
-import { extendTheme } from "@chakra-ui/react";
+import { color, extendTheme } from "@chakra-ui/react";
 import { components } from "./components";
 import { config } from "./config";
 
-let defaultHeading, defaultBody, styles, colors;
+let defaultHeading, defaultBody, styles, colors, colorMode;
 
 if (typeof window !== "undefined") {
   defaultHeading = localStorage.getItem("fontHeading") || "Space Grotesk";
   defaultBody = localStorage.getItem("fontBody") || "Jost";
+  colorMode = localStorage.getItem("chakra-ui-color-mode");
 
   styles = {
     global: {
@@ -25,6 +26,7 @@ if (typeof window !== "undefined") {
         whiteSpace: "pre-wrap",
         background: "#f2f2f2",
         fontSize: "14px",
+        color: colorMode === "dark" && "black",
         p: 3,
       },
     },

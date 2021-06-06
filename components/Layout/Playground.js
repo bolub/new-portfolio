@@ -130,19 +130,19 @@ const Playground = ({ saving }) => {
 
                   <FormControl mb={2} display="flex" alignItems="center">
                     <FormLabel
-                      fontFamily="Nunito Sans"
+                      fontFamily="Nunito"
                       htmlFor="email-alerts"
                       mb="0"
                     >
-                      Nunito Sans
+                      Nunito
                     </FormLabel>
                     <Switch
                       value={fontType.heading}
-                      isChecked={fontType.heading === "Nunito Sans"}
+                      isChecked={fontType.heading === "Nunito"}
                       ml="auto"
                       colorScheme="red"
                       onChange={(e) => {
-                        setFont("heading", "Nunito Sans");
+                        setFont("heading", "Nunito");
                       }}
                     />
                   </FormControl>
@@ -176,19 +176,19 @@ const Playground = ({ saving }) => {
 
                   <FormControl mb={2} display="flex" alignItems="center">
                     <FormLabel
-                      fontFamily="Nunito Sans"
+                      fontFamily="Nunito"
                       htmlFor="email-alerts"
                       mb="0"
                     >
-                      Nunito Sans
+                      Nunito
                     </FormLabel>
                     <Switch
                       value={fontType.body}
-                      isChecked={fontType.body === "Nunito Sans"}
+                      isChecked={fontType.body === "Nunito"}
                       ml="auto"
                       colorScheme="red"
                       onChange={(e) => {
-                        setFont("body", "Nunito Sans");
+                        setFont("body", "Nunito");
                       }}
                     />
                   </FormControl>

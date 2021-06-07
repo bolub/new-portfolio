@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@ashwamegh/react-link-preview@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@ashwamegh/react-link-preview/-/react-link-preview-0.2.2.tgz#95c324d3acbc52801784f1973f02d3aa5170d201"
+  integrity sha512-LF2KL8ZPkn4o4OTDQT8rxWdIzXnLScZzobr0ho3Bo9RkftVWHLhnxxIiUE3PmroQD9r2AAxI7x5oCJAeMOcCAw==
+
 "@babel/code-frame@7.12.11":
   version "7.12.11"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.12.11.tgz#f4ad435aa263db935b8f10f2c552d23fb716a63f"

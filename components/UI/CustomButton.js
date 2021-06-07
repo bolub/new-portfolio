@@ -7,7 +7,6 @@ import { fontState } from "../../atoms/fonts";
 
 const CustomButton = (props) => {
   const fontType = useRecoilValue(fontState);
-  // console.log(fontType.heading)
   return (
     <Button
       {...props}

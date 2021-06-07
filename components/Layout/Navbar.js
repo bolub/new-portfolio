@@ -14,7 +14,6 @@ import {
   ModalHeader,
   ModalFooter,
   ModalBody,
-  ModalCloseButton,
   useColorMode,
 } from "@chakra-ui/react";
 
@@ -25,6 +24,7 @@ import { generalPaddingX } from "../../utils/chakra";
 import CustomLink from "../UI/CustomLink";
 import CustomButton from "../UI/CustomButton";
 import Playground from "./Playground";
+import Link from "next/link";
 
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -54,13 +54,15 @@ const Navbar = () => {
     }, 2000);
   };
 
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { colorMode } = useColorMode();
 
   return (
     <chakra.nav w="100%" height="10vh" d="flex" px={generalPaddingX}>
-      <Text fontWeight={900} my="auto" fontSize="2xl" mr={5}>
-        😎
-      </Text>
+      <Link passHref href="/">
+        <Text cursor="pointer" fontWeight={900} my="auto" fontSize="2xl" mr={5}>
+          😎
+        </Text>
+      </Link>
 
       <HStack spacing={8} my="auto" ml="auto" overflowX="auto">
         <CustomLink fontSize={{ base: "sm", md: "md" }} href="/">

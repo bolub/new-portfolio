@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@ashwamegh/react-link-preview": "^0.2.2",
     "@chakra-ui/react": "^1.6.2",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",

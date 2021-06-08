@@ -45,7 +45,6 @@ const CustomLinkPreview = ({ loading, preview }) => {
               objectFit="cover"
               borderRadius="md"
               borderWidth="1px"
-              // boxShadow="md"
               borderRadius="lg"
             />
 

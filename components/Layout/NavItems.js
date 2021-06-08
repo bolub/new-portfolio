@@ -52,16 +52,16 @@ const NavItems = () => {
   return (
     <>
       <CustomLink fontSize={{ base: "sm", md: "md" }} href="/">
-        Home
+        🏠 Home
       </CustomLink>
       <CustomLink fontSize={{ base: "sm", md: "md" }} href="/blog">
-        Blog
+        ✍️ Blog
       </CustomLink>
       <CustomLink fontSize={{ base: "sm", md: "md" }} href="/portfolio">
-        Portfolio
+        💼 Portfolio
       </CustomLink>
       <CustomLink fontSize={{ base: "sm", md: "md" }} href="/cooking">
-        Cooking
+        🍳 Cooking
       </CustomLink>
 
       <CustomButton
@@ -76,7 +76,7 @@ const NavItems = () => {
         d="inline-block"
         w="auto"
       >
-        Playground
+        🤾‍♂️ Playground
       </CustomButton>
 
       <Modal

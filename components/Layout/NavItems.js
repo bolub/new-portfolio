@@ -57,7 +57,10 @@ const NavItems = () => {
       <CustomLink fontSize={{ base: "sm", md: "md" }} href="/blog">
         ✍️ Blog
       </CustomLink>
-      <CustomLink fontSize={{ base: "sm", md: "md" }} href="/portfolio">
+      <CustomLink
+        fontSize={{ base: "sm", md: "md" }}
+        href="https://motionwares.com/p/bolub"
+      >
         💼 Portfolio
       </CustomLink>
       <CustomLink fontSize={{ base: "sm", md: "md" }} href="/cooking">

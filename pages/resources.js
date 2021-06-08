@@ -22,11 +22,7 @@ export default function Resources({ data }) {
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
 
-      <chakra.header
-        // h={{ base: "100%", md: "75vh" }}
-        d="flex"
-        py={{ base: "10", md: 10 }}
-      >
+      <chakra.header d="flex" py={{ base: "10", md: 10 }}>
         <Flex
           w="100%"
           flexDir={{ base: "column", md: "row" }}

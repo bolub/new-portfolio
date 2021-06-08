@@ -15,7 +15,6 @@ import SingleResource from "../components/resources/SingleResource";
 // import CustomLink from "../components/UI/CustomLink";
 
 export default function Resources({ data }) {
-  console.log(data);
   return (
     <>
       <Head>
@@ -58,6 +57,7 @@ export async function getStaticProps(context) {
     const response = await axios.get(
       `${process.env.NEXT_PUBLIC_BASE_URL}/resources`
     );
+    // console.log(response.data);
     return {
       props: {
         data: response.data,
@@ -65,6 +65,7 @@ export async function getStaticProps(context) {
       revalidate: 1,
     };
   } catch (error) {
+    // console.log(error);
     return {
       props: {
         data: [],

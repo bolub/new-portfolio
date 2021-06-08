@@ -15,6 +15,7 @@ import { RecoilRoot } from "recoil";
 
 // components
 import Navbar from "../components/Layout/Navbar";
+import Footer from "../components/Layout/Footer";
 
 function MyApp({ Component, pageProps }) {
   const [show, setShow] = useState(false);
@@ -49,6 +50,8 @@ function MyApp({ Component, pageProps }) {
             <Navbar />
 
             <Component {...pageProps} />
+
+            <Footer />
           </>
         )}
       </ChakraProvider>

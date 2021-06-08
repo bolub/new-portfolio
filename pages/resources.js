@@ -41,7 +41,7 @@ export default function Resources({ data }) {
         </Flex>
       </chakra.header>
 
-      <chakra.main px={generalPaddingX}>
+      <chakra.main minH={{ base: "100%", md: "60vh" }} px={generalPaddingX}>
         <SimpleGrid spacing={4} columns={{ base: 1, md: 2, lg: 3 }}>
           {data?.map((rd) => {
             return <SingleResource key={rd?.id} data={rd} />;

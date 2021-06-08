@@ -17,6 +17,8 @@ const CustomButton = (props) => {
       _hover={{
         textDecoration: "none",
         backgroundColor: "#ffe4ed",
+        color: "#cb1a41",
+        borderBottomColor: "#cb1a41",
       }}
       fontFamily={fontType.heading}
     >

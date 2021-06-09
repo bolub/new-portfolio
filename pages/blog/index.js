@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 
 // Nextjs
 import Head from "next/head";
 
 // chakra
-import { Box, Flex, chakra, Text, SimpleGrid } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  chakra,
+  Text,
+  SimpleGrid,
+  HStack,
+  IconButton,
+} from "@chakra-ui/react";
 
 // utils
 import { generalPaddingX } from "../../utils/chakra";
+
+// icons
+import { BsGrid, BsViewList } from "react-icons/bs";
 
 // DATA FETCHING
 import axios from "axios";
@@ -15,9 +26,12 @@ import axios from "axios";
 // components
 import BlogIllustration from "../../svg/BlogIlustration";
 import CustomButton from "../../components/UI/CustomButton";
-import BlogCard from "../../components/blog/BlogCard";
+import GridCard from "../../components/blog/BlogCard/GridCard";
+import ListCard from "../../components/blog/BlogCard/ListCard";
 
 const Blog = ({ data }) => {
+  const [layout, setLayout] = useState("grid");
+
   return (
     <>
       <Head>
@@ -64,18 +78,52 @@ const Blog = ({ data }) => {
 
       <chakra.main mt={20} pt={{ base: "10" }} pb={20} px={generalPaddingX}>
         {/* Header */}
-        <Flex>
-          <chakra.h2 fontWeight={700} mb={5} fontSize={{ base: "3xl" }}>
+        <Flex mb={5}>
+          {/* Header Text */}
+          <chakra.h2 my="auto" fontWeight={700} fontSize={{ base: "3xl" }}>
             All Posts
           </chakra.h2>
+
+          {/* Layout switch */}
+          <HStack ml="auto" my="auto">
+            <IconButton
+              colorScheme="red"
+              fontSize="lg"
+              onClick={() => setLayout("grid")}
+              variant={layout === "grid" ? "solid" : "ghost"}
+            >
+              <BsGrid />
+            </IconButton>
+
+            <IconButton
+              colorScheme="red"
+              fontSize="lg"
+              onClick={() => setLayout("list")}
+              variant={layout === "list" ? "solid" : "ghost"}
+            >
+              <BsViewList />
+            </IconButton>
+          </HStack>
         </Flex>
 
         {/* Blog list */}
-        <SimpleGrid id="posts" columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
-          {data?.map((postData) => {
-            return <BlogCard key={data?.id} data={postData} />;
-          })}
-        </SimpleGrid>
+        <Box id="posts">
+          {layout === "grid" && (
+            <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
+              {data?.map((postData) => {
+                return <GridCard key={data?.id} data={postData} />;
+              })}
+            </SimpleGrid>
+          )}
+
+          {layout === "list" && (
+            <>
+              {data?.map((postData) => {
+                return <ListCard key={data?.id} data={postData} />;
+              })}
+            </>
+          )}
+        </Box>
       </chakra.main>
     </>
   );

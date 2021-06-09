@@ -2,9 +2,14 @@
 import { chakra, Flex, HStack, Image, Tag, Text, Box } from "@chakra-ui/react";
 
 // components
-import CustomLink from "../UI/CustomLink";
+import CustomLink from "../../UI/CustomLink";
 
-const BlogCard = ({ data }) => {
+// dayjs
+import dayjs from "dayjs";
+import advancedFormat from "dayjs/plugin/advancedFormat";
+dayjs.extend(advancedFormat);
+
+const GridCard = ({ data }) => {
   return (
     <Flex flexDir="column">
       <Image
@@ -17,11 +22,19 @@ const BlogCard = ({ data }) => {
         mb={6}
       />
 
-      <HStack mb={4}>
-        <Text color="brand.500" fontSize="14px" fontWeight={600}>
+      <Flex mb={2}>
+        <Text color="brand.500" fontSize="14px" fontWeight={600} my="auto">
           💻 Programming
         </Text>
-      </HStack>
+
+        <Text fontSize="4xl" mx={1} mt={1}>
+          &bull;
+        </Text>
+
+        <Text fontSize="14px" color="gray.600" my="auto">
+          {dayjs(data?.published_at).format("Do MMM YYYY")}
+        </Text>
+      </Flex>
 
       <chakra.h2 fontWeight="bold" fontSize="lg" mb={5}>
         {data?.Title}
@@ -36,4 +49,4 @@ const BlogCard = ({ data }) => {
   );
 };
 
-export default BlogCard;
+export default GridCard;

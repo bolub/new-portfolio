@@ -93,7 +93,14 @@ const Blog = ({ data }) => {
         </Flex>
       </chakra.header>
 
-      <chakra.main d="flex" mt={5} pb={20} px={generalPaddingX} w="100%">
+      <chakra.main
+        minH={{ base: "100%", md: "75vh" }}
+        d="flex"
+        mt={5}
+        pb={20}
+        px={generalPaddingX}
+        w="100%"
+      >
         <Box w={{ base: "100%", md: "60%" }} m="auto">
           <chakra.p lineHeight={1.8} mb={1} fontSize="md">
             <ReactMarkdown

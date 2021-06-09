@@ -56,7 +56,7 @@ const Footer = () => {
       {/* Social */}
       <Wrap
         fontSize="2xl"
-        color="red.500"
+        color="brand.500"
         ml={{ md: "auto" }}
         // mx={{ base: "auto", md: "" }}
         spacing={4}

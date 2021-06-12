@@ -1,19 +1,14 @@
-// Nextjs
-import Head from "next/head";
-
 // chakra
 import { chakra } from "@chakra-ui/react";
 
 // components
 import UnderConstruction from "../components/Layout/UnderConstruction";
+import CustomSeo from "../components/Layout/Seo";
 
 const Cooking = () => {
   return (
     <>
-      <Head>
-        <title>Cooking - Bolub</title>
-        {/* <link rel="icon" href="/favicon.ico" /> */}
-      </Head>
+      <CustomSeo title="Cooking" />
 
       <chakra.main>
         <UnderConstruction />

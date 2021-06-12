@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 
-// Nextjs
-import Head from "next/head";
-
 // chakra
 import {
   Box,
@@ -28,16 +25,14 @@ import BlogIllustration from "../../svg/BlogIlustration";
 import CustomButton from "../../components/UI/CustomButton";
 import GridCard from "../../components/blog/BlogCard/GridCard";
 import ListCard from "../../components/blog/BlogCard/ListCard";
+import CustomSeo from "../../components/Layout/Seo";
 
 const Blog = ({ data }) => {
   const [layout, setLayout] = useState("grid");
 
   return (
     <>
-      <Head>
-        <title>Blog - Bolub</title>
-        {/* <link rel="icon" href="/favicon.ico" /> */}
-      </Head>
+      <CustomSeo title="Blog" />
 
       <chakra.header d="flex" py={{ base: "10" }}>
         <Flex

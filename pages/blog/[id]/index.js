@@ -36,6 +36,7 @@ import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
 import CustomLink from "../../../components/UI/CustomLink";
 import AudioBlog from "../../../components/blog/AudioBlog";
+import CustomSeo from "../../../components/Layout/Seo";
 dayjs.extend(advancedFormat);
 
 const Blog = ({ data }) => {
@@ -78,10 +79,11 @@ const Blog = ({ data }) => {
 
   return (
     <>
-      <Head>
-        <title>Blog - Bolub</title>
-        {/* <link rel="icon" href="/favicon.ico" /> */}
-      </Head>
+      <CustomSeo
+        title={data?.Title}
+        description={data?.summary}
+        imageUrl={data?.cover_image?.name}
+      />
 
       <chakra.header d="flex" pt={{ base: "10" }} w="100%">
         {/* back button */}

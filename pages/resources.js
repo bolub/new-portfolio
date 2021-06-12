@@ -11,10 +11,15 @@ import { generalPaddingX } from "../utils/chakra";
 import axios from "axios";
 import SingleResource from "../components/resources/SingleResource";
 
+// hooks
+import useLayoutSwitch from "../hooks/useLayoutSwitch";
+
 // components
 // import CustomLink from "../components/UI/CustomLink";
 
 export default function Resources({ data }) {
+  const { layout, LayoutComponent } = useLayoutSwitch();
+
   return (
     <>
       <Head>
@@ -34,13 +39,18 @@ export default function Resources({ data }) {
               {data?.length}
             </Badge>
           </chakra.h1>
+
+          {LayoutComponent}
         </Flex>
       </chakra.header>
 
       <chakra.main minH={{ base: "100%", md: "60vh" }} px={generalPaddingX}>
-        <SimpleGrid spacing={4} columns={{ base: 1, md: 2, lg: 3 }}>
+        <SimpleGrid
+          spacing={4}
+          columns={layout === "list" ? { base: 1 } : { base: 1, md: 2, lg: 3 }}
+        >
           {data?.map((rd) => {
-            return <SingleResource key={rd?.id} data={rd} />;
+            return <SingleResource key={rd?.id} data={rd} layout={layout} />;
           })}
         </SimpleGrid>
       </chakra.main>

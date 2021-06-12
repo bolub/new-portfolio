@@ -19,7 +19,7 @@ import CustomLink from "../UI/CustomLink";
 import CustomButton from "../UI/CustomButton";
 import Playground from "./Playground";
 
-const NavItems = () => {
+const NavItems = ({ hide }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [saving, setSaving] = useState({
     start: false,
@@ -49,23 +49,48 @@ const NavItems = () => {
 
   const { colorMode } = useColorMode();
 
+  const allLinks = [
+    {
+      name: "🏠 Home",
+      href: "/",
+      hide: hide === "home",
+    },
+    {
+      name: "✍️ Blog",
+      href: "/blog",
+      hide: hide === "blog",
+    },
+    {
+      name: " 💼 Portfolio",
+      href: "https://motionwares.com/p/bolub",
+      hide: hide === "portfolio",
+    },
+    {
+      name: " 🍳 Cooking",
+      href: "/cooking",
+      hide: hide === "cooking",
+    },
+    {
+      name: "☎️ Contact",
+      href: "#footer",
+      hide: hide === "contact",
+    },
+  ];
+
   return (
     <>
-      <CustomLink fontSize={{ base: "sm", md: "md" }} href="/">
-        🏠 Home
-      </CustomLink>
-      <CustomLink fontSize={{ base: "sm", md: "md" }} href="/blog">
-        ✍️ Blog
-      </CustomLink>
-      <CustomLink
-        fontSize={{ base: "sm", md: "md" }}
-        href="https://motionwares.com/p/bolub"
-      >
-        💼 Portfolio
-      </CustomLink>
-      <CustomLink fontSize={{ base: "sm", md: "md" }} href="/cooking">
-        🍳 Cooking
-      </CustomLink>
+      {allLinks?.map((linkData) => {
+        if (linkData?.hide) return;
+        return (
+          <CustomLink
+            key={linkData?.name}
+            fontSize={{ base: "sm", md: "md" }}
+            href={linkData?.href}
+          >
+            {linkData?.name}
+          </CustomLink>
+        );
+      })}
 
       <CustomButton
         fontSize={{ base: "sm", md: "md" }}

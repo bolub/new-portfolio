@@ -14,8 +14,8 @@ import {
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 
 // recoil
-import { useRecoilValue } from "recoil";
-import { linkToPreviewState } from "../../atoms/linkPreview";
+// import { useRecoilValue } from "recoil";
+// import { linkToPreviewState } from "../../atoms/linkPreview";
 
 const CustomLinkPreview = ({ loading, preview }) => {
   return (

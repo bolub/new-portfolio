@@ -33,23 +33,23 @@ import { linkToPreviewState } from "../../atoms/linkPreview";
 // components
 import CustomLinkPreview from "./CustomLinkPreview";
 
-const SingleResource = ({ data }) => {
+const SingleResource = ({ data, layout }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   // recoil
   const setLinkToPreview = useSetRecoilState(linkToPreviewState);
-  const test = useRecoilValue(linkToPreviewState);
-  console.log(test);
-
+  // const test = useRecoilValue(linkToPreviewState);
+  const isListLayout = layout === "list";
   return (
     <Flex
-      height="180px"
+      height={!isListLayout && "180px"}
       borderWidth="1px"
       borderRadius="lg"
       py={6}
       px={6}
       cursor="pointer"
       onClick={() => {
+        if (isListLayout) return;
         onOpen();
         setLinkToPreview(data?.url);
       }}
@@ -61,21 +61,37 @@ const SingleResource = ({ data }) => {
         📚 {data?.title}
       </chakra.h2>
 
-      <Text mt={2}>
-        <Text mt={2}>{sliceAndReturn(data?.description, 60)}</Text>
+      <Text mt={4} mb={isListLayout && 2}>
+        {isListLayout ? (
+          <>{data?.description}</>
+        ) : (
+          <>{sliceAndReturn(data?.description, 60)}</>
+        )}
       </Text>
 
-      <HStack ml="auto" mt="auto" spacing={1}>
-        {/* <Button borderRadius="full" colorScheme="red" variant="ghost" p={1}>
+      {isListLayout && (
+        <a href={data?.url} target="_blank">
+          <LinkPreview
+            render={CustomLinkPreview}
+            width="100%"
+            url={data?.url}
+          />
+        </a>
+      )}
+
+      {!isListLayout && (
+        <HStack ml="auto" mt="auto" spacing={1}>
+          {/* <Button borderRadius="full" colorScheme="red" variant="ghost" p={1}>
           <BiVideo />
         </Button> */}
 
-        {data?.url && (
-          <Button borderRadius="full" colorScheme="red" variant="ghost" p={1}>
-            <BiLink />
-          </Button>
-        )}
-      </HStack>
+          {data?.url && (
+            <Button borderRadius="full" colorScheme="red" variant="ghost" p={1}>
+              <BiLink />
+            </Button>
+          )}
+        </HStack>
+      )}
 
       {/* modal */}
       <Modal size="lg" isOpen={isOpen} onClose={onClose}>
@@ -91,9 +107,6 @@ const SingleResource = ({ data }) => {
                 render={CustomLinkPreview}
                 width="100%"
                 url={data?.url}
-                onClick={() => {
-                  alert("hello");
-                }}
               />
             </a>
           </ModalBody>

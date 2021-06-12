@@ -22,13 +22,60 @@ import { HiChevronLeft } from "react-icons/hi";
 
 // components
 
+// Speech to text
+// import dynamic from "next/dynamic";
+// const Speech = dynamic(
+//   () => {
+//     return import("react-speech");
+//   },
+//   { ssr: false }
+// );
+
 // dayjs
 import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
 import CustomLink from "../../../components/UI/CustomLink";
+import AudioBlog from "../../../components/AudioBlog";
 dayjs.extend(advancedFormat);
 
 const Blog = ({ data }) => {
+  const styles = {
+    container: {
+      display: "flex",
+    },
+    text: {},
+    buttons: {
+      color: "red",
+    },
+    play: {
+      hover: {
+        backgroundColor: "GhostWhite",
+      },
+      button: {
+        cursor: "pointer",
+        pointerEvents: "none",
+        outline: "none",
+        backgroundColor: "Gainsboro",
+        border: "solid 1px rgba(255,255,255,1)",
+        borderRadius: 6,
+      },
+    },
+    pause: {
+      play: {},
+      hover: {},
+    },
+    stop: {
+      play: {},
+      hover: {},
+      button: {},
+    },
+    resume: {
+      play: {},
+      hover: {},
+      button: {},
+    },
+  };
+
   return (
     <>
       <Head>
@@ -102,6 +149,9 @@ const Blog = ({ data }) => {
         w="100%"
       >
         <Box w={{ base: "100%", md: "60%" }} m="auto">
+          {/* Talk about the blog */}
+          <AudioBlog content={data?.content} />
+
           <chakra.p lineHeight={1.8} mb={1} fontSize="md">
             <ReactMarkdown
               rehypePlugins={[rehypeRaw]}

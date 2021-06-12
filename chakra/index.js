@@ -30,6 +30,23 @@ if (typeof window !== "undefined") {
         color: colorMode === "dark" && "black",
         p: 3,
       },
+
+      ".rs-container": {
+        display: "flex",
+        // bg: "red.500",
+        justifyContent: "center",
+      },
+
+      ".rs-play, .rs-stop, .rs-pause, .rs-resume": {
+        width: "40px",
+        height: "40px",
+        borderRadius: "100px !important",
+        padding: "4px",
+        marginRight: "10px",
+        backgroundColor: "#f2f2f2 !important",
+        color: "#cb1a41 !important",
+        border: "1px solid #cb1a41 !important",
+      },
     },
   };
 

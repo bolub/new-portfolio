@@ -11,7 +11,6 @@ import {
   ModalHeader,
   ModalFooter,
   ModalBody,
-  useColorMode,
   Box,
   Text,
   Flex,
@@ -25,7 +24,7 @@ import CustomLink from "../UI/CustomLink";
 import Playground from "./Playground";
 import CustomMenu from "../UI/CustomMenu";
 
-const NavItems = ({ hide }) => {
+const NavItems = ({ hide, componentName }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [saving, setSaving] = useState({
     start: false,
@@ -52,9 +51,6 @@ const NavItems = ({ hide }) => {
       }, 2000);
     }, 2000);
   };
-
-  //  colorMode
-  const { colorMode } = useColorMode();
 
   const allLinks = [
     {
@@ -117,10 +113,10 @@ const NavItems = ({ hide }) => {
         );
       })}
 
-      <Box>
+      <Box d={componentName !== "footer" && { base: "none", md: "inline" }}>
         <CustomMenu
           title={
-            <Flex>
+            <Flex d="inline-flex">
               <Text as="span" mr={1}>
                 🔗
               </Text>{" "}

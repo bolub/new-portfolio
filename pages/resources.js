@@ -13,6 +13,7 @@ import SingleResource from "../components/resources/SingleResource";
 
 // hooks
 import useLayoutSwitch from "../hooks/useLayoutSwitch";
+import CustomSeo from "../components/Layout/Seo";
 
 // components
 // import CustomLink from "../components/UI/CustomLink";
@@ -22,10 +23,7 @@ export default function Resources({ data }) {
 
   return (
     <>
-      <Head>
-        <title>Resources - Bolub</title>
-        {/* <link rel="icon" href="/favicon.ico" /> */}
-      </Head>
+      <CustomSeo title="Resources" />
 
       <chakra.header d="flex" py={{ base: "10", md: 10 }}>
         <Flex

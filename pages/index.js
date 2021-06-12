@@ -1,6 +1,3 @@
-// Nextjs
-import Head from "next/head";
-
 // chakra
 import { Box, Flex, chakra, Text } from "@chakra-ui/react";
 
@@ -10,14 +7,12 @@ import { generalPaddingX } from "../utils/chakra";
 // componentss
 import HomeIllustration from "./../svg/HomeIllustration";
 import CustomLink from "../components/UI/CustomLink";
+import CustomSeo from "../components/Layout/Seo";
 
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>Home - Bolub</title>
-        {/* <link rel="icon" href="/favicon.ico" /> */}
-      </Head>
+      <CustomSeo title="Home" />
 
       <chakra.header
         h={{ base: "100%", md: "75vh" }}

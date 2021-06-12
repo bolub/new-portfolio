@@ -23,18 +23,19 @@ import { HiChevronLeft } from "react-icons/hi";
 // components
 
 // Speech to text
-import dynamic from "next/dynamic";
-const Speech = dynamic(
-  () => {
-    return import("react-speech");
-  },
-  { ssr: false }
-);
+// import dynamic from "next/dynamic";
+// const Speech = dynamic(
+//   () => {
+//     return import("react-speech");
+//   },
+//   { ssr: false }
+// );
 
 // dayjs
 import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
 import CustomLink from "../../../components/UI/CustomLink";
+import AudioBlog from "../../../components/AudioBlog";
 dayjs.extend(advancedFormat);
 
 const Blog = ({ data }) => {
@@ -148,15 +149,8 @@ const Blog = ({ data }) => {
         w="100%"
       >
         <Box w={{ base: "100%", md: "60%" }} m="auto">
-          <Box mt={6} mb={8}>
-            <Speech
-              // styles={styles}
-              // stop={true}
-              pause={true}
-              resume={true}
-              text={data?.content}
-            />
-          </Box>
+          {/* Talk about the blog */}
+          <AudioBlog content={data?.content} />
 
           <chakra.p lineHeight={1.8} mb={1} fontSize="md">
             <ReactMarkdown

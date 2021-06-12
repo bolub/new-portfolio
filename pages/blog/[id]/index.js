@@ -148,7 +148,7 @@ const Blog = ({ data }) => {
         w="100%"
       >
         <Box w={{ base: "100%", md: "60%" }} m="auto">
-          <Box my={8}>
+          <Box mt={6} mb={8}>
             <Speech
               // styles={styles}
               // stop={true}

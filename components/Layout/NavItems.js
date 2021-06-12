@@ -12,12 +12,18 @@ import {
   ModalFooter,
   ModalBody,
   useColorMode,
+  Box,
+  Text,
+  Flex,
 } from "@chakra-ui/react";
+
+// icons
+// import { HiOutlineDotsHorizontal } from "react-icons/hi";
 
 // components
 import CustomLink from "../UI/CustomLink";
-import CustomButton from "../UI/CustomButton";
 import Playground from "./Playground";
+import CustomMenu from "../UI/CustomMenu";
 
 const NavItems = ({ hide }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -47,33 +53,49 @@ const NavItems = ({ hide }) => {
     }, 2000);
   };
 
+  //  colorMode
   const { colorMode } = useColorMode();
 
   const allLinks = [
     {
-      name: "🏠 Home",
+      name: "Home",
+      emoji: "🏠",
       href: "/",
       hide: hide === "home",
     },
     {
-      name: "✍️ Blog",
+      name: "Blog",
+      emoji: "✍️",
       href: "/blog",
       hide: hide === "blog",
     },
     {
-      name: " 💼 Portfolio",
+      name: "Portfolio",
+      emoji: "💼",
       href: "https://motionwares.com/p/bolub",
       hide: hide === "portfolio",
     },
     {
-      name: "🍳 Cooking",
-      href: "/cooking",
-      hide: hide === "cooking",
-    },
-    {
-      name: "☎️ Contact",
+      name: "Contact",
+      emoji: "☎️",
       href: "#footer",
       hide: hide === "contact",
+    },
+  ];
+
+  const moreItems = [
+    {
+      name: "📚 Resources",
+      href: "/resources",
+    },
+    {
+      name: "🍳 Cooking",
+      href: "/cooking",
+    },
+    {
+      name: "🤾‍♂️ Playground",
+      href: null,
+      action: onOpen,
     },
   ];
 
@@ -87,25 +109,27 @@ const NavItems = ({ hide }) => {
             fontSize={{ base: "sm", md: "md" }}
             href={linkData?.href}
           >
+            <Text as="span" mr={1}>
+              {linkData?.emoji}
+            </Text>
             {linkData?.name}
           </CustomLink>
         );
       })}
 
-      <CustomButton
-        fontSize={{ base: "sm", md: "md" }}
-        borderBottom="1.3px solid #c4c4c4"
-        color={colorMode === "light" ? "gray.900" : "white"}
-        fontWeight="400"
-        height="auto"
-        px={0}
-        pb={1}
-        onClick={onOpen}
-        d="inline-block"
-        w="auto"
-      >
-        🤾‍♂️ Playground
-      </CustomButton>
+      <Box>
+        <CustomMenu
+          title={
+            <Flex>
+              <Text as="span" mr={1}>
+                🔗
+              </Text>{" "}
+              More
+            </Flex>
+          }
+          items={moreItems}
+        />
+      </Box>
 
       <Modal
         closeOnOverlayClick={false}

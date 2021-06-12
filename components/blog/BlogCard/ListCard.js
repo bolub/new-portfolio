@@ -32,7 +32,10 @@ const ListCard = ({ data }) => {
           {data?.Title}
         </chakra.h2>
 
-        <chakra.p mb={8} color="gray.600">
+        <chakra.p
+          mb={8}
+          // color="gray.600"
+        >
           {data?.summary}
         </chakra.p>
 

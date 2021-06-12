@@ -35,7 +35,7 @@ import { HiChevronLeft } from "react-icons/hi";
 import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
 import CustomLink from "../../../components/UI/CustomLink";
-import AudioBlog from "../../../components/AudioBlog";
+import AudioBlog from "../../../components/blog/AudioBlog";
 dayjs.extend(advancedFormat);
 
 const Blog = ({ data }) => {
@@ -135,6 +135,7 @@ const Blog = ({ data }) => {
               w="100%"
               // src={`${process.env.NEXT_PUBLIC_BASE_URL}${data?.cover_image?.url}`}
               src={`${data?.cover_image?.name}`}
+              fallbackSrc="https://res.cloudinary.com/bolub/image/upload/v1623525073/Group_1_1.png"
             />
           </Box>
         </Flex>

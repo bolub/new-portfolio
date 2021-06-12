@@ -66,7 +66,7 @@ const NavItems = ({ hide }) => {
       hide: hide === "portfolio",
     },
     {
-      name: " 🍳 Cooking",
+      name: "🍳 Cooking",
       href: "/cooking",
       hide: hide === "cooking",
     },

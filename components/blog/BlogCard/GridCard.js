@@ -14,6 +14,7 @@ const GridCard = ({ data }) => {
     <Flex flexDir="column">
       <Image
         src={data?.cover_image?.name}
+        fallbackSrc="https://res.cloudinary.com/bolub/image/upload/v1623525073/Group_1_1.png"
         height="280px"
         w="100%"
         objectFit="cover"
@@ -31,7 +32,7 @@ const GridCard = ({ data }) => {
           &bull;
         </Text>
 
-        <Text fontSize="14px" color="gray.600" my="auto">
+        <Text fontSize="14px" my="auto">
           {dayjs(data?.published_at).format("Do MMM YYYY")}
         </Text>
       </Flex>

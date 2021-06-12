@@ -1,14 +1,5 @@
 // chakra
-import {
-  Box,
-  Image,
-  Text,
-  Link,
-  Spinner,
-  chakra,
-  Center,
-  CloseButton,
-} from "@chakra-ui/react";
+import { Box, Image, chakra, Center } from "@chakra-ui/react";
 
 // icons
 import { BiDotsHorizontalRounded } from "react-icons/bi";
@@ -42,6 +33,7 @@ const CustomLinkPreview = ({ loading, preview }) => {
               width="100%"
               src={preview?.img}
               alt={preview?.title}
+              fallbackSrc="https://res.cloudinary.com/bolub/image/upload/v1623525073/Group_1_1.png"
               objectFit="cover"
               borderRadius="md"
               borderWidth="1px"

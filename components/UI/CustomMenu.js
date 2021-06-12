@@ -15,7 +15,6 @@ const CustomMenu = ({ title, items }) => {
   return (
     <Menu autoSelect={false}>
       <MenuButton
-        w="auto"
         px={0}
         pb="1px"
         m={0}

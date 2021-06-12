@@ -51,7 +51,7 @@ const Footer = () => {
         spacing={5}
         mr={{ md: 8 }}
       >
-        <NavItems hide="contact" />
+        <NavItems hide="contact" componentName="footer" />
       </Wrap>
 
       {/* Social */}

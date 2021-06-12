@@ -30,6 +30,7 @@ const Footer = () => {
       px={generalPaddingX}
       borderTopWidth="1px"
       py={5}
+      id="footer"
     >
       <Link passHref href="/">
         <Text
@@ -50,7 +51,7 @@ const Footer = () => {
         spacing={5}
         mr={{ md: 8 }}
       >
-        <NavItems />
+        <NavItems hide="contact" />
       </Wrap>
 
       {/* Social */}

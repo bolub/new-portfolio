@@ -25,7 +25,7 @@ import Playground from "./Playground";
 import CustomMenu from "../UI/CustomMenu";
 import { useRouter } from "next/router";
 
-const NavItems = ({ hide, componentName }) => {
+const NavItems = ({ hide, componentName, closeDrawer }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [saving, setSaving] = useState({
     start: false,
@@ -92,15 +92,20 @@ const NavItems = ({ hide, componentName }) => {
     {
       name: "📚 Resources",
       href: "/resources",
+      action: closeDrawer,
     },
     {
       name: "🍳 Cooking",
       href: "/cooking",
+      action: closeDrawer,
     },
     {
       name: "🤾‍♂️ Playground",
       href: null,
-      action: onOpen,
+      action: () => {
+        // closeDrawer();
+        onOpen();
+      },
     },
   ];
 
@@ -111,8 +116,12 @@ const NavItems = ({ hide, componentName }) => {
         return (
           <CustomLink
             key={linkData?.name}
-            fontSize={{ base: "sm", md: "md" }}
+            fontSize={{ md: "md" }}
             href={linkData?.href}
+            onClick={() => {
+              if (!closeDrawer) return;
+              closeDrawer();
+            }}
           >
             <Text as="span" mr={1}>
               {linkData?.emoji}
@@ -122,7 +131,9 @@ const NavItems = ({ hide, componentName }) => {
         );
       })}
 
-      <Box d={componentName !== "footer" && { base: "none", md: "inline" }}>
+      <Box
+      // d={componentName !== "footer" && { base: "none", md: "inline" }}
+      >
         <CustomMenu
           title={
             <Flex d="inline-flex">

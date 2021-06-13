@@ -9,7 +9,7 @@ import { chakra } from "@chakra-ui/react";
 import { useRecoilValue } from "recoil";
 import { fontState } from "../../atoms/fonts";
 
-const CustomLink = ({ href, children, active, fontSize }) => {
+const CustomLink = ({ href, children, active, fontSize, onClick }) => {
   const fontType = useRecoilValue(fontState);
 
   // next router initialization
@@ -33,6 +33,7 @@ const CustomLink = ({ href, children, active, fontSize }) => {
           borderBottomColor: "brand.500",
           color: "brand.500",
         }}
+        onClick={onClick}
       >
         {children}
       </chakra.a>

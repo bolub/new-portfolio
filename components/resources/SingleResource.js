@@ -54,7 +54,7 @@ const SingleResource = ({ data, layout }) => {
         setLinkToPreview(data?.url);
       }}
       transition="all .2s"
-      _hover={{ borderColor: "red.500" }}
+      _hover={{ borderColor: "brand.500" }}
       flexDir="column"
     >
       <chakra.h2 fontWeight="bold" fontSize="lg">
@@ -81,12 +81,17 @@ const SingleResource = ({ data, layout }) => {
 
       {!isListLayout && (
         <HStack ml="auto" mt="auto" spacing={1}>
-          {/* <Button borderRadius="full" colorScheme="red" variant="ghost" p={1}>
+          {/* <Button borderRadius="full" colorScheme="brand" variant="ghost" p={1}>
           <BiVideo />
         </Button> */}
 
           {data?.url && (
-            <Button borderRadius="full" colorScheme="red" variant="ghost" p={1}>
+            <Button
+              borderRadius="full"
+              colorScheme="brand"
+              variant="ghost"
+              p={1}
+            >
               <BiLink />
             </Button>
           )}
@@ -112,7 +117,7 @@ const SingleResource = ({ data, layout }) => {
           </ModalBody>
 
           <ModalFooter>
-            <Button onClick={onClose} variant="ghost" colorScheme="red">
+            <Button onClick={onClose} variant="ghost" colorScheme="brand">
               Close
             </Button>
           </ModalFooter>

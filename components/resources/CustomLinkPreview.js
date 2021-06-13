@@ -43,7 +43,7 @@ const CustomLinkPreview = ({ loading, preview }) => {
             {/* <CloseButton pos="absolute" right={2} top={2} variant="solid" /> */}
           </Box>
 
-          <chakra.h2 fontWeight="bold" mt={2} fontSize="15px" color="red.500">
+          <chakra.h2 fontWeight="bold" mt={2} fontSize="15px" color="brand.500">
             {preview.title}
           </chakra.h2>
           <chakra.h3 mt={1} fontSize="14px">

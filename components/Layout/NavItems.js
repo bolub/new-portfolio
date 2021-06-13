@@ -151,7 +151,7 @@ const NavItems = ({ hide, componentName }) => {
                 closeModal();
               }}
               variant="ghost"
-              colorScheme="red"
+              colorScheme="brand"
             >
               Close
             </Button>

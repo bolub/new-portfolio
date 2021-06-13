@@ -1,8 +1,3 @@
-import React from "react";
-
-// Nextjs
-import Head from "next/head";
-
 // chakra
 import { Box, Flex, chakra, Text, HStack, Image } from "@chakra-ui/react";
 
@@ -20,62 +15,20 @@ import rehypeRaw from "rehype-raw";
 // icons
 import { HiChevronLeft } from "react-icons/hi";
 
-// components
-
-// Speech to text
-// import dynamic from "next/dynamic";
-// const Speech = dynamic(
-//   () => {
-//     return import("react-speech");
-//   },
-//   { ssr: false }
-// );
-
 // dayjs
 import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
 import CustomLink from "../../../components/UI/CustomLink";
 import AudioBlog from "../../../components/blog/AudioBlog";
 import CustomSeo from "../../../components/Layout/Seo";
+import Share from "../../../components/blog/Share";
+import Comments from "../../../components/blog/Comments";
 dayjs.extend(advancedFormat);
 
 const Blog = ({ data }) => {
-  const styles = {
-    container: {
-      display: "flex",
-    },
-    text: {},
-    buttons: {
-      color: "red",
-    },
-    play: {
-      hover: {
-        backgroundColor: "GhostWhite",
-      },
-      button: {
-        cursor: "pointer",
-        pointerEvents: "none",
-        outline: "none",
-        backgroundColor: "Gainsboro",
-        border: "solid 1px rgba(255,255,255,1)",
-        borderRadius: 6,
-      },
-    },
-    pause: {
-      play: {},
-      hover: {},
-    },
-    stop: {
-      play: {},
-      hover: {},
-      button: {},
-    },
-    resume: {
-      play: {},
-      hover: {},
-      button: {},
-    },
-  };
+  // const getPostData = ()=>{
+
+  // }
 
   return (
     <>
@@ -155,12 +108,19 @@ const Blog = ({ data }) => {
           {/* Talk about the blog */}
           <AudioBlog content={data?.content} />
 
+          {/* content */}
           <chakra.p lineHeight={1.8} mb={1} fontSize="md">
             <ReactMarkdown
               rehypePlugins={[rehypeRaw]}
               children={data?.content}
             />
           </chakra.p>
+
+          {/* share */}
+          <Share />
+
+          {/* comments */}
+          <Comments blogData={data} />
         </Box>
       </chakra.main>
     </>
@@ -190,9 +150,14 @@ export const getStaticProps = async ({ params }) => {
       `${process.env.NEXT_PUBLIC_BASE_URL}/blog-posts/${params?.id}`
     );
 
+    const response2 = await axios.get(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/comments`
+    );
+
     return {
       props: {
         data: response.data,
+        data2: response2.data,
         status: "success",
       },
       revalidate: 1,

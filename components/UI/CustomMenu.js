@@ -25,9 +25,9 @@ const CustomMenu = ({ title, items }) => {
         borderRadius="none"
         _hover={{
           textDecoration: "none",
-          backgroundColor: "#ffe4ed",
-          color: "#cb1a41",
-          borderBottomColor: "#cb1a41",
+          backgroundColor: "brand.50",
+          color: "brand.500",
+          borderBottomColor: "brand.500",
         }}
       >
         {title}

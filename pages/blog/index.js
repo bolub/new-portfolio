@@ -82,7 +82,7 @@ const Blog = ({ data }) => {
           {/* Layout switch */}
           <HStack ml="auto" my="auto">
             <IconButton
-              colorScheme="red"
+              colorScheme="brand"
               fontSize="lg"
               onClick={() => setLayout("grid")}
               variant={layout === "grid" ? "solid" : "ghost"}
@@ -91,7 +91,7 @@ const Blog = ({ data }) => {
             </IconButton>
 
             <IconButton
-              colorScheme="red"
+              colorScheme="brand"
               fontSize="lg"
               onClick={() => setLayout("list")}
               variant={layout === "list" ? "solid" : "ghost"}

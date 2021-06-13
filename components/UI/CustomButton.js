@@ -10,15 +10,16 @@ const CustomButton = (props) => {
   return (
     <Button
       {...props}
-      borderBottom={props.borderBottom || "1.8px solid #cb1a41"}
-      color={props.color || "red.500"}
+      borderBottom={props.borderBottom || "1.8px solid"}
+      borderColor="brand.500"
+      color={props.color || "brand.500"}
       bg="none"
       borderRadius="none"
       _hover={{
         textDecoration: "none",
-        backgroundColor: "#ffe4ed",
-        color: "#cb1a41",
-        borderBottomColor: "#cb1a41",
+        backgroundColor: "brand.50",
+        color: "brand.500",
+        borderBottomColor: "brand.500",
       }}
       fontFamily={fontType.heading}
     >

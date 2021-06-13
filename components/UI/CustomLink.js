@@ -21,16 +21,17 @@ const CustomLink = ({ href, children, active, fontSize }) => {
     <Link href={href} passHref>
       <chakra.a
         fontFamily={fontType.heading}
-        borderBottom={isActive ? "1.3px solid #cb1a41" : "1.3px solid #c4c4c4"}
-        color={isActive && "#cb1a41"}
+        borderBottom="1.3px solid"
+        borderColor={isActive ? "brand.500" : "#c4c4c4"}
+        color={isActive && "brand.500"}
         fontWeight={isActive && "600"}
         fontSize={fontSize}
         d="inline-flex"
         cursor="pointer"
         _hover={{
-          backgroundColor: "#ffe4ed",
-          borderBottomColor: "#cb1a41",
-          color: "#cb1a41",
+          backgroundColor: "brand.50",
+          borderBottomColor: "brand.500",
+          color: "brand.500",
         }}
       >
         {children}

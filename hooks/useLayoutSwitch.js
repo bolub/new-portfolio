@@ -12,7 +12,7 @@ const useLayoutSwitch = () => {
   const LayoutComponent = (
     <HStack ml="auto" my="auto">
       <IconButton
-        colorScheme="red"
+        colorScheme="brand"
         fontSize="lg"
         onClick={() => setLayout("grid")}
         variant={layout === "grid" ? "solid" : "ghost"}
@@ -21,7 +21,7 @@ const useLayoutSwitch = () => {
       </IconButton>
 
       <IconButton
-        colorScheme="red"
+        colorScheme="brand"
         fontSize="lg"
         onClick={() => setLayout("list")}
         variant={layout === "list" ? "solid" : "ghost"}

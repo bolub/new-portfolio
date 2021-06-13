@@ -33,7 +33,7 @@ export default function Resources({ data }) {
         >
           <chakra.h1 fontWeight={700} fontSize={{ base: "3xl", md: "4xl" }}>
             Resources
-            <Badge ml={2} colorScheme="red">
+            <Badge ml={2} colorScheme="brand">
               {data?.length}
             </Badge>
           </chakra.h1>

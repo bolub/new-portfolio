@@ -1,14 +1,6 @@
 import React from "react";
 
-import {
-  Flex,
-  Box,
-  Text,
-  chakra,
-  VStack,
-  HStack,
-  Wrap,
-} from "@chakra-ui/react";
+import { Text, chakra, Wrap } from "@chakra-ui/react";
 import { generalPaddingX } from "../../utils/chakra";
 import Link from "next/link";
 import NavItems from "./NavItems";

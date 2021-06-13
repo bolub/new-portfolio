@@ -56,8 +56,8 @@ const NavItems = ({ hide, componentName, closeDrawer }) => {
       });
 
       setTimeout(() => {
-        window.location.href = pathname;
-      }, 2000);
+        window.location.href = window.location;
+      }, 1000);
     }, 2000);
   };
 

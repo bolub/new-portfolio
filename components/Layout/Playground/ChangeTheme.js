@@ -55,7 +55,7 @@ const ChangeTheme = () => {
             w="30px"
             h="30px"
             borderRadius="full"
-            p="1px"
+            p="3px"
             border={colorChosen === "red" && "1.5px solid #cb1a41"}
             cursor="pointer"
             onClick={() => {
@@ -71,7 +71,7 @@ const ChangeTheme = () => {
             w="30px"
             h="30px"
             borderRadius="full"
-            p="1px"
+            p="3px"
             border={colorChosen === "blue" && "1.5px solid #1b49ca"}
             cursor="pointer"
             onClick={() => {
@@ -87,7 +87,7 @@ const ChangeTheme = () => {
             w="30px"
             h="30px"
             borderRadius="full"
-            p="1px"
+            p="3px"
             border={colorChosen === "yellow" && "1.5px solid #dc8e09"}
             cursor="pointer"
             onClick={() => {

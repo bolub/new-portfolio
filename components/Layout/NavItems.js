@@ -1,5 +1,5 @@
 // react
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // chakra
 import {
@@ -23,6 +23,7 @@ import {
 import CustomLink from "../UI/CustomLink";
 import Playground from "./Playground";
 import CustomMenu from "../UI/CustomMenu";
+import { useRouter } from "next/router";
 
 const NavItems = ({ hide, componentName }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -32,6 +33,14 @@ const NavItems = ({ hide, componentName }) => {
     done: false,
   });
 
+  // next router
+  const { query, pathname } = useRouter();
+
+  useEffect(() => {
+    if (query.open === "playground") {
+      onOpen();
+    }
+  }, [query]);
   const closeModal = () => {
     setSaving({
       start: true,
@@ -47,7 +56,7 @@ const NavItems = ({ hide, componentName }) => {
       });
 
       setTimeout(() => {
-        window.location.reload();
+        window.location.href = pathname;
       }, 2000);
     }, 2000);
   };

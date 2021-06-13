@@ -55,7 +55,9 @@ const Comments = ({ blogData }) => {
         render: () => <CustomToastBody message="Message sent" toast={toast} />,
       });
 
-      window.location.href = window.location;
+      setTimeout(() => {
+        window.location.href = window.location;
+      }, 2000);
     } catch (error) {
       setLoading(false);
       return null;
@@ -70,7 +72,7 @@ const Comments = ({ blogData }) => {
     <Flex flexDir="column" mt={6}>
       <Flex mb={5}>
         <chakra.h2 fontWeight="bold" mr={5}>
-          💬 Comments({allComments?.length})
+          💬 Comments({allComments?.length || 0})
         </chakra.h2>
 
         <Text

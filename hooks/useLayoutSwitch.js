@@ -10,12 +10,23 @@ const useLayoutSwitch = () => {
   const [layout, setLayout] = useState("grid");
 
   const LayoutComponent = (
-    <HStack ml="auto" my="auto">
+    <HStack
+      ml="auto"
+      my="auto"
+      bg="brand.50"
+      p={1}
+      borderRadius="md"
+      spacing={1}
+    >
       <IconButton
         colorScheme="brand"
         fontSize="lg"
+        p={0}
         onClick={() => setLayout("grid")}
         variant={layout === "grid" ? "solid" : "ghost"}
+        _focus={{
+          boxShadow: "none",
+        }}
       >
         <BsGrid />
       </IconButton>
@@ -23,8 +34,12 @@ const useLayoutSwitch = () => {
       <IconButton
         colorScheme="brand"
         fontSize="lg"
+        p={0}
         onClick={() => setLayout("list")}
         variant={layout === "list" ? "solid" : "ghost"}
+        _focus={{
+          boxShadow: "none",
+        }}
       >
         <BsViewList />
       </IconButton>

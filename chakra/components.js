@@ -11,6 +11,19 @@ const Link = {
   },
 };
 
+const Input = {
+  baseStyle: {
+    borderRadius: "none",
+    _focus: {
+      borderColor: "brand.500",
+      bg: "gray.50",
+    },
+    _hover: {
+      bg: "gray.100",
+    },
+  },
+};
+
 const Button = {
   baseStyle: {
     fontWeight: "600",
@@ -26,4 +39,5 @@ const Button = {
 export const components = {
   Link,
   Button,
+  Input,
 };

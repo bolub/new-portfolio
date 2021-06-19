@@ -14,12 +14,11 @@ import {
   HStack,
   Button,
   useDisclosure,
-  Link,
-  ModalCloseButton,
+  Box,
 } from "@chakra-ui/react";
 
 // icons
-import { BiVideo, BiLink } from "react-icons/bi";
+import { BiLink } from "react-icons/bi";
 import { sliceAndReturn } from "../../utils/functions";
 
 //
@@ -27,13 +26,15 @@ import LinkPreview from "@ashwamegh/react-link-preview";
 import "@ashwamegh/react-link-preview/dist/index.css";
 
 // recoil
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { linkToPreviewState } from "../../atoms/linkPreview";
 
 // components
 import CustomLinkPreview from "./CustomLinkPreview";
+import TagList from "../UI/TagList";
 
 const SingleResource = ({ data, layout }) => {
+  console.log(data?.tags);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   // recoil
@@ -42,10 +43,11 @@ const SingleResource = ({ data, layout }) => {
   const isListLayout = layout === "list";
   return (
     <Flex
-      height={!isListLayout && "180px"}
+      height={!isListLayout && "auto"}
       borderWidth="1px"
       borderRadius="lg"
-      py={6}
+      pt={6}
+      pb={isListLayout ? 8 : 2}
       px={6}
       cursor="pointer"
       onClick={() => {
@@ -68,6 +70,11 @@ const SingleResource = ({ data, layout }) => {
           <>{sliceAndReturn(data?.description, 60)}</>
         )}
       </Text>
+
+      {/* list of tags */}
+      <Box mt={4} mb={5}>
+        <TagList data={data?.tags} />
+      </Box>
 
       {isListLayout && (
         <a href={data?.url} target="_blank">

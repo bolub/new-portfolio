@@ -3,6 +3,7 @@ import { chakra, Flex, HStack, Image, Tag, Text, Box } from "@chakra-ui/react";
 
 // components
 import CustomLink from "../../UI/CustomLink";
+import TagList from "../../UI/TagList";
 
 // dayjs
 import dayjs from "dayjs";
@@ -23,19 +24,27 @@ const GridCard = ({ data }) => {
         mb={6}
       />
 
-      <Flex mb={2}>
-        <Text color="brand.500" fontSize="14px" fontWeight={600} my="auto">
-          💻 Programming
-        </Text>
+      <Box mb={2}>
+        {/* tag list */}
+        <Box>
+          <TagList data={data?.tags} />
+        </Box>
 
-        <Text fontSize="4xl" mx={1} mt={1}>
-          &bull;
-        </Text>
+        <Flex>
+          {/* number of mins to finish */}
+          <Text my="auto" fontWeight={600} fontSize="14px">
+            ⏱️ 5 mins read
+          </Text>
+          <Text fontSize="xl" mx={1} mt={1}>
+            &bull;
+          </Text>
 
-        <Text fontSize="14px" my="auto">
-          {dayjs(data?.published_at).format("Do MMM YYYY")}
-        </Text>
-      </Flex>
+          {/* date created */}
+          <Text my="auto" fontSize="14px">
+            {dayjs(data?.published_at).format("Do MMM YYYY")}
+          </Text>
+        </Flex>
+      </Box>
 
       <chakra.h2 fontWeight="bold" fontSize="lg" mb={5}>
         {data?.Title}

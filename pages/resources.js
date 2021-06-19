@@ -1,8 +1,8 @@
 // Nextjs
-import Head from "next/head";
+import React, { useState } from "react";
 
 // chakra
-import { Flex, chakra, Badge, SimpleGrid } from "@chakra-ui/react";
+import { Flex, chakra, Badge, SimpleGrid, Tag, HStack } from "@chakra-ui/react";
 
 // utils
 import { generalPaddingX } from "../utils/chakra";
@@ -17,28 +17,107 @@ import CustomSeo from "../components/Layout/Seo";
 
 // components
 // import CustomLink from "../components/UI/CustomLink";
+import CustomSearch from "../components/UI/CustomSearch";
 
-export default function Resources({ data }) {
+export default function Resources({ data, allTags }) {
   const { layout, LayoutComponent } = useLayoutSwitch();
+
+  // blog data
+  const [resourceData, setResourceData] = useState(data);
+
+  // search text
+  const [searchText, setSearchText] = useState(null);
+
+  // tag to search for
+  const [tagName, setTagName] = useState(null);
+
+  // ======== data fetching/manipulation starts here  ========
+  // search all posts
+  const searchAllPosts = async (value) => {
+    const dataToUse = value || searchText;
+    // return if searchText dose not exist
+    // if (!searchText) return;
+
+    // check for length of searchText
+    // if (searchText.length <= 2) return;
+
+    try {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/resources?title_contains=${dataToUse}`
+      );
+
+      setResourceData(response.data);
+    } catch (error) {}
+  };
+
+  //search blog via tag
+  const searchTags = async (data) => {
+    const dataToUse = data || tagName;
+
+    try {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/resources?tags.name_contains=${dataToUse}`
+      );
+
+      setResourceData(response.data);
+    } catch (error) {}
+  };
+  //========  data fetching/manipulation ends here ========
+
+  const searchHandler = (e) => {
+    setSearchText(e.target.value);
+    searchAllPosts();
+  };
 
   return (
     <>
       <CustomSeo title="Resources" />
 
-      <chakra.header d="flex" py={{ base: "10", md: 10 }}>
-        <Flex
-          w="100%"
-          flexDir={{ base: "column", md: "row" }}
-          px={generalPaddingX}
-        >
-          <chakra.h1 fontWeight={700} fontSize={{ base: "3xl", md: "4xl" }}>
-            Resources
-            <Badge ml={2} colorScheme="brand">
-              {data?.length}
-            </Badge>
-          </chakra.h1>
+      <chakra.header py={{ base: "10", md: 10 }}>
+        <Flex w="100%" px={generalPaddingX} flexDir="column">
+          <Flex mb={5} flexDir={{ base: "column", md: "row" }}>
+            <chakra.h1 fontWeight={700} fontSize={{ base: "3xl", md: "4xl" }}>
+              Resources
+              <Badge ml={2} colorScheme="brand">
+                {data?.length}
+              </Badge>
+            </chakra.h1>
 
-          {LayoutComponent}
+            {LayoutComponent}
+          </Flex>
+
+          {/* Search Component */}
+          <CustomSearch value={searchText} onChange={searchHandler} />
+          {/* Tags */}
+          <HStack mt={5}>
+            {allTags?.map((tag) => {
+              const tagChosen = tagName === tag?.name;
+
+              return (
+                <Tag
+                  key={tag?.id}
+                  cursor="pointer"
+                  colorScheme="brand"
+                  variant={tagChosen ? "subtle" : "outline"}
+                  onClick={() => {
+                    if (tagChosen) {
+                      setTagName("");
+                      searchAllPosts(" ");
+                      return;
+                    }
+
+                    setTagName(tag?.name);
+                    searchTags(tag?.name);
+                  }}
+                  // bg="brand.50"
+                  borderRadius="sm"
+                  // size="sm"
+                >
+                  {tag?.name}
+                </Tag>
+              );
+            })}
+          </HStack>
         </Flex>
       </chakra.header>
 
@@ -47,7 +126,7 @@ export default function Resources({ data }) {
           spacing={4}
           columns={layout === "list" ? { base: 1 } : { base: 1, md: 2, lg: 3 }}
         >
-          {data?.map((rd) => {
+          {resourceData?.map((rd) => {
             return <SingleResource key={rd?.id} data={rd} layout={layout} />;
           })}
         </SimpleGrid>
@@ -61,10 +140,15 @@ export async function getStaticProps(context) {
     const response = await axios.get(
       `${process.env.NEXT_PUBLIC_BASE_URL}/resources`
     );
+
+    const allTagsResponse = await axios.get(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/tags`
+    );
     // console.log(response.data);
     return {
       props: {
         data: response.data,
+        allTags: allTagsResponse.data,
       }, // will be passed to the page component as props
       revalidate: 1,
     };

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // chakra
-import { Box, Flex, chakra, SimpleGrid, Tag, HStack } from "@chakra-ui/react";
+import { Box, Flex, chakra, SimpleGrid, Tag, Wrap } from "@chakra-ui/react";
 
 // utils
 import { generalPaddingX } from "../../utils/chakra";
@@ -101,7 +101,7 @@ const Blog = ({ data, allTags }) => {
           <CustomSearch value={searchText} onChange={searchHandler} />
 
           {/* Tags */}
-          <HStack mt={5}>
+          <Wrap mt={5}>
             {allTags?.map((tag) => {
               const tagChosen = tagName === tag?.name;
 
@@ -128,7 +128,7 @@ const Blog = ({ data, allTags }) => {
                 </Tag>
               );
             })}
-          </HStack>
+          </Wrap>
         </Box>
 
         {/* Blog list */}

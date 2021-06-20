@@ -8,6 +8,7 @@ import CustomLink from "../../UI/CustomLink";
 import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
 import TagList from "../../UI/TagList";
+import { readingTime } from "../../../utils/functions";
 dayjs.extend(advancedFormat);
 
 const ListCard = ({ data }) => {
@@ -18,9 +19,10 @@ const ListCard = ({ data }) => {
       borderTopWidth="1px"
       pt={10}
       pb={10}
+      w="100%"
     >
       <Box
-        w={{ base: "auto", md: "400px" }}
+        w={{ base: "auto", md: "15%" }}
         mb={{ base: 4, md: 0 }}
         mr={{ md: 32 }}
         fontSize="14px"
@@ -30,11 +32,11 @@ const ListCard = ({ data }) => {
           <Text>Programming</Text>
         </HStack> */}
 
-        <Text fontSize="14px">⏱️ 5 mins read</Text>
+        <Text fontSize="14px">⏱️ {readingTime(data?.content)} mins read</Text>
         <Text>{dayjs(data?.published_at).format("Do MMM YYYY")}</Text>
       </Box>
 
-      <Box>
+      <Box w={{ base: "auto", md: "85%" }}>
         <chakra.h2 fontWeight="bold" fontSize="lg" mb={2}>
           {data?.Title}
         </chakra.h2>

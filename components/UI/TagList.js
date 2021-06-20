@@ -12,7 +12,8 @@ const TagList = ({ data }) => {
             key={tag?.id}
             cursor="pointer"
             colorScheme="brand"
-            bg="brand.50"
+            variant="outline"
+            // bg="brand.50"
             borderRadius="sm"
             fontSize="13px"
           >

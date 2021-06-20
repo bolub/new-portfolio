@@ -20,8 +20,10 @@ const useLayoutSwitch = () => {
     >
       <IconButton
         colorScheme="brand"
-        fontSize="lg"
+        fontSize="16px"
         p={0}
+        w="32px"
+        h="36px"
         onClick={() => setLayout("grid")}
         variant={layout === "grid" ? "solid" : "ghost"}
         _focus={{
@@ -33,8 +35,10 @@ const useLayoutSwitch = () => {
 
       <IconButton
         colorScheme="brand"
-        fontSize="lg"
+        fontSize="16px"
         p={0}
+        w="32px"
+        h="36px"
         onClick={() => setLayout("list")}
         variant={layout === "list" ? "solid" : "ghost"}
         _focus={{

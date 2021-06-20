@@ -1,7 +1,7 @@
 import React from "react";
 
 // chakra
-import { Box, Flex, chakra, Text, Wrap, Image } from "@chakra-ui/react";
+import { Box, Flex, chakra, Text } from "@chakra-ui/react";
 
 // utils
 import { generalPaddingX } from "../utils/chakra";
@@ -10,14 +10,10 @@ import { generalPaddingX } from "../utils/chakra";
 import axios from "axios";
 
 // components
-import HomeIllustration from "./../svg/HomeIllustration";
-import CustomLink from "../components/UI/CustomLink";
 import CustomSeo from "../components/Layout/Seo";
 import SectionTechnologies from "../components/built-with/SectionTechnologies";
 
 const BuiltWith = ({ data }) => {
-  console.log(data);
-
   // frontend
   const allFrontend = data?.filter((bd) => {
     return bd.tag === "frontend";

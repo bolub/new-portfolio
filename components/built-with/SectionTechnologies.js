@@ -1,6 +1,6 @@
 import React from "react";
 
-import { chakra, Flex, Image, Text, Wrap } from "@chakra-ui/react";
+import { chakra, Flex, Image, Text, SimpleGrid } from "@chakra-ui/react";
 
 const SectionTechnologies = ({ title, data }) => {
   return (
@@ -10,21 +10,31 @@ const SectionTechnologies = ({ title, data }) => {
         {title}
       </chakra.h2>
 
-      <Wrap spacing={8} mt={5}>
+      <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 5 }} spacing={0} mt={5}>
         {data?.map((fd) => {
           return (
-            <Flex
-              flexDir="column"
-              justifyContent="center"
-              textAlign="center"
-              key={fd.id}
-            >
-              <Image w="60px" h="60px" src={fd?.img_url} />
-              <Text>{fd?.name}</Text>
-            </Flex>
+            <a key={fd?.id} href={fd?.url} target="__blank">
+              <Flex
+                flexDir="column"
+                justifyContent="center"
+                alignItems="center"
+                textAlign="center"
+                borderWidth="1px"
+                // w="200px"
+                h="200px"
+                p={8}
+                cursor="pointer"
+                _hover={{
+                  bg: "gray.100",
+                }}
+              >
+                <Image h="auto" maxW="80px" src={fd?.img_url} />
+                <Text mt={2}>{fd?.name}</Text>
+              </Flex>
+            </a>
           );
         })}
-      </Wrap>
+      </SimpleGrid>
     </chakra.section>
   );
 };

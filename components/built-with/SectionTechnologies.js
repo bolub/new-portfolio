@@ -27,6 +27,7 @@ const SectionTechnologies = ({ title, data }) => {
                 _hover={{
                   bg: "gray.100",
                 }}
+                bg="white"
               >
                 <Image h="auto" maxW="80px" src={fd?.img_url} />
                 <Text mt={2}>{fd?.name}</Text>

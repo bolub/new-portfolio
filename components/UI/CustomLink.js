@@ -9,7 +9,7 @@ import { chakra } from "@chakra-ui/react";
 import { useRecoilValue } from "recoil";
 import { fontState } from "../../atoms/fonts";
 
-const CustomLink = ({ href, children, active, fontSize, onClick }) => {
+const CustomLink = ({ href, children, active, fontSize, onClick, display }) => {
   const fontType = useRecoilValue(fontState);
 
   // next router initialization
@@ -26,7 +26,7 @@ const CustomLink = ({ href, children, active, fontSize, onClick }) => {
         color={isActive && "brand.500"}
         fontWeight={isActive && "600"}
         fontSize={fontSize}
-        d="inline-flex"
+        d={display || "inline-flex"}
         cursor="pointer"
         _hover={{
           backgroundColor: "brand.50",

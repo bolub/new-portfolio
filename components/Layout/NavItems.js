@@ -67,24 +67,28 @@ const NavItems = ({ hide, componentName, closeDrawer }) => {
       emoji: "🏠",
       href: "/",
       hide: hide === "home",
+      mobile: true,
     },
     {
       name: "Blog",
       emoji: "✍️",
       href: "/blog",
       hide: hide === "blog",
+      mobile: true,
     },
     {
       name: "Portfolio",
       emoji: "💼",
       href: "https://motionwares.com/p/bolub",
       hide: hide === "portfolio",
+      mobile: true,
     },
     {
       name: "Contact",
       emoji: "☎️",
       href: "#footer",
       hide: hide === "contact",
+      mobile: false,
     },
   ];
 
@@ -118,10 +122,14 @@ const NavItems = ({ hide, componentName, closeDrawer }) => {
     <>
       {allLinks?.map((linkData) => {
         if (linkData?.hide) return;
+
+        const mobileHide = { base: "none", md: "inline-flex" };
+
         return (
           <CustomLink
             key={linkData?.name}
             fontSize={{ md: "md" }}
+            display={linkData?.mobile === false && mobileHide}
             href={linkData?.href}
             onClick={() => {
               if (!closeDrawer) return;

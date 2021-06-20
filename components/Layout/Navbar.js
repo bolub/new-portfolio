@@ -5,14 +5,11 @@ import {
   chakra,
   Text,
   HStack,
-  Icon,
-  IconButton,
   Button,
   Tooltip,
   Drawer,
   DrawerBody,
   DrawerFooter,
-  DrawerHeader,
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
@@ -61,20 +58,33 @@ const Navbar = () => {
 
         {/* Mobile view */}
         <Tooltip label="Menu" aria-label="Menu">
-          <Button
-            ml="auto"
-            d={{ base: "flex", md: "none" }}
-            colorScheme="brand"
-            variant="ghost"
-            p={1}
-            borderRadius="md"
-            my="auto"
-            fontSize="lg"
-            ref={btnRef}
-            onClick={onOpen}
-          >
-            <Text>🍔</Text>
-          </Button>
+          <HStack ml="auto" d={{ base: "flex", md: "none" }}>
+            <a href="#footer">
+              <Button
+                ml="auto"
+                colorScheme="brand"
+                variant="ghost"
+                p={1}
+                borderRadius="md"
+                my="auto"
+              >
+                <Text>☎️</Text>
+              </Button>
+            </a>
+
+            <Button
+              colorScheme="brand"
+              variant="ghost"
+              p={1}
+              borderRadius="md"
+              my="auto"
+              fontSize="lg"
+              ref={btnRef}
+              onClick={onOpen}
+            >
+              <Text>🍔</Text>
+            </Button>
+          </HStack>
         </Tooltip>
 
         <Drawer

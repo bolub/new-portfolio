@@ -19,11 +19,13 @@ import {
 
 // utils
 import { generalPaddingX } from "../../utils/chakra";
+import { defaultBrandColor } from "../../chakra/colors";
 
 // components
 import Link from "next/link";
 import NavItems from "./NavItems";
-import Banner from "./Banner";
+
+// import Banner from "./Banner";
 
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -31,8 +33,14 @@ const Navbar = () => {
 
   return (
     <>
-      <Banner />
-      <chakra.nav w="100%" height="10vh" d="flex" px={generalPaddingX}>
+      {/* <Banner /> */}
+      <chakra.nav
+        borderTop={`4px solid ${defaultBrandColor}`}
+        w="100%"
+        height="10vh"
+        d="flex"
+        px={generalPaddingX}
+      >
         <Link passHref href="/">
           <Text
             cursor="pointer"

@@ -5,6 +5,8 @@ import { chakra, Flex, HStack, Image, Tag, Text, Box } from "@chakra-ui/react";
 import CustomLink from "../../UI/CustomLink";
 import TagList from "../../UI/TagList";
 
+import { readingTime } from "../../../utils/functions";
+
 // dayjs
 import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
@@ -33,7 +35,7 @@ const GridCard = ({ data }) => {
         <Flex>
           {/* number of mins to finish */}
           <Text my="auto" fontWeight={600} fontSize="14px">
-            ⏱️ 5 mins read
+            ⏱️ {readingTime(data?.content)} mins read
           </Text>
           <Text fontSize="xl" mx={1} mt={1}>
             &bull;

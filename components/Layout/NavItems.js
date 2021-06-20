@@ -100,6 +100,11 @@ const NavItems = ({ hide, componentName, closeDrawer }) => {
       action: closeDrawer,
     },
     {
+      name: "🧰 Built with",
+      href: "/built-with",
+      action: closeDrawer,
+    },
+    {
       name: "🤾‍♂️ Playground",
       href: null,
       action: () => {

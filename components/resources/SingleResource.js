@@ -72,7 +72,7 @@ const SingleResource = ({ data, layout }) => {
       </Text>
 
       {/* list of tags */}
-      <Box mt={4} mb={5}>
+      <Box mt={4} mb={isListLayout && 5}>
         <TagList data={data?.tags} />
       </Box>
 
@@ -113,6 +113,10 @@ const SingleResource = ({ data, layout }) => {
           {/* <ModalCloseButton /> */}
           <ModalBody mt={2}>
             <Text mb={2}>{data?.description}</Text>
+
+            <Box mt={4} mb={3}>
+              <TagList data={data?.tags} />
+            </Box>
 
             <a href={data?.url} target="_blank">
               <LinkPreview

@@ -6,7 +6,7 @@ const CustomSeo = ({ title, description, imageUrl }) => {
 
   return (
     <NextSeo
-      title={`Bolub - ${title}`}
+      title={`Boluwatife Abiola - ${title}`}
       description={description || dd}
       canonical="https://bolu-portfolio.vercel.app/"
       openGraph={{

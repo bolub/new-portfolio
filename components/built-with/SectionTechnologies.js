@@ -22,7 +22,7 @@ const SectionTechnologies = ({ title, data }) => {
                 borderWidth="1px"
                 // w="200px"
                 h="200px"
-                p={8}
+                p={4}
                 cursor="pointer"
                 _hover={{
                   bg: "gray.100",

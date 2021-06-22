@@ -3,14 +3,11 @@ import React from "react";
 // chakra
 import {
   Flex,
-  Text,
   HStack,
   chakra,
   useClipboard,
   Tooltip,
   useToast,
-  Box,
-  CloseButton,
 } from "@chakra-ui/react";
 
 // icons

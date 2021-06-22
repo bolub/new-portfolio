@@ -19,23 +19,36 @@ import { HiChevronLeft } from "react-icons/hi";
 import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
 import CustomLink from "../../../components/UI/CustomLink";
-import AudioBlog from "../../../components/blog/AudioBlog";
+// import AudioBlog from "../../../components/blog/AudioBlog";
 import CustomSeo from "../../../components/Layout/Seo";
 import Share from "../../../components/blog/Share";
 import Comments from "../../../components/blog/Comments";
+import { useState } from "react";
+import { useRouter } from "next/router";
 dayjs.extend(advancedFormat);
 
 const Blog = ({ data }) => {
-  // const getPostData = ()=>{
+  const { params } = useRouter();
 
-  // }
+  // blog data
+  const [blogData, setBlogData] = useState(data);
+
+  const refetchPostData = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/blog-posts/${params.id}`
+      );
+
+      setBlogData(response.data);
+    } catch (error) {}
+  };
 
   return (
     <>
       <CustomSeo
-        title={data?.Title}
-        description={data?.summary}
-        imageUrl={data?.cover_image?.name}
+        title={blogData?.Title}
+        description={blogData?.summary}
+        imageUrl={blogData?.cover_image?.name}
       />
 
       <chakra.header d="flex" pt={{ base: "10" }} w="100%">
@@ -77,19 +90,19 @@ const Blog = ({ data }) => {
               // color="brand.500"
               fontSize={{ base: "3xl", md: "4xl" }}
             >
-              {data?.Title}
+              {blogData?.Title}
             </chakra.h1>
 
             <Text mt={2} fontWeight={600}>
               Bolu Abiola
             </Text>
-            <Text>{dayjs(data?.published_at).format("Do MMM YYYY")}</Text>
+            <Text>{dayjs(blogData?.published_at).format("Do MMM YYYY")}</Text>
 
             <Image
               mt={5}
               w="100%"
-              // src={`${process.env.NEXT_PUBLIC_BASE_URL}${data?.cover_image?.url}`}
-              src={`${data?.cover_image?.name}`}
+              // src={`${process.env.NEXT_PUBLIC_BASE_URL}${blogData?.cover_image?.url}`}
+              src={`${blogData?.cover_image?.name}`}
               fallbackSrc="https://res.cloudinary.com/bolub/image/upload/v1623525073/Group_1_1.png"
             />
           </Box>
@@ -106,13 +119,13 @@ const Blog = ({ data }) => {
       >
         <Box w={{ base: "100%", md: "60%" }} m="auto">
           {/* Talk about the blog */}
-          <AudioBlog content={data?.content} />
+          {/* <AudioBlog content={blogData?.content} /> */}
 
           {/* content */}
           <chakra.p lineHeight={1.8} mb={1} fontSize="md">
             <ReactMarkdown
               rehypePlugins={[rehypeRaw]}
-              children={data?.content}
+              children={blogData?.content}
             />
           </chakra.p>
 
@@ -120,7 +133,7 @@ const Blog = ({ data }) => {
           <Share />
 
           {/* comments */}
-          <Comments blogData={data} />
+          <Comments blogData={data} refetchPostData={refetchPostData} />
         </Box>
       </chakra.main>
     </>
@@ -150,14 +163,9 @@ export const getStaticProps = async ({ params }) => {
       `${process.env.NEXT_PUBLIC_BASE_URL}/blog-posts/${params?.id}`
     );
 
-    const response2 = await axios.get(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/comments`
-    );
-
     return {
       props: {
         data: response.data,
-        data2: response2.data,
         status: "success",
       },
       revalidate: 1,

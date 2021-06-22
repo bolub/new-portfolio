@@ -83,7 +83,7 @@ const Share = () => {
         <chakra.a
           target="__blank"
           cursor="pointer"
-          href={`http://wa.me/?text=Checkout this blog post&url=${urlToShare}`}
+          href={`http://wa.me/?text=Checkout this blog post ${urlToShare}`}
         >
           <AiOutlineWhatsApp />
         </chakra.a>

@@ -1,7 +1,7 @@
 let defaultColor, defaultBrandColor;
 
 if (typeof window !== "undefined") {
-  defaultColor = localStorage.getItem("defaultColor");
+  defaultColor = localStorage.getItem("defaultColor") || "red";
 }
 
 let brand = {

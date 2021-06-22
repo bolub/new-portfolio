@@ -3,14 +3,11 @@ import React from "react";
 // chakra
 import {
   Flex,
-  Text,
   HStack,
   chakra,
   useClipboard,
   Tooltip,
   useToast,
-  Box,
-  CloseButton,
 } from "@chakra-ui/react";
 
 // icons
@@ -83,7 +80,7 @@ const Share = () => {
         <chakra.a
           target="__blank"
           cursor="pointer"
-          href={`http://wa.me/?text=Checkout this blog post&url=${urlToShare}`}
+          href={`http://wa.me/?text=Checkout this blog post ${urlToShare}`}
         >
           <AiOutlineWhatsApp />
         </chakra.a>

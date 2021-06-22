@@ -20,7 +20,7 @@ import axios from "axios";
 import { useState } from "react";
 import CustomToastBody from "../UI/CustomToastBody";
 
-const Comments = ({ blogData }) => {
+const Comments = ({ blogData, refetchPostData }) => {
   const toast = useToast();
   const [message, setMessage] = useState();
   const [author, setAuthor] = useState("Anonymous");
@@ -46,7 +46,7 @@ const Comments = ({ blogData }) => {
         dataToSend
       );
       setLoading(false);
-      setMessage();
+      setMessage(" ");
 
       toast({
         duration: 9000,
@@ -54,13 +54,11 @@ const Comments = ({ blogData }) => {
         position: "bottom-left",
         render: () => <CustomToastBody message="Message sent" toast={toast} />,
       });
-
-      setTimeout(() => {
-        window.location.href = window.location;
-      }, 2000);
     } catch (error) {
       setLoading(false);
       return null;
+    } finally {
+      refetchPostData();
     }
   };
   const allComments = blogData?.comments;

@@ -1,7 +1,16 @@
 import React, { useState } from "react";
 
 // chakra
-import { Box, Flex, chakra, SimpleGrid, Tag, Wrap } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  chakra,
+  SimpleGrid,
+  Tag,
+  Wrap,
+  Center,
+  Spinner,
+} from "@chakra-ui/react";
 
 // utils
 import { generalPaddingX } from "../../utils/chakra";
@@ -23,6 +32,9 @@ const Blog = ({ data, allTags }) => {
   //
   const { layout, LayoutComponent } = useLayoutSwitch();
 
+  // loading state for search
+  const [loading, setLoading] = useState(false);
+
   // blog data
   const [blogData, setBlogData] = useState(data);
 
@@ -35,6 +47,7 @@ const Blog = ({ data, allTags }) => {
   // ======== data fetching/manipulation starts here  ========
   // search all posts
   const searchAllPosts = async (value) => {
+    setLoading(true);
     const dataToUse = value || searchText;
     // return if searchText dose not exist
     // if (!searchText) return;
@@ -46,13 +59,16 @@ const Blog = ({ data, allTags }) => {
       const response = await axios.get(
         `${process.env.NEXT_PUBLIC_BASE_URL}/blog-posts?Title_contains=${dataToUse}`
       );
-
+      setLoading(false);
       setBlogData(response.data);
-    } catch (error) {}
+    } catch (error) {
+      setLoading(false);
+    }
   };
 
   //search blog via tag
   const searchTags = async (data) => {
+    setLoading(true);
     const dataToUse = data || tagName;
 
     try {
@@ -60,8 +76,11 @@ const Blog = ({ data, allTags }) => {
         `${process.env.NEXT_PUBLIC_BASE_URL}/blog-posts?tags.name_contains=${dataToUse}`
       );
 
+      setLoading(false);
       setBlogData(response.data);
-    } catch (error) {}
+    } catch (error) {
+      setLoading(false);
+    }
   };
   //========  data fetching/manipulation ends here ========
 
@@ -101,6 +120,12 @@ const Blog = ({ data, allTags }) => {
           <CustomSearch value={searchText} onChange={searchHandler} />
 
           {/* Tags */}
+          {loading && (
+            <Center mt={5}>
+              <Spinner colorScheme="brand" />
+            </Center>
+          )}
+
           <Wrap mt={5}>
             {allTags?.map((tag) => {
               const tagChosen = tagName === tag?.name;

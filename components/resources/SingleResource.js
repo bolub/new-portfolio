@@ -51,9 +51,14 @@ const SingleResource = ({ data, layout }) => {
       px={6}
       cursor="pointer"
       onClick={() => {
-        if (isListLayout) return;
-        onOpen();
-        setLinkToPreview(data?.url);
+        if (!isListLayout) {
+          onOpen();
+          setLinkToPreview(data?.url);
+        } else {
+          if (typeof window !== "undefined") {
+            window.open(data?.url);
+          }
+        }
       }}
       transition="all .2s"
       _hover={{ borderColor: "brand.500" }}

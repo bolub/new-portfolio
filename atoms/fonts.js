@@ -1,10 +1,11 @@
 import { atom } from "recoil";
 
-let defaultHeading, defaultBody;
+let defaultHeading = "Space Grotesk",
+  defaultBody = "Jost";
 
 if (typeof window !== "undefined") {
-  defaultHeading = localStorage.getItem("fontHeading") || "Space Grotesk";
-  defaultBody = localStorage.getItem("fontBody") || "Jost";
+  defaultHeading = localStorage.getItem("fontHeading");
+  defaultBody = localStorage.getItem("fontBody");
 }
 
 const fontState = atom({

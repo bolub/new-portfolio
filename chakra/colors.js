@@ -1,7 +1,8 @@
-let defaultColor, defaultBrandColor;
+let defaultColor = "red",
+  defaultBrandColor = "#cb1a41";
 
 if (typeof window !== "undefined") {
-  defaultColor = localStorage.getItem("defaultColor") || "red";
+  defaultColor = localStorage.getItem("defaultColor");
 }
 
 let brand = {
@@ -71,4 +72,4 @@ switch (defaultColor) {
   default:
 }
 
-export { brand, defaultBrandColor };
+export { brand, defaultBrandColor, defaultColor };

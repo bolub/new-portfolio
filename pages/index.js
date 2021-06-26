@@ -56,6 +56,10 @@ export default function Home() {
               <CustomLink active href="/cooking">
                 cooking
               </CustomLink>
+              , adding{" "}
+              <CustomLink active href="/resources">
+                useful stuff
+              </CustomLink>
               , and also uploading my{" "}
               <CustomLink active href="/projects">
                 portfolio.

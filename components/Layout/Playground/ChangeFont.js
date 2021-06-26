@@ -8,12 +8,6 @@ import {
   FormControl,
   FormLabel,
   Box,
-  Center,
-  Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionPanel,
-  AccordionIcon,
 } from "@chakra-ui/react";
 
 // recoil
@@ -42,7 +36,6 @@ const ChangeFont = () => {
       localStorage.setItem("fontBody", value);
     }
   };
-
   return (
     <>
       {/* Change header font */}
@@ -132,6 +125,7 @@ const ChangeFont = () => {
       {/* Preview */}
       <Box
         mt={10}
+        mb={8}
         borderWidth="1px"
         borderColor="#c4c4c4"
         borderStyle="dashed"

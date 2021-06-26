@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 // chakra
-import { HStack, IconButton } from "@chakra-ui/react";
+import { HStack, Button, Text } from "@chakra-ui/react";
 
 // icons
 import { BsGrid, BsViewList } from "react-icons/bs";
@@ -18,35 +18,51 @@ const useLayoutSwitch = () => {
       borderRadius="md"
       spacing={1}
     >
-      <IconButton
+      <Button
         colorScheme="brand"
-        fontSize="18px"
-        p={0}
-        w="32px"
-        h="40px"
+        borderRadius="md"
+        w={{ base: "15px", md: "60px" }}
+        h={{ base: "33px", md: "34px" }}
+        fontWeight={600}
+        // p={0}
+        // w="32px"
+        // h="40px"
         onClick={() => setLayout("grid")}
         variant={layout === "grid" ? "solid" : "ghost"}
         _focus={{
           boxShadow: "none",
         }}
       >
-        <BsGrid />
-      </IconButton>
+        <Text fontSize="16px" d={{ base: "inline", md: "none" }} as="span">
+          <BsGrid />
+        </Text>
+        <Text fontSize="12px" d={{ base: "none", md: "inline" }}>
+          Grid
+        </Text>
+      </Button>
 
-      <IconButton
+      <Button
         colorScheme="brand"
-        fontSize="18px"
-        p={0}
-        w="32px"
-        h="40px"
+        borderRadius="md"
+        w={{ base: "15px", md: "60px" }}
+        h={{ base: "33px", md: "34px" }}
+        fontWeight={600}
+        // p={0}
+        // w="32px"
+        // h="40px"
         onClick={() => setLayout("list")}
         variant={layout === "list" ? "solid" : "ghost"}
         _focus={{
           boxShadow: "none",
         }}
       >
-        <BsViewList />
-      </IconButton>
+        <Text fontSize="16px" d={{ base: "inline", md: "none" }} as="span">
+          <BsViewList />
+        </Text>
+        <Text fontSize="12px" d={{ base: "none", md: "inline" }}>
+          List
+        </Text>
+      </Button>
     </HStack>
   );
 

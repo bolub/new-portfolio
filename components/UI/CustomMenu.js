@@ -34,22 +34,39 @@ const CustomMenu = ({ title, items }) => {
       </MenuButton>
       <MenuList>
         {items.map((item) => {
-          return (
-            <MenuItem
-              onClick={() => {
-                if (item.action) {
-                  item.action();
-                }
-              }}
-              key={item.name}
-            >
-              {item.href ? (
-                <Link href={item.href}>{item?.name}</Link>
-              ) : (
-                <>{item?.name}</>
-              )}
-            </MenuItem>
-          );
+          if (item.href) {
+            return (
+              <Link href={item.href}>
+                <MenuItem
+                  onClick={() => {
+                    if (item.action) {
+                      item.action();
+                    }
+                  }}
+                  key={item.name}
+                >
+                  {item?.name}
+                </MenuItem>
+              </Link>
+            );
+          } else {
+            return (
+              <MenuItem
+                onClick={() => {
+                  if (item.action) {
+                    item.action();
+                  }
+                }}
+                key={item.name}
+              >
+                {item.href ? (
+                  <Link href={item.href}>{item?.name}</Link>
+                ) : (
+                  <>{item?.name}</>
+                )}
+              </MenuItem>
+            );
+          }
         })}
       </MenuList>
     </Menu>

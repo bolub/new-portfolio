@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+// chakra
 import {
   Switch,
   FormControl,
@@ -8,7 +9,7 @@ import {
   HStack,
   Box,
 } from "@chakra-ui/react";
-import { defaultBrandColor } from "../../../chakra/colors";
+import { defaultColor } from "../../../chakra/colors";
 
 const ChangeTheme = () => {
   // toggle color mode
@@ -22,8 +23,7 @@ const ChangeTheme = () => {
   };
 
   // set color
-  const [colorChosen, setColorChosen] = useState(defaultBrandColor);
-
+  const [colorChosen, setColorChosen] = useState(defaultColor);
   return (
     <FormControl mb={2}>
       {/* dark mode */}

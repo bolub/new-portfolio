@@ -2,7 +2,16 @@
 import React, { useState } from "react";
 
 // chakra
-import { Flex, chakra, Badge, SimpleGrid, Tag, Wrap } from "@chakra-ui/react";
+import {
+  Flex,
+  chakra,
+  Badge,
+  SimpleGrid,
+  Tag,
+  Wrap,
+  Center,
+  Spinner,
+} from "@chakra-ui/react";
 
 // utils
 import { generalPaddingX } from "../utils/chakra";
@@ -22,6 +31,9 @@ import CustomSearch from "../components/UI/CustomSearch";
 export default function Resources({ data, allTags }) {
   const { layout, LayoutComponent } = useLayoutSwitch();
 
+  // loading state for search
+  const [loading, setLoading] = useState(false);
+
   // blog data
   const [resourceData, setResourceData] = useState(data);
 
@@ -34,6 +46,7 @@ export default function Resources({ data, allTags }) {
   // ======== data fetching/manipulation starts here  ========
   // search all posts
   const searchAllPosts = async (value) => {
+    setLoading(true);
     const dataToUse = value || searchText;
     // return if searchText dose not exist
     // if (!searchText) return;
@@ -45,22 +58,27 @@ export default function Resources({ data, allTags }) {
       const response = await axios.get(
         `${process.env.NEXT_PUBLIC_BASE_URL}/resources?title_contains=${dataToUse}`
       );
-
+      setLoading(false);
       setResourceData(response.data);
-    } catch (error) {}
+    } catch (error) {
+      setLoading(false);
+    }
   };
 
   //search blog via tag
   const searchTags = async (data) => {
+    setLoading(true);
     const dataToUse = data || tagName;
 
     try {
       const response = await axios.get(
         `${process.env.NEXT_PUBLIC_BASE_URL}/resources?tags.name_contains=${dataToUse}`
       );
-
+      setLoading(false);
       setResourceData(response.data);
-    } catch (error) {}
+    } catch (error) {
+      setLoading(false);
+    }
   };
   //========  data fetching/manipulation ends here ========
 
@@ -122,14 +140,24 @@ export default function Resources({ data, allTags }) {
       </chakra.header>
 
       <chakra.main minH={{ base: "100%", md: "60vh" }} px={generalPaddingX}>
-        <SimpleGrid
-          spacing={4}
-          columns={layout === "list" ? { base: 1 } : { base: 1, md: 2, lg: 3 }}
-        >
-          {resourceData?.map((rd) => {
-            return <SingleResource key={rd?.id} data={rd} layout={layout} />;
-          })}
-        </SimpleGrid>
+        {loading && (
+          <Center>
+            <Spinner colorScheme="brand" />
+          </Center>
+        )}
+
+        {!loading && (
+          <SimpleGrid
+            spacing={4}
+            columns={
+              layout === "list" ? { base: 1 } : { base: 1, md: 2, lg: 3 }
+            }
+          >
+            {resourceData?.map((rd) => {
+              return <SingleResource key={rd?.id} data={rd} layout={layout} />;
+            })}
+          </SimpleGrid>
+        )}
       </chakra.main>
     </>
   );

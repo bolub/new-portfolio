@@ -11,6 +11,7 @@ import {
   AiFillLinkedin,
   AiFillTwitterCircle,
   AiOutlineMail,
+  AiOutlinePhone,
 } from "react-icons/ai";
 
 const Footer = () => {
@@ -68,6 +69,9 @@ const Footer = () => {
         </chakra.a>
         <chakra.a href="mailto:abiol5202@gmail.com">
           <AiOutlineMail />
+        </chakra.a>
+        <chakra.a href="tel:2348130681705">
+          <AiOutlinePhone />
         </chakra.a>
       </Wrap>
     </chakra.footer>

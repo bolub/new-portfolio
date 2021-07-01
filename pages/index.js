@@ -15,7 +15,7 @@ export default function Home() {
       <CustomSeo title="Home" />
 
       <chakra.header
-        h={{ base: "100%", md: "75vh" }}
+        h={{ base: "100%", md: "80vh" }}
         alignItems="center"
         d="flex"
         py={{ base: "10", md: 0 }}

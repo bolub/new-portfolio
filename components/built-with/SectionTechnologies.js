@@ -30,7 +30,9 @@ const SectionTechnologies = ({ title, data }) => {
                 bg="white"
               >
                 <Image h="auto" maxW="80px" src={fd?.img_url} />
-                <Text mt={2}>{fd?.name}</Text>
+                <Text color="black" mt={2}>
+                  {fd?.name}
+                </Text>
               </Flex>
             </a>
           );

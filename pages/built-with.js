@@ -40,11 +40,7 @@ const BuiltWith = ({ data }) => {
           flexDir={{ base: "column", md: "row" }}
           px={generalPaddingX}
         >
-          <Box
-            mb={{ base: 0, md: 0 }}
-            w={{ base: "100%", md: "45%" }}
-            my="auto"
-          >
+          <Box mb={{ base: 0, md: 0 }} w={{ base: "100%" }} my="auto">
             <chakra.h1
               color="brand.500"
               fontWeight={700}
@@ -54,7 +50,10 @@ const BuiltWith = ({ data }) => {
             </chakra.h1>
 
             <Text mt={4} mb={6} fontSize="17px">
-              Basic Tools and Technologies this website was built with
+              Basic Tools and Technologies this website was built with. These
+              technologies might seem like an overkill, and I could just build
+              everything from scratch with Vanilla CSS, HTML, and JS .........
+              But I'm not gonna, why?, because I don't want to 😏
             </Text>
           </Box>
         </Flex>

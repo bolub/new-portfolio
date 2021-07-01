@@ -2,18 +2,19 @@
 import Link from "next/link";
 
 // chakra
-import { Center, Text, chakra, Button } from "@chakra-ui/react";
+import { Center, Text, chakra, Box } from "@chakra-ui/react";
 
 // utils
 import { generalPaddingX } from "../utils/chakra";
 
 // components
 import PageNotFoundIllustration from "../svg/PageNotFoundIllustration";
+import CustomLink from "./../components//UI/CustomLink";
 
 const Custom404 = () => {
   return (
     <Center
-      height={{ base: "100%", md: "75vh" }}
+      height={{ base: "100%", md: "80vh" }}
       flexDir="column"
       py={{ base: 10, md: 6 }}
       textAlign="center"
@@ -29,11 +30,11 @@ const Custom404 = () => {
         Don't worry, you'll be fine, just go back to home or something
       </Text>
 
-      <Link href="/">
-        <Button mt={4} colorScheme="brand">
+      <Box mt={4}>
+        <CustomLink active href="/">
           Back to Home
-        </Button>
-      </Link>
+        </CustomLink>
+      </Box>
     </Center>
   );
 };

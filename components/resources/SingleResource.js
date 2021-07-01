@@ -34,7 +34,6 @@ import CustomLinkPreview from "./CustomLinkPreview";
 import TagList from "../UI/TagList";
 
 const SingleResource = ({ data, layout }) => {
-  console.log(data?.tags);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   // recoil

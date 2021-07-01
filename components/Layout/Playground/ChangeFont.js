@@ -36,6 +36,10 @@ const ChangeFont = () => {
       localStorage.setItem("fontBody", value);
     }
   };
+
+  const allHeaderFonts = ["Space Grotesk", "Nunito", "Prompt"];
+  const allBodyFonts = ["Jost", "Nunito", "Prompt"];
+
   return (
     <>
       {/* Change header font */}
@@ -49,35 +53,25 @@ const ChangeFont = () => {
         >
           Change Header Font
         </chakra.h3>
-        <FormControl mb={2} display="flex" alignItems="center">
-          <FormLabel fontFamily="Space Grotesk" htmlFor="email-alerts" mb="0">
-            Space Grotesk
-          </FormLabel>
-          <Switch
-            ml="auto"
-            value={fontType.heading}
-            isChecked={fontType.heading === "Space Grotesk"}
-            colorScheme="brand"
-            onChange={(e) => {
-              setFont("heading", "Space Grotesk");
-            }}
-          />
-        </FormControl>
 
-        <FormControl mb={2} display="flex" alignItems="center">
-          <FormLabel fontFamily="Nunito" htmlFor="email-alerts" mb="0">
-            Nunito
-          </FormLabel>
-          <Switch
-            value={fontType.heading}
-            isChecked={fontType.heading === "Nunito"}
-            ml="auto"
-            colorScheme="brand"
-            onChange={(e) => {
-              setFont("heading", "Nunito");
-            }}
-          />
-        </FormControl>
+        {allHeaderFonts?.map((font) => {
+          return (
+            <FormControl key={font} mb={2} display="flex" alignItems="center">
+              <FormLabel fontFamily={font} htmlFor="email-alerts" mb="0">
+                {font}
+              </FormLabel>
+              <Switch
+                ml="auto"
+                value={fontType.heading}
+                isChecked={fontType.heading === font}
+                colorScheme="brand"
+                onChange={(e) => {
+                  setFont("heading", font);
+                }}
+              />
+            </FormControl>
+          );
+        })}
       </Box>
 
       {/* Change body font */}
@@ -91,35 +85,25 @@ const ChangeFont = () => {
         >
           Change Body Font
         </chakra.h3>
-        <FormControl mb={2} display="flex" alignItems="center">
-          <FormLabel htmlFor="email-alerts" mb="0">
-            Jost
-          </FormLabel>
-          <Switch
-            ml="auto"
-            colorScheme="brand"
-            value={fontType.body}
-            isChecked={fontType.body === "Jost"}
-            onChange={(e) => {
-              setFont("body", "Jost");
-            }}
-          />
-        </FormControl>
 
-        <FormControl mb={2} display="flex" alignItems="center">
-          <FormLabel fontFamily="Nunito" htmlFor="email-alerts" mb="0">
-            Nunito
-          </FormLabel>
-          <Switch
-            value={fontType.body}
-            isChecked={fontType.body === "Nunito"}
-            ml="auto"
-            colorScheme="brand"
-            onChange={(e) => {
-              setFont("body", "Nunito");
-            }}
-          />
-        </FormControl>
+        {allBodyFonts?.map((font) => {
+          return (
+            <FormControl key={font} mb={2} display="flex" alignItems="center">
+              <FormLabel htmlFor="email-alerts" mb="0">
+                {font}
+              </FormLabel>
+              <Switch
+                ml="auto"
+                colorScheme="brand"
+                value={fontType.body}
+                isChecked={fontType.body === font}
+                onChange={(e) => {
+                  setFont("body", font);
+                }}
+              />
+            </FormControl>
+          );
+        })}
       </Box>
 
       {/* Preview */}

@@ -1,14 +1,12 @@
-// next
-import Link from "next/link";
-
 // chakra
-import { Center, Text, chakra, Button } from "@chakra-ui/react";
+import { Center, Text, chakra, Box } from "@chakra-ui/react";
 
 // utils
 import { generalPaddingX } from "../../utils/chakra";
 
 // components
 import ConstructionIllustration from "../../svg/ConstructionIllustration";
+import CustomLink from "./../UI/CustomLink";
 
 const UnderConstruction = () => {
   return (
@@ -30,11 +28,11 @@ const UnderConstruction = () => {
         go to home
       </Text>
 
-      <Link href="/">
-        <Button mt={4} colorScheme="brand">
+      <Box mt={4}>
+        <CustomLink active href="/">
           Back to Home
-        </Button>
-      </Link>
+        </CustomLink>
+      </Box>
     </Center>
   );
 };

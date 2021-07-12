@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@ashwamegh/react-link-preview@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@ashwamegh/react-link-preview/-/react-link-preview-0.2.2.tgz#95c324d3acbc52801784f1973f02d3aa5170d201"
+  integrity sha512-LF2KL8ZPkn4o4OTDQT8rxWdIzXnLScZzobr0ho3Bo9RkftVWHLhnxxIiUE3PmroQD9r2AAxI7x5oCJAeMOcCAw==
+
 "@babel/code-frame@7.12.11":
   version "7.12.11"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.12.11.tgz#f4ad435aa263db935b8f10f2c552d23fb716a63f"
@@ -2224,25 +2229,10 @@ graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.0:
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.6.tgz#ff040b2b0853b23c3d31027523706f1885d76bee"
   integrity sha512-nTnJ528pbqxYanhpDYsi4Rd8MAeaBA67+RZ10CM1m3bTAVFEDcd5AuA4a6W5YkGZ1iNXHzZz8T6TBKLeBuNriQ==
 
-har-schema@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/har-schema/-/har-schema-2.0.0.tgz#a94c2224ebcac04782a0d9035521f24735b7ec92"
-  integrity sha1-qUwiJOvKwEeCoNkDVSHyRzW37JI=
-
-har-validator@~5.1.3:
-  version "5.1.5"
-  resolved "https://registry.yarnpkg.com/har-validator/-/har-validator-5.1.5.tgz#1f0803b9f8cb20c0fa13822df1ecddb36bde1efd"
-  integrity sha512-nmT2T0lljbxdQZfspsno9hgrG3Uir6Ks5afism62poxqBM6sDnMEuPmzTq8XN0OEwqKLLdh1jQI3qyE66Nzb3w==
-  dependencies:
-    ajv "^6.12.3"
-    har-schema "^2.0.0"
-
-has-ansi@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/has-ansi/-/has-ansi-2.0.0.tgz#34f5049ce1ecdf2b0649af3ef24e45ed35416d91"
-  integrity sha1-NPUEnOHs3ysGSa8+8k5F7TVBbZE=
-  dependencies:
-    ansi-regex "^2.0.0"
+hamt_plus@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/hamt_plus/-/hamt_plus-1.0.2.tgz#e21c252968c7e33b20f6a1b094cd85787a265601"
+  integrity sha1-4hwlKWjH4zsg9qGwlM2FeHomVgE=
 
 has-bigints@^1.0.1:
   version "1.0.1"
@@ -2436,6 +2426,11 @@ ieee754@^1.1.4:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.2.1.tgz#8eb7a10a63fff25d15a57b001586d177d1b0d352"
   integrity sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==
+
+immutability-helper@^3.0.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/immutability-helper/-/immutability-helper-3.1.1.tgz#2b86b2286ed3b1241c9e23b7b21e0444f52f77b7"
+  integrity sha512-Q0QaXjPjwIju/28TsugCHNEASwoCcJSyJV3uO1sOIQGI0jKgm9f41Lvz0DZj3n46cNCyAZTsEYoY4C2bVRUzyQ==
 
 import-fresh@^3.1.0:
   version "3.3.0"
@@ -3062,6 +3057,11 @@ native-url@0.3.4:
   dependencies:
     querystring "^0.2.0"
 
+next-seo@^4.24.0:
+  version "4.24.0"
+  resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-4.24.0.tgz#7c0447da00b8574dcda5c6979771a7f6efd24f55"
+  integrity sha512-9VQXfXAelhE+hAWzJ4azigQaW3FPX0kU0eYKFQXKsQjgY7AWtukjRGXls0oSIk8khhDJwmCt46EwsO9n5DDW6Q==
+
 next@10.2.2:
   version "10.2.2"
   resolved "https://registry.yarnpkg.com/next/-/next-10.2.2.tgz#aadcc526e420282b4a735b0595041195d748a91d"
@@ -3118,6 +3118,13 @@ next@10.2.2:
     vm-browserify "1.1.2"
     watchpack "2.1.1"
 
+nextjs-progressbar@^0.0.11:
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/nextjs-progressbar/-/nextjs-progressbar-0.0.11.tgz#d8340e27f7f8cf8bca4b3ec187ebea40ea54297e"
+  integrity sha512-4JQkUHgDG6gz5r04lW06cMerKhQeXXq1RCSz2WqHMcJCDgKLCCqRokn603LlEORNpzBEY/pTZJIOlzf2eh4mFQ==
+  dependencies:
+    nprogress "^0.2.0"
+
 node-fetch@2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.1.tgz#045bd323631f76ed2e2b55573394416b639a0052"
@@ -3169,24 +3176,12 @@ normalize-path@^3.0.0, normalize-path@~3.0.0:
   resolved "https://registry.yarnpkg.com/normalize-path/-/normalize-path-3.0.0.tgz#0dcd69ff23a1c9b11fd0978316644a0388216a65"
   integrity sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==
 
-npm-run-path@^4.0.0:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/npm-run-path/-/npm-run-path-4.0.1.tgz#b7ecd1e5ed53da8e37a55e1c2269e0b97ed748ea"
-  integrity sha512-S48WzZW777zhNIrn7gxOlISNAqi9ZC/uQFnRdbeIHhZhCA6UqpkOT8T1G7BvfdgP4Er8gF4sUbaS0i7QvIfCWw==
-  dependencies:
-    path-key "^3.0.0"
+nprogress@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/nprogress/-/nprogress-0.2.0.tgz#cb8f34c53213d895723fcbab907e9422adbcafb1"
+  integrity sha1-y480xTIT2JVyP8urkH6UIq28r7E=
 
-number-is-nan@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
-  integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
-
-oauth-sign@~0.9.0:
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/oauth-sign/-/oauth-sign-0.9.0.tgz#47a7b016baa68b5fa0ecf3dee08a85c679ac6455"
-  integrity sha512-fexhUFFPTGV8ybAtSIGbV6gOkSv8UtRbDBnAyLQw4QPKkgNlsH2ByPGtMUqdWkos6YCRmAqViwgZrJc/mRDzZQ==
-
-object-assign@^4.1.0, object-assign@^4.1.1:
+object-assign@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
   integrity sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=
@@ -3652,6 +3647,14 @@ react-remove-scroll@2.4.1:
     use-callback-ref "^1.2.3"
     use-sidecar "^1.0.1"
 
+react-speech@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-speech/-/react-speech-1.0.2.tgz#e5200c6705e44cd9b4b55b218eb267e85d44f86c"
+  integrity sha512-z/HgICAqmWIwXbQnxVDm0CMgu6MlZzkVtp37F7kd9vPKSJw8Pcv+f2wFy5kOwTO5m5BOD9awnCsBa5J9XovPJA==
+  dependencies:
+    immutability-helper "^3.0.1"
+    react "^16.10.1"
+
 react-style-singleton@^2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/react-style-singleton/-/react-style-singleton-2.1.1.tgz#ce7f90b67618be2b6b94902a30aaea152ce52e66"
@@ -3668,6 +3671,15 @@ react@17.0.2:
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
+
+react@^16.10.1:
+  version "16.14.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
+  integrity sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
 
 readable-stream@^2.0.2, readable-stream@^2.3.3, readable-stream@^2.3.6:
   version "2.3.7"
@@ -3697,6 +3709,13 @@ readdirp@~3.5.0:
   integrity sha512-cMhu7c/8rdhkHXWsY+osBhfSy0JikwpHK/5+imo+LpeasTF8ouErHrlYkwT0++njiyuDvc7OFY5T3ukvZ8qmFQ==
   dependencies:
     picomatch "^2.2.1"
+
+recoil@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/recoil/-/recoil-0.3.1.tgz#40ef544160d19d76e25de8929d7e512eace13b90"
+  integrity sha512-KNA3DRqgxX4rRC8E7fc6uIw7BACmMPuraIYy+ejhE8tsw7w32CetMm8w7AMZa34wzanKKkev3vl3H7Z4s0QSiA==
+  dependencies:
+    hamt_plus "1.0.2"
 
 regenerator-runtime@^0.13.4:
   version "0.13.7"

@@ -11,15 +11,33 @@ const Link = {
   },
 };
 
+const Input = {
+  baseStyle: {
+    borderRadius: "none",
+    _focus: {
+      borderColor: "brand.500",
+      bg: "gray.50",
+    },
+    _hover: {
+      bg: "gray.100",
+    },
+  },
+};
+
 const Button = {
   baseStyle: {
     fontWeight: "600",
     borderRadius: "sm",
-    fontFamily: "Space Grotesk",
+    boxShadow: "none",
+    _active: {
+      boxShadow: "none",
+    },
+    // fontFamily: "Space Grotesk",
   },
 };
 
 export const components = {
   Link,
   Button,
+  Input,
 };

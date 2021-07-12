@@ -11,7 +11,7 @@ const Portfolio = () => {
   return (
     <>
       <Head>
-        <title>Portfolio - Bolub</title>
+        <title>Portfolio - Boluwatife Abiola</title>
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
 

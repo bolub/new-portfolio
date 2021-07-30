@@ -30,7 +30,7 @@ Cypress.Commands.add("seedAndVisit", (seedData = "fixture:blogPosts") => {
 
   // =====================================================================
 
-  cy.visit("http://localhost:3000/blog");
+  cy.visit("http://localhost:3001/blog");
 
   // Cypress only "visits" an endpoint for about 4s before it actually
   // times out(default behavior), so we're basically telling cypress to

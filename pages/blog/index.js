@@ -92,143 +92,139 @@ const Blog = ({ data, allTags }) => {
     searchAllPosts();
   };
 
-  const Blog = ({ data }) => {
-    const [allPosts, setAllPosts] = useState([]);
+  const [allPosts, setAllPosts] = useState([]);
 
-    const getDataForCypress = async () => {
-      try {
-        const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/blog-posts`
-        );
-
-        setAllPosts(response.data);
-      } catch (error) {
-        return null;
-      }
-    };
-
-    useEffect(() => {
-      getDataForCypress();
-    }, []);
-
-    return (
-      <>
-        <CustomSeo title="Blog" />
-
-        {/* header */}
-        <PageHeader />
-
-        {/* main */}
-        <chakra.main mt={20} pt={{ base: "10" }} pb={20} px={generalPaddingX}>
-          <Box mb={12}>
-            <Flex mb={5}>
-              {/* Header Text */}
-              <Flex my="auto">
-                <chakra.h2
-                  mr={2}
-                  my="auto"
-                  fontWeight={700}
-                  fontSize={{ base: "3xl" }}
-                >
-                  All Posts
-                </chakra.h2>
-              </Flex>
-
-              {/* Layout switch */}
-              {LayoutComponent}
-            </Flex>
-
-            {/* Search Component */}
-            <CustomSearch value={searchText} onChange={searchHandler} />
-
-            {/* Tags */}
-            {loading && (
-              <Center mt={5}>
-                <Spinner colorScheme="brand" />
-              </Center>
-            )}
-
-            <Wrap mt={5}>
-              {allTags?.map((tag) => {
-                const tagChosen = tagName === tag?.name;
-
-                return (
-                  <Tag
-                    key={tag?.id}
-                    cursor="pointer"
-                    colorScheme="brand"
-                    variant={tagChosen ? "subtle" : "outline"}
-                    onClick={() => {
-                      if (tagChosen) {
-                        setTagName("");
-                        searchAllPosts(" ");
-                        return;
-                      }
-
-                      setTagName(tag?.name);
-                      searchTags(tag?.name);
-                    }}
-                    fontSize="13px"
-                    borderRadius="sm"
-                  >
-                    {tag?.name}
-                  </Tag>
-                );
-              })}
-            </Wrap>
-          </Box>
-
-          {/* Blog list */}
-          <Box id="posts">
-            {layout === "grid" && (
-              <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
-                {blogData?.map((postData) => {
-                  console.log(postData?.tags);
-                  return <GridCard key={data?.id} data={postData} />;
-                })}
-              </SimpleGrid>
-            )}
-
-            {layout === "list" && (
-              <>
-                {blogData?.map((postData) => {
-                  return <ListCard key={data?.id} data={postData} />;
-                })}
-              </>
-            )}
-          </Box>
-        </chakra.main>
-      </>
-    );
-  };
-
-  export default Blog;
-
-  export async function getStaticProps(context) {
+  const getDataForCypress = async () => {
     try {
       const response = await axios.get(
         `${process.env.NEXT_PUBLIC_BASE_URL}/blog-posts`
       );
 
-      const allTagsResponse = await axios.get(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/tags`
-      );
-
-      return {
-        props: {
-          data: response.data,
-          allTags: allTagsResponse.data,
-        }, // will be passed to the page component as props
-        revalidate: 1,
-      };
+      setAllPosts(response.data);
     } catch (error) {
-      return {
-        props: {
-          data: [],
-          status: "error",
-        }, // will be passed to the page component as props
-        revalidate: 1,
-      };
+      return null;
     }
-  }
+  };
+
+  useEffect(() => {
+    getDataForCypress();
+  }, []);
+  return (
+    <>
+      <CustomSeo title="Blog" />
+
+      {/* header */}
+      <PageHeader />
+
+      {/* main */}
+      <chakra.main mt={20} pt={{ base: "10" }} pb={20} px={generalPaddingX}>
+        <Box mb={12}>
+          <Flex mb={5}>
+            {/* Header Text */}
+            <Flex my="auto">
+              <chakra.h2
+                mr={2}
+                my="auto"
+                fontWeight={700}
+                fontSize={{ base: "3xl" }}
+              >
+                All Posts
+              </chakra.h2>
+            </Flex>
+
+            {/* Layout switch */}
+            {LayoutComponent}
+          </Flex>
+
+          {/* Search Component */}
+          <CustomSearch value={searchText} onChange={searchHandler} />
+
+          {/* Tags */}
+          {loading && (
+            <Center mt={5}>
+              <Spinner colorScheme="brand" />
+            </Center>
+          )}
+
+          <Wrap mt={5}>
+            {allTags?.map((tag) => {
+              const tagChosen = tagName === tag?.name;
+
+              return (
+                <Tag
+                  key={tag?.id}
+                  cursor="pointer"
+                  colorScheme="brand"
+                  variant={tagChosen ? "subtle" : "outline"}
+                  onClick={() => {
+                    if (tagChosen) {
+                      setTagName("");
+                      searchAllPosts(" ");
+                      return;
+                    }
+
+                    setTagName(tag?.name);
+                    searchTags(tag?.name);
+                  }}
+                  fontSize="13px"
+                  borderRadius="sm"
+                >
+                  {tag?.name}
+                </Tag>
+              );
+            })}
+          </Wrap>
+        </Box>
+
+        {/* Blog list */}
+        <Box id="posts">
+          {layout === "grid" && (
+            <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
+              {blogData?.map((postData) => {
+                return <GridCard key={data?.id} data={postData} />;
+              })}
+            </SimpleGrid>
+          )}
+
+          {layout === "list" && (
+            <>
+              {blogData?.map((postData) => {
+                return <ListCard key={data?.id} data={postData} />;
+              })}
+            </>
+          )}
+        </Box>
+      </chakra.main>
+    </>
+  );
 };
+
+export default Blog;
+
+export async function getStaticProps(context) {
+  try {
+    const response = await axios.get(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/blog-posts`
+    );
+
+    const allTagsResponse = await axios.get(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/tags`
+    );
+
+    return {
+      props: {
+        data: response.data,
+        allTags: allTagsResponse.data,
+      }, // will be passed to the page component as props
+      revalidate: 1,
+    };
+  } catch (error) {
+    return {
+      props: {
+        data: [],
+        status: "error",
+      }, // will be passed to the page component as props
+      revalidate: 1,
+    };
+  }
+}

@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
+// Nextjs
+import Head from "next/head";
 
 // chakra
 import {
@@ -89,6 +92,23 @@ const Blog = ({ data, allTags }) => {
     searchAllPosts();
   };
 
+  const [allPosts, setAllPosts] = useState([]);
+
+  const getDataForCypress = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/blog-posts`
+      );
+
+      setAllPosts(response.data);
+    } catch (error) {
+      return null;
+    }
+  };
+
+  useEffect(() => {
+    getDataForCypress();
+  }, []);
   return (
     <>
       <CustomSeo title="Blog" />
@@ -161,7 +181,6 @@ const Blog = ({ data, allTags }) => {
           {layout === "grid" && (
             <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
               {blogData?.map((postData) => {
-                console.log(postData?.tags);
                 return <GridCard key={data?.id} data={postData} />;
               })}
             </SimpleGrid>

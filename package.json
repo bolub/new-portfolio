@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "cypress": "cypress open"
   },
   "dependencies": {
     "@ashwamegh/react-link-preview": "^0.2.2",
@@ -25,5 +26,8 @@
     "react-speech": "^1.0.2",
     "recoil": "^0.3.1",
     "rehype-raw": "^5.1.0"
+  },
+  "devDependencies": {
+    "cypress": "^7.7.0"
   }
 }

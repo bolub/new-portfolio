@@ -21,6 +21,8 @@ import Navbar from '../components/Layout/Navbar';
 import Footer from '../components/Layout/Footer';
 import { Chakra } from '../chakra/Chakra';
 
+import './../components/carousel/embla.css';
+
 function MyApp({ Component, pageProps }) {
   const [show, setShow] = useState(false);
 
@@ -36,10 +38,6 @@ function MyApp({ Component, pageProps }) {
             <title>Boluwatife Abiola</title>
             <link rel='preconnect' href='https://fonts.gstatic.com' />
             <link
-              href='https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600;700;800;900&display=swap'
-              rel='stylesheet'
-            />
-            <link
               href='https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&display=swap'
               rel='stylesheet'
             />
@@ -50,6 +48,10 @@ function MyApp({ Component, pageProps }) {
 
             <link
               href='https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap'
+              rel='stylesheet'
+            />
+            <link
+              href='https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap'
               rel='stylesheet'
             />
             {/* <link rel="icon" href="/favicon.ico" /> */}

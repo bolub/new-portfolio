@@ -37,8 +37,8 @@ const ChangeFont = () => {
     }
   };
 
-  const allHeaderFonts = ['Space Grotesk', 'Nunito', 'Prompt'];
-  const allBodyFonts = ['Jost', 'Nunito', 'Prompt'];
+  const allHeaderFonts = ['Space Grotesk', 'Nunito', 'Prompt', 'Outfit'];
+  const allBodyFonts = ['Nunito', 'Prompt', 'Outfit'];
 
   return (
     <>

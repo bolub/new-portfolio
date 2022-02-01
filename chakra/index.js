@@ -7,7 +7,7 @@ let defaultHeading, defaultBody, styles, colors, colorMode;
 
 if (typeof window !== 'undefined') {
   defaultHeading = localStorage.getItem('fontHeading') || 'Space Grotesk';
-  defaultBody = localStorage.getItem('fontBody') || 'Jost';
+  defaultBody = localStorage.getItem('fontBody') || 'Outfit';
   colorMode = localStorage.getItem('chakra-ui-color-mode');
 
   styles = {

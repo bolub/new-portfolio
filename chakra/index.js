@@ -6,19 +6,19 @@ import { config } from './config';
 let defaultHeading, defaultBody, styles, colors, colorMode;
 
 if (typeof window !== 'undefined') {
-  defaultHeading = localStorage.getItem('fontHeading') || 'Outfit';
-  defaultBody = localStorage.getItem('fontBody') || 'Outfit';
+  defaultHeading = localStorage.getItem('fontHeading');
+  defaultBody = localStorage.getItem('fontBody');
   colorMode = localStorage.getItem('chakra-ui-color-mode');
 
   styles = {
     global: {
       'html, body': {
-        fontFamily: defaultBody,
+        fontFamily: defaultBody || 'Outfit',
         scrollBehavior: 'smooth',
       },
 
       'h1, h2, h3, h4, h5, h6': {
-        fontFamily: defaultHeading,
+        fontFamily: defaultHeading || 'Outfit',
       },
 
       code: {

@@ -6,7 +6,7 @@ import { config } from './config';
 let defaultHeading, defaultBody, styles, colors, colorMode;
 
 if (typeof window !== 'undefined') {
-  defaultHeading = localStorage.getItem('fontHeading') || 'Space Grotesk';
+  defaultHeading = localStorage.getItem('fontHeading') || 'Outfit';
   defaultBody = localStorage.getItem('fontBody') || 'Outfit';
   colorMode = localStorage.getItem('chakra-ui-color-mode');
 

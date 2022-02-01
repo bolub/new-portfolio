@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
 //
-import { Wrap, Tag } from "@chakra-ui/react";
+import { Wrap, Tag } from '@chakra-ui/react';
 
 const TagList = ({ data }) => {
   return (
@@ -10,12 +10,11 @@ const TagList = ({ data }) => {
         return (
           <Tag
             key={tag?.id}
-            cursor="pointer"
-            colorScheme="brand"
-            variant="outline"
+            cursor='pointer'
+            colorScheme='brand'
+            variant='subtle'
             // bg="brand.50"
-            borderRadius="sm"
-            fontSize="13px"
+            borderRadius='full'
           >
             {tag?.name}
           </Tag>

@@ -1,5 +1,5 @@
 // Nextjs
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 // chakra
 import {
@@ -11,22 +11,22 @@ import {
   Wrap,
   Center,
   Spinner,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 
 // utils
-import { generalPaddingX } from "../utils/chakra";
+import { generalPaddingX } from '../utils/chakra';
 
 // axios
-import axios from "axios";
-import SingleResource from "../components/resources/SingleResource";
+import axios from 'axios';
+import SingleResource from '../components/resources/SingleResource';
 
 // hooks
-import useLayoutSwitch from "../hooks/useLayoutSwitch";
-import CustomSeo from "../components/Layout/Seo";
+import useLayoutSwitch from '../hooks/useLayoutSwitch';
+import CustomSeo from '../components/Layout/Seo';
 
 // components
 // import CustomLink from "../components/UI/CustomLink";
-import CustomSearch from "../components/UI/CustomSearch";
+import CustomSearch from '../components/UI/CustomSearch';
 
 export default function Resources({ data, allTags }) {
   const { layout, LayoutComponent } = useLayoutSwitch();
@@ -89,14 +89,14 @@ export default function Resources({ data, allTags }) {
 
   return (
     <>
-      <CustomSeo title="Resources" />
+      <CustomSeo title='Resources' />
 
-      <chakra.header py={{ base: "10", md: 10 }}>
-        <Flex w="100%" px={generalPaddingX} flexDir="column">
-          <Flex mb={5} flexDir={{ base: "column", md: "row" }}>
-            <chakra.h1 fontWeight={700} fontSize={{ base: "3xl", md: "4xl" }}>
+      <chakra.header py={{ base: '10', md: 10 }}>
+        <Flex w='100%' px={generalPaddingX} flexDir='column'>
+          <Flex mb={5} flexDir={{ base: 'column', md: 'row' }}>
+            <chakra.h1 fontWeight={700} fontSize={{ base: '3xl', md: '4xl' }}>
               Resources
-              <Badge ml={2} colorScheme="brand">
+              <Badge ml={2} colorScheme='brand'>
                 {data?.length}
               </Badge>
             </chakra.h1>
@@ -107,20 +107,20 @@ export default function Resources({ data, allTags }) {
           {/* Search Component */}
           <CustomSearch value={searchText} onChange={searchHandler} />
           {/* Tags */}
-          <Wrap mt={5}>
+          <Wrap d={{ base: 'none', md: 'flex' }} mt={5}>
             {allTags?.map((tag) => {
               const tagChosen = tagName === tag?.name;
 
               return (
                 <Tag
                   key={tag?.id}
-                  cursor="pointer"
-                  colorScheme="brand"
-                  variant={tagChosen ? "subtle" : "outline"}
+                  cursor='pointer'
+                  colorScheme='brand'
+                  variant={!tagChosen ? 'subtle' : 'solid'}
                   onClick={() => {
                     if (tagChosen) {
-                      setTagName("");
-                      searchAllPosts(" ");
+                      setTagName('');
+                      searchAllPosts(' ');
                       return;
                     }
 
@@ -128,7 +128,7 @@ export default function Resources({ data, allTags }) {
                     searchTags(tag?.name);
                   }}
                   // bg="brand.50"
-                  borderRadius="sm"
+                  borderRadius='full'
                   // size="sm"
                 >
                   {tag?.name}
@@ -139,10 +139,10 @@ export default function Resources({ data, allTags }) {
         </Flex>
       </chakra.header>
 
-      <chakra.main minH={{ base: "100%", md: "60vh" }} px={generalPaddingX}>
+      <chakra.main minH={{ base: '100%', md: '60vh' }} px={generalPaddingX}>
         {loading && (
           <Center>
-            <Spinner colorScheme="brand" />
+            <Spinner colorScheme='brand' />
           </Center>
         )}
 
@@ -150,7 +150,7 @@ export default function Resources({ data, allTags }) {
           <SimpleGrid
             spacing={4}
             columns={
-              layout === "list" ? { base: 1 } : { base: 1, md: 2, lg: 3 }
+              layout === 'list' ? { base: 1 } : { base: 1, md: 2, lg: 3 }
             }
           >
             {resourceData?.map((rd) => {
@@ -185,7 +185,7 @@ export async function getStaticProps(context) {
     return {
       props: {
         data: [],
-        status: "error",
+        status: 'error',
       }, // will be passed to the page component as props
       revalidate: 1,
     };

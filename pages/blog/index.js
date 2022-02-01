@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
 // Nextjs
-import Head from "next/head";
+import Head from 'next/head';
 
 // chakra
 import {
@@ -13,23 +13,23 @@ import {
   Wrap,
   Center,
   Spinner,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 
 // utils
-import { generalPaddingX } from "../../utils/chakra";
+import { generalPaddingX } from '../../utils/chakra';
 
 // DATA FETCHING
-import axios from "axios";
+import axios from 'axios';
 
 // hooks
-import useLayoutSwitch from "../../hooks/useLayoutSwitch";
+import useLayoutSwitch from '../../hooks/useLayoutSwitch';
 
 // components
-import GridCard from "../../components/blog/BlogCard/GridCard";
-import ListCard from "../../components/blog/BlogCard/ListCard";
-import CustomSeo from "../../components/Layout/Seo";
-import CustomSearch from "../../components/UI/CustomSearch";
-import PageHeader from "../../components/blog/PageHeader";
+import GridCard from '../../components/blog/BlogCard/GridCard';
+import ListCard from '../../components/blog/BlogCard/ListCard';
+import CustomSeo from '../../components/Layout/Seo';
+import CustomSearch from '../../components/UI/CustomSearch';
+import PageHeader from '../../components/blog/PageHeader';
 
 const Blog = ({ data, allTags }) => {
   //
@@ -111,22 +111,22 @@ const Blog = ({ data, allTags }) => {
   }, []);
   return (
     <>
-      <CustomSeo title="Blog" />
+      <CustomSeo title='Blog' />
 
       {/* header */}
       <PageHeader />
 
       {/* main */}
-      <chakra.main mt={20} pt={{ base: "10" }} pb={20} px={generalPaddingX}>
+      <chakra.main mt={20} pt={{ base: '10' }} pb={20} px={generalPaddingX}>
         <Box mb={12}>
           <Flex mb={5}>
             {/* Header Text */}
-            <Flex my="auto">
+            <Flex my='auto'>
               <chakra.h2
                 mr={2}
-                my="auto"
+                my='auto'
                 fontWeight={700}
-                fontSize={{ base: "3xl" }}
+                fontSize={{ base: '3xl' }}
               >
                 All Posts
               </chakra.h2>
@@ -142,32 +142,32 @@ const Blog = ({ data, allTags }) => {
           {/* Tags */}
           {loading && (
             <Center mt={5}>
-              <Spinner colorScheme="brand" />
+              <Spinner colorScheme='brand' />
             </Center>
           )}
 
-          <Wrap mt={5}>
+          <Wrap d={{ base: 'none', md: 'flex' }} mt={5}>
             {allTags?.map((tag) => {
               const tagChosen = tagName === tag?.name;
 
               return (
                 <Tag
                   key={tag?.id}
-                  cursor="pointer"
-                  colorScheme="brand"
-                  variant={tagChosen ? "subtle" : "outline"}
+                  cursor='pointer'
+                  colorScheme='brand'
+                  variant={!tagChosen ? 'subtle' : 'solid'}
                   onClick={() => {
                     if (tagChosen) {
-                      setTagName("");
-                      searchAllPosts(" ");
+                      setTagName('');
+                      searchAllPosts(' ');
                       return;
                     }
 
                     setTagName(tag?.name);
                     searchTags(tag?.name);
                   }}
-                  fontSize="13px"
-                  borderRadius="sm"
+                  borderRadius='full'
+                  size='md'
                 >
                   {tag?.name}
                 </Tag>
@@ -177,8 +177,8 @@ const Blog = ({ data, allTags }) => {
         </Box>
 
         {/* Blog list */}
-        <Box id="posts">
-          {layout === "grid" && (
+        <Box id='posts'>
+          {layout === 'grid' && (
             <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
               {blogData?.map((postData) => {
                 return <GridCard key={data?.id} data={postData} />;
@@ -186,7 +186,7 @@ const Blog = ({ data, allTags }) => {
             </SimpleGrid>
           )}
 
-          {layout === "list" && (
+          {layout === 'list' && (
             <>
               {blogData?.map((postData) => {
                 return <ListCard key={data?.id} data={postData} />;
@@ -222,7 +222,7 @@ export async function getStaticProps(context) {
     return {
       props: {
         data: [],
-        status: "error",
+        status: 'error',
       }, // will be passed to the page component as props
       revalidate: 1,
     };

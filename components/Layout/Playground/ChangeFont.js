@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 // chakra
 import {
@@ -8,37 +8,37 @@ import {
   FormControl,
   FormLabel,
   Box,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 
 // recoil
-import { useRecoilState } from "recoil";
-import { fontState } from "../../../atoms/fonts";
+import { useRecoilState } from 'recoil';
+import { fontState } from '../../../atoms/fonts';
 
 const ChangeFont = () => {
   // font type
   const [fontType, setFontType] = useRecoilState(fontState);
   const setFont = (type, value) => {
-    if (type === "heading") {
+    if (type === 'heading') {
       setFontType({
         ...fontType,
         heading: value,
       });
 
-      localStorage.setItem("fontHeading", value);
+      localStorage.setItem('fontHeading', value);
     }
 
-    if (type === "body") {
+    if (type === 'body') {
       setFontType({
         ...fontType,
         body: value,
       });
 
-      localStorage.setItem("fontBody", value);
+      localStorage.setItem('fontBody', value);
     }
   };
 
-  const allHeaderFonts = ["Space Grotesk", "Nunito", "Prompt"];
-  const allBodyFonts = ["Jost", "Nunito", "Prompt"];
+  const allHeaderFonts = ['Outfit', 'Nunito', 'Prompt'];
+  const allBodyFonts = ['Outfit', 'Nunito', 'Prompt'];
 
   return (
     <>
@@ -46,9 +46,9 @@ const ChangeFont = () => {
       <Box mb={10}>
         <chakra.h3
           fontFamily={fontType.heading}
-          fontSize="sm"
+          fontSize='sm'
           fontWeight={600}
-          color="brand.500"
+          color='brand.500'
           mb={2}
         >
           Change Header Font
@@ -56,17 +56,17 @@ const ChangeFont = () => {
 
         {allHeaderFonts?.map((font) => {
           return (
-            <FormControl key={font} mb={2} display="flex" alignItems="center">
-              <FormLabel fontFamily={font} htmlFor="email-alerts" mb="0">
+            <FormControl key={font} mb={2} display='flex' alignItems='center'>
+              <FormLabel fontFamily={font} htmlFor='email-alerts' mb='0'>
                 {font}
               </FormLabel>
               <Switch
-                ml="auto"
+                ml='auto'
                 value={fontType.heading}
                 isChecked={fontType.heading === font}
-                colorScheme="brand"
+                colorScheme='brand'
                 onChange={(e) => {
-                  setFont("heading", font);
+                  setFont('heading', font);
                 }}
               />
             </FormControl>
@@ -78,9 +78,9 @@ const ChangeFont = () => {
       <Box>
         <chakra.h3
           fontFamily={fontType.heading}
-          fontSize="sm"
+          fontSize='sm'
           fontWeight={600}
-          color="brand.500"
+          color='brand.500'
           mb={2}
         >
           Change Body Font
@@ -88,17 +88,17 @@ const ChangeFont = () => {
 
         {allBodyFonts?.map((font) => {
           return (
-            <FormControl key={font} mb={2} display="flex" alignItems="center">
-              <FormLabel htmlFor="email-alerts" mb="0">
+            <FormControl key={font} mb={2} display='flex' alignItems='center'>
+              <FormLabel htmlFor='email-alerts' mb='0'>
                 {font}
               </FormLabel>
               <Switch
-                ml="auto"
-                colorScheme="brand"
+                ml='auto'
+                colorScheme='brand'
                 value={fontType.body}
                 isChecked={fontType.body === font}
                 onChange={(e) => {
-                  setFont("body", font);
+                  setFont('body', font);
                 }}
               />
             </FormControl>
@@ -110,28 +110,28 @@ const ChangeFont = () => {
       <Box
         mt={10}
         mb={8}
-        borderWidth="1px"
-        borderColor="#c4c4c4"
-        borderStyle="dashed"
-        borderRadius="sm"
+        borderWidth='1px'
+        borderColor='#c4c4c4'
+        borderStyle='dashed'
+        borderRadius='sm'
       >
         <Box
           px={5}
           py={5}
-          borderBottomWidth="1px"
-          borderStyle="dashed"
-          borderColor="#c4c4c4"
+          borderBottomWidth='1px'
+          borderStyle='dashed'
+          borderColor='#c4c4c4'
           fontFamily={fontType.heading}
         >
-          <Text fontSize="sm">Header Text Preview</Text>
-          <Text fontWeight={900} fontSize="xl" contentEditable>
+          <Text fontSize='sm'>Header Text Preview</Text>
+          <Text fontWeight={900} fontSize='xl' contentEditable>
             This is Header Text
           </Text>
         </Box>
 
         <Box px={5} py={5} fontFamily={fontType.body}>
-          <Text fontSize="sm">Body Text Preview</Text>
-          <Text fontWeight={900} fontSize="xl" contentEditable>
+          <Text fontSize='sm'>Body Text Preview</Text>
+          <Text fontWeight={900} fontSize='xl' contentEditable>
             This is body Text
           </Text>
         </Box>

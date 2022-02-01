@@ -15,6 +15,7 @@
     "@emotion/styled": "^11",
     "axios": "^0.21.1",
     "dayjs": "^1.10.4",
+    "embla-carousel": "^4.5.3",
     "framer-motion": "^4",
     "next": "10.2.2",
     "next-seo": "^4.24.0",

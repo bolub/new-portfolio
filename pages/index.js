@@ -1,15 +1,9 @@
 // chakra
-import { Box, Flex, chakra, Text } from '@chakra-ui/react';
-
-// utils
-import { generalPaddingX } from '../utils/chakra';
+import { chakra } from '@chakra-ui/react';
 
 // componentss
-import HomeIllustration from './../svg/HomeIllustration';
-import CustomLink from '../components/UI/CustomLink';
 import CustomSeo from '../components/Layout/Seo';
 import Header from '../components/homePage/Header';
-import About from '../components/homePage/About';
 
 export default function Home() {
   return (

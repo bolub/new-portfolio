@@ -1,9 +1,9 @@
 // chakra
 import { Box, Flex, chakra, Text, Avatar, Image } from '@chakra-ui/react';
-import HomeIllustration from '../../svg/HomeIllustration';
 
 // utils
 import { generalPaddingX } from '../../utils/chakra';
+import CustomButton from '../UI/CustomButton';
 import CustomLink from '../UI/CustomLink';
 
 const Header = () => {
@@ -27,16 +27,13 @@ const Header = () => {
               Bolu
             </Text>
           </chakra.h1>
-
           <Text mt={4} mb={6} fontSize='17px'>
             Welcome to my ......., well you know.
           </Text>
-
           <Text mb={6} fontSize='17px'>
             Honestly doing this was a pain, but still did it anyways, gotta have
             an online presence and all
           </Text>
-
           <Text mb={6} fontSize='17px'>
             Gonna be doing a bit of{' '}
             <CustomLink active href='/blog'>
@@ -55,11 +52,24 @@ const Header = () => {
               portfolio.
             </CustomLink>
           </Text>
-
           <Text mb={6} fontSize='17px'>
             Not sure about how i feel about a logo for now though, an emoji
             would suffice for now.
           </Text>
+          <CustomButton
+            as='a'
+            href='https://www.linkedin.com/in/abiola-boluwatife-2569a915b/details/skills/'
+            mb={10}
+            target='__blank'
+          >
+            <Text as='span' fontSize='xl'>
+              🤹🏽
+            </Text>
+
+            <Text as='span' mr={2}>
+              Checkout My Special Skills
+            </Text>
+          </CustomButton>
         </Box>
 
         {/* Illustration */}

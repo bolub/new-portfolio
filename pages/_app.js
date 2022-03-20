@@ -22,6 +22,7 @@ import Footer from '../components/Layout/Footer';
 import { Chakra } from '../chakra/Chakra';
 
 import './../components/carousel/embla.css';
+import Script from 'next/script';
 
 function MyApp({ Component, pageProps }) {
   const [show, setShow] = useState(false);
@@ -32,6 +33,10 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <RecoilRoot>
+      <Script
+        src='https://platform.linkedin.com/badges/js/profile.js'
+        strategy='afterInteractive'
+      />
       <Chakra cookies={pageProps.cookies}>
         <ChakraProvider theme={customTheme}>
           <Head>

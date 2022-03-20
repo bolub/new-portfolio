@@ -1,5 +1,5 @@
 // react
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 // chakra
 import {
@@ -14,16 +14,16 @@ import {
   Box,
   Text,
   Flex,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 
 // icons
 // import { HiOutlineDotsHorizontal } from "react-icons/hi";
 
 // components
-import CustomLink from "../UI/CustomLink";
-import Playground from "./Playground";
-import CustomMenu from "../UI/CustomMenu";
-import { useRouter } from "next/router";
+import CustomLink from '../UI/CustomLink';
+import Playground from './Playground';
+import CustomMenu from '../UI/CustomMenu';
+import { useRouter } from 'next/router';
 
 const NavItems = ({ hide, componentName, closeDrawer }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -34,10 +34,10 @@ const NavItems = ({ hide, componentName, closeDrawer }) => {
   });
 
   // next router
-  const { query, pathname } = useRouter();
+  const { query } = useRouter();
 
   useEffect(() => {
-    if (query.open === "playground") {
+    if (query.open === 'playground') {
       onOpen();
     }
   }, [query]);
@@ -63,53 +63,48 @@ const NavItems = ({ hide, componentName, closeDrawer }) => {
 
   const allLinks = [
     {
-      name: "Home",
-      emoji: "🏠",
-      href: "/",
-      hide: hide === "home",
+      name: 'Home',
+      emoji: '🏠',
+      href: '/',
+      hide: hide === 'home',
       mobile: true,
     },
     {
-      name: "Blog",
-      emoji: "✍️",
-      href: "/blog",
-      hide: hide === "blog",
+      name: 'Blog',
+      emoji: '✍️',
+      href: '/blog',
+      hide: hide === 'blog',
       mobile: true,
     },
     {
-      name: "Portfolio",
-      emoji: "💼",
-      href: "https://motionwares.com/p/bolub",
-      hide: hide === "portfolio",
+      name: 'Projects',
+      emoji: '🔨',
+      href: '/projects',
+      hide: hide === 'projects',
       mobile: true,
     },
     {
-      name: "Contact",
-      emoji: "☎️",
-      href: "#footer",
-      hide: hide === "contact",
+      name: 'Contact',
+      emoji: '☎️',
+      href: '#footer',
+      hide: hide === 'contact',
       mobile: false,
     },
   ];
 
   const moreItems = [
     {
-      name: "📚 Resources",
-      href: "/resources",
+      name: '🍳 Cooking',
+      href: '/cooking',
       action: closeDrawer,
     },
     {
-      name: "🍳 Cooking",
-      href: "/cooking",
+      name: '🧰 Built with',
+      href: '/built-with',
       action: closeDrawer,
     },
     {
-      name: "🧰 Built with",
-      href: "/built-with",
-      action: closeDrawer,
-    },
-    {
-      name: "🤾‍♂️ Playground",
+      name: '🤾‍♂️ Playground',
       href: null,
       action: () => {
         // closeDrawer();
@@ -123,12 +118,12 @@ const NavItems = ({ hide, componentName, closeDrawer }) => {
       {allLinks?.map((linkData) => {
         if (linkData?.hide) return;
 
-        const mobileHide = { base: "none", md: "inline-flex" };
+        const mobileHide = { base: 'none', md: 'inline-flex' };
 
         return (
           <CustomLink
             key={linkData?.name}
-            fontSize={{ md: "md" }}
+            fontSize={{ md: 'md' }}
             display={linkData?.mobile === false && mobileHide}
             href={linkData?.href}
             onClick={() => {
@@ -136,7 +131,7 @@ const NavItems = ({ hide, componentName, closeDrawer }) => {
               closeDrawer();
             }}
           >
-            <Text as="span" mr={1}>
+            <Text as='span' mr={1}>
               {linkData?.emoji}
             </Text>
             {linkData?.name}
@@ -149,10 +144,10 @@ const NavItems = ({ hide, componentName, closeDrawer }) => {
       >
         <CustomMenu
           title={
-            <Flex d="inline-flex">
-              <Text as="span" mr={1}>
+            <Flex d='inline-flex'>
+              <Text as='span' mr={1}>
                 🔗
-              </Text>{" "}
+              </Text>{' '}
               More
             </Flex>
           }
@@ -162,7 +157,7 @@ const NavItems = ({ hide, componentName, closeDrawer }) => {
 
       <Modal
         closeOnOverlayClick={false}
-        size="lg"
+        size='lg'
         isOpen={isOpen}
         onClose={onClose}
       >
@@ -183,8 +178,8 @@ const NavItems = ({ hide, componentName, closeDrawer }) => {
               onClick={() => {
                 closeModal();
               }}
-              variant="ghost"
-              colorScheme="brand"
+              variant='ghost'
+              colorScheme='brand'
             >
               Close
             </Button>

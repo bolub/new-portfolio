@@ -80,10 +80,6 @@ const About = () => {
       imageUrl: '/MyAge.jpeg',
       tags: [
         {
-          id: 'marketing_website',
-          name: 'Marketing Website',
-        },
-        {
           id: 'Was bored and wanted to code',
           name: 'Was bored and wanted to code',
         },

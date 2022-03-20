@@ -22,6 +22,7 @@ const CustomSearch = ({ onChange, value }) => {
         _focus={{
           outline: 'none',
         }}
+        data-cy='input-value'
       />
     </InputGroup>
   );

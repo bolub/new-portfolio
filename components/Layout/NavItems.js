@@ -70,19 +70,20 @@ const NavItems = ({ hide, componentName, closeDrawer }) => {
       mobile: true,
     },
     {
-      name: 'Blog',
-      emoji: '✍️',
-      href: '/blog',
-      hide: hide === 'blog',
-      mobile: true,
-    },
-    {
       name: 'Projects',
       emoji: '🔨',
       href: '/projects',
       hide: hide === 'projects',
       mobile: true,
     },
+    {
+      name: 'Blog',
+      emoji: '✍️',
+      href: '/blog',
+      hide: hide === 'blog',
+      mobile: true,
+    },
+
     {
       name: 'Contact',
       emoji: '☎️',
@@ -94,8 +95,8 @@ const NavItems = ({ hide, componentName, closeDrawer }) => {
 
   const moreItems = [
     {
-      name: '🍳 Cooking',
-      href: '/cooking',
+      name: '📚 Resources',
+      href: '/resources',
       action: closeDrawer,
     },
     {

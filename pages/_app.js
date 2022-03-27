@@ -35,7 +35,7 @@ function MyApp({ Component, pageProps }) {
     <RecoilRoot>
       <Script
         src='https://platform.linkedin.com/badges/js/profile.js'
-        strategy='afterInteractive'
+        strategy='lazyOnload'
       />
       <Chakra cookies={pageProps.cookies}>
         <ChakraProvider theme={customTheme}>

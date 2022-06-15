@@ -12,6 +12,21 @@ import { generalPaddingX } from '../utils/chakra';
 const About = () => {
   const projects = [
     {
+      title: 'Appliqa',
+      imageUrl: '/Appliqa.png',
+      tags: [
+        {
+          id: 'design',
+          name: 'UI/UX',
+        },
+        {
+          id: 'web_development',
+          name: 'Web development',
+        },
+      ],
+      url: 'https://appliqa.net',
+    },
+    {
       title: 'Sendchamp',
       imageUrl: '/Sendchamp.jpeg',
       tags: [

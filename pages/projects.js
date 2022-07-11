@@ -1,4 +1,4 @@
-import { Box, chakra, Center, SimpleGrid, Wrap, Tag } from '@chakra-ui/react';
+import { chakra, Center, SimpleGrid } from '@chakra-ui/react';
 import { generalPaddingX } from '../utils/chakra';
 import AppliqaImage from './../public/Appliqa.jpg';
 import SendchampImage from './../public/Sendchamp.jpeg';
@@ -6,8 +6,7 @@ import VimixImage from './../public/Vimix.jpeg';
 import SprinbleImage from './../public/Sprinble.jpeg';
 import DruzImage from './../public/Druz.jpeg';
 import MyAgeImage from './../public/MyAge.jpeg';
-import Image from 'next/image';
-import { defaultBrandColor } from '../chakra/colors';
+import SingleProject from '../components/projects/SingleProject';
 
 export const projectsData = [
   {
@@ -26,6 +25,9 @@ export const projectsData = [
       },
     ],
     url: 'https://appliqa.net',
+    sourceCode: 'https://github.com/bolub/appliqa',
+    deignUrl:
+      'https://www.figma.com/proto/WGWOb9CSpAAMbotlUk8xXf/Appliqa?page-id=1%3A4&node-id=63%3A1769&viewport=378%2C262%2C0.02&scaling=scale-down-width&starting-point-node-id=63%3A1769&show-proto-sidebar=1',
   },
   {
     title: 'Sendchamp',
@@ -43,6 +45,8 @@ export const projectsData = [
       },
     ],
     url: 'https://sendchamp.com',
+    sourceCode: '',
+    deignUrl: '',
   },
   {
     title: 'Vimix',
@@ -59,7 +63,10 @@ export const projectsData = [
         name: 'dashboard',
       },
     ],
-    url: 'https://www.figma.com/proto/SAQJGl1iZWmrAvOkvzzfuT/Vimix?page-id=1%3A2&node-id=672%3A220&starting-point-node-id=672%3A220&scaling=scale-down-width',
+    url: 'https://vimix.ai',
+    sourceCode: '',
+    deignUrl:
+      'https://www.figma.com/proto/SAQJGl1iZWmrAvOkvzzfuT/Vimix?page-id=1%3A2&node-id=672%3A220&starting-point-node-id=672%3A220&scaling=scale-down-width',
   },
   {
     title: 'Sprinble',
@@ -76,6 +83,8 @@ export const projectsData = [
       },
     ],
     url: 'https://sprinble.com',
+    sourceCode: '',
+    deignUrl: '',
   },
   {
     title: 'Druz',
@@ -96,6 +105,9 @@ export const projectsData = [
       },
     ],
     url: 'https://druz.xyz',
+    sourceCode: '',
+    deignUrl:
+      'https://www.figma.com/proto/4x3UjygyLMkEpZN2eBZcX1/Druz?page-id=1%3A2&node-id=2%3A19&starting-point-node-id=2%3A19&scaling=scale-down-width',
   },
   {
     title: 'My Age Calculator',
@@ -108,6 +120,8 @@ export const projectsData = [
       },
     ],
     url: 'http://myage.surge.sh/',
+    sourceCode: 'https://github.com/bolub/MyAge',
+    deignUrl: '',
   },
 ];
 
@@ -116,11 +130,6 @@ const Projects = () => {
     <>
       <chakra.section px={generalPaddingX} id='projects' py={{ base: '10' }}>
         <Center flexDir='column' textAlign={'center'} maxW='900px' mx='auto'>
-          {/* <Text mt={5} fontSize='sm'>
-          I apologize for this picture, couldn't find a better one (was too lazy
-          to take a better one)
-        </Text> */}
-
           <chakra.h2
             mt={10}
             fontWeight={600}
@@ -137,56 +146,7 @@ const Projects = () => {
           columns={{ base: 1, md: 2 }}
         >
           {projectsData?.map((pd) => {
-            return (
-              <chakra.a
-                target='_blank'
-                href={pd.url}
-                cursor='pointer'
-                key={pd.imageUrl}
-              >
-                <Box
-                  h={{ base: '300px', md: '500px' }}
-                  bg={defaultBrandColor}
-                  pos='relative'
-                >
-                  <Image
-                    src={pd.imageUrl}
-                    objectFit={'cover'}
-                    layout='fill'
-                    placeholder='blur'
-                  />
-                </Box>
-
-                <Wrap d={{ base: 'flex', md: 'flex' }} mt={5}>
-                  {pd.tags?.map((tag) => {
-                    return (
-                      <Tag
-                        key={tag?.id}
-                        cursor='pointer'
-                        colorScheme='brand'
-                        variant='subtle'
-                        borderRadius='full'
-                        size='md'
-                      >
-                        {tag?.name}
-                      </Tag>
-                    );
-                  })}
-                </Wrap>
-
-                <chakra.h3
-                  mt={2}
-                  fontWeight={'medium'}
-                  fontSize={{ base: 'xl', md: '2xl' }}
-                >
-                  {pd.title}
-                </chakra.h3>
-
-                <chakra.p fontSize={'lg'} mt={3}>
-                  {pd.description}
-                </chakra.p>
-              </chakra.a>
-            );
+            return <SingleProject key={pd.imageUrl} data={pd} />;
           })}
         </SimpleGrid>
       </chakra.section>

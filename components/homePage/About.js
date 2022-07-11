@@ -1,10 +1,9 @@
-import { Box, chakra, Center, SimpleGrid, Wrap, Tag } from '@chakra-ui/react';
+import { Box, chakra, Center, SimpleGrid } from '@chakra-ui/react';
 import Link from 'next/link';
 import { projectsData } from '../../pages/projects';
 import { generalPaddingX } from '../../utils/chakra';
 import CustomButton from '../UI/CustomButton';
-import Image from 'next/image';
-import { defaultBrandColor } from '../../chakra/colors';
+import SingleProject from '../projects/SingleProject';
 
 const About = () => {
   return (
@@ -38,50 +37,7 @@ const About = () => {
         columns={{ base: 1, md: 2 }}
       >
         {projectsData?.slice(0, 2)?.map((pd) => {
-          return (
-            <Box cursor='pointer'>
-              <Box
-                h={{ base: '300px', md: '500px' }}
-                bg={defaultBrandColor}
-                pos='relative'
-              >
-                <Image
-                  src={pd.imageUrl}
-                  objectFit={'cover'}
-                  layout='fill'
-                  placeholder='blur'
-                />
-              </Box>
-
-              <Wrap d={{ base: 'flex', md: 'flex' }} mt={8}>
-                {pd.tags?.map((tag) => {
-                  return (
-                    <Tag
-                      key={tag?.id}
-                      cursor='pointer'
-                      colorScheme='brand'
-                      variant='subtle'
-                      borderRadius='full'
-                      size='md'
-                    >
-                      {tag?.name}
-                    </Tag>
-                  );
-                })}
-              </Wrap>
-
-              <chakra.h3
-                mt={5}
-                fontWeight={'medium'}
-                fontSize={{ base: '2xl', md: '3xl' }}
-              >
-                {pd.title}
-              </chakra.h3>
-              <chakra.p fontSize={'lg'} mt={3}>
-                {pd.description}
-              </chakra.p>
-            </Box>
-          );
+          return <SingleProject key={pd.imageUrl} data={pd} />;
         })}
       </SimpleGrid>
 

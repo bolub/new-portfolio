@@ -14,7 +14,7 @@ import {
 } from '@chakra-ui/react';
 
 // utils
-import { generalPaddingX } from '../utils/chakra';
+import { generalPaddingX, maxi } from '../utils/chakra';
 
 // axios
 import axios from 'axios';
@@ -92,7 +92,13 @@ export default function Resources({ data, allTags }) {
       <CustomSeo title='Resources' />
 
       <chakra.header py={{ base: '10', md: 10 }}>
-        <Flex w='100%' px={generalPaddingX} flexDir='column'>
+        <Flex
+          w='100%'
+          px={generalPaddingX}
+          maxW={maxi}
+          mx='auto'
+          flexDir='column'
+        >
           <Flex mb={5} flexDir={{ base: 'column', md: 'row' }}>
             <chakra.h1 fontWeight={700} fontSize={{ base: '3xl', md: '4xl' }}>
               Resources
@@ -139,7 +145,12 @@ export default function Resources({ data, allTags }) {
         </Flex>
       </chakra.header>
 
-      <chakra.main minH={{ base: '100%', md: '60vh' }} px={generalPaddingX}>
+      <chakra.main
+        minH={{ base: '100%', md: '60vh' }}
+        px={generalPaddingX}
+        maxW={maxi}
+        mx='auto'
+      >
         {loading && (
           <Center>
             <Spinner colorScheme='brand' />

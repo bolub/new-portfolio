@@ -15,10 +15,11 @@ import {
   DrawerCloseButton,
   useDisclosure,
   VStack,
+  Box,
 } from '@chakra-ui/react';
 
 // utils
-import { generalPaddingX } from '../../utils/chakra';
+import { generalPaddingX, maxi } from '../../utils/chakra';
 import { defaultBrandColor } from '../../chakra/colors';
 
 // components
@@ -34,90 +35,93 @@ const Navbar = () => {
   return (
     <>
       {/* <Banner /> */}
-      <chakra.nav
-        borderTop={`4px solid ${defaultBrandColor}`}
-        w='100%'
-        height='10vh'
-        d='flex'
-        px={generalPaddingX}
-      >
-        <Link passHref href='/'>
-          <Text
-            cursor='pointer'
-            fontWeight={900}
-            my='auto'
-            fontSize='2xl'
-            mr={5}
-          >
-            😎
-          </Text>
-        </Link>
-
-        {/* Desktop view */}
-        <HStack
-          d={{ base: 'none', md: 'flex' }}
-          spacing={10}
-          my='auto'
-          ml='auto'
-          overflowX='auto'
+      <chakra.nav borderTop={`4px solid ${defaultBrandColor}`} w='100%'>
+        <Box
+          d='flex'
+          w='100%'
+          height='10vh'
+          px={generalPaddingX}
+          maxW={maxi}
+          mx='auto'
         >
-          <NavItems />
-        </HStack>
+          <Link passHref href='/'>
+            <Text
+              cursor='pointer'
+              fontWeight={900}
+              my='auto'
+              fontSize='2xl'
+              mr={5}
+            >
+              😎
+            </Text>
+          </Link>
 
-        {/* Mobile view */}
-        <Tooltip label='Menu' aria-label='Menu'>
-          <HStack ml='auto' d={{ base: 'flex', md: 'none' }}>
-            <a href='#footer'>
+          {/* Desktop view */}
+          <HStack
+            d={{ base: 'none', md: 'flex' }}
+            spacing={10}
+            my='auto'
+            ml='auto'
+            overflowX='auto'
+          >
+            <NavItems />
+          </HStack>
+
+          {/* Mobile view */}
+          <Tooltip label='Menu' aria-label='Menu'>
+            <HStack ml='auto' d={{ base: 'flex', md: 'none' }}>
+              <a href='#footer'>
+                <Button
+                  ml='auto'
+                  colorScheme='brand'
+                  variant='ghost'
+                  p={1}
+                  borderRadius='md'
+                  my='auto'
+                >
+                  <Text>☎️</Text>
+                </Button>
+              </a>
+
               <Button
-                ml='auto'
                 colorScheme='brand'
                 variant='ghost'
                 p={1}
                 borderRadius='md'
                 my='auto'
+                fontSize='lg'
+                ref={btnRef}
+                onClick={onOpen}
               >
-                <Text>☎️</Text>
+                <Text>🍔</Text>
               </Button>
-            </a>
+            </HStack>
+          </Tooltip>
 
-            <Button
-              colorScheme='brand'
-              variant='ghost'
-              p={1}
-              borderRadius='md'
-              my='auto'
-              fontSize='lg'
-              ref={btnRef}
-              onClick={onOpen}
-            >
-              <Text>🍔</Text>
-            </Button>
-          </HStack>
-        </Tooltip>
+          <Drawer
+            isOpen={isOpen}
+            placement='right'
+            onClose={onClose}
+            finalFocusRef={btnRef}
+          >
+            <DrawerOverlay />
+            <DrawerContent>
+              <DrawerCloseButton />
 
-        <Drawer
-          isOpen={isOpen}
-          placement='right'
-          onClose={onClose}
-          finalFocusRef={btnRef}
-        >
-          <DrawerOverlay />
-          <DrawerContent>
-            <DrawerCloseButton />
+              <DrawerBody d='flex'>
+                <VStack spacing={12} m='auto'>
+                  <NavItems closeDrawer={onClose} />
+                </VStack>
+              </DrawerBody>
 
-            <DrawerBody d='flex'>
-              <VStack spacing={12} m='auto'>
-                <NavItems closeDrawer={onClose} />
-              </VStack>
-            </DrawerBody>
-
-            <DrawerFooter border='none'>
-              <Button variant='outline' onClick={onClose}>
-                Close
-              </Button>
-            </DrawerFooter>
-          </DrawerContent>
-        </Drawer>
+              <DrawerFooter border='none'>
+                <Button variant='outline' onClick={onClose}>
+                  Close
+                </Button>
+              </DrawerFooter>
+            </DrawerContent>
+          </Drawer>
+        </Box>
       </chakra.nav>
     </>
   );

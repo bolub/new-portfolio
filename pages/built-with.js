@@ -1,55 +1,57 @@
-import React from "react";
+import React from 'react';
 
 // chakra
-import { Box, Flex, chakra, Text } from "@chakra-ui/react";
+import { Box, Flex, chakra, Text } from '@chakra-ui/react';
 
 // utils
-import { generalPaddingX } from "../utils/chakra";
+import { generalPaddingX, maxi } from '../utils/chakra';
 
 // axios
-import axios from "axios";
+import axios from 'axios';
 
 // components
-import CustomSeo from "../components/Layout/Seo";
-import SectionTechnologies from "../components/built-with/SectionTechnologies";
+import CustomSeo from '../components/Layout/Seo';
+import SectionTechnologies from '../components/built-with/SectionTechnologies';
 
 const BuiltWith = ({ data }) => {
   // frontend
   const allFrontend = data?.filter((bd) => {
-    return bd.tag === "frontend";
+    return bd.tag === 'frontend';
   });
 
   const allBackend = data?.filter((bd) => {
-    return bd.tag === "backend";
+    return bd.tag === 'backend';
   });
 
   const allHosting = data?.filter((bd) => {
-    return bd.tag === "hosting";
+    return bd.tag === 'hosting';
   });
 
   return (
     <>
       <CustomSeo
-        title="Built with"
-        description="Tools and Technologies this website was built with"
+        title='Built with'
+        description='Tools and Technologies this website was built with'
       />
 
-      <chakra.header alignItems="center" d="flex" py={{ base: "10", md: 10 }}>
+      <chakra.header alignItems='center' d='flex' py={{ base: '10', md: 10 }}>
         <Flex
-          w="100%"
-          flexDir={{ base: "column", md: "row" }}
+          w='100%'
+          flexDir={{ base: 'column', md: 'row' }}
           px={generalPaddingX}
+          maxW={maxi}
+          mx='auto'
         >
-          <Box mb={{ base: 0, md: 0 }} w={{ base: "100%" }} my="auto">
+          <Box mb={{ base: 0, md: 0 }} w={{ base: '100%' }} my='auto'>
             <chakra.h1
-              color="brand.500"
+              color='brand.500'
               fontWeight={700}
-              fontSize={{ base: "3xl", md: "4xl" }}
+              fontSize={{ base: '3xl', md: '4xl' }}
             >
               🧰 Built With
             </chakra.h1>
 
-            <Text mt={4} mb={6} fontSize="17px">
+            <Text mt={4} mb={6} fontSize='17px'>
               Basic Tools and Technologies this website was built with. These
               technologies might seem like an overkill, and I could just build
               everything from scratch with Vanilla CSS, HTML, and JS .........
@@ -59,15 +61,20 @@ const BuiltWith = ({ data }) => {
         </Flex>
       </chakra.header>
 
-      <chakra.main minH={{ base: "100%", md: "60vh" }} px={generalPaddingX}>
+      <chakra.main
+        minH={{ base: '100%', md: '60vh' }}
+        px={generalPaddingX}
+        maxW={maxi}
+        mx='auto'
+      >
         {/* frontend */}
-        <SectionTechnologies title="Frontend" data={allFrontend} />
+        <SectionTechnologies title='Frontend' data={allFrontend} />
 
         {/* backend */}
-        <SectionTechnologies title="Backend" data={allBackend} />
+        <SectionTechnologies title='Backend' data={allBackend} />
 
         {/* hosting */}
-        <SectionTechnologies title="Hosting" data={allHosting} />
+        <SectionTechnologies title='Hosting' data={allHosting} />
       </chakra.main>
     </>
   );
@@ -92,7 +99,7 @@ export async function getStaticProps(context) {
     return {
       props: {
         data: [],
-        status: "error",
+        status: 'error',
       }, // will be passed to the page component as props
       revalidate: 1,
     };

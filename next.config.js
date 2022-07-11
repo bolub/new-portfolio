@@ -2,7 +2,7 @@
 
 module.exports = {
   images: {
-    domains: ['images.prismic.io'],
+    domains: ['images.prismic.io', 'res.cloudinary.com'],
   },
   reactStrictMode: true,
 };

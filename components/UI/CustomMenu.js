@@ -36,8 +36,9 @@ const CustomMenu = ({ title, items }) => {
         {items.map((item) => {
           if (item.href) {
             return (
-              <Link href={item.href}>
+              <Link href={item.href} passHref>
                 <MenuItem
+                  as='a'
                   onClick={() => {
                     if (item.action) {
                       item.action();

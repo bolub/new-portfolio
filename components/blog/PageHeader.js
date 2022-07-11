@@ -6,7 +6,7 @@ import { Box, Flex, chakra, Text } from '@chakra-ui/react';
 // components
 import BlogIllustration from '../../svg/BlogIlustration';
 import CustomButton from '../../components/UI/CustomButton';
-import { generalPaddingX } from '../../utils/chakra';
+import { generalPaddingX, maxi } from '../../utils/chakra';
 
 const PageHeader = () => {
   return (
@@ -17,6 +17,8 @@ const PageHeader = () => {
         justifyContent='center'
         textAlign='center'
         px={generalPaddingX}
+        maxW={maxi}
+        mx='auto'
       >
         <Box mb={{ base: 0, md: 0 }} w={{ md: '60%' }} m='auto'>
           <chakra.h1

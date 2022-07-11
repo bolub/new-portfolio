@@ -1,5 +1,5 @@
-import { chakra, Center, SimpleGrid } from '@chakra-ui/react';
-import { generalPaddingX } from '../utils/chakra';
+import { chakra, Center, SimpleGrid, Box } from '@chakra-ui/react';
+import { generalPaddingX, maxi } from '../utils/chakra';
 import AppliqaImage from './../public/Appliqa.jpg';
 import SendchampImage from './../public/Sendchamp.jpeg';
 import VimixImage from './../public/Vimix.jpeg';
@@ -128,27 +128,29 @@ export const projectsData = [
 const Projects = () => {
   return (
     <>
-      <chakra.section px={generalPaddingX} id='projects' py={{ base: '10' }}>
-        <Center flexDir='column' textAlign={'center'} maxW='900px' mx='auto'>
-          <chakra.h2
-            mt={10}
-            fontWeight={600}
-            fontSize={{ base: '3xl', md: '4xl' }}
-          >
-            Some of the projects that has drained my energy
-            <br /> over the years 😫...
-          </chakra.h2>
-        </Center>
+      <chakra.section id='projects'>
+        <Box px={generalPaddingX} maxW={maxi} py={{ base: '10' }} mx='auto'>
+          <Center flexDir='column' textAlign={'center'} maxW='900px' mx='auto'>
+            <chakra.h2
+              mt={10}
+              fontWeight={600}
+              fontSize={{ base: '3xl', md: '4xl' }}
+            >
+              Some of the projects that has drained my energy
+              <br /> over the years 😫...
+            </chakra.h2>
+          </Center>
 
-        <SimpleGrid
-          mt={{ base: 10, md: 24 }}
-          spacing={16}
-          columns={{ base: 1, md: 2 }}
-        >
-          {projectsData?.map((pd) => {
-            return <SingleProject key={pd.imageUrl} data={pd} />;
-          })}
-        </SimpleGrid>
+          <SimpleGrid
+            mt={{ base: 10, md: 24 }}
+            spacing={16}
+            columns={{ base: 1, md: 2 }}
+          >
+            {projectsData?.map((pd) => {
+              return <SingleProject key={pd.imageUrl} data={pd} />;
+            })}
+          </SimpleGrid>
+        </Box>
       </chakra.section>
     </>
   );

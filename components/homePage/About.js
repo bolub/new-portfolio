@@ -1,7 +1,7 @@
-import { Box, chakra, Center, SimpleGrid } from '@chakra-ui/react';
+import { chakra, Center, SimpleGrid } from '@chakra-ui/react';
 import Link from 'next/link';
 import { projectsData } from '../../pages/projects';
-import { generalPaddingX } from '../../utils/chakra';
+import { generalPaddingX, maxi } from '../../utils/chakra';
 import CustomButton from '../UI/CustomButton';
 import SingleProject from '../projects/SingleProject';
 
@@ -9,19 +9,16 @@ const About = () => {
   return (
     <chakra.section
       px={generalPaddingX}
-      id='about'
+      id='projects'
       borderTopWidth={{ base: '1px', md: 0 }}
-      mt={{ base: 6, md: 20 }}
+      mt={{ base: 6, md: 32 }}
       pt={{ base: 6, md: 0 }}
       d='flex'
       flexDir={'column'}
+      maxW={maxi}
+      mx='auto'
     >
       <Center flexDir='column' textAlign={'center'} maxW='900px' mx='auto'>
-        {/* <Text mt={5} fontSize='sm'>
-          I apologize for this picture, couldn't find a better one (was too lazy
-          to take a better one)
-        </Text> */}
-
         <chakra.h2
           mt={5}
           fontWeight='bold'

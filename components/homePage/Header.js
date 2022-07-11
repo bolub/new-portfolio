@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { Box, Flex, chakra, Text } from '@chakra-ui/react';
 
 // utils
-import { generalPaddingX } from '../../utils/chakra';
+import { generalPaddingX, maxi } from '../../utils/chakra';
 import CustomButton from '../UI/CustomButton';
 import { defaultBrandColor } from '../../chakra/colors';
 import Profile from './../../public/Bolu.png';
@@ -12,14 +12,18 @@ import Profile from './../../public/Bolu.png';
 const Header = () => {
   return (
     <chakra.header
-      h={{ base: '100%', md: '90vh' }}
+      // h={{ base: '100%', md: '90vh' }}
+      mt={24}
       d='flex'
       py={{ base: '10', md: 0 }}
+      mb={16}
     >
       <Flex
         w='100%'
         flexDir={{ base: 'column', md: 'row' }}
         px={generalPaddingX}
+        maxWidth={maxi}
+        mx='auto'
       >
         <Box w={{ base: '100%', md: '45%' }} my='auto'>
           <chakra.h1

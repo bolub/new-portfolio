@@ -735,6 +735,21 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz#8eed982e2ee6f7f4e44c253e12962980791efd46"
   integrity sha512-6U71C2Wp7r5XtFtQzYrW5iKFT67OixrSxjI4MptCHzdSVlgabczzqLe0ZSgnub/5Kp4hSbpDB1tMytZY9pwxxA==
 
+"@fontsource/nunito@^4.5.9":
+  version "4.5.9"
+  resolved "https://registry.yarnpkg.com/@fontsource/nunito/-/nunito-4.5.9.tgz#90c89de1bcf40fd1ec1ae2c75392fbe20e45a59c"
+  integrity sha512-HlCPb5MSCSEx5KhIYsIU6JqlOtvfFnTT2RB0Gcz3Pdht9rkShEYaYKVvlgYQV03+Eom8HUAYQJcDT5gaRbm6AQ==
+
+"@fontsource/outfit@^4.5.8":
+  version "4.5.8"
+  resolved "https://registry.yarnpkg.com/@fontsource/outfit/-/outfit-4.5.8.tgz#814cc49fdf36af5b7a0d2b05659a63b254ea7293"
+  integrity sha512-L9BJB9Ugb6vuFq3bCsS/gEyJqf2g8fj5cmDMY47/CtViyHkh20quTDWjnuF02gah/jXgVfuiCCKRXpRZEk/mdw==
+
+"@fontsource/prompt@^4.5.8":
+  version "4.5.8"
+  resolved "https://registry.yarnpkg.com/@fontsource/prompt/-/prompt-4.5.8.tgz#129f14f2d403fa44633d46f6891fc2fc5b5a2a13"
+  integrity sha512-Ddb1cq7nZlG+VIN25bpmrAFboZq1R6QbutKYUB6sRWE0w4ZWKjRmys1IxW2GV0QIQ476wUTDx/6T2s3we2XKPw==
+
 "@next/env@12.1.0":
   version "12.1.0"
   resolved "https://registry.yarnpkg.com/@next/env/-/env-12.1.0.tgz#73713399399b34aa5a01771fb73272b55b22c314"

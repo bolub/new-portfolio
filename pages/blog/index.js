@@ -16,7 +16,7 @@ import {
 } from '@chakra-ui/react';
 
 // utils
-import { generalPaddingX } from '../../utils/chakra';
+import { generalPaddingX, maxi } from '../../utils/chakra';
 
 // DATA FETCHING
 import axios from 'axios';
@@ -117,7 +117,14 @@ const Blog = ({ data, allTags }) => {
       <PageHeader />
 
       {/* main */}
-      <chakra.main mt={20} pt={{ base: '10' }} pb={20} px={generalPaddingX}>
+      <chakra.main
+        mt={20}
+        pt={{ base: '10' }}
+        pb={20}
+        px={generalPaddingX}
+        maxW={maxi}
+        mx='auto'
+      >
         <Box mb={12}>
           <Flex mb={5}>
             {/* Header Text */}

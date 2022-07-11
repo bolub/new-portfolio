@@ -1,4 +1,22 @@
 import '../styles/globals.css';
+import '@fontsource/outfit/400.css';
+import '@fontsource/outfit/500.css';
+import '@fontsource/outfit/600.css';
+import '@fontsource/outfit/700.css';
+import '@fontsource/outfit/800.css';
+import '@fontsource/outfit/900.css';
+import '@fontsource/nunito/400.css';
+import '@fontsource/nunito/500.css';
+import '@fontsource/nunito/600.css';
+import '@fontsource/nunito/700.css';
+import '@fontsource/nunito/800.css';
+import '@fontsource/nunito/900.css';
+import '@fontsource/prompt/400.css';
+import '@fontsource/prompt/500.css';
+import '@fontsource/prompt/600.css';
+import '@fontsource/prompt/700.css';
+import '@fontsource/prompt/800.css';
+import '@fontsource/prompt/900.css';
 
 // react
 import { useState, useEffect } from 'react';
@@ -41,7 +59,7 @@ function MyApp({ Component, pageProps }) {
         <ChakraProvider theme={customTheme}>
           <Head>
             <title>Boluwatife Abiola</title>
-            <link rel='preconnect' href='https://fonts.gstatic.com' />
+            {/* <link rel='preconnect' href='https://fonts.gstatic.com' />
             <link
               href='https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap'
               rel='stylesheet'
@@ -54,7 +72,7 @@ function MyApp({ Component, pageProps }) {
             <link
               href='https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap'
               rel='stylesheet'
-            />
+            /> */}
 
             {/* <link rel="icon" href="/favicon.ico" /> */}
           </Head>

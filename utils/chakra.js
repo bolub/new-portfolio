@@ -1,4 +1,4 @@
 export const generalPaddingX = {
   base: 4,
-  md: 20,
+  md: 32,
 };

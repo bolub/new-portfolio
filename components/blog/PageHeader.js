@@ -32,7 +32,15 @@ const PageHeader = () => {
             but I'm sure I'll probably get tired and go nuts
           </Text>
 
-          <CustomButton data-cy='start-reading' as='a' href='#posts' mb={10}>
+          <CustomButton
+            h='50px'
+            size='md'
+            data-cy='start-reading'
+            as='a'
+            href='#posts'
+            mb={20}
+            mt={4}
+          >
             <Text as='span' mr={2}>
               Start Reading
             </Text>

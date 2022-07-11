@@ -1,108 +1,117 @@
-import {
-  Box,
-  chakra,
-  Center,
-  SimpleGrid,
-  Image,
-  Wrap,
-  Tag,
-} from '@chakra-ui/react';
+import { Box, chakra, Center, SimpleGrid, Wrap, Tag } from '@chakra-ui/react';
 import { generalPaddingX } from '../utils/chakra';
+import AppliqaImage from './../public/Appliqa.jpg';
+import SendchampImage from './../public/Sendchamp.jpeg';
+import VimixImage from './../public/Vimix.jpeg';
+import SprinbleImage from './../public/Sprinble.jpeg';
+import DruzImage from './../public/Druz.jpeg';
+import MyAgeImage from './../public/MyAge.jpeg';
+import Image from 'next/image';
+import { defaultBrandColor } from '../chakra/colors';
 
-const About = () => {
-  const projects = [
-    {
-      title: 'Appliqa',
-      imageUrl: '/Appliqa.png',
-      tags: [
-        {
-          id: 'design',
-          name: 'UI/UX',
-        },
-        {
-          id: 'web_development',
-          name: 'Web development',
-        },
-      ],
-      url: 'https://appliqa.net',
-    },
-    {
-      title: 'Sendchamp',
-      imageUrl: '/Sendchamp.jpeg',
-      tags: [
-        {
-          id: 'marketing_website',
-          name: 'Marketing Website',
-        },
-        {
-          id: 'web_development',
-          name: 'Web development',
-        },
-      ],
-      url: 'https://sendchamp.com',
-    },
-    {
-      title: 'Vimix',
-      imageUrl: '/Vimix.jpeg',
-      tags: [
-        {
-          id: 'design',
-          name: 'UI/UX',
-        },
-        {
-          id: 'dashboard',
-          name: 'dashboard',
-        },
-      ],
-      url: 'https://www.figma.com/proto/SAQJGl1iZWmrAvOkvzzfuT/Vimix?page-id=1%3A2&node-id=672%3A220&starting-point-node-id=672%3A220&scaling=scale-down-width',
-    },
-    {
-      title: 'Sprinble',
-      imageUrl: '/Sprinble.jpeg',
-      tags: [
-        {
-          id: 'marketing_website',
-          name: 'Marketing Website',
-        },
-        {
-          id: 'web_development',
-          name: 'Web development',
-        },
-      ],
-      url: 'https://sprinble.com',
-    },
-    {
-      title: 'Druz',
-      imageUrl: '/Druz.jpeg',
-      tags: [
-        {
-          id: 'design',
-          name: 'UI/UX',
-        },
-        {
-          id: 'marketing_website',
-          name: 'Marketing Website',
-        },
-        {
-          id: 'dashboard',
-          name: 'dashboard',
-        },
-      ],
-      url: 'https://druz.xyz',
-    },
-    {
-      title: 'My Age Calculator',
-      imageUrl: '/MyAge.jpeg',
-      tags: [
-        {
-          id: 'Was bored and wanted to code',
-          name: 'Was bored and wanted to code',
-        },
-      ],
-      url: 'http://myage.surge.sh/',
-    },
-  ];
+export const projectsData = [
+  {
+    title: 'Appliqa',
+    description:
+      'A platform for tracking job application processes (Log interviews and tasks, make notes).',
+    imageUrl: AppliqaImage,
+    tags: [
+      {
+        id: 'design',
+        name: 'UI/UX',
+      },
+      {
+        id: 'web_development',
+        name: 'Web development',
+      },
+    ],
+    url: 'https://appliqa.net',
+  },
+  {
+    title: 'Sendchamp',
+    description:
+      'A messaging platform for growing businesses across WhatsApp, SMS, email, and voice.',
+    imageUrl: SendchampImage,
+    tags: [
+      {
+        id: 'marketing_website',
+        name: 'Marketing Website',
+      },
+      {
+        id: 'web_development',
+        name: 'Web development',
+      },
+    ],
+    url: 'https://sendchamp.com',
+  },
+  {
+    title: 'Vimix',
+    description:
+      'AI-powered social video platform for brands to generate customer video reviews, distribute on social media and analyze the impact on the engagement and revenue.',
+    imageUrl: VimixImage,
+    tags: [
+      {
+        id: 'design',
+        name: 'UI/UX',
+      },
+      {
+        id: 'dashboard',
+        name: 'dashboard',
+      },
+    ],
+    url: 'https://www.figma.com/proto/SAQJGl1iZWmrAvOkvzzfuT/Vimix?page-id=1%3A2&node-id=672%3A220&starting-point-node-id=672%3A220&scaling=scale-down-width',
+  },
+  {
+    title: 'Sprinble',
+    description: 'Software Development & Design Agency',
+    imageUrl: SprinbleImage,
+    tags: [
+      {
+        id: 'marketing_website',
+        name: 'Marketing Website',
+      },
+      {
+        id: 'web_development',
+        name: 'Web development',
+      },
+    ],
+    url: 'https://sprinble.com',
+  },
+  {
+    title: 'Druz',
+    description: 'A platform fpr receiving feedback from friends and family.',
+    imageUrl: DruzImage,
+    tags: [
+      {
+        id: 'design',
+        name: 'UI/UX',
+      },
+      {
+        id: 'marketing_website',
+        name: 'Marketing Website',
+      },
+      {
+        id: 'dashboard',
+        name: 'dashboard',
+      },
+    ],
+    url: 'https://druz.xyz',
+  },
+  {
+    title: 'My Age Calculator',
+    description: 'Simple age calculator',
+    imageUrl: MyAgeImage,
+    tags: [
+      {
+        id: 'Was bored and wanted to code',
+        name: 'Was bored and wanted to code',
+      },
+    ],
+    url: 'http://myage.surge.sh/',
+  },
+];
 
+const Projects = () => {
   return (
     <>
       <chakra.section px={generalPaddingX} id='projects' py={{ base: '10' }}>
@@ -115,7 +124,7 @@ const About = () => {
           <chakra.h2
             mt={10}
             fontWeight={600}
-            fontSize={{ base: '2xl', md: '3xl' }}
+            fontSize={{ base: '3xl', md: '4xl' }}
           >
             Some of the projects that has drained my energy
             <br /> over the years 😫...
@@ -127,7 +136,7 @@ const About = () => {
           spacing={16}
           columns={{ base: 1, md: 2 }}
         >
-          {projects?.map((pd) => {
+          {projectsData?.map((pd) => {
             return (
               <chakra.a
                 target='_blank'
@@ -135,11 +144,18 @@ const About = () => {
                 cursor='pointer'
                 key={pd.imageUrl}
               >
-                <Image
-                  src={pd.imageUrl}
-                  h={{ md: '500px' }}
-                  objectFit={'cover'}
-                />
+                <Box
+                  h={{ base: '300px', md: '500px' }}
+                  bg={defaultBrandColor}
+                  pos='relative'
+                >
+                  <Image
+                    src={pd.imageUrl}
+                    objectFit={'cover'}
+                    layout='fill'
+                    placeholder='blur'
+                  />
+                </Box>
 
                 <Wrap d={{ base: 'flex', md: 'flex' }} mt={5}>
                   {pd.tags?.map((tag) => {
@@ -165,6 +181,10 @@ const About = () => {
                 >
                   {pd.title}
                 </chakra.h3>
+
+                <chakra.p fontSize={'lg'} mt={3}>
+                  {pd.description}
+                </chakra.p>
               </chakra.a>
             );
           })}
@@ -174,4 +194,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Projects;

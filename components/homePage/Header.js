@@ -1,16 +1,18 @@
+import Image from 'next/image';
+
 // chakra
-import { Box, Flex, chakra, Text, Avatar, Image } from '@chakra-ui/react';
+import { Box, Flex, chakra, Text } from '@chakra-ui/react';
 
 // utils
 import { generalPaddingX } from '../../utils/chakra';
 import CustomButton from '../UI/CustomButton';
-import CustomLink from '../UI/CustomLink';
+import { defaultBrandColor } from '../../chakra/colors';
+import Profile from './../../public/Bolu.png';
 
 const Header = () => {
   return (
     <chakra.header
       h={{ base: '100%', md: '90vh' }}
-      // alignItems='center'
       d='flex'
       py={{ base: '10', md: 0 }}
     >
@@ -20,80 +22,71 @@ const Header = () => {
         px={generalPaddingX}
       >
         <Box w={{ base: '100%', md: '45%' }} my='auto'>
-          <chakra.h1 fontWeight={700} fontSize={{ base: '3xl', md: '4xl' }}>
-            Hello, I'm
-            <Text as='span' color='brand.500'>
-              {' '}
-              Bolu
-            </Text>
+          <chakra.h1
+            fontWeight={'700'}
+            lineHeight={'70px'}
+            fontSize={{ base: '5xl', md: '7xl' }}
+          >
+            I design and <br />
+            Build Stuff
           </chakra.h1>
-          <Text mt={4} mb={6} fontSize='17px'>
-            Welcome to my ......., well you know.
+          <Text
+            mt={{ base: 6, md: 10 }}
+            mb={6}
+            fontSize={{ base: 'lg', md: 'xl' }}
+          >
+            Hi{' '}
+            <Text as='span' fontWeight={'semibold'}>
+              {' '}
+              I'm Boluwatife Abiola
+            </Text>{' '}
+            (My friends call me bolu), and welcome to my online cave.
           </Text>
-          <Text mb={6} fontSize='17px'>
+          <Text mb={16} fontSize={{ base: 'lg', md: 'xl' }}>
             Honestly doing this was a pain, but still did it anyways, gotta have
-            an online presence and all
+            an online presence and all.
           </Text>
-          <Text mb={6} fontSize='17px'>
-            Gonna be doing a bit of{' '}
-            <CustomLink active href='/blog'>
-              blogging
-            </CustomLink>
-            , probably{' '}
-            <CustomLink active href='/cooking'>
-              cooking
-            </CustomLink>
-            , adding{' '}
-            <CustomLink active href='/resources'>
-              useful stuff
-            </CustomLink>
-            , and also uploading my{' '}
-            <CustomLink active href='/projects'>
-              portfolio.
-            </CustomLink>
-          </Text>
-          <Text mb={6} fontSize='17px'>
-            Not sure about how i feel about a logo for now though, an emoji
-            would suffice for now.
-          </Text>
+
           <CustomButton
             as='a'
             href='https://www.linkedin.com/in/abiola-boluwatife-2569a915b/details/skills/'
             mb={10}
             target='__blank'
+            size='lg'
+            h={'60px'}
           >
-            <Text as='span' fontSize='xl'>
-              🤹🏽
-            </Text>
-
-            <Text as='span' mr={2}>
-              Checkout My Special Skills
+            <Text as='span' ml={2}>
+              Checkout My Resume
             </Text>
           </CustomButton>
         </Box>
 
         {/* Illustration */}
         <Box
-          w={{ base: '100%', md: '55%' }}
+          w={{ base: '100%', md: '40%' }}
           my={{ base: 10, md: 'auto' }}
-          d={{ base: 'flex', md: 'flex' }}
+          d='flex'
+          bg='white'
+          ml={{ md: 'auto' }}
+          mr={{ md: 10 }}
         >
-          {/* <HomeIllustration m='auto' height='350' /> */}
-
           <Box
-            className='badge-base LI-profile-badge'
-            data-locale='en_US'
-            data-size='large'
-            data-theme='dark'
-            data-type='HORIZONTAL'
-            data-vanity='abiola-boluwatife-2569a915b'
-            data-version='v1'
             m='auto'
+            h={{ base: '400px', md: '600px' }}
+            w='full'
+            borderWidth={'2px'}
+            boxShadow={{
+              base: `8px 8px 0px ${defaultBrandColor}`,
+              md: `16px 16px 0px ${defaultBrandColor}`,
+            }}
+            pos='relative'
           >
-            <a
-              class='badge-base__link LI-simple-link'
-              href='https://ng.linkedin.com/in/abiola-boluwatife-2569a915b?trk=profile-badge'
-            ></a>
+            <Image
+              layout='fill'
+              objectFit='cover'
+              placeholder='blur'
+              src={Profile}
+            />
           </Box>
         </Box>
       </Flex>

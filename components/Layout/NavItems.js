@@ -124,7 +124,7 @@ const NavItems = ({ hide, componentName, closeDrawer }) => {
         return (
           <CustomLink
             key={linkData?.name}
-            fontSize={{ md: 'md' }}
+            fontSize={{ md: 'lg' }}
             display={linkData?.mobile === false && mobileHide}
             href={linkData?.href}
             onClick={() => {
@@ -149,7 +149,7 @@ const NavItems = ({ hide, componentName, closeDrawer }) => {
               <Text as='span' mr={1}>
                 🔗
               </Text>{' '}
-              More
+              <Text fontSize={'lg'}>More</Text>
             </Flex>
           }
           items={moreItems}

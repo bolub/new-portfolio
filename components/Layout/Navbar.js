@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef } from 'react';
 
 // chakra
 import {
@@ -15,15 +15,15 @@ import {
   DrawerCloseButton,
   useDisclosure,
   VStack,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 
 // utils
-import { generalPaddingX } from "../../utils/chakra";
-import { defaultBrandColor } from "../../chakra/colors";
+import { generalPaddingX } from '../../utils/chakra';
+import { defaultBrandColor } from '../../chakra/colors';
 
 // components
-import Link from "next/link";
-import NavItems from "./NavItems";
+import Link from 'next/link';
+import NavItems from './NavItems';
 
 // import Banner from "./Banner";
 
@@ -36,17 +36,17 @@ const Navbar = () => {
       {/* <Banner /> */}
       <chakra.nav
         borderTop={`4px solid ${defaultBrandColor}`}
-        w="100%"
-        height="10vh"
-        d="flex"
+        w='100%'
+        height='10vh'
+        d='flex'
         px={generalPaddingX}
       >
-        <Link passHref href="/">
+        <Link passHref href='/'>
           <Text
-            cursor="pointer"
+            cursor='pointer'
             fontWeight={900}
-            my="auto"
-            fontSize="2xl"
+            my='auto'
+            fontSize='2xl'
             mr={5}
           >
             😎
@@ -55,38 +55,38 @@ const Navbar = () => {
 
         {/* Desktop view */}
         <HStack
-          d={{ base: "none", md: "flex" }}
-          spacing={8}
-          my="auto"
-          ml="auto"
-          overflowX="auto"
+          d={{ base: 'none', md: 'flex' }}
+          spacing={10}
+          my='auto'
+          ml='auto'
+          overflowX='auto'
         >
           <NavItems />
         </HStack>
 
         {/* Mobile view */}
-        <Tooltip label="Menu" aria-label="Menu">
-          <HStack ml="auto" d={{ base: "flex", md: "none" }}>
-            <a href="#footer">
+        <Tooltip label='Menu' aria-label='Menu'>
+          <HStack ml='auto' d={{ base: 'flex', md: 'none' }}>
+            <a href='#footer'>
               <Button
-                ml="auto"
-                colorScheme="brand"
-                variant="ghost"
+                ml='auto'
+                colorScheme='brand'
+                variant='ghost'
                 p={1}
-                borderRadius="md"
-                my="auto"
+                borderRadius='md'
+                my='auto'
               >
                 <Text>☎️</Text>
               </Button>
             </a>
 
             <Button
-              colorScheme="brand"
-              variant="ghost"
+              colorScheme='brand'
+              variant='ghost'
               p={1}
-              borderRadius="md"
-              my="auto"
-              fontSize="lg"
+              borderRadius='md'
+              my='auto'
+              fontSize='lg'
               ref={btnRef}
               onClick={onOpen}
             >
@@ -97,7 +97,7 @@ const Navbar = () => {
 
         <Drawer
           isOpen={isOpen}
-          placement="right"
+          placement='right'
           onClose={onClose}
           finalFocusRef={btnRef}
         >
@@ -105,14 +105,14 @@ const Navbar = () => {
           <DrawerContent>
             <DrawerCloseButton />
 
-            <DrawerBody d="flex">
-              <VStack spacing={10} m="auto">
+            <DrawerBody d='flex'>
+              <VStack spacing={12} m='auto'>
                 <NavItems closeDrawer={onClose} />
               </VStack>
             </DrawerBody>
 
-            <DrawerFooter border="none">
-              <Button variant="outline" onClick={onClose}>
+            <DrawerFooter border='none'>
+              <Button variant='outline' onClick={onClose}>
                 Close
               </Button>
             </DrawerFooter>

@@ -13,7 +13,7 @@ const Header = () => {
   return (
     <chakra.header
       // h={{ base: '100%', md: '90vh' }}
-      mt={24}
+      mt={{ md: 24 }}
       d='flex'
       py={{ base: '10', md: 0 }}
       mb={16}

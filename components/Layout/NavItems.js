@@ -85,12 +85,26 @@ const NavItems = ({ hide, componentName, closeDrawer }) => {
     },
 
     {
-      name: 'Contact',
-      emoji: '☎️',
-      href: '#footer',
-      hide: hide === 'contact',
-      mobile: false,
+      name: 'Resources',
+      emoji: '📚',
+      href: '/resources',
+      hide: hide === 'resources',
+      mobile: true,
     },
+    {
+      name: 'Built with',
+      emoji: '🧰',
+      href: '/built-with',
+      hide: hide === 'resources',
+      mobile: true,
+    },
+    // {
+    //   name: 'Contact',
+    //   emoji: '☎️',
+    //   href: '#footer',
+    //   hide: hide === 'contact',
+    //   mobile: false,
+    // },
   ];
 
   const moreItems = [
@@ -140,7 +154,7 @@ const NavItems = ({ hide, componentName, closeDrawer }) => {
         );
       })}
 
-      <Box
+      {/* <Box
       // d={componentName !== "footer" && { base: "none", md: "inline" }}
       >
         <CustomMenu
@@ -154,7 +168,7 @@ const NavItems = ({ hide, componentName, closeDrawer }) => {
           }
           items={moreItems}
         />
-      </Box>
+      </Box> */}
 
       <Modal
         closeOnOverlayClick={false}

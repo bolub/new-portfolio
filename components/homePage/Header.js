@@ -53,7 +53,7 @@ const Header = () => {
 
           <CustomButton
             as='a'
-            href='https://www.linkedin.com/in/abiola-boluwatife-2569a915b/details/skills/'
+            href='https://www.linkedin.com/in/abiola-boluwatife-2569a915b/'
             mb={10}
             target='__blank'
             size='lg'

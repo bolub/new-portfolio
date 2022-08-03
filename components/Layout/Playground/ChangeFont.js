@@ -57,7 +57,12 @@ const ChangeFont = () => {
         {allHeaderFonts?.map((font) => {
           return (
             <FormControl key={font} mb={2} display='flex' alignItems='center'>
-              <FormLabel fontFamily={font} htmlFor='email-alerts' mb='0'>
+              <FormLabel
+                fontSize={{ base: 'sm', md: 'md' }}
+                fontFamily={font}
+                htmlFor='email-alerts'
+                mb='0'
+              >
                 {font}
               </FormLabel>
               <Switch
@@ -89,7 +94,11 @@ const ChangeFont = () => {
         {allBodyFonts?.map((font) => {
           return (
             <FormControl key={font} mb={2} display='flex' alignItems='center'>
-              <FormLabel htmlFor='email-alerts' mb='0'>
+              <FormLabel
+                fontSize={{ base: 'sm', md: 'md' }}
+                htmlFor='email-alerts'
+                mb='0'
+              >
                 {font}
               </FormLabel>
               <Switch
@@ -123,15 +132,23 @@ const ChangeFont = () => {
           borderColor='#c4c4c4'
           fontFamily={fontType.heading}
         >
-          <Text fontSize='sm'>Header Text Preview</Text>
-          <Text fontWeight={900} fontSize='xl' contentEditable>
+          <Text fontSize={{ base: 'xs', md: 'sm' }}>Header Text Preview</Text>
+          <Text
+            fontWeight={900}
+            fontSize={{ base: 'md', md: 'xl' }}
+            contentEditable
+          >
             This is Header Text
           </Text>
         </Box>
 
         <Box px={5} py={5} fontFamily={fontType.body}>
-          <Text fontSize='sm'>Body Text Preview</Text>
-          <Text fontWeight={900} fontSize='xl' contentEditable>
+          <Text fontSize={{ base: 'xs', md: 'sm' }}>Body Text Preview</Text>
+          <Text
+            fontWeight={900}
+            fontSize={{ base: 'md', md: 'xl' }}
+            contentEditable
+          >
             This is body Text
           </Text>
         </Box>

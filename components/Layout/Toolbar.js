@@ -60,7 +60,7 @@ const Toolbar = () => {
         alignItems={'center'}
       >
         {/* fonts */}
-        <Popover>
+        <Popover placement='top-start'>
           <PopoverTrigger>
             <IconButton
               aria-label='Change font'
@@ -95,7 +95,12 @@ const Toolbar = () => {
             <PopoverArrow />
             <PopoverCloseButton />
             {/* <PopoverHeader>Change font</PopoverHeader> */}
-            <PopoverBody pt={6} px={6} d='flex' flexDir={'column'}>
+            <PopoverBody
+              pt={{ base: 32, md: 10 }}
+              px={6}
+              d='flex'
+              flexDir={'column'}
+            >
               <ChangeFont />
               <Button
                 onClick={() => {

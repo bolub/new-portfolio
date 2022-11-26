@@ -1,15 +1,23 @@
 // nextjs link
-import Link from "next/link";
-import { useRouter } from "next/router";
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 // chakra
-import { chakra } from "@chakra-ui/react";
+import { chakra } from '@chakra-ui/react';
 
 // recoil
-import { useRecoilValue } from "recoil";
-import { fontState } from "../../atoms/fonts";
+import { useRecoilValue } from 'recoil';
+import { fontState } from '../../atoms/fonts';
 
-const CustomLink = ({ href, children, active, fontSize, onClick, display }) => {
+const CustomLink = ({
+  href,
+  children,
+  active,
+  fontSize,
+  onClick,
+  display,
+  isExternal,
+}) => {
   const fontType = useRecoilValue(fontState);
 
   // next router initialization
@@ -21,19 +29,20 @@ const CustomLink = ({ href, children, active, fontSize, onClick, display }) => {
     <Link href={href} passHref>
       <chakra.a
         fontFamily={fontType.heading}
-        borderBottom="1.3px solid"
-        borderColor={isActive ? "brand.500" : "#c4c4c4"}
-        color={isActive && "brand.500"}
-        fontWeight={isActive && "600"}
+        borderBottom='1.3px solid'
+        borderColor={isActive ? 'brand.500' : '#c4c4c4'}
+        color={isActive && 'brand.500'}
+        fontWeight={isActive && '600'}
         fontSize={fontSize}
-        d={display || "inline-flex"}
-        cursor="pointer"
+        d={display || 'inline-flex'}
+        cursor='pointer'
         _hover={{
-          backgroundColor: "brand.50",
-          borderBottomColor: "brand.500",
-          color: "brand.500",
+          backgroundColor: 'brand.50',
+          borderBottomColor: 'brand.500',
+          color: 'brand.500',
         }}
         onClick={onClick}
+        target={isExternal && '__blank'}
       >
         {children}
       </chakra.a>

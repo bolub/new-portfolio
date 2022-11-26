@@ -7,7 +7,7 @@ import SprinbleImage from './../public/Sprinble.jpeg';
 import DruzImage from './../public/Druz.jpeg';
 import MyAgeImage from './../public/MyAge.jpeg';
 import SingleProject from '../components/projects/SingleProject';
-import KokuaImage from './../public/Kokua.jpeg';
+import KokuaImage from './../public/kokua.jpeg';
 
 export const projectsData = [
   {

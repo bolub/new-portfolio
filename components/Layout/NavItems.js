@@ -68,6 +68,7 @@ const NavItems = ({ hide, componentName, closeDrawer }) => {
       href: '/',
       hide: hide === 'home',
       mobile: true,
+      isExternal: false,
     },
     {
       name: 'Projects',
@@ -75,6 +76,7 @@ const NavItems = ({ hide, componentName, closeDrawer }) => {
       href: '/projects',
       hide: hide === 'projects',
       mobile: true,
+      isExternal: false,
     },
     {
       name: 'Blog',
@@ -82,14 +84,16 @@ const NavItems = ({ hide, componentName, closeDrawer }) => {
       href: '/blog',
       hide: hide === 'blog',
       mobile: true,
+      isExternal: false,
     },
 
     {
       name: 'Resources',
       emoji: '📚',
-      href: '/resources',
+      href: 'https://www.kokua.wiki/',
       hide: hide === 'resources',
       mobile: true,
+      isExternal: true,
     },
     {
       name: 'Built with',
@@ -97,6 +101,7 @@ const NavItems = ({ hide, componentName, closeDrawer }) => {
       href: '/built-with',
       hide: hide === 'resources',
       mobile: true,
+      isExternal: false,
     },
     // {
     //   name: 'Contact',
@@ -145,6 +150,7 @@ const NavItems = ({ hide, componentName, closeDrawer }) => {
               if (!closeDrawer) return;
               closeDrawer();
             }}
+            isExternal={linkData?.isExternal}
           >
             <Text as='span' mr={1}>
               {linkData?.emoji}

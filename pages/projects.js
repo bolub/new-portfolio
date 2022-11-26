@@ -7,8 +7,33 @@ import SprinbleImage from './../public/Sprinble.jpeg';
 import DruzImage from './../public/Druz.jpeg';
 import MyAgeImage from './../public/MyAge.jpeg';
 import SingleProject from '../components/projects/SingleProject';
+import KokuaImage from './../public/Kokua.jpeg';
 
 export const projectsData = [
+  {
+    title: 'Kokua',
+    description:
+      'Basically free programming resources for both frontend and backend develpooment 😇.',
+    imageUrl: KokuaImage,
+    tags: [
+      {
+        id: 'design',
+        name: 'UI/UX',
+      },
+      {
+        id: 'web_development',
+        name: 'Web development',
+      },
+      {
+        id: 'free_resources',
+        name: 'Free resources',
+      },
+    ],
+    url: 'https://kokua.wiki',
+    sourceCode: 'https://github.com/bolub/kokua-frontend',
+    deignUrl:
+      'https://www.figma.com/file/h4oC9OO52RapSVg4Bobewv/Kokua?node-id=84%3A5391&t=TJ6DsKTcJUBGhweR-4',
+  },
   {
     title: 'Appliqa',
     description:

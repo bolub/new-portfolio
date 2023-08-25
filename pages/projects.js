@@ -1,4 +1,11 @@
-import { chakra, Center, SimpleGrid, Box } from '@chakra-ui/react';
+import {
+  chakra,
+  Center,
+  SimpleGrid,
+  Box,
+  HStack,
+  Button,
+} from '@chakra-ui/react';
 import { generalPaddingX, maxi } from '../utils/chakra';
 import AppliqaImage from './../public/Appliqa.jpg';
 import SendchampImage from './../public/Sendchamp.jpeg';
@@ -9,6 +16,7 @@ import MyAgeImage from './../public/MyAge.jpeg';
 import SingleProject from '../components/projects/SingleProject';
 import KokuaImage from './../public/kokua.jpeg';
 import SiegfriedImage from './../public/Siegfried2.jpeg';
+import { useRouter } from 'next/router';
 
 export const projectsData = [
   {
@@ -24,6 +32,10 @@ export const projectsData = [
       {
         id: 'web_development',
         name: 'Web development',
+      },
+      {
+        id: 'personal',
+        name: 'Personal',
       },
     ],
     url: 'https://siegfried.dev',
@@ -42,6 +54,10 @@ export const projectsData = [
       {
         id: 'web_development',
         name: 'Web development',
+      },
+      {
+        id: 'personal',
+        name: 'Personal',
       },
     ],
     url: 'https://appliqa.net',
@@ -67,6 +83,10 @@ export const projectsData = [
         id: 'free_resources',
         name: 'Free resources',
       },
+      {
+        id: 'personal',
+        name: 'Personal',
+      },
     ],
     url: 'https://kokua.wiki',
     sourceCode: 'https://github.com/bolub/kokua-frontend',
@@ -87,6 +107,10 @@ export const projectsData = [
         id: 'web_development',
         name: 'Web development',
       },
+      {
+        id: 'contract',
+        name: 'Contract',
+      },
     ],
     url: 'https://sendchamp.com',
     sourceCode: '',
@@ -106,6 +130,10 @@ export const projectsData = [
         id: 'dashboard',
         name: 'dashboard',
       },
+      {
+        id: 'contract',
+        name: 'Contract',
+      },
     ],
     url: 'https://vimix.ai',
     sourceCode: '',
@@ -124,6 +152,10 @@ export const projectsData = [
       {
         id: 'web_development',
         name: 'Web development',
+      },
+      {
+        id: 'contract',
+        name: 'Contract',
       },
     ],
     url: 'https://sprinble.com',
@@ -147,6 +179,10 @@ export const projectsData = [
         id: 'dashboard',
         name: 'dashboard',
       },
+      {
+        id: 'collaboration',
+        name: 'Collaboration',
+      },
     ],
     url: 'https://druz.xyz',
     sourceCode: '',
@@ -162,6 +198,10 @@ export const projectsData = [
         id: 'Was bored and wanted to code',
         name: 'Was bored and wanted to code',
       },
+      {
+        id: 'personal',
+        name: 'Personal',
+      },
     ],
     url: 'http://myage.surge.sh/',
     sourceCode: 'https://github.com/bolub/MyAge',
@@ -169,7 +209,38 @@ export const projectsData = [
   },
 ];
 
+const projectTypes = [
+  {
+    label: 'All',
+  },
+  {
+    label: 'Personal',
+  },
+  {
+    label: 'Contract',
+  },
+  {
+    label: 'Collaboration',
+  },
+];
+
 const Projects = () => {
+  const router = useRouter();
+  const selectedProjectType = router.query.tab || 'All';
+
+  const handleClick = (selected) => {
+    router.push(`/projects?tab=${selected}`);
+  };
+
+  const filteredProjects = projectsData.filter((project) => {
+    return project.tags.some((tag) => {
+      return tag.name.toLowerCase() === selectedProjectType.toLowerCase();
+    });
+  });
+
+  const projectsList =
+    selectedProjectType === 'All' ? projectsData : filteredProjects;
+
   return (
     <>
       <chakra.section id='projects'>
@@ -185,12 +256,49 @@ const Projects = () => {
             </chakra.h2>
           </Center>
 
-          <SimpleGrid
-            mt={{ base: 10, md: 24 }}
-            spacing={16}
-            columns={{ base: 1, md: 2 }}
+          <HStack
+            mx='auto'
+            my={{ base: 10, md: 20 }}
+            bg='brand.50'
+            p={1}
+            borderRadius='md'
+            spacing={2}
+            w='fit-content'
           >
-            {projectsData?.map((pd) => {
+            {projectTypes.map((pj) => {
+              const isActive = pj.label === selectedProjectType;
+
+              return (
+                <Box key={pj.label}>
+                  <Button
+                    display={{ md: 'none' }}
+                    size='sm'
+                    onClick={() => {
+                      handleClick(pj.label);
+                    }}
+                    colorScheme='brand'
+                    variant={isActive ? 'solid' : 'ghost'}
+                  >
+                    {pj.label}
+                  </Button>
+
+                  <Button
+                    display={{ base: 'none', md: 'inline-block' }}
+                    onClick={() => {
+                      handleClick(pj.label);
+                    }}
+                    colorScheme='brand'
+                    variant={isActive ? 'solid' : 'ghost'}
+                  >
+                    {pj.label}
+                  </Button>
+                </Box>
+              );
+            })}
+          </HStack>
+
+          <SimpleGrid spacing={16} columns={{ base: 1, md: 2 }}>
+            {projectsList?.map((pd) => {
               return <SingleProject key={pd.imageUrl} data={pd} />;
             })}
           </SimpleGrid>

@@ -8,8 +8,47 @@ import DruzImage from './../public/Druz.jpeg';
 import MyAgeImage from './../public/MyAge.jpeg';
 import SingleProject from '../components/projects/SingleProject';
 import KokuaImage from './../public/kokua.jpeg';
+import SiegfriedImage from './../public/Siegfried2.jpeg';
 
 export const projectsData = [
+  {
+    title: 'Siegfried',
+    description:
+      'A platform to create personalized contracts and send them for quick and secure electronic signatures',
+    imageUrl: SiegfriedImage,
+    tags: [
+      {
+        id: 'design',
+        name: 'UI/UX',
+      },
+      {
+        id: 'web_development',
+        name: 'Web development',
+      },
+    ],
+    url: 'https://siegfried.dev',
+    sourceCode: 'https://github.com/bolub/siegfried',
+  },
+  {
+    title: 'Appliqa',
+    description:
+      'A platform for tracking job application processes (Log interviews and tasks, make notes).',
+    imageUrl: AppliqaImage,
+    tags: [
+      {
+        id: 'design',
+        name: 'UI/UX',
+      },
+      {
+        id: 'web_development',
+        name: 'Web development',
+      },
+    ],
+    url: 'https://appliqa.net',
+    sourceCode: 'https://github.com/bolub/appliqa',
+    deignUrl:
+      'https://www.figma.com/proto/WGWOb9CSpAAMbotlUk8xXf/Appliqa?page-id=1%3A4&node-id=63%3A1769&viewport=378%2C262%2C0.02&scaling=scale-down-width&starting-point-node-id=63%3A1769&show-proto-sidebar=1',
+  },
   {
     title: 'Kokua',
     description:
@@ -33,26 +72,6 @@ export const projectsData = [
     sourceCode: 'https://github.com/bolub/kokua-frontend',
     deignUrl:
       'https://www.figma.com/file/h4oC9OO52RapSVg4Bobewv/Kokua?node-id=84%3A5391&t=TJ6DsKTcJUBGhweR-4',
-  },
-  {
-    title: 'Appliqa',
-    description:
-      'A platform for tracking job application processes (Log interviews and tasks, make notes).',
-    imageUrl: AppliqaImage,
-    tags: [
-      {
-        id: 'design',
-        name: 'UI/UX',
-      },
-      {
-        id: 'web_development',
-        name: 'Web development',
-      },
-    ],
-    url: 'https://appliqa.net',
-    sourceCode: 'https://github.com/bolub/appliqa',
-    deignUrl:
-      'https://www.figma.com/proto/WGWOb9CSpAAMbotlUk8xXf/Appliqa?page-id=1%3A4&node-id=63%3A1769&viewport=378%2C262%2C0.02&scaling=scale-down-width&starting-point-node-id=63%3A1769&show-proto-sidebar=1',
   },
   {
     title: 'Sendchamp',

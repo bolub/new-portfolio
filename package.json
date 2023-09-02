@@ -28,6 +28,7 @@
     "react-icons": "^4.4.0",
     "react-markdown": "^6.0.2",
     "react-speech": "^1.0.2",
+    "react-use": "^17.4.0",
     "recoil": "^0.3.1",
     "rehype-raw": "^5.1.0"
   },

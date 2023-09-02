@@ -7,28 +7,38 @@ import {
   HStack,
   IconButton,
   Tooltip,
+  AspectRatio,
 } from '@chakra-ui/react';
 import Image from 'next/image';
-import { defaultBrandColor } from '../../chakra/colors';
 import {
   BsCodeSlash,
   BsBezier,
   BsLayoutTextWindowReverse,
 } from 'react-icons/bs';
+import { VideoPlayer } from '../VideoPlayer';
 
 const SingleProject = ({ data }) => {
   return (
-    <chakra.a target='_blank' href={data.url} cursor='pointer'>
-      <Box h={{ base: '300px', md: '500px' }} pos='relative'>
-        <Image
-          src={data.imageUrl}
-          objectFit={'cover'}
-          layout='fill'
-          placeholder='blur'
-        />
-      </Box>
+    // <chakra.a target='_blank' href={data.url} cursor='pointer'>
+    <Box>
+      {data.imageUrl && (
+        <Box h={{ base: '300px', md: '500px' }} pos='relative'>
+          <Image
+            src={data.imageUrl}
+            objectFit={'cover'}
+            layout='fill'
+            placeholder='blur'
+          />
+        </Box>
+      )}
 
-      <Wrap d={{ base: 'flex', md: 'flex' }} mt={5}>
+      {data.videoUrl && (
+        <AspectRatio h={{ base: '300px', md: '500px' }} ratio={1}>
+          <VideoPlayer src={data.videoUrl} />
+        </AspectRatio>
+      )}
+
+      <Wrap display={{ base: 'flex', md: 'flex' }} mt={5}>
         {data.tags?.map((tag) => {
           return (
             <Tag
@@ -105,7 +115,7 @@ const SingleProject = ({ data }) => {
       <chakra.p fontSize={'lg'} mt={3}>
         {data.description}
       </chakra.p>
-    </chakra.a>
+    </Box>
   );
 };
 

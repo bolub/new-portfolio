@@ -20,6 +20,30 @@ import { useRouter } from 'next/router';
 
 export const projectsData = [
   {
+    title: 'Timely',
+    description:
+      'A platform to create personalized contracts and send them for quick and secure electronic signatures',
+    imageUrl: null,
+    videoUrl:
+      'https://res.cloudinary.com/bolub/video/upload/v1693671790/portfolio%28boluabiola.com%29/TimelyMobileDemoCompressed.mp4',
+    tags: [
+      {
+        id: 'design',
+        name: 'UI/UX',
+      },
+      {
+        id: 'mobile_development',
+        name: 'Mobile development',
+      },
+      {
+        id: 'personal',
+        name: 'Personal',
+      },
+    ],
+    url: 'https://expo.dev/artifacts/eas/772erbXdLYGcguCzz7aTCe.apk',
+    sourceCode: 'https://github.com/bolub/timely',
+  },
+  {
     title: 'Siegfried',
     description:
       'A platform to create personalized contracts and send them for quick and secure electronic signatures',

@@ -22,7 +22,7 @@ export const projectsData = [
   {
     title: 'Timely',
     description:
-      'A platform to create personalized contracts and send them for quick and secure electronic signatures',
+      'A platform to check time across different countries and their respective timezones',
     imageUrl: null,
     videoUrl:
       'https://res.cloudinary.com/bolub/video/upload/v1693671790/portfolio%28boluabiola.com%29/TimelyMobileDemoCompressed.mp4',

@@ -5,4 +5,7 @@ module.exports = {
     domains: ['images.prismic.io', 'res.cloudinary.com'],
   },
   reactStrictMode: true,
+  experimental: {
+    swcPlugins: [['next-superjson-plugin', {}]],
+  },
 };

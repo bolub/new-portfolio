@@ -4,8 +4,8 @@ let defaultHeading = 'Space Grotesk',
   defaultBody = 'Jost';
 
 if (typeof window !== 'undefined') {
-  defaultHeading = localStorage.getItem('fontHeading');
-  defaultBody = localStorage.getItem('fontBody');
+  defaultHeading = localStorage.getItem('fontHeading')!;
+  defaultBody = localStorage.getItem('fontBody')!;
 }
 
 const fontState = atom({

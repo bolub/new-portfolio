@@ -6,25 +6,25 @@ import { Box, Flex, chakra, Text } from '@chakra-ui/react';
 // utils
 import { generalPaddingX, maxi } from '../utils/chakra';
 
-// axios
-import axios from 'axios';
-
 // components
 import CustomSeo from '../components/Layout/Seo';
 import SectionTechnologies from '../components/built-with/SectionTechnologies';
+import { trpc } from '../utils/trpc';
 
-const BuiltWith = ({ data }) => {
+const BuiltWith = () => {
+  const { data: bwrData } = trpc.builtWith.all.useQuery();
+
   // frontend
-  const allFrontend = data?.filter((bd) => {
-    return bd.tag === 'frontend';
+  const allFrontend = bwrData?.filter((bd) => {
+    return bd.tags[0].name.toLowerCase() === 'frontend';
   });
 
-  const allBackend = data?.filter((bd) => {
-    return bd.tag === 'backend';
+  const allBackend = bwrData?.filter((bd) => {
+    return bd.tags.some((t) => t.name.toLowerCase() === 'backend');
   });
 
-  const allHosting = data?.filter((bd) => {
-    return bd.tag === 'hosting';
+  const allHosting = bwrData?.filter((bd) => {
+    return bd.tags[0].name.toLowerCase() === 'hosting';
   });
 
   return (
@@ -82,26 +82,26 @@ const BuiltWith = ({ data }) => {
 
 export default BuiltWith;
 
-export async function getStaticProps(context) {
-  try {
-    const response = await axios.get(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/built-widths`
-    );
+// export async function getStaticProps(context) {
+//   try {
+//     const response = await axios.get(
+//       `${process.env.NEXT_PUBLIC_BASE_URL}/built-widths`
+//     );
 
-    return {
-      props: {
-        data: response.data,
-      }, // will be passed to the page component as props
-      revalidate: 1,
-    };
-  } catch (error) {
-    // console.log(error);
-    return {
-      props: {
-        data: [],
-        status: 'error',
-      }, // will be passed to the page component as props
-      revalidate: 1,
-    };
-  }
-}
+//     return {
+//       props: {
+//         data: response.data,
+//       }, // will be passed to the page component as props
+//       revalidate: 1,
+//     };
+//   } catch (error) {
+//     // console.log(error);
+//     return {
+//       props: {
+//         data: [],
+//         status: 'error',
+//       }, // will be passed to the page component as props
+//       revalidate: 1,
+//     };
+//   }
+// }

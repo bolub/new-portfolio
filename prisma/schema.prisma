@@ -30,6 +30,8 @@ enum Status {
 model Post {
   id              String @id @default(cuid())
   status          Status @default(DRAFT)
+  image_url       String?
+  summary         String?
   title           String
   content         String
   tags            Tag[]
@@ -48,6 +50,7 @@ model BuiltWith {
 
 model Comment{
   id              String @id @default(cuid())
+  author          String
   postId          String  
   post            Post @relation(fields: [postId], references: [id])         
   message         String

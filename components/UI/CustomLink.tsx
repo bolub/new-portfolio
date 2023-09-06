@@ -8,6 +8,7 @@ import { chakra } from '@chakra-ui/react';
 // recoil
 import { useRecoilValue } from 'recoil';
 import { fontState } from '../../atoms/fonts';
+import { ReactNode } from 'react';
 
 const CustomLink = ({
   href,
@@ -17,6 +18,14 @@ const CustomLink = ({
   onClick,
   display,
   isExternal,
+}: {
+  href: string;
+  children: ReactNode;
+  active?: boolean;
+  fontSize?: string | number;
+  onClick?: () => void;
+  display?: any;
+  isExternal?: boolean;
 }) => {
   const fontType = useRecoilValue(fontState);
 
@@ -25,16 +34,17 @@ const CustomLink = ({
 
   // looks obvious enough
   let isActive = active || pathname === href;
+
   return (
     <Link href={href} passHref>
       <chakra.a
         fontFamily={fontType.heading}
         borderBottom='1.3px solid'
         borderColor={isActive ? 'brand.500' : '#c4c4c4'}
-        color={isActive && 'brand.500'}
-        fontWeight={isActive && '600'}
+        color={isActive ? 'brand.500' : ''}
+        fontWeight={isActive ? '600' : ''}
         fontSize={fontSize}
-        d={display || 'inline-flex'}
+        display={display || 'inline-flex'}
         cursor='pointer'
         _hover={{
           backgroundColor: 'brand.50',
@@ -42,7 +52,7 @@ const CustomLink = ({
           color: 'brand.500',
         }}
         onClick={onClick}
-        target={isExternal && '__blank'}
+        target={isExternal ? '__blank' : ''}
       >
         {children}
       </chakra.a>

@@ -3,11 +3,11 @@ import { atom } from 'recoil';
 let defaultColor = 'red';
 
 if (typeof window !== 'undefined') {
-  defaultColor = localStorage.getItem('defaultColor');
+  defaultColor = localStorage.getItem('defaultColor')!;
 }
 
 const colorsState = atom({
-  key: 'fontState',
+  key: 'colorState',
   default: {
     defaultColor,
   },

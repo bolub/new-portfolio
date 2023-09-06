@@ -4,9 +4,6 @@ import { Box, Flex, chakra, Text, HStack } from '@chakra-ui/react';
 // utils
 import { generalPaddingX, maxi } from '../../../utils/chakra';
 
-// DATA FETCHING
-import axios from 'axios';
-
 // markdown
 import ReactMarkdown from 'react-markdown';
 
@@ -19,42 +16,38 @@ import { HiChevronLeft } from 'react-icons/hi';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import CustomLink from '../../../components/UI/CustomLink';
-// import AudioBlog from "../../../components/blog/AudioBlog";
 import CustomSeo from '../../../components/Layout/Seo';
 import Share from '../../../components/blog/Share';
 import Comments from '../../../components/blog/Comments';
-import { useState } from 'react';
-import { useRouter } from 'next/router';
 import Image from 'next/image';
+import { trpc } from '../../../utils/trpc';
+import prisma from '../../../utils/db';
+import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
+import { trpcHelpers } from '../../../server/routers/_app';
 dayjs.extend(advancedFormat);
 
-const Blog = ({ data }) => {
-  const { params } = useRouter();
+const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const { id } = props;
 
-  // blog data
-  const [blogData, setBlogData] = useState(data);
-
-  const refetchPostData = async () => {
-    try {
-      const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/blog-posts/${params.id}`
-      );
-
-      setBlogData(response.data);
-    } catch (error) {}
-  };
+  const { data: blogData, refetch: refetchPostData } = trpc.post.view.useQuery(
+    {
+      id,
+    },
+    {
+      enabled: !!id,
+    }
+  );
 
   return (
     <>
       <CustomSeo
-        title={blogData?.Title}
-        description={blogData?.summary}
-        imageUrl={blogData?.cover_image?.name}
+        title={blogData?.title || ''}
+        description={blogData?.summary || ''}
+        imageUrl={blogData?.image_url || ''}
       />
 
       <chakra.header d='flex' pt={{ base: '10' }} w='100%'>
-        {/* back button */}
-
+        {/* @ts-ignore */}
         <Flex
           w='100%'
           flexDir={{ base: 'column' }}
@@ -65,7 +58,11 @@ const Blog = ({ data }) => {
           mx='auto'
           pos='relative'
         >
-          <chakra.div d={{ base: 'none', md: 'flex' }} pos='absolute' top={0}>
+          <chakra.div
+            display={{ base: 'none', md: 'flex' }}
+            pos='absolute'
+            top={0}
+          >
             <CustomLink href='/blog'>
               <Text my='auto' mr={1} fontSize='md'>
                 <HiChevronLeft />
@@ -93,19 +90,20 @@ const Blog = ({ data }) => {
               // color="brand.500"
               fontSize={{ base: '3xl', md: '4xl' }}
             >
-              {blogData?.Title}
+              {blogData?.title}
             </chakra.h1>
 
             <Text mt={2} fontWeight={600}>
               Bolu Abiola
             </Text>
-            <Text>{dayjs(blogData?.published_at).format('Do MMM YYYY')}</Text>
+            <Text>{dayjs(blogData?.createdAt).format('Do MMM YYYY')}</Text>
 
             <Box mt={5} w='100%' h='420px' pos='relative'>
               <Image
+                alt={blogData?.title || ''}
                 layout='fill'
                 src={`${
-                  blogData?.cover_image?.name ||
+                  blogData?.image_url ||
                   'https://res.cloudinary.com/bolub/image/upload/v1623525073/Group_1_1.png'
                 }`}
               />
@@ -125,14 +123,12 @@ const Blog = ({ data }) => {
         w='100%'
       >
         <Box w={{ base: '100%', md: '60%' }} m='auto'>
-          {/* Talk about the blog */}
-          {/* <AudioBlog content={blogData?.content} /> */}
-
           {/* content */}
           <chakra.p lineHeight={1.8} mb={1} fontSize='md'>
             <ReactMarkdown
               rehypePlugins={[rehypeRaw]}
-              children={blogData?.content}
+              // @ts-ignore
+              children={blogData ? blogData?.content : <></>}
             />
           </chakra.p>
 
@@ -140,7 +136,7 @@ const Blog = ({ data }) => {
           <Share />
 
           {/* comments */}
-          <Comments blogData={data} refetchPostData={refetchPostData} />
+          <Comments blogData={blogData} refetchPostData={refetchPostData} />
         </Box>
       </chakra.main>
     </>
@@ -149,40 +145,34 @@ const Blog = ({ data }) => {
 
 export default Blog;
 
-export const getStaticPaths = async ({ params }) => {
-  // Call an external API endpoint to get posts
-  const response = await axios.get(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/blog-posts`
-  );
+export const getStaticPaths = async () => {
+  const posts = await prisma.post.findMany({
+    select: {
+      id: true,
+    },
+  });
 
-  const posts = response.data;
-
-  const paths = posts.map((post) => ({
-    params: { id: JSON.stringify(post.id) },
-  }));
-
-  return { paths, fallback: false };
+  return {
+    paths: posts.map((post) => ({
+      params: {
+        id: post.id,
+      },
+    })),
+    fallback: 'blocking',
+  };
 };
 
-export const getStaticProps = async ({ params }) => {
-  try {
-    const response = await axios.get(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/blog-posts/${params?.id}`
-    );
+export async function getStaticProps(
+  context: GetStaticPropsContext<{ id: string }>
+) {
+  const id = context.params?.id as string;
 
-    return {
-      props: {
-        data: response.data,
-        status: 'success',
-      },
-      revalidate: 1,
-    };
-  } catch (error) {
-    return {
-      props: {
-        status: 'error',
-      },
-      revalidate: 1,
-    };
-  }
-};
+  await trpcHelpers.post.view.prefetch({ id });
+  return {
+    props: {
+      trpcState: trpcHelpers.dehydrate(),
+      id,
+    },
+    revalidate: 1,
+  };
+}

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "nox prisma generate && next build",
     "start": "next start",
     "cypress": "cypress open"
   },

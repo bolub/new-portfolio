@@ -16,25 +16,33 @@
     "@fontsource/nunito": "^4.5.9",
     "@fontsource/outfit": "^4.5.8",
     "@fontsource/prompt": "^4.5.8",
+    "@prisma/client": "5.2.0",
+    "@tanstack/react-query": "^4.33.0",
+    "@trpc/client": "^10.38.1",
+    "@trpc/next": "^10.38.1",
+    "@trpc/react-query": "^10.38.1",
+    "@trpc/server": "^10.38.1",
     "axios": "^0.21.1",
     "dayjs": "^1.10.4",
     "embla-carousel": "^4.5.3",
     "framer-motion": "^4",
     "next": "12",
     "next-seo": "^4.24.0",
-    "nextjs-progressbar": "^0.0.11",
+    "nextjs-progressbar": "^0.0.16",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.4.0",
     "react-markdown": "^6.0.2",
     "react-speech": "^1.0.2",
     "react-use": "^17.4.0",
-    "recoil": "^0.3.1",
-    "rehype-raw": "^5.1.0"
+    "recoil": "^0.7.7",
+    "rehype-raw": "^5.1.0",
+    "zod": "^3.22.2"
   },
   "devDependencies": {
     "@types/react": "18.2.21",
     "cypress": "^7.7.0",
+    "prisma": "^5.2.0",
     "typescript": "^5.2.2"
   }
 }

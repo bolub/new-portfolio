@@ -1,0 +1,54 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model Tag {
+  id              String @id @default(cuid())
+  name            String
+  resourceId      Int?
+  resources       Post[]
+  builtWiths      BuiltWith[]
+  updatedAt       DateTime @updatedAt 
+  createdAt       DateTime @default(now())
+}
+
+enum Status {
+  DRAFT
+  PUBLISHED
+  UNPUBLISHED
+}
+
+model Post {
+  id              String @id @default(cuid())
+  status          Status @default(DRAFT)
+  title           String
+  content         String
+  tags            Tag[]
+  updatedAt       DateTime @updatedAt 
+  createdAt       DateTime @default(now())
+  comments        Comment[]
+}
+
+model BuiltWith {
+  id              String @id @default(cuid())
+  status          Status @default(DRAFT)
+  name            String
+  image_url       String
+  tags            Tag[]
+}
+
+model Comment{
+  id              String @id @default(cuid())
+  postId          String  
+  post            Post @relation(fields: [postId], references: [id])         
+  message         String
+}

@@ -42,8 +42,9 @@ import { Chakra } from '../chakra/Chakra';
 import './../components/carousel/embla.css';
 import Script from 'next/script';
 import Toolbar from '../components/Layout/Toolbar';
+import { trpc } from '../utils/trpc';
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: any) {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -71,7 +72,7 @@ function MyApp({ Component, pageProps }) {
                 stopDelayMs={200}
                 height={4}
                 showOnShallow={true}
-                showSpinner={false}
+                // showSpinner={false}
               />
 
               <Navbar />
@@ -89,4 +90,4 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-export default MyApp;
+export default trpc.withTRPC(MyApp);

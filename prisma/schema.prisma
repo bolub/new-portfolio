@@ -10,15 +10,15 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model Tag {
-  id              String @id @default(cuid())
-  name            String
-  resourceId      Int?
-  resources       Post[]
-  builtWiths      BuiltWith[]
-  updatedAt       DateTime @updatedAt 
-  createdAt       DateTime @default(now())
+  id         String      @id @default(cuid())
+  name       String
+  resourceId Int?
+  resources  Post[]
+  builtWiths BuiltWith[]
+  projects   Project[]
+  updatedAt  DateTime    @updatedAt
+  createdAt  DateTime    @default(now())
 }
 
 enum Status {
@@ -28,30 +28,50 @@ enum Status {
 }
 
 model Post {
-  id              String @id @default(cuid())
-  status          Status @default(DRAFT)
-  image_url       String?
-  summary         String?
-  title           String
-  content         String
-  tags            Tag[]
-  updatedAt       DateTime @updatedAt 
-  createdAt       DateTime @default(now())
-  comments        Comment[]
+  id        String    @id @default(cuid())
+  status    Status    @default(DRAFT)
+  image_url String?
+  summary   String?
+  title     String
+  content   String
+  tags      Tag[]
+  updatedAt DateTime  @updatedAt
+  createdAt DateTime  @default(now())
+  comments  Comment[]
 }
 
 model BuiltWith {
-  id              String @id @default(cuid())
-  status          Status @default(DRAFT)
-  name            String
-  image_url       String
-  tags            Tag[]
+  id        String @id @default(cuid())
+  status    Status @default(DRAFT)
+  name      String
+  image_url String
+  tags      Tag[]
 }
 
-model Comment{
-  id              String @id @default(cuid())
-  author          String
-  postId          String  
-  post            Post @relation(fields: [postId], references: [id])         
-  message         String
+model Comment {
+  id      String @id @default(cuid())
+  author  String
+  postId  String
+  post    Post   @relation(fields: [postId], references: [id])
+  message String
+}
+
+model ProjectTechnologies {
+  id          String    @id @default(cuid())
+  title       String
+  description String
+  projects    Project[]
+}
+
+model Project {
+  id           String                @id @default(cuid())
+  title        String
+  subtitle     String?
+  description  String
+  live_url     String?
+  design_url   String?
+  source_code  String?
+  tags         Tag[]
+  technologies ProjectTechnologies[]
+  images       String[]
 }

@@ -60,10 +60,11 @@ const Comments = ({
   };
   const allComments = blogData?.comments;
 
-  // open new comment transition
   const { isOpen, onToggle, onClose } = useDisclosure();
 
   return (
+   <>
+   {/* @ts-ignore */}
     <Flex flexDir='column' mt={6}>
       <Flex mb={5}>
         <chakra.h2 fontWeight='bold' mr={5}>
@@ -155,6 +156,7 @@ const Comments = ({
         );
       })}
     </Flex>
+   </>
   );
 };
 

@@ -1,4 +1,3 @@
-// chakra
 import {
   Flex,
   Textarea,
@@ -13,7 +12,6 @@ import {
   Input,
 } from '@chakra-ui/react';
 
-// react
 import { useState } from 'react';
 import CustomToastBody from '../UI/CustomToastBody';
 import { CustomPost } from '../../server/modules/post-service/interface';

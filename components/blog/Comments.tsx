@@ -64,6 +64,7 @@ const Comments = ({
   const { isOpen, onToggle, onClose } = useDisclosure();
 
   return (
+   <>
     <Flex flexDir='column' mt={6}>
       <Flex mb={5}>
         <chakra.h2 fontWeight='bold' mr={5}>
@@ -155,6 +156,7 @@ const Comments = ({
         );
       })}
     </Flex>
+   </>
   );
 };
 

@@ -16,7 +16,7 @@ const CustomLinkPreview = ({ loading, preview }) => {
       isExternal
       borderWidth="1px"
       borderRadius="lg"
-      d="flex"
+      display="flex"
       flexDir="column"
     >
       {loading && (

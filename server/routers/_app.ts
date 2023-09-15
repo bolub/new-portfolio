@@ -4,7 +4,7 @@ import { router } from "../trpc";
 import { builtWithRouter } from "./../modules/built-width-service/router";
 import { createServerSideHelpers } from "@trpc/react-query/server";
 import { commentRouter } from "../modules/comments-service/router";
-import { projectRouter } from "../modules/projects/router";
+import { projectRouter } from "../modules/project-service/router";
 
 export const appRouter = router({
   builtWith: builtWithRouter,

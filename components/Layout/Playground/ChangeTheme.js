@@ -27,7 +27,7 @@ const ChangeTheme = () => {
   return (
     <FormControl mb={2}>
       {/* dark mode */}
-      <Box d="flex">
+      <Box display="flex">
         <FormLabel htmlFor="email-alerts" mb="0">
           Dark mode
         </FormLabel>
@@ -44,7 +44,7 @@ const ChangeTheme = () => {
       </Box>
 
       {/* default color */}
-      <Box mt={3} d="flex">
+      <Box mt={3} display="flex">
         <FormLabel htmlFor="email-alerts" mb="0">
           Default Color
         </FormLabel>

@@ -39,7 +39,7 @@ const Playground = ({ saving }) => {
             {/* change font */}
             <AccordionItem>
               <AccordionButton boxShadow="none" _focus={{ boxShadow: "none" }}>
-                <Box d="flex" w="100%" textAlign="left">
+                <Box display="flex" w="100%" textAlign="left">
                   <chakra.svg
                     w="22px"
                     h="22px"
@@ -70,7 +70,7 @@ const Playground = ({ saving }) => {
             {/* change theme */}
             <AccordionItem>
               <AccordionButton boxShadow="none" _focus={{ boxShadow: "none" }}>
-                <Box d="flex" w="100%" textAlign="left">
+                <Box display="flex" w="100%" textAlign="left">
                   <Text as="span" my="auto" mr={2}>
                     🚝{" "}
                   </Text>

@@ -15,7 +15,14 @@ const CustomToastBody = ({ message, toast }) => {
         {message}
       </Text>
 
-      <Box onClick={toast.closeAll} py={3} mr={2} ml="auto" h="100%" d="flex">
+      <Box
+        onClick={toast.closeAll}
+        py={3}
+        mr={2}
+        ml="auto"
+        h="100%"
+        display="flex"
+      >
         <CloseButton m="auto" boxShadow="none" borderRadius="none" />
       </Box>
     </Flex>

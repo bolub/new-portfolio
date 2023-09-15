@@ -8,6 +8,7 @@ import {
   IconButton,
   Tooltip,
   AspectRatio,
+  Button,
 } from '@chakra-ui/react';
 import Image from 'next/image';
 import {
@@ -16,10 +17,13 @@ import {
   BsLayoutTextWindowReverse,
 } from 'react-icons/bs';
 import { VideoPlayer } from '../VideoPlayer';
+import CustomLink from '../UI/CustomLink';
 
-const SingleProject = ({ data }) => {
+const SingleProject = ({ data }: {
+  data: any
+}) => {
+
   return (
-    // <chakra.a target='_blank' href={data.url} cursor='pointer'>
     <Box>
       {data.imageUrl && (
         <Box h={{ base: '300px', md: '500px' }} pos='relative'>
@@ -28,18 +32,19 @@ const SingleProject = ({ data }) => {
             objectFit={'cover'}
             layout='fill'
             placeholder='blur'
+            alt={data?.title}
           />
         </Box>
       )}
 
       {data.videoUrl && (
-        <AspectRatio h={{ base: '300px', md: '500px' }} ratio={1}>
+        <AspectRatio height={{ base: '300px', md: '500px' }} ratio={1}>
           <VideoPlayer src={data.videoUrl} />
         </AspectRatio>
       )}
 
       <Wrap display={{ base: 'flex', md: 'flex' }} mt={5}>
-        {data.tags?.map((tag) => {
+        {data.tags?.map((tag: {name: string; id: string}) => {
           return (
             <Tag
               key={tag?.id}
@@ -55,7 +60,7 @@ const SingleProject = ({ data }) => {
         })}
       </Wrap>
 
-      <Flex>
+      <Flex mt={5}>
         <chakra.h3
           mt={2}
           fontWeight={'medium'}
@@ -112,9 +117,15 @@ const SingleProject = ({ data }) => {
         </HStack>
       </Flex>
 
-      <chakra.p fontSize={'lg'} mt={3}>
+      <chakra.p fontSize={'lg'} mt={3} mb={8}>
         {data.description}
       </chakra.p>
+
+   
+
+      <CustomLink href={`/projects/${data?.id}`} active>
+        Read more
+      </CustomLink>
     </Box>
   );
 };

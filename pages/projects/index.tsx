@@ -6,16 +6,16 @@ import {
   HStack,
   Button,
 } from '@chakra-ui/react';
-import { generalPaddingX, maxi } from '../utils/chakra';
-import AppliqaImage from './../public/Appliqa.jpg';
-import SendchampImage from './../public/Sendchamp.jpeg';
-import VimixImage from './../public/Vimix.jpeg';
-import SprinbleImage from './../public/Sprinble.jpeg';
-import DruzImage from './../public/Druz.jpeg';
-import MyAgeImage from './../public/MyAge.jpeg';
-import SingleProject from '../components/projects/SingleProject';
-import KokuaImage from './../public/kokua.jpeg';
-import SiegfriedImage from './../public/Siegfried2.jpeg';
+import { generalPaddingX, maxi } from '../../utils/chakra';
+import AppliqaImage from './../../public/Appliqa.jpg';
+import SendchampImage from './../../public/Sendchamp.jpeg';
+import VimixImage from './../../public/Vimix.jpeg';
+import SprinbleImage from './../../public/Sprinble.jpeg';
+import DruzImage from './../../public/Druz.jpeg';
+import MyAgeImage from './../../public/MyAge.jpeg';
+import SingleProject from '../../components/projects/SingleProject';
+import KokuaImage from './../../public/kokua.jpeg';
+import SiegfriedImage from './../../public/Siegfried2.jpeg';
 import { useRouter } from 'next/router';
 
 export const projectsData = [
@@ -250,9 +250,9 @@ const projectTypes = [
 
 const Projects = () => {
   const router = useRouter();
-  const selectedProjectType = router.query.tab || 'All';
+  const selectedProjectType = router.query.tab as string || 'All' ;
 
-  const handleClick = (selected) => {
+  const handleClick = (selected: string) => {
     router.push(`/projects?tab=${selected}`);
   };
 
@@ -322,8 +322,8 @@ const Projects = () => {
           </HStack>
 
           <SimpleGrid spacing={16} columns={{ base: 1, md: 2 }}>
-            {projectsList?.map((pd) => {
-              return <SingleProject key={pd.imageUrl} data={pd} />;
+            {projectsList?.map((pd, index) => {
+              return <SingleProject key={pd.title} data={{id: index + 1,...pd}} />;
             })}
           </SimpleGrid>
         </Box>

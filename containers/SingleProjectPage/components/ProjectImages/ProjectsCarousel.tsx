@@ -4,14 +4,13 @@ import { Box, chakra } from "@chakra-ui/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
-import AppImage from "./../../../../public/Appliqa.png";
 import Image from "next/image";
 import { CarouselButtons } from "./CarouselButtons";
 
 const ChakraSwiperSlide = chakra(SwiperSlide);
 const ChakraSwiper = chakra(Swiper);
 
-export const ProjectsCarousel = () => {
+export const ProjectsCarousel = ({ images }: { images: string[] }) => {
   const navigationPrevRef = useRef<any>(null);
   const navigationNextRef = useRef<any>(null);
 
@@ -44,12 +43,25 @@ export const ProjectsCarousel = () => {
             swiper.navigation.update();
           }}
         >
-          <ChakraSwiperSlide>
-            <Image src={AppImage} alt="something" />
-          </ChakraSwiperSlide>
-          <ChakraSwiperSlide bgColor="red.500">Slide 2</ChakraSwiperSlide>
-          <ChakraSwiperSlide bgColor="red.500">Slide 3</ChakraSwiperSlide>
-          <ChakraSwiperSlide bgColor="red.500">Slide 4</ChakraSwiperSlide>
+          {images.map((imgData, index) => {
+            return (
+              <ChakraSwiperSlide
+                key={index}
+                pos="relative"
+                height="680px"
+                width="100%"
+              >
+                <Image
+                  src={imgData}
+                  alt={imgData}
+                  fill
+                  style={{
+                    objectFit: "cover",
+                  }}
+                />
+              </ChakraSwiperSlide>
+            );
+          })}
         </ChakraSwiper>
       </Box>
     </>

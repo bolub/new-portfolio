@@ -6,8 +6,20 @@ import CustomLink from "../../components/UI/CustomLink";
 import { HiChevronLeft } from "react-icons/hi";
 import { ProjectImages } from "./components/ProjectImages/ProjectImages";
 import { TechnologiesUsed } from "./components/TechnologiesUsed";
+import { trpc } from "../../utils/trpc";
 
-export const SingleProjectPage = () => {
+export const SingleProjectPage = ({ projectId }: { projectId: string }) => {
+  const { data: project } = trpc.project.view.useQuery(
+    {
+      id: projectId,
+    },
+    {
+      enabled: !!projectId,
+    }
+  );
+
+  if (!project) return <Text>Project data not available</Text>;
+
   return (
     <>
       {/* <CustomSeo
@@ -25,7 +37,7 @@ export const SingleProjectPage = () => {
           mx="auto"
           flexDir="column"
         >
-          <CustomLink href="/blog">
+          <CustomLink href="/projects">
             <Text my="auto" mr={1} fontSize="md">
               <HiChevronLeft />
             </Text>
@@ -39,16 +51,11 @@ export const SingleProjectPage = () => {
             fontWeight={700}
             fontSize={{ base: "3xl", md: "4xl" }}
           >
-            Appliqa
+            {project.title}
           </chakra.h1>
 
           <Box w="full" maxWidth="800px" mt="20px">
-            <Text fontSize="lg">
-              Appliqa is a personal project that helps in tracking job
-              application processes (Log interviews and tasks, make notes). It
-              was built because I couldn’t keep track of some of the jobs/roles
-              I interviewed with.
-            </Text>
+            <Text fontSize="lg">{project.description}</Text>
           </Box>
         </Flex>
       </chakra.header>
@@ -63,7 +70,7 @@ export const SingleProjectPage = () => {
           maxW={maxi}
           mx="auto"
         >
-          <ProjectImages />
+          <ProjectImages images={project.images} />
         </chakra.section>
 
         <chakra.section

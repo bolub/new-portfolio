@@ -7,8 +7,6 @@ import {
   HStack,
   IconButton,
   Tooltip,
-  AspectRatio,
-  Button,
 } from "@chakra-ui/react";
 import Image from "next/image";
 import {
@@ -16,35 +14,35 @@ import {
   BsBezier,
   BsLayoutTextWindowReverse,
 } from "react-icons/bs";
-import { VideoPlayer } from "../VideoPlayer";
 import CustomLink from "../UI/CustomLink";
+import { CustomProject } from "../../server/modules/project-service/interface";
 
-const SingleProject = ({ data }: { data: any }) => {
+const SingleProject = ({ data }: { data: CustomProject }) => {
   return (
     <Box>
-      {data.imageUrl && (
+      {data.cover_image_url && (
         <Box h={{ base: "300px", md: "500px" }} pos="relative">
           <Image
-            src={data.imageUrl}
+            src={data.cover_image_url}
             objectFit={"cover"}
             layout="fill"
-            placeholder="blur"
+            // placeholder="blur"
             alt={data?.title}
           />
         </Box>
       )}
 
-      {data.videoUrl && (
+      {/* {data.videoUrl && (
         <AspectRatio height={{ base: "300px", md: "500px" }} ratio={1}>
           <VideoPlayer src={data.videoUrl} />
         </AspectRatio>
-      )}
+      )} */}
 
       <Wrap display={{ base: "flex", md: "flex" }} mt={5}>
-        {data.tags?.map((tag: { name: string; id: string }) => {
+        {data.tags?.map((tag) => {
           return (
             <Tag
-              key={tag?.id}
+              key={tag.id}
               cursor="pointer"
               colorScheme="brand"
               variant="subtle"
@@ -67,11 +65,11 @@ const SingleProject = ({ data }: { data: any }) => {
         </chakra.h3>
 
         <HStack ml="auto">
-          {data.deignUrl && (
+          {data.design_url && (
             <Tooltip label="Design" aria-label="Design">
               <IconButton
                 as="a"
-                href={data.deignUrl}
+                href={data.design_url}
                 target="_blank"
                 aria-label="Deign"
                 colorScheme={"brand"}
@@ -82,11 +80,11 @@ const SingleProject = ({ data }: { data: any }) => {
             </Tooltip>
           )}
 
-          {data.sourceCode && (
+          {data.source_code && (
             <Tooltip label="Source Code" aria-label="Source Code">
               <IconButton
                 as="a"
-                href={data.sourceCode}
+                href={data.source_code}
                 target="_blank"
                 aria-label="Source Code"
                 colorScheme={"brand"}
@@ -97,11 +95,11 @@ const SingleProject = ({ data }: { data: any }) => {
             </Tooltip>
           )}
 
-          {data.url && (
+          {data.live_url && (
             <Tooltip label="Live url" aria-label="Live url">
               <IconButton
                 as="a"
-                href={data.url}
+                href={data.live_url}
                 target="_blank"
                 aria-label="Live url"
                 colorScheme={"brand"}
@@ -115,13 +113,12 @@ const SingleProject = ({ data }: { data: any }) => {
       </Flex>
 
       <chakra.p fontSize={"lg"} mt={3} mb={8}>
-        {data.description}
+        {data.subtitle || data.description}
       </chakra.p>
 
-      {/* 
       <CustomLink href={`/projects/${data?.id}`} active>
         Read more
-      </CustomLink> */}
+      </CustomLink>
     </Box>
   );
 };

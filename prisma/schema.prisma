@@ -64,14 +64,15 @@ model ProjectTechnologies {
 }
 
 model Project {
-  id           String                @id @default(cuid())
-  title        String
-  subtitle     String?
-  description  String
-  live_url     String?
-  design_url   String?
-  source_code  String?
-  tags         Tag[]
-  technologies ProjectTechnologies[]
-  images       String[]
+  id              String                @id @default(cuid())
+  title           String
+  subtitle        String?
+  description     String
+  cover_image_url String
+  live_url        String?
+  design_url      String?
+  source_code     String?
+  tags            Tag[]
+  technologies    ProjectTechnologies[]
+  images          String[]
 }

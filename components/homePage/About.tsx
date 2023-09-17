@@ -1,11 +1,15 @@
 import { chakra, Center, SimpleGrid } from "@chakra-ui/react";
 import Link from "next/link";
-import { projectsData } from "../../pages/projects";
 import { generalPaddingX, maxi } from "../../utils/chakra";
 import CustomButton from "../UI/CustomButton";
 import SingleProject from "../projects/SingleProject";
+import { trpc } from "../../utils/trpc";
 
 const About = () => {
+  const { data: projectsData } = trpc.project.some.useQuery({
+    quantity: 2,
+  });
+
   return (
     <chakra.section
       px={generalPaddingX}
@@ -34,7 +38,7 @@ const About = () => {
         columns={{ base: 1, md: 2 }}
       >
         {projectsData?.slice(0, 2)?.map((pd) => {
-          return <SingleProject key={pd.imageUrl} data={pd} />;
+          return <SingleProject key={pd.id} data={pd} />;
         })}
       </SimpleGrid>
 

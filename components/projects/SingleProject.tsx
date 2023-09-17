@@ -21,14 +21,16 @@ const SingleProject = ({ data }: { data: CustomProject }) => {
   return (
     <Box>
       {data.cover_image_url && (
-        <Box h={{ base: "300px", md: "500px" }} pos="relative">
-          <Image
-            src={data.cover_image_url}
-            objectFit={"cover"}
-            layout="fill"
-            // placeholder="blur"
-            alt={data?.title}
-          />
+        <Box px="20px" pt="20px" bgColor="gray.100" rounded="lg">
+          <Box h={{ base: "300px", md: "500px" }} pos="relative" rounded="lg">
+            <Image
+              src={data.cover_image_url}
+              objectFit={"contain"}
+              layout="fill"
+              // placeholder="blur"
+              alt={data?.title}
+            />
+          </Box>
         </Box>
       )}
 

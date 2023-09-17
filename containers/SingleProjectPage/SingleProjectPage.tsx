@@ -7,6 +7,7 @@ import { HiChevronLeft } from "react-icons/hi";
 import { ProjectImages } from "./components/ProjectImages/ProjectImages";
 import { TechnologiesUsed } from "./components/TechnologiesUsed";
 import { trpc } from "../../utils/trpc";
+import CustomSeo from "../../components/Layout/Seo";
 
 export const SingleProjectPage = ({ projectId }: { projectId: string }) => {
   const { data: project } = trpc.project.view.useQuery(
@@ -22,11 +23,11 @@ export const SingleProjectPage = ({ projectId }: { projectId: string }) => {
 
   return (
     <>
-      {/* <CustomSeo
-        title={ ''}
-        description={blogData?.summary || ''}
-        imageUrl={blogData?.image_url || ''}
-      /> */}
+      <CustomSeo
+        title={""}
+        description={project.description || ""}
+        imageUrl={project.title || ""}
+      />
 
       <chakra.header display="flex" pt={{ base: "10" }} w="100%">
         {/* @ts-ignore */}
@@ -82,7 +83,7 @@ export const SingleProjectPage = ({ projectId }: { projectId: string }) => {
           maxW={maxi}
           mx="auto"
         >
-          <TechnologiesUsed />
+          <TechnologiesUsed technologies={project.technologies} />
         </chakra.section>
       </chakra.main>
     </>

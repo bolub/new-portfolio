@@ -21,7 +21,7 @@ const SingleProject = ({ data }: { data: CustomProject }) => {
   return (
     <Box>
       {data.cover_image_url && (
-        <Box px="20px" pt="20px" bgColor="gray.100" rounded="lg">
+        <Box px="20px" pt="20px" bgColor="brand.300" rounded="lg">
           <Box h={{ base: "300px", md: "500px" }} pos="relative" rounded="lg">
             <Image
               src={data.cover_image_url}
@@ -34,19 +34,13 @@ const SingleProject = ({ data }: { data: CustomProject }) => {
         </Box>
       )}
 
-      {/* {data.videoUrl && (
-        <AspectRatio height={{ base: "300px", md: "500px" }} ratio={1}>
-          <VideoPlayer src={data.videoUrl} />
-        </AspectRatio>
-      )} */}
-
       <Wrap display={{ base: "flex", md: "flex" }} mt={5}>
         {data.tags?.map((tag) => {
           return (
             <Tag
               key={tag.id}
               cursor="pointer"
-              colorScheme="brand"
+              // colorScheme="brand"
               variant="subtle"
               borderRadius="full"
               size="md"
@@ -118,7 +112,7 @@ const SingleProject = ({ data }: { data: CustomProject }) => {
         {data.subtitle || data.description}
       </chakra.p>
 
-      <CustomLink href={`/projects/${data?.id}`} active>
+      <CustomLink href={`/projects/${data?.id}`} active={false}>
         Read more
       </CustomLink>
     </Box>

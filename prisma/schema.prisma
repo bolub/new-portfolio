@@ -41,19 +41,23 @@ model Post {
 }
 
 model BuiltWith {
-  id        String @id @default(cuid())
-  status    Status @default(DRAFT)
+  id        String   @id @default(cuid())
+  status    Status   @default(DRAFT)
   name      String
   image_url String
   tags      Tag[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt()
 }
 
 model Comment {
-  id      String @id @default(cuid())
-  author  String
-  postId  String
-  post    Post   @relation(fields: [postId], references: [id])
-  message String
+  id        String   @id @default(cuid())
+  author    String
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id])
+  message   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt()
 }
 
 model ProjectTechnologies {
@@ -61,17 +65,23 @@ model ProjectTechnologies {
   title       String
   description String
   projects    Project[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt()
 }
 
 model Project {
-  id           String                @id @default(cuid())
-  title        String
-  subtitle     String?
-  description  String
-  live_url     String?
-  design_url   String?
-  source_code  String?
-  tags         Tag[]
-  technologies ProjectTechnologies[]
-  images       String[]
+  id              String                @id @default(cuid())
+  title           String
+  subtitle        String?
+  description     String
+  cover_image_url String
+  live_url        String?
+  design_url      String?
+  source_code     String?
+  tags            Tag[]
+  technologies    ProjectTechnologies[]
+  images          String[]
+  createdAt       DateTime              @default(now())
+  updatedAt       DateTime              @updatedAt
+  order           Int?
 }

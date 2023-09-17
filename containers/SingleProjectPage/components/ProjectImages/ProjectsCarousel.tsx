@@ -1,17 +1,18 @@
 import { useRef } from "react";
 
-import { Box, chakra } from "@chakra-ui/react";
+import { AspectRatio, Box, chakra } from "@chakra-ui/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
-import AppImage from "./../../../../public/Appliqa.png";
 import Image from "next/image";
 import { CarouselButtons } from "./CarouselButtons";
+import { getMediaType } from "../../../../utils/functions";
+import { VideoPlayer } from "../../../../components/VideoPlayer";
 
 const ChakraSwiperSlide = chakra(SwiperSlide);
 const ChakraSwiper = chakra(Swiper);
 
-export const ProjectsCarousel = () => {
+export const ProjectsCarousel = ({ images }: { images: string[] }) => {
   const navigationPrevRef = useRef<any>(null);
   const navigationNextRef = useRef<any>(null);
 
@@ -44,12 +45,37 @@ export const ProjectsCarousel = () => {
             swiper.navigation.update();
           }}
         >
-          <ChakraSwiperSlide>
-            <Image src={AppImage} alt="something" />
-          </ChakraSwiperSlide>
-          <ChakraSwiperSlide bgColor="red.500">Slide 2</ChakraSwiperSlide>
-          <ChakraSwiperSlide bgColor="red.500">Slide 3</ChakraSwiperSlide>
-          <ChakraSwiperSlide bgColor="red.500">Slide 4</ChakraSwiperSlide>
+          {images.map((assetData, index) => {
+            const mediaType = getMediaType(assetData);
+
+            return (
+              <ChakraSwiperSlide
+                key={index}
+                pos="relative"
+                height="720px"
+                width="100%"
+              >
+                {mediaType === "image" && (
+                  <Image
+                    src={assetData}
+                    alt={assetData}
+                    fill
+                    style={{
+                      objectFit: "cover",
+                    }}
+                  />
+                )}
+
+                {mediaType === "video" && (
+                  <>
+                    <AspectRatio ratio={1} height="720px">
+                      <VideoPlayer src={assetData} />
+                    </AspectRatio>
+                  </>
+                )}
+              </ChakraSwiperSlide>
+            );
+          })}
         </ChakraSwiper>
       </Box>
     </>

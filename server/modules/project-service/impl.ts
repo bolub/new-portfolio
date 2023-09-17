@@ -25,6 +25,7 @@ export const view: ProjectServiceType["view"] = async ({ id }) => {
           id: true,
         },
       },
+      technologies: true,
     },
   });
 };
@@ -69,7 +70,29 @@ export const all: ProjectServiceType["all"] = async () => {
           id: true,
         },
       },
+      technologies: true,
     },
+    orderBy: {
+      order: "asc", // Sort by the custom order in ascending order
+    },
+  });
+};
+
+export const some: ProjectServiceType["some"] = async ({ quantity }) => {
+  return await prisma.project.findMany({
+    include: {
+      tags: {
+        select: {
+          name: true,
+          id: true,
+        },
+      },
+      technologies: true,
+    },
+    orderBy: {
+      order: "asc", // Sort by the custom order in ascending order
+    },
+    take: quantity,
   });
 };
 
@@ -79,4 +102,5 @@ export const ProjectService: ProjectServiceType = {
   edit,
   all,
   delete: remove,
+  some,
 };

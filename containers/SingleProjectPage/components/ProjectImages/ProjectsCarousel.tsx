@@ -1,11 +1,13 @@
 import { useRef } from "react";
 
-import { Box, chakra } from "@chakra-ui/react";
+import { AspectRatio, Box, chakra } from "@chakra-ui/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
 import Image from "next/image";
 import { CarouselButtons } from "./CarouselButtons";
+import { getMediaType } from "../../../../utils/functions";
+import { VideoPlayer } from "../../../../components/VideoPlayer";
 
 const ChakraSwiperSlide = chakra(SwiperSlide);
 const ChakraSwiper = chakra(Swiper);
@@ -43,7 +45,9 @@ export const ProjectsCarousel = ({ images }: { images: string[] }) => {
             swiper.navigation.update();
           }}
         >
-          {images.map((imgData, index) => {
+          {images.map((assetData, index) => {
+            const mediaType = getMediaType(assetData);
+
             return (
               <ChakraSwiperSlide
                 key={index}
@@ -51,14 +55,24 @@ export const ProjectsCarousel = ({ images }: { images: string[] }) => {
                 height="720px"
                 width="100%"
               >
-                <Image
-                  src={imgData}
-                  alt={imgData}
-                  fill
-                  style={{
-                    objectFit: "cover",
-                  }}
-                />
+                {mediaType === "image" && (
+                  <Image
+                    src={assetData}
+                    alt={assetData}
+                    fill
+                    style={{
+                      objectFit: "cover",
+                    }}
+                  />
+                )}
+
+                {mediaType === "video" && (
+                  <>
+                    <AspectRatio ratio={1} height="720px">
+                      <VideoPlayer src={assetData} />
+                    </AspectRatio>
+                  </>
+                )}
               </ChakraSwiperSlide>
             );
           })}

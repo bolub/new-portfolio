@@ -79,14 +79,17 @@ export const VideoPlayer = ({ src }: { src: string }) => {
         transition="opacity 0.2s"
       >
         {state.paused && (
-          <IconButton
-            aria-label="play"
-            colorScheme="brand"
-            borderRadius="full"
-            boxSize="64px"
-          >
-            <BsPlay size="24px" />
-          </IconButton>
+          <>
+            {/* @ts-ignore */}
+            <IconButton
+              aria-label="play"
+              colorScheme="brand"
+              borderRadius="full"
+              boxSize="64px"
+            >
+              <BsPlay size="24px" />
+            </IconButton>
+          </>
         )}
         {state.playing && (
           <IconButton

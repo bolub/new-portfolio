@@ -1,8 +1,9 @@
-import { Project, Tag } from "@prisma/client";
+import { Project, ProjectTechnologies, Tag } from "@prisma/client";
 import { z } from "zod";
 
 export type CustomProject = Project & {
   tags: Pick<Tag, "name" | "id">[];
+  technologies: ProjectTechnologies[];
 };
 
 export const ProjectDataSchema = z.object({
@@ -26,4 +27,5 @@ export interface ProjectServiceType {
   edit: (args: { id: string; data: Partial<ProjectData> }) => Promise<string>;
   delete: (args: { id: string }) => Promise<string>;
   all: () => Promise<CustomProject[]>;
+  some: (args: { quantity: number }) => Promise<CustomProject[]>;
 }

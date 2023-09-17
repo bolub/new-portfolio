@@ -48,4 +48,16 @@ export const projectRouter = router({
   all: procedure.query(() => {
     return ProjectService.all();
   }),
+
+  some: procedure
+    .input(
+      z.object({
+        quantity: z.number(),
+      })
+    )
+    .query(({ input }) => {
+      return ProjectService.some({
+        quantity: input.quantity,
+      });
+    }),
 });

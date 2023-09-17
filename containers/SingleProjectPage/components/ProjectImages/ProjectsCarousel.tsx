@@ -48,7 +48,7 @@ export const ProjectsCarousel = ({ images }: { images: string[] }) => {
               <ChakraSwiperSlide
                 key={index}
                 pos="relative"
-                height="680px"
+                height="720px"
                 width="100%"
               >
                 <Image

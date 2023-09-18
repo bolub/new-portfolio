@@ -122,7 +122,6 @@ const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
         w="100%"
       >
         <Box w={{ base: "100%", md: "60%" }} m="auto">
-          {/* content */}
           <chakra.p lineHeight={1.8} mb={1} fontSize="md">
             <ReactMarkdown
               rehypePlugins={[rehypeRaw]}
@@ -131,10 +130,8 @@ const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
             />
           </chakra.p>
 
-          {/* share */}
           <Share />
 
-          {/* comments */}
           <Comments blogData={blogData} refetchPostData={refetchPostData} />
         </Box>
       </chakra.main>

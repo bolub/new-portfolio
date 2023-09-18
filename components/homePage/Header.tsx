@@ -12,7 +12,6 @@ import Profile from "./../../public/Bolu.png";
 const Header = () => {
   return (
     <chakra.header
-      // h={{ base: '100%', md: '90vh' }}
       mt={{ md: 24 }}
       display="flex"
       py={{ base: "10", md: 0 }}
@@ -86,6 +85,7 @@ const Header = () => {
             pos="relative"
           >
             <Image
+              alt="Boluwatife Abiola"
               layout="fill"
               objectFit="cover"
               placeholder="blur"

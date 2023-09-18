@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { PrevButton, NextButton } from './Buttons';
-import { useEmblaCarousel } from 'embla-carousel/react';
-import { Box, Text, Flex, Image } from '@chakra-ui/react';
+import React, { useState, useEffect, useCallback } from "react";
+import { PrevButton, NextButton } from "./Buttons";
+import { useEmblaCarousel } from "embla-carousel/react";
+import { Box, Text, Flex, Image } from "@chakra-ui/react";
 
 const EmblaCarousel = ({ data }) => {
   const [viewportRef, embla] = useEmblaCarousel({
-    containScroll: 'trimSnaps',
+    containScroll: "trimSnaps",
     dragFree: true,
   });
   const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
@@ -31,43 +31,43 @@ const EmblaCarousel = ({ data }) => {
     if (!embla) return;
     onSelect();
     onScroll();
-    embla.on('select', onSelect);
-    embla.on('scroll', onScroll);
+    embla.on("select", onSelect);
+    embla.on("scroll", onScroll);
   }, [embla, onSelect, onScroll]);
 
   return (
     <>
-      <Box pos='relative'>
-        <Box className='embla__viewport' ref={viewportRef}>
-          <div className='embla__container'>
+      <Box pos="relative">
+        <Box className="embla__viewport" ref={viewportRef}>
+          <div className="embla__container">
             {data.map((cd, index) => {
               return (
-                <div className='embla__slide' key={index}>
-                  <div className='embla__slide__inner'>
+                <div className="embla__slide" key={index}>
+                  <div className="embla__slide__inner">
                     <Image
-                      d='block'
-                      objectFit='cover'
+                      display="block"
+                      objectFit="cover"
                       src={cd?.imageLink}
-                      alt='A cool cat.'
-                      h='380px'
+                      alt="A cool cat."
+                      h="380px"
                     />
 
-                    <Text mt={5} fontWeight='bold'>
+                    <Text mt={5} fontWeight="bold">
                       {cd?.title}
                     </Text>
 
                     <Flex>
-                      <Text my='auto'>Stopped watching at {cd?.stoppedAt}</Text>
+                      <Text my="auto">Stopped watching at {cd?.stoppedAt}</Text>
                       <Text
-                        my='auto'
-                        as='span'
-                        bg='black'
-                        borderRadius='full'
+                        my="auto"
+                        as="span"
+                        bg="black"
+                        borderRadius="full"
                         mx={2}
-                        w='5px'
-                        h='5px'
+                        w="5px"
+                        h="5px"
                       ></Text>
-                      <Text my='auto'>{cd?.totalEpisodes} episodes long</Text>
+                      <Text my="auto">{cd?.totalEpisodes} episodes long</Text>
                     </Flex>
                   </div>
                 </div>

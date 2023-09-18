@@ -8,13 +8,12 @@
     "start": "next start",
     "cypress": "cypress open",
     "prisma-studio": "npx prisma studio"
-
   },
   "dependencies": {
     "@ashwamegh/react-link-preview": "^0.2.2",
-    "@chakra-ui/react": "^1.6.2",
-    "@emotion/react": "^11",
-    "@emotion/styled": "^11",
+    "@chakra-ui/react": "^2.8.1",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
     "@fontsource/nunito": "^4.5.9",
     "@fontsource/outfit": "^4.5.8",
     "@fontsource/prompt": "^4.5.8",
@@ -27,7 +26,7 @@
     "axios": "^0.21.1",
     "dayjs": "^1.10.4",
     "embla-carousel": "^4.5.3",
-    "framer-motion": "^4",
+    "framer-motion": "^10.16.4",
     "next": "^13.4.19",
     "next-seo": "^4.24.0",
     "next-superjson-plugin": "^0.5.9",

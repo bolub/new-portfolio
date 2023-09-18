@@ -7,6 +7,7 @@ import {
   HStack,
   IconButton,
   Tooltip,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import Image from "next/image";
 import {
@@ -18,10 +19,12 @@ import CustomLink from "../UI/CustomLink";
 import { CustomProject } from "../../server/modules/project-service/interface";
 
 const SingleProject = ({ data }: { data: CustomProject }) => {
+  const boxBgColor = useColorModeValue("brand.100", "gray.700");
+
   return (
     <Box>
       {data.cover_image_url && (
-        <Box px="20px" pt="20px" bgColor="brand.300" rounded="lg">
+        <Box px="20px" pt="20px" bgColor={boxBgColor} rounded="lg">
           <Box h={{ base: "300px", md: "500px" }} pos="relative" rounded="lg">
             <Image
               src={data.cover_image_url}

@@ -12,7 +12,8 @@ export const CarouselButtons = ({
     <HStack ml="auto" mb="24px">
       <chakra.button
         ref={prevRef}
-        bgColor="gray.100"
+        bgColor="brand.500"
+        color="white"
         aria-label="prev"
         rounded="full"
         boxSize="35px"
@@ -25,7 +26,8 @@ export const CarouselButtons = ({
 
       <chakra.button
         ref={nextRef}
-        bgColor="gray.100"
+        bgColor="brand.500"
+        color="white"
         aria-label="next"
         rounded="full"
         boxSize="35px"

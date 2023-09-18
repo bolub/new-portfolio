@@ -1,58 +1,58 @@
-import React from 'react';
+import React from "react";
 
 // chakra
-import { Box, Flex, chakra, Text } from '@chakra-ui/react';
+import { Box, Flex, chakra, Text } from "@chakra-ui/react";
 
 // components
-import BlogIllustration from '../../svg/BlogIlustration';
-import CustomButton from '../../components/UI/CustomButton';
-import { generalPaddingX, maxi } from '../../utils/chakra';
+import BlogIllustration from "../../svg/BlogIlustration";
+import CustomButton from "../../components/UI/CustomButton";
+import { generalPaddingX, maxi } from "../../utils/chakra";
 
 const PageHeader = () => {
   return (
-    <chakra.header d='flex' py={{ base: '10' }}>
+    <chakra.header display="flex" py={{ base: "10" }}>
       <Flex
-        w='100%'
-        flexDir={{ base: 'column' }}
-        justifyContent='center'
-        textAlign='center'
+        w="100%"
+        flexDir={{ base: "column" }}
+        justifyContent="center"
+        textAlign="center"
         px={generalPaddingX}
         maxW={maxi}
-        mx='auto'
+        mx="auto"
       >
-        <Box mb={{ base: 0, md: 0 }} w={{ md: '60%' }} m='auto'>
+        <Box mb={{ base: 0, md: 0 }} w={{ md: "60%" }} m="auto">
           <chakra.h1
             fontWeight={700}
             // color="brand.500"
-            fontSize={{ base: '3xl', md: '4xl' }}
+            fontSize={{ base: "3xl", md: "4xl" }}
           >
             My Blog...
           </chakra.h1>
 
-          <Text mb={5} mt={4} fontSize='17px'>
+          <Text mb={5} mt={4} fontSize="17px">
             Here, gonna be talking a bit about stuff that interests me I guess,
             but I'm sure I'll probably get tired and go nuts
           </Text>
 
           <CustomButton
-            h='50px'
-            size='md'
-            data-cy='start-reading'
-            as='a'
-            href='#posts'
+            h="50px"
+            size="md"
+            data-cy="start-reading"
+            as="a"
+            href="#posts"
             mb={20}
             mt={4}
           >
-            <Text as='span' mr={2}>
+            <Text as="span" mr={2}>
               Start Reading
             </Text>
 
-            <Text as='span' fontSize='xl'>
+            <Text as="span" fontSize="xl">
               🏁
             </Text>
           </CustomButton>
 
-          <BlogIllustration m='auto' />
+          <BlogIllustration m="auto" />
         </Box>
       </Flex>
     </chakra.header>

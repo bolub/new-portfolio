@@ -30,7 +30,6 @@ export const SingleProjectPage = ({ projectId }: { projectId: string }) => {
       />
 
       <chakra.header display="flex" pt={{ base: "10" }} w="100%">
-        {/* @ts-ignore */}
         <Flex
           w="100%"
           px={generalPaddingX}

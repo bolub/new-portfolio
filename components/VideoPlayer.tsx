@@ -80,7 +80,6 @@ export const VideoPlayer = ({ src }: { src: string }) => {
       >
         {state.paused && (
           <>
-            {/* @ts-ignore */}
             <IconButton
               aria-label="play"
               colorScheme="brand"

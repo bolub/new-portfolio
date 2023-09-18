@@ -10,12 +10,12 @@ import {
   useToast,
   Collapse,
   Input,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 
-import { useState } from 'react';
-import CustomToastBody from '../UI/CustomToastBody';
-import { CustomPost } from '../../server/modules/post-service/interface';
-import { trpc } from '../../utils/trpc';
+import { useState } from "react";
+import CustomToastBody from "../UI/CustomToastBody";
+import { CustomPost } from "../../server/modules/post-service/interface";
+import { trpc } from "../../utils/trpc";
 
 const Comments = ({
   blogData,
@@ -25,8 +25,8 @@ const Comments = ({
   refetchPostData: () => void;
 }) => {
   const toast = useToast();
-  const [message, setMessage] = useState('');
-  const [author, setAuthor] = useState('Anonymous');
+  const [message, setMessage] = useState("");
+  const [author, setAuthor] = useState("Anonymous");
 
   const { mutate, isLoading } = trpc.comment.create.useMutation({
     onSuccess() {
@@ -35,13 +35,13 @@ const Comments = ({
       toast({
         duration: 9000,
         isClosable: true,
-        position: 'bottom-left',
-        render: () => <CustomToastBody message='Message sent' toast={toast} />,
+        position: "bottom-left",
+        render: () => <CustomToastBody message="Message sent" toast={toast} />,
       });
 
       onClose();
 
-      setMessage('');
+      setMessage("");
     },
   });
 
@@ -49,7 +49,7 @@ const Comments = ({
     if (!message) return;
 
     const dataToSend = {
-      postId: blogData?.id || '',
+      postId: blogData?.id || "",
       message,
       author,
     };
@@ -61,43 +61,41 @@ const Comments = ({
   const { isOpen, onToggle, onClose } = useDisclosure();
 
   return (
-   <>
-   {/* @ts-ignore */}
-    <Flex flexDir='column' mt={6}>
+    <Flex flexDir="column" mt={6}>
       <Flex mb={5}>
-        <chakra.h2 fontWeight='bold' mr={5}>
+        <chakra.h2 fontWeight="bold" mr={5}>
           💬 Comments({allComments?.length || 0})
         </chakra.h2>
 
         <Text
           onClick={onToggle}
-          ml='auto'
-          cursor='pointer'
-          color='brand.500'
+          ml="auto"
+          cursor="pointer"
+          color="brand.500"
           fontWeight={600}
         >
-          {isOpen ? '✖️ Cancel' : '➕ Add'}
+          {isOpen ? "✖️ Cancel" : "➕ Add"}
         </Text>
       </Flex>
 
       {/* add comments */}
       <Collapse animateOpacity in={isOpen}>
         <Flex mb={20}>
-          <Text mr={3} fontSize='xl'>
+          <Text mr={3} fontSize="xl">
             😎
           </Text>
 
-          <Flex flexDir='column' w='100%'>
+          <Flex flexDir="column" w="100%">
             <Input
-              variant='filled'
-              borderRadius='none'
-              placeholder='Bojack Horseman'
+              variant="filled"
+              borderRadius="none"
+              placeholder="Bojack Horseman"
               _focus={{
-                borderColor: 'brand.500',
-                bg: 'gray.50',
+                borderColor: "brand.500",
+                bg: "gray.50",
               }}
               _hover={{
-                bg: 'gray.100',
+                bg: "gray.100",
               }}
               value={author}
               onChange={(e) => {
@@ -106,16 +104,16 @@ const Comments = ({
             />
             <Textarea
               mt={1}
-              variant='filled'
-              placeholder='Start typing'
-              borderRadius='none'
+              variant="filled"
+              placeholder="Start typing"
+              borderRadius="none"
               rows={6}
               _focus={{
-                borderColor: 'brand.500',
-                bg: 'gray.50',
+                borderColor: "brand.500",
+                bg: "gray.50",
               }}
               _hover={{
-                bg: 'gray.100',
+                bg: "gray.100",
               }}
               onChange={(e) => {
                 setMessage(e.target.value);
@@ -127,9 +125,9 @@ const Comments = ({
               isLoading={isLoading}
               isDisabled={!message}
               onClick={sendMessage}
-              ml='auto'
-              colorScheme='brand'
-              fontWeight='500'
+              ml="auto"
+              colorScheme="brand"
+              fontWeight="500"
               mt={4}
             >
               Send Message
@@ -145,7 +143,7 @@ const Comments = ({
             <Avatar mr={2} name={comment?.author} />
 
             <Box>
-              <chakra.h3 fontSize='md' fontWeight='bold'>
+              <chakra.h3 fontSize="md" fontWeight="bold">
                 {comment?.author}
               </chakra.h3>
               <Text>{comment?.message}</Text>
@@ -154,7 +152,6 @@ const Comments = ({
         );
       })}
     </Flex>
-   </>
   );
 };
 

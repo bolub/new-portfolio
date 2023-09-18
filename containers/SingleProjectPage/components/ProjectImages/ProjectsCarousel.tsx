@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-import { AspectRatio, Box, chakra } from "@chakra-ui/react";
+import { AspectRatio, Box, chakra, useColorModeValue } from "@chakra-ui/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
@@ -16,6 +16,8 @@ export const ProjectsCarousel = ({ images }: { images: string[] }) => {
   const navigationPrevRef = useRef<any>(null);
   const navigationNextRef = useRef<any>(null);
 
+  const boxBgColor = useColorModeValue("gray.200", "gray.700");
+
   return (
     <>
       <CarouselButtons
@@ -27,7 +29,7 @@ export const ProjectsCarousel = ({ images }: { images: string[] }) => {
       <Box width="100%">
         <ChakraSwiper
           borderRadius="12px"
-          bgColor="rgba(0, 0, 0, 0.06)"
+          bgColor={boxBgColor}
           py={{ base: 6, md: "40px" }}
           px={{ base: 6, md: "46px" }}
           spaceBetween={80}

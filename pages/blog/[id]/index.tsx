@@ -1,29 +1,29 @@
 // chakra
-import { Box, Flex, chakra, Text, HStack } from '@chakra-ui/react';
+import { Box, Flex, chakra, Text, HStack } from "@chakra-ui/react";
 
 // utils
-import { generalPaddingX, maxi } from '../../../utils/chakra';
+import { generalPaddingX, maxi } from "../../../utils/chakra";
 
 // markdown
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown from "react-markdown";
 
-import rehypeRaw from 'rehype-raw';
+import rehypeRaw from "rehype-raw";
 
 // icons
-import { HiChevronLeft } from 'react-icons/hi';
+import { HiChevronLeft } from "react-icons/hi";
 
 // dayjs
-import dayjs from 'dayjs';
-import advancedFormat from 'dayjs/plugin/advancedFormat';
-import CustomLink from '../../../components/UI/CustomLink';
-import CustomSeo from '../../../components/Layout/Seo';
-import Share from '../../../components/blog/Share';
-import Comments from '../../../components/blog/Comments';
-import Image from 'next/image';
-import { trpc } from '../../../utils/trpc';
-import prisma from '../../../utils/db';
-import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
-import { trpcHelpers } from '../../../server/routers/_app';
+import dayjs from "dayjs";
+import advancedFormat from "dayjs/plugin/advancedFormat";
+import CustomLink from "../../../components/UI/CustomLink";
+import CustomSeo from "../../../components/Layout/Seo";
+import Share from "../../../components/blog/Share";
+import Comments from "../../../components/blog/Comments";
+import Image from "next/image";
+import { trpc } from "../../../utils/trpc";
+import prisma from "../../../utils/db";
+import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
+import { trpcHelpers } from "../../../server/routers/_app";
 dayjs.extend(advancedFormat);
 
 const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -41,46 +41,45 @@ const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <CustomSeo
-        title={blogData?.title || ''}
-        description={blogData?.summary || ''}
-        imageUrl={blogData?.image_url || ''}
+        title={blogData?.title || ""}
+        description={blogData?.summary || ""}
+        imageUrl={blogData?.image_url || ""}
       />
 
-      <chakra.header d='flex' pt={{ base: '10' }} w='100%'>
-        {/* @ts-ignore */}
+      <chakra.header display="flex" pt={{ base: "10" }} w="100%">
         <Flex
-          w='100%'
-          flexDir={{ base: 'column' }}
-          justifyContent='center'
-          textAlign='center'
+          w="100%"
+          flexDir={{ base: "column" }}
+          justifyContent="center"
+          textAlign="center"
           px={generalPaddingX}
           maxW={maxi}
-          mx='auto'
-          pos='relative'
+          mx="auto"
+          pos="relative"
         >
           <chakra.div
-            display={{ base: 'none', md: 'flex' }}
-            pos='absolute'
+            display={{ base: "none", md: "flex" }}
+            pos="absolute"
             top={0}
           >
-            <CustomLink href='/blog'>
-              <Text my='auto' mr={1} fontSize='md'>
+            <CustomLink href="/blog">
+              <Text my="auto" mr={1} fontSize="md">
                 <HiChevronLeft />
               </Text>
 
-              <Text my='auto'>Back</Text>
+              <Text my="auto">Back</Text>
             </CustomLink>
           </chakra.div>
 
           <Box
             mb={{ base: 0, md: 0 }}
-            d='flex'
-            flexDir='column'
-            w={{ base: '100%', md: '60%' }}
-            m='auto'
+            display="flex"
+            flexDir="column"
+            w={{ base: "100%", md: "60%" }}
+            m="auto"
           >
-            <HStack mb={1} mx='auto'>
-              <Text color='brand.500' fontSize='14px' fontWeight={600}>
+            <HStack mb={1} mx="auto">
+              <Text color="brand.500" fontSize="14px" fontWeight={600}>
                 💻 Programming
               </Text>
             </HStack>
@@ -88,7 +87,7 @@ const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
             <chakra.h1
               fontWeight={700}
               // color="brand.500"
-              fontSize={{ base: '3xl', md: '4xl' }}
+              fontSize={{ base: "3xl", md: "4xl" }}
             >
               {blogData?.title}
             </chakra.h1>
@@ -96,15 +95,15 @@ const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
             <Text mt={2} fontWeight={600}>
               Bolu Abiola
             </Text>
-            <Text>{dayjs(blogData?.createdAt).format('Do MMM YYYY')}</Text>
+            <Text>{dayjs(blogData?.createdAt).format("Do MMM YYYY")}</Text>
 
-            <Box mt={5} w='100%' h='420px' pos='relative'>
+            <Box mt={5} w="100%" h="420px" pos="relative">
               <Image
-                alt={blogData?.title || ''}
-                layout='fill'
+                alt={blogData?.title || ""}
+                layout="fill"
                 src={`${
                   blogData?.image_url ||
-                  'https://res.cloudinary.com/bolub/image/upload/v1623525073/Group_1_1.png'
+                  "https://res.cloudinary.com/bolub/image/upload/v1623525073/Group_1_1.png"
                 }`}
               />
             </Box>
@@ -113,18 +112,18 @@ const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
       </chakra.header>
 
       <chakra.main
-        minH={{ base: '100%', md: '75vh' }}
-        d='flex'
+        minH={{ base: "100%", md: "75vh" }}
+        display="flex"
         mt={5}
         pb={20}
         px={generalPaddingX}
         maxW={maxi}
-        mx='auto'
-        w='100%'
+        mx="auto"
+        w="100%"
       >
-        <Box w={{ base: '100%', md: '60%' }} m='auto'>
+        <Box w={{ base: "100%", md: "60%" }} m="auto">
           {/* content */}
-          <chakra.p lineHeight={1.8} mb={1} fontSize='md'>
+          <chakra.p lineHeight={1.8} mb={1} fontSize="md">
             <ReactMarkdown
               rehypePlugins={[rehypeRaw]}
               // @ts-ignore
@@ -158,7 +157,7 @@ export const getStaticPaths = async () => {
         id: post.id,
       },
     })),
-    fallback: 'blocking',
+    fallback: "blocking",
   };
 };
 

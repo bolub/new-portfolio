@@ -1,57 +1,61 @@
-import React from 'react';
+import React from "react";
 
 // chakra
-import { Box, Flex, chakra, Text } from '@chakra-ui/react';
+import { Box, Flex, chakra, Text } from "@chakra-ui/react";
 
 // utils
-import { generalPaddingX, maxi } from '../utils/chakra';
+import { generalPaddingX, maxi } from "../utils/chakra";
 
 // components
-import CustomSeo from '../components/Layout/Seo';
-import SectionTechnologies from '../components/built-with/SectionTechnologies';
-import { trpc } from '../utils/trpc';
+import CustomSeo from "../components/Layout/Seo";
+import SectionTechnologies from "../components/built-with/SectionTechnologies";
+import { trpc } from "../utils/trpc";
 
 const BuiltWith = () => {
   const { data: bwrData } = trpc.builtWith.all.useQuery();
 
   // frontend
   const allFrontend = bwrData?.filter((bd) => {
-    return bd.tags[0].name.toLowerCase() === 'frontend';
+    return bd.tags[0].name.toLowerCase() === "frontend";
   });
 
   const allBackend = bwrData?.filter((bd) => {
-    return bd.tags.some((t) => t.name.toLowerCase() === 'backend');
+    return bd.tags.some((t) => t.name.toLowerCase() === "backend");
   });
 
   const allHosting = bwrData?.filter((bd) => {
-    return bd.tags[0].name.toLowerCase() === 'hosting';
+    return bd.tags[0].name.toLowerCase() === "hosting";
   });
 
   return (
     <>
       <CustomSeo
-        title='Built with'
-        description='Tools and Technologies this website was built with'
+        title="Built with"
+        description="Tools and Technologies this website was built with"
       />
 
-      <chakra.header alignItems='center' d='flex' py={{ base: '10', md: 10 }}>
+      <chakra.header
+        alignItems="center"
+        display="flex"
+        py={{ base: "10", md: 10 }}
+      >
         <Flex
-          w='100%'
-          flexDir={{ base: 'column', md: 'row' }}
+          w="100%"
+          flexDir={{ base: "column", md: "row" }}
           px={generalPaddingX}
           maxW={maxi}
-          mx='auto'
+          mx="auto"
         >
-          <Box mb={{ base: 0, md: 0 }} w={{ base: '100%' }} my='auto'>
+          <Box mb={{ base: 0, md: 0 }} w={{ base: "100%" }} my="auto">
             <chakra.h1
-              color='brand.500'
+              color="brand.500"
               fontWeight={700}
-              fontSize={{ base: '3xl', md: '4xl' }}
+              fontSize={{ base: "3xl", md: "4xl" }}
             >
               🧰 Built With
             </chakra.h1>
 
-            <Text mt={4} mb={6} fontSize='17px'>
+            <Text mt={4} mb={6} fontSize="17px">
               Basic Tools and Technologies this website was built with. These
               technologies might seem like an overkill, and I could just build
               everything from scratch with Vanilla CSS, HTML, and JS .........
@@ -62,19 +66,19 @@ const BuiltWith = () => {
       </chakra.header>
 
       <chakra.main
-        minH={{ base: '100%', md: '60vh' }}
+        minH={{ base: "100%", md: "60vh" }}
         px={generalPaddingX}
         maxW={maxi}
-        mx='auto'
+        mx="auto"
       >
         {/* frontend */}
-        <SectionTechnologies title='Frontend' data={allFrontend} />
+        <SectionTechnologies title="Frontend" data={allFrontend} />
 
         {/* backend */}
-        <SectionTechnologies title='Backend' data={allBackend} />
+        <SectionTechnologies title="Backend" data={allBackend} />
 
         {/* hosting */}
-        <SectionTechnologies title='Hosting' data={allHosting} />
+        <SectionTechnologies title="Hosting" data={allHosting} />
       </chakra.main>
     </>
   );

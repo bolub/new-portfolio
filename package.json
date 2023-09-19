@@ -25,7 +25,6 @@
     "@trpc/server": "^10.38.1",
     "axios": "^0.21.1",
     "dayjs": "^1.10.4",
-    "embla-carousel": "^4.5.3",
     "framer-motion": "^10.16.4",
     "next": "^13.4.19",
     "next-seo": "^4.24.0",

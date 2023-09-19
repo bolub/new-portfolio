@@ -39,7 +39,6 @@ import Navbar from "../components/Layout/Navbar";
 import Footer from "../components/Layout/Footer";
 import { Chakra } from "../chakra/Chakra";
 
-import "./../components/carousel/embla.css";
 import Script from "next/script";
 import Toolbar from "../components/Layout/Toolbar";
 import { trpc } from "../utils/trpc";

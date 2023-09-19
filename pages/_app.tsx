@@ -44,6 +44,8 @@ import Script from "next/script";
 import Toolbar from "../components/Layout/Toolbar";
 import { trpc } from "../utils/trpc";
 
+import "swiper/css";
+
 import { register } from "swiper/element/bundle";
 register();
 

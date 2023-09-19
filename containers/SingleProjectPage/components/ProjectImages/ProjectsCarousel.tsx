@@ -27,58 +27,56 @@ export const ProjectsCarousel = ({ images }: { images: string[] }) => {
 
       {/* slider */}
       <Box width="100%">
-        <ChakraSwiper
+        <Box
           borderRadius="12px"
           bgColor={boxBgColor}
           py={{ base: 6, md: "40px" }}
           px={{ base: 6, md: "46px" }}
-          spaceBetween={80}
-          slidesPerView={1}
-          navigation={{
-            prevEl: navigationPrevRef.current,
-            nextEl: navigationNextRef.current,
-          }}
-          onInit={(swiper) => {
-            //   @ts-ignore
-            swiper.params.navigation.prevEl = navigationPrevRef.current;
-            //   @ts-ignore
-            swiper.params.navigation.nextEl = navigationNextRef.current;
-            swiper.navigation.init();
-            swiper.navigation.update();
-          }}
         >
-          {images.map((assetData, index) => {
-            const mediaType = getMediaType(assetData);
+          <Swiper
+            spaceBetween={50}
+            slidesPerView={1}
+            onSlideChange={() => console.log("slide change")}
+            onSwiper={(swiper) => console.log(swiper)}
+            onInit={(swiper) => {
+              //   @ts-ignore
+              swiper.params.navigation.prevEl = navigationPrevRef.current;
+              //   @ts-ignore
+              swiper.params.navigation.nextEl = navigationNextRef.current;
+              swiper.navigation.init();
+              swiper.navigation.update();
+            }}
+          >
+            {images.map((assetData, index) => {
+              const mediaType = getMediaType(assetData);
 
-            return (
-              <ChakraSwiperSlide
-                key={index}
-                pos="relative"
-                height="720px"
-                width="100%"
-              >
-                {mediaType === "image" && (
-                  <Image
-                    src={assetData}
-                    alt={assetData}
-                    fill
-                    style={{
-                      objectFit: "cover",
-                    }}
-                  />
-                )}
+              return (
+                <SwiperSlide key={index}>
+                  <Box pos="relative" height="720px" width="100%">
+                    {mediaType === "image" && (
+                      <Image
+                        src={assetData}
+                        alt={assetData}
+                        fill
+                        style={{
+                          objectFit: "cover",
+                        }}
+                      />
+                    )}
 
-                {mediaType === "video" && (
-                  <>
-                    <AspectRatio ratio={1} height="720px">
-                      <VideoPlayer src={assetData} />
-                    </AspectRatio>
-                  </>
-                )}
-              </ChakraSwiperSlide>
-            );
-          })}
-        </ChakraSwiper>
+                    {mediaType === "video" && (
+                      <>
+                        <AspectRatio ratio={1} height="720px">
+                          <VideoPlayer src={assetData} />
+                        </AspectRatio>
+                      </>
+                    )}
+                  </Box>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </Box>
       </Box>
     </>
   );

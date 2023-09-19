@@ -30,7 +30,8 @@ const SingleProject = ({ data }: { data: CustomProject }) => {
               src={data.cover_image_url}
               objectFit={"contain"}
               layout="fill"
-              // placeholder="blur"
+              placeholder="blur"
+              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8lAYAAlABWjQf8LIAAAAASUVORK5CYII="
               alt={data?.title}
             />
           </Box>

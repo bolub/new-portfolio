@@ -21,6 +21,7 @@ const GridCard = ({ data }: { data?: CustomPost }) => {
       <Image
         src={data?.image_url || ""}
         fallbackSrc="https://res.cloudinary.com/bolub/image/upload/v1623525073/Group_1_1.png"
+        placeholder="blur"
         height="280px"
         w="100%"
         objectFit="cover"

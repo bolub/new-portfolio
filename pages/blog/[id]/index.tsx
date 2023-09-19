@@ -105,6 +105,8 @@ const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                   blogData?.image_url ||
                   "https://res.cloudinary.com/bolub/image/upload/v1623525073/Group_1_1.png"
                 }`}
+                placeholder="blur"
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8lAYAAlABWjQf8LIAAAAASUVORK5CYII="
               />
             </Box>
           </Box>

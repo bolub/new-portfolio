@@ -36,8 +36,6 @@ export const ProjectsCarousel = ({ images }: { images: string[] }) => {
           <Swiper
             spaceBetween={50}
             slidesPerView={1}
-            onSlideChange={() => console.log("slide change")}
-            onSwiper={(swiper) => console.log(swiper)}
             onInit={(swiper) => {
               //   @ts-ignore
               swiper.params.navigation.prevEl = navigationPrevRef.current;
@@ -58,6 +56,8 @@ export const ProjectsCarousel = ({ images }: { images: string[] }) => {
                         src={assetData}
                         alt={assetData}
                         fill
+                        placeholder="blur"
+                        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8lAYAAlABWjQf8LIAAAAASUVORK5CYII="
                         style={{
                           objectFit: "cover",
                         }}

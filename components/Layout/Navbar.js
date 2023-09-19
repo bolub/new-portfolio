@@ -55,7 +55,7 @@ const Navbar = () => {
 
           {/* Desktop view */}
           <HStack
-            d={{ base: "none", md: "flex" }}
+            display={{ base: "none", md: "flex" }}
             spacing={10}
             my="auto"
             ml="auto"
@@ -66,7 +66,7 @@ const Navbar = () => {
 
           {/* Mobile view */}
           <Tooltip label="Menu" aria-label="Menu">
-            <HStack ml="auto" d={{ base: "flex", md: "none" }}>
+            <HStack ml="auto" display={{ base: "flex", md: "none" }}>
               <a href="#footer">
                 <Button
                   ml="auto"

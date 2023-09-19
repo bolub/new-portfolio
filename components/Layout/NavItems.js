@@ -160,22 +160,6 @@ const NavItems = ({ hide, componentName, closeDrawer }) => {
         );
       })}
 
-      {/* <Box
-      // d={componentName !== "footer" && { base: "none", md: "inline" }}
-      >
-        <CustomMenu
-          title={
-            <Flex display='inline-flex'>
-              <Text as='span' mr={1}>
-                🔗
-              </Text>{' '}
-              <Text fontSize={'lg'}>More</Text>
-            </Flex>
-          }
-          items={moreItems}
-        />
-      </Box> */}
-
       <Modal
         closeOnOverlayClick={false}
         size="lg"

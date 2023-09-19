@@ -22,7 +22,7 @@ const Footer = () => {
         flexDir={{ base: "column", md: "row" }}
         px={generalPaddingX}
         maxW={maxi}
-        mx="auto"
+        w="full"
       >
         <Link passHref href="/">
           <Text
@@ -42,8 +42,9 @@ const Footer = () => {
           my={{ base: 5, md: "auto" }}
           spacing={5}
           mr={{ md: 8 }}
+          ml="auto"
         >
-          <NavItems hide="contact" componentName="footer" />
+          <NavItems hide="contact" />
         </Wrap>
 
         {/* Social */}
@@ -51,15 +52,14 @@ const Footer = () => {
           fontSize="2xl"
           color="brand.500"
           ml={{ md: "auto" }}
-          // mx={{ base: "auto", md: "" }}
           spacing={4}
-          mt={{ base: 2, md: 0 }}
+          my="auto"
         >
           <chakra.a href="https://github.com/bolub/">
             <AiFillGithub />
           </chakra.a>
 
-          <chakra.a href="https://www.linkedin.com/in/abiola-boluwatife-2569a915b/">
+          <chakra.a href="https://www.linkedin.com/in/boluseyi">
             <AiFillLinkedin />
           </chakra.a>
 
@@ -69,7 +69,7 @@ const Footer = () => {
           <chakra.a href="mailto:abiol5202@gmail.com">
             <AiOutlineMail />
           </chakra.a>
-          <chakra.a href="tel:2348130681705">
+          <chakra.a href="tel:+358415737806">
             <AiOutlinePhone />
           </chakra.a>
         </Wrap>

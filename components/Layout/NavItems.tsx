@@ -11,21 +11,21 @@ import {
   ModalHeader,
   ModalFooter,
   ModalBody,
-  Box,
   Text,
-  Flex,
 } from "@chakra-ui/react";
-
-// icons
-// import { HiOutlineDotsHorizontal } from "react-icons/hi";
 
 // components
 import CustomLink from "../UI/CustomLink";
 import Playground from "./Playground";
-import CustomMenu from "../UI/CustomMenu";
 import { useRouter } from "next/router";
 
-const NavItems = ({ hide, componentName, closeDrawer }) => {
+const NavItems = ({
+  hide,
+  closeDrawer,
+}: {
+  hide: "home" | "projects" | "blog" | "resources" | "contact";
+  closeDrawer?: () => void;
+}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [saving, setSaving] = useState({
     start: false,
@@ -56,6 +56,7 @@ const NavItems = ({ hide, componentName, closeDrawer }) => {
       });
 
       setTimeout(() => {
+        // @ts-ignore
         window.location.href = window.location;
       }, 1000);
     }, 2000);
@@ -143,7 +144,7 @@ const NavItems = ({ hide, componentName, closeDrawer }) => {
         return (
           <CustomLink
             key={linkData?.name}
-            fontSize={{ md: "lg" }}
+            fontSize={{ md: "18px" }}
             display={linkData?.mobile === false && mobileHide}
             href={linkData?.href}
             onClick={() => {

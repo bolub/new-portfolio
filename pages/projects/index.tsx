@@ -5,6 +5,7 @@ import {
   Box,
   HStack,
   Button,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { generalPaddingX, maxi } from "../../utils/chakra";
 import SingleProject from "../../components/projects/SingleProject";
@@ -53,6 +54,8 @@ const Projects = () => {
   const projectsList =
     selectedProjectType === "All" ? projectsData : filteredProjects;
 
+  const tabsBgColor = useColorModeValue("brand.50", "gray.900");
+
   return (
     <>
       <chakra.section id="projects">
@@ -71,7 +74,7 @@ const Projects = () => {
           <HStack
             mx="auto"
             my={{ base: 10, md: 20 }}
-            bg="brand.50"
+            bg={tabsBgColor}
             p={1}
             borderRadius="md"
             spacing={2}

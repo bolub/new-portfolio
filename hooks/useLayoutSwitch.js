@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 // chakra
-import { HStack, Button, Text } from "@chakra-ui/react";
+import { HStack, Button, Text, useColorModeValue } from "@chakra-ui/react";
 
 // icons
 import { BsGrid, BsViewList } from "react-icons/bs";
@@ -9,11 +9,13 @@ import { BsGrid, BsViewList } from "react-icons/bs";
 const useLayoutSwitch = () => {
   const [layout, setLayout] = useState("grid");
 
+  const tabsBgColor = useColorModeValue("brand.50", "gray.900");
+
   const LayoutComponent = (
     <HStack
       ml="auto"
       my="auto"
-      bg="brand.50"
+      bg={tabsBgColor}
       p={1}
       borderRadius="md"
       spacing={1}

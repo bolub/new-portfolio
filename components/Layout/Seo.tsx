@@ -1,5 +1,16 @@
 import { NextSeo } from "next-seo";
 
+export const defaultSeoConfig = {
+  title: "Boluwatife Abiola",
+  description:
+    "Welcome to my space. Find out all about me here, might get a little weird though",
+  twitter: {
+    handle: "@BoluwatifeAbio1",
+    site: "@BoluwatifeAbio1",
+    cardType: "summary_large_image",
+  },
+} as const;
+
 const CustomSeo = ({
   title,
   description,
@@ -9,19 +20,18 @@ const CustomSeo = ({
   description?: string;
   imageUrl?: string;
 }) => {
-  const defaultDescription =
-    "Welcome to my space. Find out all about me here, might get a little weird though";
-
   const url = window.location.href;
+
+  console.log(imageUrl);
 
   return (
     <NextSeo
       title={title || "Boluwatife Abiola"}
-      description={description || defaultDescription}
+      description={description}
       openGraph={{
         url,
         title: "Open Graph Title",
-        description: description || defaultDescription,
+        description: description,
         images: [
           {
             url:
@@ -41,11 +51,7 @@ const CustomSeo = ({
           },
         ],
       }}
-      twitter={{
-        handle: "@BoluwatifeAbio1",
-        site: "@BoluwatifeAbio1",
-        cardType: "summary_large_image",
-      }}
+      twitter={defaultSeoConfig.twitter}
     />
   );
 };

@@ -32,6 +32,8 @@ import Toolbar from "../components/Layout/Toolbar";
 import { trpc } from "../utils/trpc";
 
 import { register } from "swiper/element/bundle";
+import { DefaultSeo } from "next-seo";
+import { defaultSeoConfig } from "../components/Layout/Seo";
 register();
 
 function MyApp({ Component, pageProps }: any) {
@@ -49,6 +51,16 @@ function MyApp({ Component, pageProps }: any) {
       />
       <Chakra cookies={pageProps.cookies}>
         <ChakraProvider theme={customTheme}>
+          <DefaultSeo
+            title={defaultSeoConfig.title}
+            description={defaultSeoConfig.description}
+            openGraph={{
+              type: "website",
+              locale: "en_IE",
+              url: "https://www.boluabiola.com",
+            }}
+            twitter={defaultSeoConfig.twitter}
+          />
           {show && (
             <>
               <NextNprogress
@@ -57,7 +69,6 @@ function MyApp({ Component, pageProps }: any) {
                 stopDelayMs={200}
                 height={4}
                 showOnShallow={true}
-                // showSpinner={false}
               />
 
               <Navbar />

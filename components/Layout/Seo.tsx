@@ -16,9 +16,8 @@ const CustomSeo = ({
 
   return (
     <NextSeo
-      title={`Boluwatife Abiola - ${title}`}
+      title={title || "Boluwatife Abiola"}
       description={description || defaultDescription}
-      canonical={url}
       openGraph={{
         url,
         title: "Open Graph Title",

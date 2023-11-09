@@ -9,7 +9,7 @@ const CustomSeo = ({
   description?: string;
   imageUrl?: string;
 }) => {
-  const dd =
+  const defaultDescription =
     "Welcome to my space. Find out all about me here, might get a little weird though";
 
   const url = window.location.href;
@@ -17,12 +17,12 @@ const CustomSeo = ({
   return (
     <NextSeo
       title={`Boluwatife Abiola - ${title}`}
-      description={description || dd}
+      description={description || defaultDescription}
       canonical={url}
       openGraph={{
         url,
         title: "Open Graph Title",
-        description: description || dd,
+        description: description || defaultDescription,
         images: [
           {
             url:

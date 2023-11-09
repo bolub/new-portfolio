@@ -17,23 +17,12 @@ import "@fontsource/prompt/700.css";
 import "@fontsource/prompt/800.css";
 import "@fontsource/prompt/900.css";
 
-// react
 import { useState, useEffect } from "react";
-
-// chakra
 import { ChakraProvider } from "@chakra-ui/react";
-
-// chakra custom theme from theme folder
 import { customTheme } from "../chakra";
-import Head from "next/head";
-
-// recoil
 import { RecoilRoot } from "recoil";
-
-// progress bar
 import NextNprogress from "nextjs-progressbar";
 
-// components
 import Navbar from "../components/Layout/Navbar";
 import Footer from "../components/Layout/Footer";
 import { Chakra } from "../chakra/Chakra";
@@ -41,7 +30,6 @@ import { Chakra } from "../chakra/Chakra";
 import Script from "next/script";
 import Toolbar from "../components/Layout/Toolbar";
 import { trpc } from "../utils/trpc";
-import Prism from "prismjs";
 
 import { register } from "swiper/element/bundle";
 register();
@@ -61,11 +49,6 @@ function MyApp({ Component, pageProps }: any) {
       />
       <Chakra cookies={pageProps.cookies}>
         <ChakraProvider theme={customTheme}>
-          <Head>
-            <title>Boluwatife Abiola</title>
-            {/* <link rel="icon" href="/favicon.ico" /> */}
-          </Head>
-
           {show && (
             <>
               <NextNprogress

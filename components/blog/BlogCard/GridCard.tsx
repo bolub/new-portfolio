@@ -1,25 +1,19 @@
-// chakra
 import { chakra, Flex, Image, Text, Box } from "@chakra-ui/react";
 
-// components
 import CustomLink from "../../UI/CustomLink";
-import TagList from "../../UI/TagList";
 
-import { readingTime } from "../../../utils/functions";
-
-// dayjs
 import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
-import { CustomPost } from "../../../server/modules/post-service/interface";
+import { BlogItem } from "../../../contentful";
 dayjs.extend(advancedFormat);
 
-const GridCard = ({ data }: { data?: CustomPost }) => {
+const GridCard = ({ data }: { data?: BlogItem }) => {
   if (!data) return <></>;
 
   return (
     <Flex flexDir="column">
       <Image
-        src={data?.image_url || ""}
+        src={data?.fields.cover || ""}
         fallbackSrc="https://res.cloudinary.com/bolub/image/upload/v1623525073/Group_1_1.png"
         placeholder="blur"
         height="280px"
@@ -32,33 +26,27 @@ const GridCard = ({ data }: { data?: CustomPost }) => {
 
       <Box mb={2}>
         {/* tag list */}
-        <Box>
-          <TagList data={data?.tags} />
-        </Box>
+        <Box>{/* <TagList data={data?.tags} /> */}</Box>
 
         <Flex>
-          {/* number of mins to finish */}
-          <Text my="auto" fontWeight={600} fontSize="14px">
-            ⏱️ {readingTime(data?.content)} mins read
-          </Text>
-          <Text fontSize="xl" mx={1} mt={1}>
+          {/* <Text fontSize="xl" mx={1} mt={1}>
             &bull;
-          </Text>
+          </Text> */}
 
           {/* date created */}
           <Text my="auto" fontSize="14px">
-            {dayjs(data.createdAt).format("Do MMM YYYY")}
+            {dayjs(data.sys.createdAt).format("Do MMM YYYY")}
           </Text>
         </Flex>
       </Box>
 
       <chakra.h2 fontWeight="bold" fontSize="lg" mb={5}>
-        {data?.title}
+        {data.fields.title}
       </chakra.h2>
 
       <Box fontWeight="bold">
         <CustomLink
-          href={`/blog/${data?.id}`}
+          href={`/blog/${data.fields.slug}`}
           fontSize="15px"
           active={undefined}
           onClick={undefined}

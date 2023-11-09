@@ -1,4 +1,3 @@
-import "../styles/globals.css";
 import "@fontsource/outfit/400.css";
 import "@fontsource/outfit/500.css";
 import "@fontsource/outfit/600.css";
@@ -42,6 +41,7 @@ import { Chakra } from "../chakra/Chakra";
 import Script from "next/script";
 import Toolbar from "../components/Layout/Toolbar";
 import { trpc } from "../utils/trpc";
+import Prism from "prismjs";
 
 import { register } from "swiper/element/bundle";
 register();

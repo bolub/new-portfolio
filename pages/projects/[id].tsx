@@ -1,5 +1,5 @@
 import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
-import { SingleProjectPage } from "../../containers/SingleProjectPage/SingleProjectPage";
+import { SingleProjectPage } from "../../containers/single-project-page/SingleProjectPage";
 import prisma from "../../utils/db";
 import { trpcHelpers } from "../../server/routers/_app";
 

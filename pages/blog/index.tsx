@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import { Box, Flex, chakra, SimpleGrid } from "@chakra-ui/react";
 import { generalPaddingX, maxi } from "../../utils/chakra";
 import useLayoutSwitch from "../../hooks/useLayoutSwitch";
@@ -7,60 +6,58 @@ import useLayoutSwitch from "../../hooks/useLayoutSwitch";
 import GridCard from "../../components/blog/BlogCard/GridCard";
 import ListCard from "../../components/blog/BlogCard/ListCard";
 import CustomSeo from "../../components/Layout/Seo";
-import CustomSearch from "../../components/UI/CustomSearch";
 import PageHeader from "../../components/blog/PageHeader";
 import { trpc } from "../../utils/trpc";
-import { CustomPost } from "../../server/modules/post-service/interface";
 import { trpcHelpers } from "../../server/routers/_app";
-import { useDebounce } from "react-use";
+import { getBlogEntries } from "../../contentful";
+import { useQuery } from "@tanstack/react-query";
 
 const Blog = () => {
-  const { data, status } = trpc.post.all.useQuery();
-  const {
-    mutate,
-    isLoading,
-    data: fed,
-  } = trpc.post.search.useMutation({
-    onSuccess(data) {
-      setBlogData(data);
-    },
+  const { data: blogData } = useQuery({
+    queryKey: ["blog"],
+    queryFn: getBlogEntries,
   });
 
-  useEffect(() => {
-    if (status === "success") {
-      setBlogData(data);
-    }
-  }, [status]);
+  const { data, status } = trpc.post.all.useQuery();
+  // const { mutate } = trpc.post.search.useMutation({
+  //   onSuccess(data) {
+  //     setBlogData(data);
+  //   },
+  // });
+
+  // useEffect(() => {
+  //   if (status === "success") {
+  //     setBlogData(data);
+  //   }
+  // }, [status]);
 
   const { layout, LayoutComponent } = useLayoutSwitch();
-  const [blogData, setBlogData] = useState<CustomPost[]>();
-  const [searchText, setSearchText] = useState("");
-  const [debouncedValue, setDebouncedValue] = React.useState("");
+  // const [blogData, setBlogData] = useState<CustomPost[]>();
+  // const [searchText, setSearchText] = useState("");
+  // const [debouncedValue, setDebouncedValue] = React.useState("");
 
-  const [, cancel] = useDebounce(
-    () => {
-      setDebouncedValue(searchText);
-    },
-    100,
-    [searchText]
-  );
+  // const [, cancel] = useDebounce(
+  //   () => {
+  //     setDebouncedValue(searchText);
+  //   },
+  //   100,
+  //   [searchText]
+  // );
 
-  const searchHandler = (e: any) => {
-    setSearchText(e.target.value);
+  // const searchHandler = (e: any) => {
+  //   setSearchText(e.target.value);
 
-    mutate({
-      query: debouncedValue,
-    });
-  };
+  //   mutate({
+  //     query: debouncedValue,
+  //   });
+  // };
 
   return (
     <>
       <CustomSeo title="Blog" />
 
-      {/* header */}
       <PageHeader />
 
-      {/* main */}
       <chakra.main
         mt={20}
         pt={{ base: "10" }}
@@ -85,16 +82,14 @@ const Blog = () => {
             {LayoutComponent}
           </Flex>
 
-          {/* Search Component */}
-          <CustomSearch value={searchText} onChange={searchHandler} />
+          {/* <CustomSearch value={searchText} onChange={searchHandler} /> */}
         </Box>
 
-        {/* Blog list */}
         <Box display="posts">
           {layout === "grid" && (
             <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={8}>
               {blogData?.map((postData) => {
-                return <GridCard key={postData?.id} data={postData} />;
+                return <GridCard key={postData.sys.id} data={postData} />;
               })}
             </SimpleGrid>
           )}
@@ -102,7 +97,7 @@ const Blog = () => {
           {layout === "list" && (
             <>
               {blogData?.map((postData) => {
-                return <ListCard key={postData?.id} data={postData} />;
+                return <ListCard key={postData.sys.id} data={postData} />;
               })}
             </>
           )}

@@ -1,62 +1,53 @@
 // chakra
-import { chakra, Flex, HStack, Image, Tag, Text, Box } from '@chakra-ui/react';
+import { chakra, Flex, Text, Box } from "@chakra-ui/react";
 
 // components
-import CustomLink from '../../UI/CustomLink';
+import CustomLink from "../../UI/CustomLink";
 
 // dayjs
-import dayjs from 'dayjs';
-import advancedFormat from 'dayjs/plugin/advancedFormat';
-import TagList from '../../UI/TagList';
-import { readingTime } from '../../../utils/functions';
-import { Post } from '@prisma/client';
-import { CustomPost } from '../../../server/modules/post-service/interface';
+import dayjs from "dayjs";
+import advancedFormat from "dayjs/plugin/advancedFormat";
+import { BlogItem } from "../../../contentful";
 dayjs.extend(advancedFormat);
 
-const ListCard = ({ data }: { data: CustomPost }) => {
+const ListCard = ({ data }: { data: BlogItem }) => {
   return (
     <Flex
       mb={5}
-      flexDir={{ base: 'column', md: 'row' }}
-      borderTopWidth='1px'
+      flexDir={{ base: "column", md: "row" }}
+      borderTopWidth="1px"
       pt={10}
       pb={10}
-      w='100%'
+      w="100%"
     >
       <Box
-        w={{ base: 'auto', md: '15%' }}
+        w={{ base: "auto", md: "15%" }}
         mb={{ base: 4, md: 0 }}
         mr={{ md: 32 }}
-        fontSize='14px'
+        fontSize="14px"
       >
-        {/* <HStack color="brand.500" fontWeight={600}>
-          <Text>💻</Text>
-          <Text>Programming</Text>
-        </HStack> */}
-
-        <Text fontSize='14px'>⏱️ {readingTime(data?.content)} mins read</Text>
-        <Text>{dayjs(data?.createdAt).format('Do MMM YYYY')}</Text>
+        <Text>{dayjs(data.sys.createdAt).format("Do MMM YYYY")}</Text>
       </Box>
 
-      <Box w={{ base: 'auto', md: '85%' }}>
-        <chakra.h2 fontWeight='bold' fontSize='lg' mb={2}>
-          {data?.title}
+      <Box w={{ base: "auto", md: "85%" }}>
+        <chakra.h2 fontWeight="bold" fontSize="lg" mb={2}>
+          {data.fields.title}
         </chakra.h2>
 
         {/* tag list */}
-        <Box mb={5}>
+        {/* <Box mb={5}>
           <TagList data={data?.tags} />
-        </Box>
+        </Box> */}
 
-        <chakra.p
+        {/* <chakra.p
           mb={8}
           // color="gray.600"
         >
           {data?.summary}
-        </chakra.p>
+        </chakra.p> */}
 
-        <Box fontWeight='bold'>
-          <CustomLink href={`/blog/${data?.id}`} fontSize='15px'>
+        <Box fontWeight="bold">
+          <CustomLink href={`/blog/${data.sys.id}`} fontSize="15px">
             Read more
           </CustomLink>
         </Box>

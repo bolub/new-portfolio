@@ -22,8 +22,6 @@ const CustomSeo = ({
 }) => {
   const url = window.location.href;
 
-  console.log(imageUrl);
-
   return (
     <NextSeo
       title={title || "Boluwatife Abiola"}

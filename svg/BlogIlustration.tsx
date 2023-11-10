@@ -1,8 +1,8 @@
 // chakra
-import { chakra, useColorMode } from "@chakra-ui/react";
-import { defaultBrandColor } from "./../chakra/colors";
+import { ChakraProps, chakra, useColorMode } from "@chakra-ui/react";
+import { defaultBrandColor } from "../chakra/colors";
 
-const BlogIllustration = (props) => {
+const BlogIllustration = (props: ChakraProps) => {
   const { colorMode } = useColorMode();
 
   return (

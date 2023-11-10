@@ -1,8 +1,8 @@
 // chakra
-import { chakra } from "@chakra-ui/react";
+import { ChakraProps, chakra } from "@chakra-ui/react";
 import { defaultBrandColor } from "../chakra/colors";
 
-const PageNotFoundIllustration = (props) => {
+const PageNotFoundIllustration = (props: ChakraProps) => {
   return (
     <chakra.svg
       viewBox="0 0 928 788"

@@ -1,7 +1,7 @@
-import { chakra } from "@chakra-ui/react";
+import { ChakraProps, chakra } from "@chakra-ui/react";
 import { defaultBrandColor } from "../chakra/colors";
 
-const HomeIllustration = (props) => {
+const HomeIllustration = (props: ChakraProps) => {
   return (
     <>
       <chakra.svg

@@ -3,10 +3,10 @@ import { generalPaddingX, maxi } from "../../utils/chakra";
 import CustomLink from "../../components/UI/CustomLink";
 import { HiChevronLeft } from "react-icons/hi";
 import Image from "next/image";
-import { BlogItem } from "../../contentful";
 
 import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
+import { BlogItem } from "../../contentful/blog/blog";
 dayjs.extend(advancedFormat);
 
 export const HeaderDisplay = ({ blogData }: { blogData: BlogItem }) => {

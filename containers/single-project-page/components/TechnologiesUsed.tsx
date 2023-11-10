@@ -1,10 +1,10 @@
 import { VStack, chakra } from "@chakra-ui/react";
-import { ProjectTechnologies } from "@prisma/client";
+import { ProjectTechnology } from "../../../contentful/project/project";
 
 export const TechnologiesUsed = ({
   technologies,
 }: {
-  technologies: ProjectTechnologies[];
+  technologies: ProjectTechnology[];
 }) => {
   return (
     <>
@@ -15,9 +15,11 @@ export const TechnologiesUsed = ({
       <VStack align="start" spacing="18px" mt="30px">
         {technologies?.map((tech) => {
           return (
-            <chakra.p key={tech.id} fontSize="18px">
-              <chakra.span fontWeight="semibold">{tech.title}:</chakra.span>{" "}
-              <chakra.span>{tech.description}</chakra.span>
+            <chakra.p key={tech.sys.id} fontSize="18px">
+              <chakra.span fontWeight="semibold">
+                {tech.fields.title}:
+              </chakra.span>{" "}
+              <chakra.span>{tech.fields.description}</chakra.span>
             </chakra.p>
           );
         })}

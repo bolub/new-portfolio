@@ -16,40 +16,41 @@ import {
   BsLayoutTextWindowReverse,
 } from "react-icons/bs";
 import CustomLink from "../../components/UI/CustomLink";
-import { CustomProject } from "../../server/modules/project-service/interface";
+import { ProjectItem } from "../../contentful/project/project";
 
-const SingleProject = ({ data }: { data: CustomProject }) => {
+const SingleProject = ({ data }: { data: ProjectItem }) => {
   const boxBgColor = useColorModeValue("brand.100", "gray.700");
+
+  const project = data.fields;
 
   return (
     <Box>
-      {data.cover_image_url && (
+      {project.cover_image_url && (
         <Box px="20px" pt="20px" bgColor={boxBgColor} rounded="lg">
           <Box h={{ base: "300px", md: "500px" }} pos="relative" rounded="lg">
             <Image
-              src={data.cover_image_url}
+              src={project.cover_image_url}
               objectFit={"contain"}
               layout="fill"
               placeholder="blur"
               blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8lAYAAlABWjQf8LIAAAAASUVORK5CYII="
-              alt={data?.title}
+              alt={project.title}
             />
           </Box>
         </Box>
       )}
 
       <Wrap display={{ base: "flex", md: "flex" }} mt={5}>
-        {data.tags?.map((tag) => {
+        {project.tags?.map((tag) => {
           return (
             <Tag
-              key={tag.id}
+              key={tag.sys.id}
               cursor="pointer"
-              // colorScheme="brand"
               variant="subtle"
               borderRadius="full"
               size="md"
             >
-              {tag?.name}
+              {tag.fields.name}
             </Tag>
           );
         })}
@@ -61,15 +62,15 @@ const SingleProject = ({ data }: { data: CustomProject }) => {
           fontWeight={"medium"}
           fontSize={{ base: "xl", md: "2xl" }}
         >
-          {data.title}
+          {project.title}
         </chakra.h3>
 
         <HStack ml="auto">
-          {data.design_url && (
+          {project?.design_url && (
             <Tooltip label="Design" aria-label="Design">
               <IconButton
                 as="a"
-                href={data.design_url}
+                href={project?.design_url}
                 target="_blank"
                 aria-label="Deign"
                 colorScheme={"brand"}
@@ -80,11 +81,11 @@ const SingleProject = ({ data }: { data: CustomProject }) => {
             </Tooltip>
           )}
 
-          {data.source_code && (
+          {project?.source_code && (
             <Tooltip label="Source Code" aria-label="Source Code">
               <IconButton
                 as="a"
-                href={data.source_code}
+                href={project?.source_code}
                 target="_blank"
                 aria-label="Source Code"
                 colorScheme={"brand"}
@@ -95,11 +96,11 @@ const SingleProject = ({ data }: { data: CustomProject }) => {
             </Tooltip>
           )}
 
-          {data.live_url && (
+          {project?.live_url && (
             <Tooltip label="Live url" aria-label="Live url">
               <IconButton
                 as="a"
-                href={data.live_url}
+                href={project?.live_url}
                 target="_blank"
                 aria-label="Live url"
                 colorScheme={"brand"}
@@ -113,10 +114,10 @@ const SingleProject = ({ data }: { data: CustomProject }) => {
       </Flex>
 
       <chakra.p fontSize={"lg"} mt={3} mb={8}>
-        {data.subtitle || data.description}
+        {project?.subtitle || project?.description}
       </chakra.p>
 
-      <CustomLink href={`/projects/${data?.id}`} active={false}>
+      <CustomLink href={`/projects/${project.slug}`} active={false}>
         Read more
       </CustomLink>
     </Box>

@@ -11,9 +11,8 @@ import { generalPaddingX, maxi } from "../../utils/chakra";
 import SingleProject from "../../containers/projects/SingleProject";
 import { useRouter } from "next/router";
 import { trpcHelpers } from "../../server/routers/_app";
-import { trpc } from "../../utils/trpc";
-import { useEffect, useState } from "react";
-import { CustomProject } from "../../server/modules/project-service/interface";
+import { getProjects } from "../../contentful/project/project";
+import { InferGetStaticPropsType } from "next";
 
 const projectTypes = [
   {
@@ -30,14 +29,9 @@ const projectTypes = [
   },
 ];
 
-const Projects = () => {
-  const { data } = trpc.project.all.useQuery();
-  const [projectsData, setProjectsData] = useState<CustomProject[]>();
-
-  useEffect(() => {
-    setProjectsData(data);
-  }, [data]);
-
+const Projects = ({
+  allProjects,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const router = useRouter();
   const selectedProjectType = (router.query.tab as string) || "All";
 
@@ -45,14 +39,16 @@ const Projects = () => {
     router.push(`/projects?tab=${selected}`);
   };
 
-  const filteredProjects = projectsData?.filter((project) => {
-    return project.tags.some((tag) => {
-      return tag.name.toLowerCase() === selectedProjectType.toLowerCase();
+  const filteredProjects = allProjects?.filter((project) => {
+    return project.fields.tags.some((tag) => {
+      return (
+        tag.fields.name.toLowerCase() === selectedProjectType.toLowerCase()
+      );
     });
   });
 
   const projectsList =
-    selectedProjectType === "All" ? projectsData : filteredProjects;
+    selectedProjectType === "All" ? allProjects : filteredProjects;
 
   const tabsBgColor = useColorModeValue("brand.50", "gray.900");
 
@@ -114,7 +110,7 @@ const Projects = () => {
 
           <SimpleGrid spacing={16} columns={{ base: 1, md: 2 }}>
             {projectsList?.map((pd) => {
-              return <SingleProject key={pd.id} data={{ ...pd }} />;
+              return <SingleProject key={pd.sys.id} data={{ ...pd }} />;
             })}
           </SimpleGrid>
         </Box>
@@ -126,11 +122,12 @@ const Projects = () => {
 export default Projects;
 
 export async function getStaticProps() {
-  await trpcHelpers.project.all.prefetch();
+  const allProjects = await getProjects();
 
   return {
     props: {
       trpcState: trpcHelpers.dehydrate(),
+      allProjects,
     },
   };
 }

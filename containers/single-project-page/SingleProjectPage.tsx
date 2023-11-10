@@ -1,32 +1,24 @@
-import { useRef } from "react";
-
 import { Box, Flex, chakra, Text } from "@chakra-ui/react";
 import { generalPaddingX, maxi } from "../../utils/chakra";
 import CustomLink from "../../components/UI/CustomLink";
 import { HiChevronLeft } from "react-icons/hi";
 import { ProjectImages } from "./components/ProjectImages/ProjectImages";
 import { TechnologiesUsed } from "./components/TechnologiesUsed";
-import { trpc } from "../../utils/trpc";
 import CustomSeo from "../../components/Layout/Seo";
+import { ProjectItem } from "../../contentful/project/project";
+import { ContentDisplay } from "../blog-page/ContentDisplay";
 
-export const SingleProjectPage = ({ projectId }: { projectId: string }) => {
-  const { data: project } = trpc.project.view.useQuery(
-    {
-      id: projectId,
-    },
-    {
-      enabled: !!projectId,
-    }
-  );
-
+export const SingleProjectPage = ({ project }: { project: ProjectItem }) => {
   if (!project) return <Text>Project data not available</Text>;
+
+  const projectData = project.fields;
 
   return (
     <>
       <CustomSeo
-        title={""}
-        description={project.description || ""}
-        imageUrl={project.title || ""}
+        title={projectData.title}
+        description={projectData.subtitle}
+        imageUrl={projectData.cover_image_url}
       />
 
       <chakra.header display="flex" pt={{ base: "10" }} w="100%">
@@ -51,11 +43,11 @@ export const SingleProjectPage = ({ projectId }: { projectId: string }) => {
             fontWeight={700}
             fontSize={{ base: "3xl", md: "4xl" }}
           >
-            {project.title}
+            {projectData.title}
           </chakra.h1>
 
           <Box w="full" maxWidth="800px" mt="20px">
-            <Text fontSize="lg">{project.description}</Text>
+            <ContentDisplay data={projectData.description} />
           </Box>
         </Flex>
       </chakra.header>
@@ -70,7 +62,9 @@ export const SingleProjectPage = ({ projectId }: { projectId: string }) => {
           maxW={maxi}
           mx="auto"
         >
-          <ProjectImages images={project.images} />
+          {projectData.images && projectData.images.length > 0 && (
+            <ProjectImages images={projectData.images} />
+          )}
         </chakra.section>
 
         <chakra.section
@@ -82,7 +76,9 @@ export const SingleProjectPage = ({ projectId }: { projectId: string }) => {
           maxW={maxi}
           mx="auto"
         >
-          <TechnologiesUsed technologies={project.technologies} />
+          {projectData.technologies && projectData.technologies.length > 0 && (
+            <TechnologiesUsed technologies={projectData.technologies} />
+          )}
         </chakra.section>
       </chakra.main>
     </>

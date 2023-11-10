@@ -1,29 +1,22 @@
 import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
 import { SingleProjectPage } from "../../containers/single-project-page/SingleProjectPage";
-import prisma from "../../utils/db";
-import { trpcHelpers } from "../../server/routers/_app";
+import { getProject, getProjects } from "../../contentful/project/project";
 
 const SingleProject = (
   props: InferGetStaticPropsType<typeof getStaticProps>
 ) => {
-  const { id } = props;
-
-  return <SingleProjectPage projectId={id} />;
+  return <SingleProjectPage project={props.project} />;
 };
 
 export default SingleProject;
 
 export const getStaticPaths = async () => {
-  const projects = await prisma.project.findMany({
-    select: {
-      id: true,
-    },
-  });
+  const projects = await getProjects();
 
   return {
     paths: projects.map((project) => ({
       params: {
-        id: project.id,
+        slug: project.fields.slug,
       },
     })),
     fallback: "blocking",
@@ -31,15 +24,15 @@ export const getStaticPaths = async () => {
 };
 
 export async function getStaticProps(
-  context: GetStaticPropsContext<{ id: string }>
+  context: GetStaticPropsContext<{ slug: string }>
 ) {
-  const id = context.params?.id as string;
+  const slug = context.params?.slug as string;
 
-  await trpcHelpers.project.view.prefetch({ id });
+  const project = await getProject(slug);
+
   return {
     props: {
-      trpcState: trpcHelpers.dehydrate(),
-      id,
+      project,
     },
     revalidate: 1,
   };

@@ -4,12 +4,9 @@ import { generalPaddingX, maxi } from "../../utils/chakra";
 import CustomButton from "../../components/UI/CustomButton";
 import SingleProject from "../projects/SingleProject";
 import { trpc } from "../../utils/trpc";
+import { ProjectItem } from "../../contentful/project/project";
 
-const About = () => {
-  const { data: projectsData } = trpc.project.some.useQuery({
-    quantity: 2,
-  });
-
+const About = ({ projects }: { projects: ProjectItem[] }) => {
   return (
     <chakra.section
       px={generalPaddingX}
@@ -37,8 +34,8 @@ const About = () => {
         spacing={16}
         columns={{ base: 1, md: 2 }}
       >
-        {projectsData?.slice(0, 2)?.map((pd) => {
-          return <SingleProject key={pd.id} data={pd} />;
+        {projects?.slice(0, 2)?.map((pd) => {
+          return <SingleProject key={pd.sys.id} data={pd} />;
         })}
       </SimpleGrid>
 

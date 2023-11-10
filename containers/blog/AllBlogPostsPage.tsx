@@ -1,10 +1,10 @@
-import { BlogItems } from "../../contentful";
 import CustomSeo from "../../components/Layout/Seo";
 import { Box, Flex, SimpleGrid, chakra } from "@chakra-ui/react";
 import useLayoutSwitch from "../../hooks/useLayoutSwitch";
 import { generalPaddingX, maxi } from "../../utils/chakra";
 import GridCard from "./BlogCard/GridCard";
 import ListCard from "./BlogCard/ListCard";
+import { BlogItems } from "../../contentful/blog/blog";
 
 export const AllBlogPostsPage = ({ data: blogData }: { data: BlogItems }) => {
   const { layout, LayoutComponent } = useLayoutSwitch();

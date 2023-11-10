@@ -1,111 +1,18 @@
-import React from "react";
-
-// chakra
-import { Box, Flex, chakra, Text } from "@chakra-ui/react";
-
-// utils
-import { generalPaddingX, maxi } from "../utils/chakra";
-
-// components
-import CustomSeo from "../components/Layout/Seo";
-import SectionTechnologies from "../components/built-with/SectionTechnologies";
-import { trpc } from "../utils/trpc";
+import { trpcHelpers } from "../server/routers/_app";
+import { BuiltWithPage } from "../containers/built-with/BuiltWithPage";
 
 const BuiltWith = () => {
-  const { data: bwrData } = trpc.builtWith.all.useQuery();
-
-  // frontend
-  const allFrontend = bwrData?.filter((bd) => {
-    return bd.tags[0].name.toLowerCase() === "frontend";
-  });
-
-  const allBackend = bwrData?.filter((bd) => {
-    return bd.tags.some((t) => t.name.toLowerCase() === "backend");
-  });
-
-  const allHosting = bwrData?.filter((bd) => {
-    return bd.tags[0].name.toLowerCase() === "hosting";
-  });
-
-  return (
-    <>
-      <CustomSeo
-        title="Built with"
-        description="Tools and Technologies this website was built with"
-      />
-
-      <chakra.header
-        alignItems="center"
-        display="flex"
-        py={{ base: "10", md: 10 }}
-      >
-        <Flex
-          w="100%"
-          flexDir={{ base: "column", md: "row" }}
-          px={generalPaddingX}
-          maxW={maxi}
-          mx="auto"
-        >
-          <Box mb={{ base: 0, md: 0 }} w={{ base: "100%" }} my="auto">
-            <chakra.h1
-              color="brand.500"
-              fontWeight={700}
-              fontSize={{ base: "3xl", md: "4xl" }}
-            >
-              🧰 Built With
-            </chakra.h1>
-
-            <Text mt={4} mb={6} fontSize="17px">
-              Basic Tools and Technologies this website was built with. These
-              technologies might seem like an overkill, and I could just build
-              everything from scratch with Vanilla CSS, HTML, and JS .........
-              But I'm not gonna, why?, because I don't want to 😏
-            </Text>
-          </Box>
-        </Flex>
-      </chakra.header>
-
-      <chakra.main
-        minH={{ base: "100%", md: "60vh" }}
-        px={generalPaddingX}
-        maxW={maxi}
-        mx="auto"
-      >
-        {/* frontend */}
-        <SectionTechnologies title="Frontend" data={allFrontend} />
-
-        {/* backend */}
-        <SectionTechnologies title="Backend" data={allBackend} />
-
-        {/* hosting */}
-        <SectionTechnologies title="Hosting" data={allHosting} />
-      </chakra.main>
-    </>
-  );
+  return <BuiltWithPage />;
 };
 
 export default BuiltWith;
 
-// export async function getStaticProps(context) {
-//   try {
-//     const response = await axios.get(
-//       `${process.env.NEXT_PUBLIC_BASE_URL}/built-widths`
-//     );
+export async function getStaticProps() {
+  await trpcHelpers.builtWith.all.prefetch();
 
-//     return {
-//       props: {
-//         data: response.data,
-//       }, // will be passed to the page component as props
-//       revalidate: 1,
-//     };
-//   } catch (error) {
-//     // console.log(error);
-//     return {
-//       props: {
-//         data: [],
-//         status: 'error',
-//       }, // will be passed to the page component as props
-//       revalidate: 1,
-//     };
-//   }
-// }
+  return {
+    props: {
+      trpcState: trpcHelpers.dehydrate(),
+    },
+  };
+}

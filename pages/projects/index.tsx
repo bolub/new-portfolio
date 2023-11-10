@@ -8,7 +8,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { generalPaddingX, maxi } from "../../utils/chakra";
-import SingleProject from "../../components/projects/SingleProject";
+import SingleProject from "../../containers/projects/SingleProject";
 import { useRouter } from "next/router";
 import { trpcHelpers } from "../../server/routers/_app";
 import { trpc } from "../../utils/trpc";

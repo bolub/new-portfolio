@@ -1,8 +1,8 @@
 import { chakra } from "@chakra-ui/react";
 
 import CustomSeo from "../components/Layout/Seo";
-import Header from "../components/homePage/Header";
-import About from "../components/homePage/About";
+import Header from "../containers/homePage/Header";
+import About from "../containers/homePage/About";
 import { trpcHelpers } from "../server/routers/_app";
 
 export default function Home() {

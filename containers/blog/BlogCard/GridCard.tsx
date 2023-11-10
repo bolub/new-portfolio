@@ -1,10 +1,9 @@
 import { chakra, Flex, Image, Text, Box } from "@chakra-ui/react";
 
-import CustomLink from "../../UI/CustomLink";
-
 import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
 import { BlogItem } from "../../../contentful";
+import CustomLink from "../../../components/UI/CustomLink";
 dayjs.extend(advancedFormat);
 
 const GridCard = ({ data }: { data?: BlogItem }) => {
@@ -16,7 +15,7 @@ const GridCard = ({ data }: { data?: BlogItem }) => {
         src={data?.fields.cover || ""}
         fallbackSrc="https://res.cloudinary.com/bolub/image/upload/v1623525073/Group_1_1.png"
         placeholder="blur"
-        height="280px"
+        height="380px"
         w="100%"
         objectFit="cover"
         borderWidth="1px"

@@ -1,11 +1,8 @@
-// nextjs link
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-// chakra
 import { chakra } from "@chakra-ui/react";
 
-// recoil
 import { useRecoilValue } from "recoil";
 import { fontState } from "../../atoms/fonts";
 import { ReactNode } from "react";
@@ -28,16 +25,13 @@ const CustomLink = ({
   isExternal?: boolean;
 }) => {
   const fontType = useRecoilValue(fontState);
-
-  // next router initialization
   const { pathname } = useRouter();
-
-  // looks obvious enough
   let isActive = active || pathname === href;
 
   return (
     <Link href={href} passHref>
       <chakra.a
+        href={href}
         fontFamily={fontType.heading}
         borderBottom="1.3px solid"
         borderColor={isActive ? "brand.500" : "#c4c4c4"}

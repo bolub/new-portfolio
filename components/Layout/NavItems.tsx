@@ -1,7 +1,5 @@
-// react
 import { useState, useEffect } from "react";
 
-// chakra
 import {
   Button,
   useDisclosure,
@@ -14,7 +12,6 @@ import {
   Text,
 } from "@chakra-ui/react";
 
-// components
 import CustomLink from "../UI/CustomLink";
 import Playground from "./Playground";
 import { useRouter } from "next/router";
@@ -23,7 +20,7 @@ const NavItems = ({
   hide,
   closeDrawer,
 }: {
-  hide: "home" | "projects" | "blog" | "resources" | "contact";
+  hide?: "home" | "projects" | "blog" | "resources" | "contact";
   closeDrawer?: () => void;
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -41,6 +38,7 @@ const NavItems = ({
       onOpen();
     }
   }, [query]);
+
   const closeModal = () => {
     setSaving({
       start: true,
@@ -104,34 +102,6 @@ const NavItems = ({
       mobile: true,
       isExternal: false,
     },
-    // {
-    //   name: 'Contact',
-    //   emoji: '☎️',
-    //   href: '#footer',
-    //   hide: hide === 'contact',
-    //   mobile: false,
-    // },
-  ];
-
-  const moreItems = [
-    {
-      name: "📚 Resources",
-      href: "/resources",
-      action: closeDrawer,
-    },
-    {
-      name: "🧰 Built with",
-      href: "/built-with",
-      action: closeDrawer,
-    },
-    {
-      name: "🤾‍♂️ Playground",
-      href: null,
-      action: () => {
-        // closeDrawer();
-        onOpen();
-      },
-    },
   ];
 
   return (
@@ -170,11 +140,7 @@ const NavItems = ({
         <ModalOverlay />
         <ModalContent py={3}>
           <ModalHeader>👾 Playground</ModalHeader>
-          {/* <ModalCloseButton
-            onClick={() => {
-              closeModal();
-            }}
-          /> */}
+
           <ModalBody mt={2}>
             <Playground saving={saving} />
           </ModalBody>

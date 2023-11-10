@@ -1,6 +1,5 @@
 import { useRef } from "react";
 
-// chakra
 import {
   chakra,
   Text,
@@ -16,18 +15,13 @@ import {
   useDisclosure,
   VStack,
   Box,
-  Link as ChakraLink,
 } from "@chakra-ui/react";
 
-// utils
 import { generalPaddingX, maxi } from "../../utils/chakra";
 import { defaultBrandColor } from "../../chakra/colors";
 
-// components
 import Link from "next/link";
 import NavItems from "./NavItems";
-
-// import Banner from "./Banner";
 
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -35,7 +29,6 @@ const Navbar = () => {
 
   return (
     <>
-      {/* <Banner /> */}
       <chakra.nav borderTop={`4px solid ${defaultBrandColor}`} w="100%">
         <Box
           display="flex"
@@ -46,14 +39,17 @@ const Navbar = () => {
           mx="auto"
         >
           <Box my="auto" mr={5}>
-            <Link href="/">
-              <Text cursor="pointer" fontWeight={900} fontSize="2xl">
-                😎
-              </Text>
-            </Link>
+            <Text
+              as={Link}
+              href="/"
+              cursor="pointer"
+              fontWeight={900}
+              fontSize="2xl"
+            >
+              😎
+            </Text>
           </Box>
 
-          {/* Desktop view */}
           <HStack
             display={{ base: "none", md: "flex" }}
             spacing={10}
@@ -87,6 +83,7 @@ const Navbar = () => {
                 borderRadius="md"
                 my="auto"
                 fontSize="lg"
+                // @ts-ignore
                 ref={btnRef}
                 onClick={onOpen}
               >
@@ -99,6 +96,7 @@ const Navbar = () => {
             isOpen={isOpen}
             placement="right"
             onClose={onClose}
+            // @ts-ignore
             finalFocusRef={btnRef}
           >
             <DrawerOverlay />

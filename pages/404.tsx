@@ -1,13 +1,5 @@
-// next
-import Link from "next/link";
-
-// chakra
 import { Center, Text, chakra, Box } from "@chakra-ui/react";
-
-// utils
 import { generalPaddingX } from "../utils/chakra";
-
-// components
 import PageNotFoundIllustration from "../svg/PageNotFoundIllustration";
 import CustomLink from "../components/UI/CustomLink";
 

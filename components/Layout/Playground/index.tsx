@@ -17,7 +17,15 @@ import {
 import ChangeTheme from "./ChangeTheme";
 import ChangeFont from "./ChangeFont";
 
-const Playground = ({ saving }) => {
+const Playground = ({
+  saving,
+}: {
+  saving: {
+    start: boolean;
+    loading: boolean;
+    done: boolean;
+  };
+}) => {
   return (
     <>
       {saving.start && (

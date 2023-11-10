@@ -13,9 +13,9 @@ import {
 } from "@chakra-ui/react";
 
 import { useState } from "react";
-import CustomToastBody from "../UI/CustomToastBody";
 import { CustomPost } from "../../server/modules/post-service/interface";
 import { trpc } from "../../utils/trpc";
+import CustomToastBody from "../../components/UI/CustomToastBody";
 
 const Comments = ({
   blogData,

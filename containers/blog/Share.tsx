@@ -17,7 +17,7 @@ import {
   AiOutlineWhatsApp,
   AiFillFacebook,
 } from "react-icons/ai";
-import CustomToastBody from "../UI/CustomToastBody";
+import CustomToastBody from "../../components/UI/CustomToastBody";
 
 const Share = () => {
   // chakra toast
@@ -26,6 +26,7 @@ const Share = () => {
   let urlToShare = "";
 
   if (typeof window !== "undefined") {
+    // @ts-ignore
     urlToShare = window.location;
   }
 
@@ -43,12 +44,11 @@ const Share = () => {
         fontSize="2xl"
         color="brand.500"
         ml="auto"
-        // mx={{ base: "auto", md: "" }}
         spacing={4}
         mt={{ base: 2, md: 0 }}
       >
         <Tooltip label="Copy link" aria-label="Copy link">
-          <chakra.p
+          <chakra.a
             onClick={() => {
               onCopy();
               toast({
@@ -64,7 +64,7 @@ const Share = () => {
             href={`https://www.facebook.com/sharer/sharer.php?u=${urlToShare}`}
           >
             <AiOutlineLink />
-          </chakra.p>
+          </chakra.a>
         </Tooltip>
 
         {/* facebook */}

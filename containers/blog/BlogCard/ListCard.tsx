@@ -1,13 +1,9 @@
-// chakra
 import { chakra, Flex, Text, Box } from "@chakra-ui/react";
 
-// components
-import CustomLink from "../../UI/CustomLink";
-
-// dayjs
 import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
 import { BlogItem } from "../../../contentful";
+import CustomLink from "../../../components/UI/CustomLink";
 dayjs.extend(advancedFormat);
 
 const ListCard = ({ data }: { data: BlogItem }) => {

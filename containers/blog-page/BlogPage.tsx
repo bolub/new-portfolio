@@ -4,9 +4,9 @@ import { Box, chakra } from "@chakra-ui/react";
 import { generalPaddingX, maxi } from "../../utils/chakra";
 import CustomSeo from "../../components/Layout/Seo";
 import { BlogItem } from "../../contentful";
-import Share from "../../components/blog/Share";
 import { ContentDisplay } from "./ContentDisplay";
 import { HeaderDisplay } from "./HeaderDisplay";
+import Share from "../blog/Share";
 
 export const BlogPage = ({ blogData }: { blogData: BlogItem }) => {
   return (

@@ -1,12 +1,9 @@
-// chakra
 import { Center, Text, chakra, Box } from "@chakra-ui/react";
 
-// utils
 import { generalPaddingX } from "../../utils/chakra";
 
-// components
 import ConstructionIllustration from "../../svg/ConstructionIllustration";
-import CustomLink from "./../UI/CustomLink";
+import CustomLink from "../UI/CustomLink";
 
 const UnderConstruction = () => {
   return (

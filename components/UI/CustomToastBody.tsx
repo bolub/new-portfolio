@@ -1,22 +1,22 @@
-import React from "react";
-
-// chakra
 import { Flex, Text, Box, CloseButton } from "@chakra-ui/react";
 
-const CustomToastBody = ({ message, toast }) => {
+const CustomToastBody = ({
+  message,
+  toast,
+}: {
+  message: string;
+  toast: any;
+}) => {
   return (
-    <Flex
-      borderRadius="5px"
-      // alignItems="center"
-      bg="brand.500"
-      color="white"
-    >
+    <Flex borderRadius="5px" bg="brand.500" color="white">
       <Text my="auto" px={6} py={3} mr={4}>
         {message}
       </Text>
 
       <Box
-        onClick={toast.closeAll}
+        onClick={() => {
+          toast.closeAll();
+        }}
         py={3}
         mr={2}
         ml="auto"

@@ -15,7 +15,7 @@ import {
   BsBezier,
   BsLayoutTextWindowReverse,
 } from "react-icons/bs";
-import CustomLink from "../UI/CustomLink";
+import CustomLink from "../../components/UI/CustomLink";
 import { CustomProject } from "../../server/modules/project-service/interface";
 
 const SingleProject = ({ data }: { data: CustomProject }) => {

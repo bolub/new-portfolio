@@ -9,7 +9,7 @@ import { generalPaddingX } from "../utils/chakra";
 
 // components
 import PageNotFoundIllustration from "../svg/PageNotFoundIllustration";
-import CustomLink from "./../components//UI/CustomLink";
+import CustomLink from "../components/UI/CustomLink";
 
 const Custom404 = () => {
   return (

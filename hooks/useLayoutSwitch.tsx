@@ -1,9 +1,5 @@
 import { useState } from "react";
-
-// chakra
 import { HStack, Button, Text, useColorModeValue } from "@chakra-ui/react";
-
-// icons
 import { BsGrid, BsViewList } from "react-icons/bs";
 
 const useLayoutSwitch = () => {

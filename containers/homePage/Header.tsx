@@ -5,7 +5,7 @@ import { Box, Flex, chakra, Text } from "@chakra-ui/react";
 
 // utils
 import { generalPaddingX, maxi } from "../../utils/chakra";
-import CustomButton from "../UI/CustomButton";
+import CustomButton from "../../components/UI/CustomButton";
 import { defaultBrandColor } from "../../chakra/colors";
 import Profile from "./../../public/Bolu.png";
 

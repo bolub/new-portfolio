@@ -1,7 +1,7 @@
 import { chakra, Center, SimpleGrid } from "@chakra-ui/react";
 import Link from "next/link";
 import { generalPaddingX, maxi } from "../../utils/chakra";
-import CustomButton from "../UI/CustomButton";
+import CustomButton from "../../components/UI/CustomButton";
 import SingleProject from "../projects/SingleProject";
 import { trpc } from "../../utils/trpc";
 

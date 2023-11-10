@@ -52,6 +52,7 @@ const Header = () => {
 
           <CustomButton
             as="a"
+            // @ts-ignore
             href="https://www.linkedin.com/in/boluseyi"
             mb={10}
             target="__blank"

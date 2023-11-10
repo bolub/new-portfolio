@@ -3,10 +3,10 @@ import { Box, chakra } from "@chakra-ui/react";
 
 import { generalPaddingX, maxi } from "../../utils/chakra";
 import CustomSeo from "../../components/Layout/Seo";
-import { BlogItem } from "../../contentful";
 import { ContentDisplay } from "./ContentDisplay";
 import { HeaderDisplay } from "./HeaderDisplay";
 import Share from "../blog/Share";
+import { BlogItem } from "../../contentful/blog/blog";
 
 export const BlogPage = ({ blogData }: { blogData: BlogItem }) => {
   return (

@@ -1,6 +1,6 @@
 import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
-import { getBlogEntries, getBlogPost } from "../../../contentful";
 import { BlogPage } from "../../../containers/blog-page/BlogPage";
+import { getBlogEntries, getBlogPost } from "../../../contentful/blog/blog";
 
 const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (

@@ -13,7 +13,6 @@ import {
 } from "@chakra-ui/react";
 
 import { useState } from "react";
-import { CustomPost } from "../../server/modules/post-service/interface";
 import { trpc } from "../../utils/trpc";
 import CustomToastBody from "../../components/UI/CustomToastBody";
 
@@ -21,7 +20,7 @@ const Comments = ({
   blogData,
   refetchPostData,
 }: {
-  blogData?: CustomPost | null;
+  blogData?: any;
   refetchPostData: () => void;
 }) => {
   const toast = useToast();
@@ -137,7 +136,7 @@ const Comments = ({
       </Collapse>
 
       {/* list comments */}
-      {allComments?.map((comment) => {
+      {allComments?.map((comment: any) => {
         return (
           <Flex mb={8} key={comment?.id}>
             <Avatar mr={2} name={comment?.author} />

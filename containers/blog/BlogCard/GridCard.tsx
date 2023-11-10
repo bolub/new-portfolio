@@ -2,13 +2,11 @@ import { chakra, Flex, Image, Text, Box } from "@chakra-ui/react";
 
 import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
-import { BlogItem } from "../../../contentful";
 import CustomLink from "../../../components/UI/CustomLink";
+import { BlogItem } from "../../../contentful/blog/blog";
 dayjs.extend(advancedFormat);
 
-const GridCard = ({ data }: { data?: BlogItem }) => {
-  if (!data) return <></>;
-
+const GridCard = ({ data }: { data: BlogItem }) => {
   return (
     <Flex flexDir="column">
       <Image

@@ -1,5 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
-import { getBlogEntries } from "../../contentful";
+import { BlogItems } from "../../contentful";
 import CustomSeo from "../../components/Layout/Seo";
 import { Box, Flex, SimpleGrid, chakra } from "@chakra-ui/react";
 import useLayoutSwitch from "../../hooks/useLayoutSwitch";
@@ -7,12 +6,7 @@ import { generalPaddingX, maxi } from "../../utils/chakra";
 import GridCard from "./BlogCard/GridCard";
 import ListCard from "./BlogCard/ListCard";
 
-export const AllBlogPostsPage = () => {
-  const { data: blogData } = useQuery({
-    queryKey: ["blog"],
-    queryFn: getBlogEntries,
-  });
-
+export const AllBlogPostsPage = ({ data: blogData }: { data: BlogItems }) => {
   const { layout, LayoutComponent } = useLayoutSwitch();
 
   return (

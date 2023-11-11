@@ -63,7 +63,7 @@ const Projects = ({
               fontSize={{ base: "3xl", md: "4xl" }}
             >
               Some of the projects that has drained my energy
-              <br /> over the years 😫....
+              <br /> over the years 😫...
             </chakra.h2>
           </Center>
 

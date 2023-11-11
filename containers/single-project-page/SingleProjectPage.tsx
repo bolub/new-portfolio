@@ -1,4 +1,4 @@
-import { Box, Flex, chakra, Text } from "@chakra-ui/react";
+import { Box, Flex, chakra, Text, HStack } from "@chakra-ui/react";
 import { generalPaddingX, maxi } from "../../utils/chakra";
 import CustomLink from "../../components/UI/CustomLink";
 import { HiChevronLeft } from "react-icons/hi";
@@ -7,6 +7,8 @@ import { TechnologiesUsed } from "./components/TechnologiesUsed";
 import CustomSeo from "../../components/Layout/Seo";
 import { ProjectItem } from "../../contentful/project/project";
 import { ContentDisplay } from "../blog-page/ContentDisplay";
+import { ProjectUrls } from "../projects/ProjectUrls";
+import { ProjectTags } from "../projects/ProjectTags";
 
 export const SingleProjectPage = ({ project }: { project: ProjectItem }) => {
   if (!project) return <Text>Project data not available</Text>;
@@ -37,14 +39,21 @@ export const SingleProjectPage = ({ project }: { project: ProjectItem }) => {
             <Text my="auto">Back</Text>
           </CustomLink>
 
-          <chakra.h1
-            mt="60px"
-            as="h1"
-            fontWeight={700}
-            fontSize={{ base: "3xl", md: "4xl" }}
-          >
-            {projectData.title}
-          </chakra.h1>
+          <HStack mt="60px" flexWrap="wrap" justifyContent="space-between">
+            <chakra.h1
+              as="h1"
+              fontWeight={700}
+              fontSize={{ base: "3xl", md: "4xl" }}
+            >
+              {projectData.title}
+            </chakra.h1>
+
+            <ProjectUrls project={projectData} />
+          </HStack>
+
+          <Box mt={5}>
+            <ProjectTags tags={projectData.tags} />
+          </Box>
 
           <Box w="full" maxWidth="800px" mt="20px">
             <ContentDisplay data={projectData.description} />

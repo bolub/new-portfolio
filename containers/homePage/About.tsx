@@ -3,7 +3,6 @@ import Link from "next/link";
 import { generalPaddingX, maxi } from "../../utils/chakra";
 import CustomButton from "../../components/UI/CustomButton";
 import SingleProject from "../projects/SingleProject";
-import { trpc } from "../../utils/trpc";
 import { ProjectItem } from "../../contentful/project/project";
 
 const About = ({ projects }: { projects: ProjectItem[] }) => {

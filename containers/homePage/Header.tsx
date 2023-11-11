@@ -1,9 +1,7 @@
 import Image from "next/image";
 
-// chakra
-import { Box, Flex, chakra, Text } from "@chakra-ui/react";
+import { Box, Flex, chakra, Text, HStack } from "@chakra-ui/react";
 
-// utils
 import { generalPaddingX, maxi } from "../../utils/chakra";
 import CustomButton from "../../components/UI/CustomButton";
 import { defaultBrandColor } from "../../chakra/colors";
@@ -50,22 +48,22 @@ const Header = () => {
             an online presence and all.
           </Text>
 
-          <CustomButton
-            as="a"
-            // @ts-ignore
-            href="https://www.linkedin.com/in/boluseyi"
-            mb={10}
-            target="__blank"
-            size="lg"
-            h={"60px"}
-          >
-            <Text as="span" ml={2}>
-              Checkout My Resume
-            </Text>
-          </CustomButton>
+          <HStack mb={10}>
+            <CustomButton
+              as="a"
+              // @ts-ignore
+              href="https://www.linkedin.com/in/boluseyi"
+              target="__blank"
+              size="lg"
+              h={"60px"}
+            >
+              <Text as="span" ml={2}>
+                Checkout My Resume
+              </Text>
+            </CustomButton>
+          </HStack>
         </Box>
 
-        {/* Illustration */}
         <Box
           w={{ base: "100%", md: "40%" }}
           my={{ base: 10, md: "auto" }}

@@ -1,11 +1,7 @@
-import React from "react";
-
-import { Text, chakra, Wrap, Box } from "@chakra-ui/react";
+import { Text, chakra, Wrap, Box, Center } from "@chakra-ui/react";
 import { generalPaddingX, maxi } from "../../utils/chakra";
-import Link from "next/link";
 import NavItems from "./NavItems";
 
-// icons
 import {
   AiFillGithub,
   AiFillLinkedin,
@@ -16,45 +12,13 @@ import {
 
 const Footer = () => {
   return (
-    <chakra.footer mt={20} borderTopWidth="1px" py={5} display="footer">
-      <Box
-        display="flex"
-        flexDir={{ base: "column", md: "row" }}
-        px={generalPaddingX}
-        maxW={maxi}
-        w="full"
-      >
-        <Link passHref href="/">
-          <Text
-            my={{ md: "auto" }}
-            cursor="pointer"
-            fontWeight={900}
-            fontSize="2xl"
-            mr={{ md: 10 }}
-          >
-            😎
-          </Text>
-        </Link>
-
-        {/* Navigation */}
-        <Wrap
-          flexDir={{ base: "column", md: "row" }}
-          my={{ base: 5, md: "auto" }}
-          spacing={5}
-          mr={{ md: 8 }}
-          ml="auto"
-        >
+    <chakra.footer id="footer" mt={80} borderTopWidth="1px" py="80px">
+      <Center flexDir="column" px={generalPaddingX} maxW={maxi} w="full">
+        <Wrap flexDir={{ base: "column", md: "row" }} spacing={16}>
           <NavItems hide="contact" />
         </Wrap>
 
-        {/* Social */}
-        <Wrap
-          fontSize="2xl"
-          color="brand.500"
-          ml={{ md: "auto" }}
-          spacing={4}
-          my="auto"
-        >
+        <Wrap my="60px" fontSize="2xl" color="brand.500" spacing={10}>
           <chakra.a href="https://github.com/bolub/">
             <AiFillGithub />
           </chakra.a>
@@ -73,7 +37,14 @@ const Footer = () => {
             <AiOutlinePhone />
           </chakra.a>
         </Wrap>
-      </Box>
+
+        <Box>
+          <Text fontSize="xs">
+            &copy; {new Date().getFullYear()} Boluwatife Abiola, All rights
+            reserved
+          </Text>
+        </Box>
+      </Center>
     </chakra.footer>
   );
 };

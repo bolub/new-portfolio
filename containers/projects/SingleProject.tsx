@@ -4,19 +4,13 @@ import {
   Wrap,
   Tag,
   Flex,
-  HStack,
-  IconButton,
-  Tooltip,
   useColorModeValue,
 } from "@chakra-ui/react";
 import Image from "next/image";
-import {
-  BsCodeSlash,
-  BsBezier,
-  BsLayoutTextWindowReverse,
-} from "react-icons/bs";
 import CustomLink from "../../components/UI/CustomLink";
 import { ProjectItem } from "../../contentful/project/project";
+import { ProjectUrls } from "./ProjectUrls";
+import { ProjectTags } from "./ProjectTags";
 
 const SingleProject = ({ data }: { data: ProjectItem }) => {
   const boxBgColor = useColorModeValue("brand.100", "gray.700");
@@ -40,21 +34,9 @@ const SingleProject = ({ data }: { data: ProjectItem }) => {
         </Box>
       )}
 
-      <Wrap display={{ base: "flex", md: "flex" }} mt={5}>
-        {project.tags?.map((tag) => {
-          return (
-            <Tag
-              key={tag.sys.id}
-              cursor="pointer"
-              variant="subtle"
-              borderRadius="full"
-              size="md"
-            >
-              {tag.fields.name}
-            </Tag>
-          );
-        })}
-      </Wrap>
+      <Box mt={5}>
+        <ProjectTags tags={project.tags} />
+      </Box>
 
       <Flex mt={5}>
         <chakra.h3
@@ -65,52 +47,9 @@ const SingleProject = ({ data }: { data: ProjectItem }) => {
           {project.title}
         </chakra.h3>
 
-        <HStack ml="auto">
-          {project?.design_url && (
-            <Tooltip label="Design" aria-label="Design">
-              <IconButton
-                as="a"
-                href={project?.design_url}
-                target="_blank"
-                aria-label="Deign"
-                colorScheme={"brand"}
-                variant="ghost"
-              >
-                <BsBezier />
-              </IconButton>
-            </Tooltip>
-          )}
-
-          {project?.source_code && (
-            <Tooltip label="Source Code" aria-label="Source Code">
-              <IconButton
-                as="a"
-                href={project?.source_code}
-                target="_blank"
-                aria-label="Source Code"
-                colorScheme={"brand"}
-                variant="ghost"
-              >
-                <BsCodeSlash />
-              </IconButton>
-            </Tooltip>
-          )}
-
-          {project?.live_url && (
-            <Tooltip label="Live url" aria-label="Live url">
-              <IconButton
-                as="a"
-                href={project?.live_url}
-                target="_blank"
-                aria-label="Live url"
-                colorScheme={"brand"}
-                variant="ghost"
-              >
-                <BsLayoutTextWindowReverse />
-              </IconButton>
-            </Tooltip>
-          )}
-        </HStack>
+        <Box ml="auto">
+          <ProjectUrls project={project} />
+        </Box>
       </Flex>
 
       <chakra.p fontSize={"lg"} mt={3} mb={8}>

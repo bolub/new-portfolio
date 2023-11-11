@@ -39,7 +39,7 @@ export const BuiltWithPage = () => {
             <Text mt={4} mb={6} fontSize="17px">
               Basic Tools and Technologies this website was built with. These
               technologies might seem like an overkill, and I could just build
-              everything from scratch with Vanilla CSS, HTML, and JS .........
+              everything from scratch with Vanilla CSS, HTML, and JS ........
               But I'm not gonna, why?, because I don't want to 😏
             </Text>
           </Box>

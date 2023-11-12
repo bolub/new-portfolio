@@ -43,7 +43,7 @@ const ListCard = ({ data }: { data: BlogItem }) => {
         </chakra.p> */}
 
         <Box fontWeight="bold">
-          <CustomLink href={`/blog/${data.sys.id}`} fontSize="15px">
+          <CustomLink href={`/blog/${data.fields.slug}`} fontSize="15px">
             Read more
           </CustomLink>
         </Box>

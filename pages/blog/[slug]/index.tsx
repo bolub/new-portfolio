@@ -60,6 +60,5 @@ export async function getStaticProps(
       slug,
       data,
     },
-    revalidate: 1,
   };
 }

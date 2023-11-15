@@ -28,8 +28,8 @@ const CustomSeo = ({
       description={description}
       openGraph={{
         url,
-        title: "Open Graph Title",
-        description: description,
+        title,
+        description,
         images: [
           {
             url:

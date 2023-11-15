@@ -11,12 +11,6 @@ import { BlogItem } from "../../contentful/blog/blog";
 export const BlogPage = ({ blogData }: { blogData: BlogItem }) => {
   return (
     <>
-      <CustomSeo
-        title={blogData.fields.title}
-        description={blogData.fields?.description || ""}
-        imageUrl={blogData.fields?.cover || ""}
-      />
-
       <chakra.header display="flex" pt={{ base: "10" }} w="100%">
         <HeaderDisplay blogData={blogData} />
       </chakra.header>

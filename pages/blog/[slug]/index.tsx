@@ -2,6 +2,7 @@ import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
 import { BlogPage } from "../../../containers/blog-page/BlogPage";
 import { getBlogEntries, getBlogPost } from "../../../contentful/blog/blog";
 import CustomSeo from "../../../components/Layout/Seo";
+import Head from "next/head";
 
 const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
@@ -11,6 +12,15 @@ const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
         description={props.data.fields.description}
         imageUrl={props.data.fields.cover}
       />
+
+      <Head>
+        <meta property="og:title" content={props.data.fields.title} />
+        <meta
+          property="og:description"
+          content={props.data.fields.description}
+        />
+        <meta property="og:image" content={props.data.fields.cover} />
+      </Head>
 
       <BlogPage blogData={props.data} />
     </>

@@ -1,19 +1,25 @@
 import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
 import { BlogPage } from "../../../containers/blog-page/BlogPage";
 import { getBlogEntries, getBlogPost } from "../../../contentful/blog/blog";
-import CustomSeo from "../../../components/Layout/Seo";
 import Head from "next/head";
 
 const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      <CustomSeo
+      {/* <CustomSeo
         title={props.data.fields.title}
         description={props.data.fields.description}
         imageUrl={props.data.fields.cover}
-      />
+      /> */}
 
       <Head>
+        <title>{props.data.fields.title} </title>
+        <meta
+          name="description"
+          content={props.data.fields.description}
+          key="desc"
+        />
+
         <meta property="og:title" content={props.data.fields.title} />
         <meta
           property="og:description"

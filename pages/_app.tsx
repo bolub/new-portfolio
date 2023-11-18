@@ -51,7 +51,7 @@ function MyApp({ Component, pageProps }: any) {
       />
       <Chakra cookies={pageProps.cookies}>
         <ChakraProvider theme={customTheme}>
-          <DefaultSeo
+          {/* <DefaultSeo
             title={defaultSeoConfig.title}
             description={defaultSeoConfig.description}
             openGraph={{
@@ -60,7 +60,7 @@ function MyApp({ Component, pageProps }: any) {
               url: "https://www.boluabiola.com",
             }}
             twitter={defaultSeoConfig.twitter}
-          />
+          /> */}
           {show && (
             <>
               <NextNprogress

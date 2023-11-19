@@ -16,6 +16,7 @@ import {
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { routes } from "@/utils/routes";
 
 const NavItems = ({
   hide,
@@ -72,7 +73,7 @@ const NavItems = ({
     {
       name: "Blog",
       emoji: "✍️",
-      href: "/blog",
+      href: routes.blogPost.home(),
       hide: hide === "blog",
       mobile: true,
       isExternal: false,
@@ -86,14 +87,14 @@ const NavItems = ({
       mobile: true,
       isExternal: true,
     },
-    {
-      name: "Built with",
-      emoji: "🧰",
-      href: "/built-with",
-      hide: hide === "resources",
-      mobile: true,
-      isExternal: false,
-    },
+    // {
+    //   name: "Built with",
+    //   emoji: "🧰",
+    //   href: "/built-with",
+    //   hide: hide === "resources",
+    //   mobile: true,
+    //   isExternal: false,
+    // },
   ];
 
   const pathname = usePathname();

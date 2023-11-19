@@ -1,11 +1,34 @@
 import { getProject, getProjects } from "@/contentful/project/project";
 import { ProjectPageContainer } from "./components/ProjectPageContainer";
+import { Metadata, ResolvingMetadata } from "next";
 
 type ProjectPageProps = {
   params: {
     slug: string;
   };
 };
+
+export async function generateMetadata(
+  { params }: ProjectPageProps,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const slug = params.slug;
+
+  const { fields } = await getProject(slug);
+  const coverImage =
+    fields.cover ||
+    "https://res.cloudinary.com/bolub/image/upload/v1623525073/Group_1_1.png";
+
+  const previousImages = (await parent).openGraph?.images || [];
+
+  return {
+    title: fields.title,
+    description: fields.description,
+    openGraph: {
+      images: [coverImage, ...previousImages],
+    },
+  };
+}
 
 export default async function Project(props: ProjectPageProps) {
   const { params } = props;
@@ -18,7 +41,7 @@ export default async function Project(props: ProjectPageProps) {
 export async function generateStaticParams() {
   const projects = await getProjects({});
 
-  return projects.map((project) => ({
+  return projects.map((project: any) => ({
     slug: project.fields.slug,
   }));
 }

@@ -16,7 +16,7 @@ export async function generateMetadata(
 
   const { fields } = await getProject(slug);
   const coverImage =
-    fields.cover ||
+    fields.cover_image_url ||
     "https://res.cloudinary.com/bolub/image/upload/v1623525073/Group_1_1.png";
 
   const previousImages = (await parent).openGraph?.images || [];
@@ -39,7 +39,7 @@ export default async function Project(props: ProjectPageProps) {
 }
 
 export async function generateStaticParams() {
-  const projects = await getProjects({});
+  const projects = await getProjects();
 
   return projects.map((project: any) => ({
     slug: project.fields.slug,

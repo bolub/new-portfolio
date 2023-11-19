@@ -19,8 +19,8 @@ export const ImageDisplay = () => {
         w="full"
         borderWidth={"2px"}
         boxShadow={{
-          base: `8px 8px 0px red`,
-          md: `16px 16px 0px red`,
+          base: `8px 8px 0px #cb1a41`,
+          md: `16px 16px 0px #cb1a41`,
         }}
         pos="relative"
       >

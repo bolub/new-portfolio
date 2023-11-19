@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 const ProjectsPage = async (props: PageProps) => {
-  const allProjects = await getProjects({ type: props.searchParams.tab });
+  const allProjects = await getProjects();
 
   return (
     <ProjectsContainer>

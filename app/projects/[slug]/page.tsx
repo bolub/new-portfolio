@@ -23,7 +23,7 @@ export async function generateMetadata(
 
   return {
     title: fields.title,
-    description: fields.description,
+    description: fields.subtitle,
     openGraph: {
       images: [coverImage, ...previousImages],
     },

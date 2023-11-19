@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { client } from "../../utils/contentful";
 import { BlogItemSchema, BlogItemsArraySchema } from "./schema";
+import { client } from "..";
 
 export type BlogItem = z.infer<typeof BlogItemSchema>;
 export type BlogItems = ReadonlyArray<BlogItem>;

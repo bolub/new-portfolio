@@ -1,17 +1,21 @@
 import { z } from "zod";
-import { client } from "../../utils/contentful";
 import {
   ProjectItemsArraySchema,
   ProjectSchema,
   ProjectTechnologySchema,
 } from "./schema";
+import { client } from "..";
 
 export type ProjectItem = z.infer<typeof ProjectSchema>;
 export type ProjectTechnology = z.infer<typeof ProjectTechnologySchema>;
 
-export const getProjects = async (): Promise<ProjectItem[]> => {
-  const entries = await client.getEntries({
+export const getProjects = async ({ type }: { type?: string }) => {
+  const entries = await client.getEntries<{
+    contentTypeId: "project";
+    fields: ProjectItem[];
+  }>({
     content_type: "project",
+
     // @ts-ignore
     order: "sys.createdAt",
   });

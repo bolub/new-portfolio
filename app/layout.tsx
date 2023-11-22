@@ -3,6 +3,7 @@ import { Providers } from "./providers";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import "./globals.css";
+import Toolbar from "./components/toolbar/Toolbar";
 
 export const metadata: Metadata = {
   title: "Boluwatife Abiola",
@@ -22,6 +23,8 @@ export default function RootLayout({
           <Navbar />
 
           {children}
+
+          <Toolbar />
 
           <Footer />
         </Providers>

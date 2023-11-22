@@ -1,17 +1,21 @@
 import { z } from "zod";
-import { client } from "../../utils/contentful";
 import {
   ProjectItemsArraySchema,
   ProjectSchema,
   ProjectTechnologySchema,
 } from "./schema";
+import { client } from "..";
 
 export type ProjectItem = z.infer<typeof ProjectSchema>;
 export type ProjectTechnology = z.infer<typeof ProjectTechnologySchema>;
 
-export const getProjects = async (): Promise<ProjectItem[]> => {
-  const entries = await client.getEntries({
+export const getProjects = async () => {
+  const entries = await client.getEntries<{
+    contentTypeId: "project";
+    fields: ProjectItem[];
+  }>({
     content_type: "project",
+
     // @ts-ignore
     order: "sys.createdAt",
   });
@@ -19,9 +23,7 @@ export const getProjects = async (): Promise<ProjectItem[]> => {
   return ProjectItemsArraySchema.parse(entries.items);
 };
 
-export const getLimitedProjects = async (
-  limit: number
-): Promise<ProjectItem[]> => {
+export const getLimitedProjects = async (limit: number) => {
   const entries = await client.getEntries({
     content_type: "project",
     // @ts-ignore
@@ -32,7 +34,7 @@ export const getLimitedProjects = async (
   return ProjectItemsArraySchema.parse(entries.items);
 };
 
-export const getProject = async (slug: string): Promise<ProjectItem> => {
+export const getProject = async (slug: string) => {
   const entries = await client.getEntries({
     content_type: "project",
     "fields.slug": slug,

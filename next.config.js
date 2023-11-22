@@ -1,16 +1,12 @@
 /** @type {import('next').NextConfig} */
-
-module.exports = {
+const nextConfig = {
   images: {
     domains: [
-      "images.prismic.io",
       "res.cloudinary.com",
       "www.boluabiola.com",
       "images.ctfassets.net",
     ],
   },
-  reactStrictMode: true,
-  experimental: {
-    swcPlugins: [["next-superjson-plugin", {}]],
-  },
 };
+
+module.exports = nextConfig;

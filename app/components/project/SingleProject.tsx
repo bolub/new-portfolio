@@ -13,7 +13,7 @@ import { TagList } from "../TagList";
 import { routes } from "@/utils/routes";
 
 const SingleProject = ({ data }: { data: ProjectItem }) => {
-  const boxBgColor = useColorModeValue("brand.100", "gray.700");
+  const boxBgColor = useColorModeValue("gray.400", "gray.700");
 
   const project = data.fields;
   const projectPageUrl = routes.projects.singleProject(project.slug);
@@ -21,8 +21,8 @@ const SingleProject = ({ data }: { data: ProjectItem }) => {
   return (
     <Link href={projectPageUrl}>
       {project.cover_image_url && (
-        <Box px="20px" pt="4px" bgColor={boxBgColor} rounded="lg">
-          <Box h={{ base: "300px", md: "500px" }} pos="relative" rounded="lg">
+        <Box px="20px" pt="40px" bgColor={boxBgColor} rounded="lg">
+          <Box h={{ base: "300px", md: "450px" }} pos="relative" rounded="lg">
             <Image
               src={project.cover_image_url}
               objectFit="contain"

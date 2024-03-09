@@ -82,7 +82,7 @@ const NavItems = ({
     {
       name: "Resources",
       emoji: "📚",
-      href: "https://kokua.vercel.app/",
+      href: "https://kokua.wiki/",
       hide: hide === "resources",
       mobile: true,
       isExternal: true,

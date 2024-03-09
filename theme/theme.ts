@@ -12,5 +12,12 @@ export const customTheme = extendTheme(
       body: "var(--font-outfit)",
     },
   },
-  withProse({})
+  withProse({
+    baseStyle: {
+      p: {
+        fontSize: "lg",
+        lineHeight: "28px",
+      },
+    },
+  })
 );

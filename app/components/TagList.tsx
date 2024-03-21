@@ -7,13 +7,7 @@ export const TagList = ({ tags }: { tags: ProjectItem["fields"]["tags"] }) => {
     <Wrap display={{ base: "flex", md: "flex" }}>
       {tags?.map((tag) => {
         return (
-          <Tag
-            key={tag.sys.id}
-            cursor="pointer"
-            variant="subtle"
-            borderRadius="full"
-            size="md"
-          >
+          <Tag key={tag.sys.id} variant="subtle" borderRadius="full" size="lg">
             {tag.fields.name}
           </Tag>
         );

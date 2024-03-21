@@ -1,16 +1,16 @@
-import {
-  Box,
-  chakra,
-  Flex,
-  useColorModeValue,
-  Link as ChakraLink,
-} from "@chakra-ui/react";
+import { Box, chakra, Flex, useColorModeValue } from "@chakra-ui/react";
 import Image from "next/image";
 import { ProjectItem } from "../../../contentful/project/project";
 import Link from "next/link";
-import { ProjectUrls } from "./ProjectUrls";
 import { TagList } from "../TagList";
 import { routes } from "@/utils/routes";
+import dynamic from "next/dynamic";
+import { LinkLookAlike } from "@/components/LinkLookAlike";
+
+const NoSSRProjectUrls = dynamic(
+  () => import("./ProjectUrls").then((parent) => parent.ProjectUrls),
+  { ssr: false }
+);
 
 const SingleProject = ({ data }: { data: ProjectItem }) => {
   const boxBgColor = useColorModeValue("gray.400", "gray.700");
@@ -49,7 +49,7 @@ const SingleProject = ({ data }: { data: ProjectItem }) => {
         </chakra.h3>
 
         <Box ml="auto">
-          <ProjectUrls project={project} />
+          <NoSSRProjectUrls project={project} />
         </Box>
       </Flex>
 
@@ -57,9 +57,7 @@ const SingleProject = ({ data }: { data: ProjectItem }) => {
         {project?.subtitle || project?.description}
       </chakra.p>
 
-      <ChakraLink as={Link} href={projectPageUrl}>
-        Read more
-      </ChakraLink>
+      <LinkLookAlike>Read more</LinkLookAlike>
     </Link>
   );
 };

@@ -1,4 +1,4 @@
-const Link = {
+export const LinkStyles = {
   baseStyle: {
     borderBottom: "1.3px solid",
     borderBottomColor: "gray.300",
@@ -34,7 +34,7 @@ const Button = {
 };
 
 export const components = {
-  Link,
+  Link: LinkStyles,
   Button,
   Input,
 };

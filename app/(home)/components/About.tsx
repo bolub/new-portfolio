@@ -33,7 +33,7 @@ const About = ({ projects }: { projects: ProjectItem[] }) => {
           spacing={16}
           columns={{ base: 1, md: 2 }}
         >
-          {projects?.slice(0, 2)?.map((pd) => {
+          {projects?.map((pd) => {
             return <SingleProject key={pd.sys.id} data={pd} />;
           })}
         </SimpleGrid>

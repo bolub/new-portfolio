@@ -18,7 +18,9 @@ export const customTheme = extendTheme(
         fontSize: "lg",
         lineHeight: "28px",
       },
-      a: LinkStyles.baseStyle,
+      a: {
+        ...LinkStyles.baseStyle,
+      },
       "li p": {
         margin: "0px",
       },

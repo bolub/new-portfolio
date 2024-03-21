@@ -1,7 +1,7 @@
 import { extendTheme } from "@chakra-ui/react";
 import { withProse } from "@nikolovlazar/chakra-ui-prose";
 import { colors } from "./colors";
-import { components } from "./components";
+import { LinkStyles, components } from "./components";
 
 export const customTheme = extendTheme(
   {
@@ -18,10 +18,7 @@ export const customTheme = extendTheme(
         fontSize: "lg",
         lineHeight: "28px",
       },
-      a: {
-        textDecor: "underline",
-        textDecorationColor: "brand.500",
-      },
+      a: LinkStyles.baseStyle,
       "li p": {
         margin: "0px",
       },

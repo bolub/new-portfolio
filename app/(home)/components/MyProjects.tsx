@@ -7,12 +7,11 @@ import { CustomContainer } from "@/app/components/CustomContainer";
 import SingleProject from "@/app/components/project/SingleProject";
 import { routes } from "@/utils/routes";
 
-const About = ({ projects }: { projects: ProjectItem[] }) => {
+export const MyProjects = ({ projects }: { projects: ProjectItem[] }) => {
   return (
     <chakra.section
       id="projects"
-      borderTopWidth={{ base: "1px", md: 0 }}
-      mt={{ base: 6, md: 32 }}
+      mt={{ base: 28, md: 48 }}
       pt={{ base: 6, md: 0 }}
       display="flex"
       flexDir={"column"}
@@ -22,7 +21,7 @@ const About = ({ projects }: { projects: ProjectItem[] }) => {
           <chakra.h2
             mt={5}
             fontWeight="bold"
-            fontSize={{ base: "3xl", md: "5xl" }}
+            fontSize={{ base: "3xl", md: "4xl" }}
           >
             My Projects
           </chakra.h2>
@@ -54,5 +53,3 @@ const About = ({ projects }: { projects: ProjectItem[] }) => {
     </chakra.section>
   );
 };
-
-export default About;

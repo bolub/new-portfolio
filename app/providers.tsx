@@ -18,7 +18,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
           }
         `}
       </style>
-      <MetricalpReactProvider tid="YOUR_TID">
+      <MetricalpReactProvider
+        tid={process.env.NEXT_PUBLIC_METRICALP_TID as string}
+      >
         <CacheProvider>
           <ChakraProvider theme={customTheme}>{children}</ChakraProvider>
         </CacheProvider>

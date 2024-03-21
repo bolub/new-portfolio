@@ -1,6 +1,7 @@
 import Header from "./components/Header/Header";
-import About from "./components/About";
 import { getLimitedProjects } from "@/contentful/project/project";
+import { Skills } from "./components/Skills";
+import { MyProjects } from "./components/MyProjects";
 
 export default async function Home() {
   const projects = await getLimitedProjects(2);
@@ -8,7 +9,8 @@ export default async function Home() {
   return (
     <>
       <Header />
-      <About projects={projects} />
+      <Skills />
+      <MyProjects projects={projects} />
     </>
   );
 }

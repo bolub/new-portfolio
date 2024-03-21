@@ -17,7 +17,10 @@ const Footer = () => {
     <chakra.footer id="footer" mt={80} borderTopWidth="1px" py="80px">
       <CustomContainer>
         <Center flexDir="column" w="full">
-          <Wrap flexDir={{ base: "column", md: "row" }} spacing={16}>
+          <Wrap
+            flexDir={{ base: "column", md: "row" }}
+            spacing={{ base: 8, md: 16 }}
+          >
             <NavItems hide="contact" />
           </Wrap>
 

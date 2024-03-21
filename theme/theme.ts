@@ -22,7 +22,7 @@ export const customTheme = extendTheme(
         ...LinkStyles.baseStyle,
       },
       "li p": {
-        margin: "0px",
+        margin: "0px 0px 20px 0px",
       },
     },
   })

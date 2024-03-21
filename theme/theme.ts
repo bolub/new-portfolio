@@ -18,6 +18,13 @@ export const customTheme = extendTheme(
         fontSize: "lg",
         lineHeight: "28px",
       },
+      a: {
+        textDecor: "underline",
+        textDecorationColor: "brand.500",
+      },
+      "li p": {
+        margin: "0px",
+      },
     },
   })
 );

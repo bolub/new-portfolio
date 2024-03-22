@@ -11,7 +11,7 @@ export const BlogContainer = ({ data: blogData }: { data: BlogItems }) => {
       <chakra.main mt={20} pt={{ base: "10" }} pb={20}>
         <CustomContainer>
           <chakra.h2 mb="12" fontWeight={700} fontSize={{ base: "3xl" }}>
-            All Posts
+            Blog ( {blogData?.length} posts )
           </chakra.h2>
 
           <Box id="posts">

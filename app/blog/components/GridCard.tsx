@@ -5,16 +5,18 @@ import advancedFormat from "dayjs/plugin/advancedFormat";
 import { BlogItem } from "../../../contentful/blog/blog";
 import Link from "next/link";
 import Image from "next/image";
+import { TagList } from "@/app/components/TagList";
 dayjs.extend(advancedFormat);
 
 const GridCard = ({ data }: { data: BlogItem }) => {
+  const tags = data.fields?.tags || [];
+
   return (
     <Flex flexDir="column">
       <Box
         pos="relative"
         borderWidth="1px"
         borderRadius="3px"
-        mb={6}
         w="100%"
         height="380px"
       >
@@ -31,9 +33,14 @@ const GridCard = ({ data }: { data: BlogItem }) => {
         />
       </Box>
 
-      <Box mb={2}>
+      {tags?.length > 0 && (
+        <Box mt={5}>
+          <TagList tags={tags} />
+        </Box>
+      )}
+
+      <Box mt={6} mb={2}>
         <Flex>
-          {/* date created */}
           <Text my="auto" fontSize="14px">
             {dayjs(data.sys.createdAt).format("Do MMM YYYY")}
           </Text>

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { AssetSchema, SysSchema } from "../shared-schema";
+import { AssetSchema, SysSchema, TagSchema } from "../shared-schema";
 
 export const BlogItemSchema = z.object({
   sys: SysSchema,
@@ -11,6 +11,7 @@ export const BlogItemSchema = z.object({
     cover: AssetSchema.transform((value) => {
       return value.fields.file.url;
     }).optional(),
+    tags: z.array(TagSchema).optional(),
   }),
 });
 

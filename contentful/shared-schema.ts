@@ -13,4 +13,9 @@ export const AssetSchema = z.object({
   }),
 });
 
-export const TagSchema = z.object({});
+export const TagSchema = z.object({
+  sys: SysSchema,
+  fields: z.object({
+    name: z.string(),
+  }),
+});

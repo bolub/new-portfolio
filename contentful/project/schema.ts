@@ -1,18 +1,11 @@
 import { z } from "zod";
-import { AssetSchema, SysSchema } from "../shared-schema";
+import { AssetSchema, SysSchema, TagSchema } from "../shared-schema";
 
 export const ProjectTechnologySchema = z.object({
   sys: SysSchema,
   fields: z.object({
     title: z.string(),
     description: z.string().optional(),
-  }),
-});
-
-export const TagSchema = z.object({
-  sys: SysSchema,
-  fields: z.object({
-    name: z.string(),
   }),
 });
 

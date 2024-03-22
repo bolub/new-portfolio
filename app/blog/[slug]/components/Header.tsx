@@ -15,6 +15,7 @@ dayjs.extend(advancedFormat);
 import { CustomContainer } from "@/app/components/CustomContainer";
 import { BlogItem } from "@/contentful/blog/blog";
 import Link from "next/link";
+import { ContentfulLivePreview } from "@contentful/live-preview";
 
 export const Header = ({ blogData }: { blogData: BlogItem }) => {
   return (
@@ -48,7 +49,14 @@ export const Header = ({ blogData }: { blogData: BlogItem }) => {
           </Text>
         </HStack>
 
-        <chakra.h1 fontWeight={700} fontSize={{ base: "3xl", md: "4xl" }}>
+        <chakra.h1
+          {...ContentfulLivePreview.getProps({
+            entryId: blogData.sys.id,
+            fieldId: "title",
+          })}
+          fontWeight={700}
+          fontSize={{ base: "3xl", md: "4xl" }}
+        >
           {blogData.fields.title}
         </chakra.h1>
 

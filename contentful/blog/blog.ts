@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { BlogItemSchema, BlogItemsArraySchema } from "./schema";
-import { client } from "..";
+import { client, previewClient } from "..";
 
 export type BlogItem = z.infer<typeof BlogItemSchema>;
 export type BlogItems = ReadonlyArray<BlogItem>;
@@ -11,8 +11,13 @@ export const getBlogEntries = async (): Promise<BlogItems> => {
   return BlogItemsArraySchema.parse(entries.items);
 };
 
-export const getBlogPost = async (slug: string): Promise<BlogItem> => {
-  const entries = await client.getEntries({
+export const getBlogPost = async (
+  slug: string,
+  isPreview?: boolean
+): Promise<BlogItem> => {
+  const clientToUse = isPreview ? previewClient : client;
+
+  const entries = await clientToUse.getEntries({
     content_type: "blogPost",
     "fields.slug": slug,
   });

@@ -7,6 +7,8 @@ export const metadata: Metadata = {
   title: "Blog",
 };
 
+export const revalidate = 1;
+
 const Blog = async () => {
   const blog = await getBlogEntries();
 

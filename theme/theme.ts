@@ -24,6 +24,14 @@ export const customTheme = extendTheme(
       "li p": {
         margin: "0px 0px 20px 0px",
       },
+      pre: {
+        pos: "relative",
+        p: "30px 40px 20px 25px !important",
+      },
+      code: {
+        whiteSpace: "pre-wrap !important",
+        fontSize: "sm !important",
+      },
     },
   })
 );

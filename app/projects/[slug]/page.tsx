@@ -8,6 +8,8 @@ type ProjectPageProps = {
   };
 };
 
+export const revalidate = 1;
+
 export async function generateMetadata(
   { params }: ProjectPageProps,
   parent: ResolvingMetadata

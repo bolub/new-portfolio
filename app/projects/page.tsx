@@ -10,6 +10,8 @@ type PageProps = {
   };
 };
 
+export const revalidate = 1;
+
 export const metadata: Metadata = {
   title: "Projects",
   description: "Some of the projects that has drained my energy over the years",

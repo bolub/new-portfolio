@@ -8,6 +8,8 @@ type BlogPageProps = {
   };
 };
 
+export const revalidate = 1;
+
 export async function generateMetadata(
   { params }: BlogPageProps,
   parent: ResolvingMetadata

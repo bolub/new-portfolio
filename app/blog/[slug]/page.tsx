@@ -1,6 +1,7 @@
 import { getBlogEntries, getBlogPost } from "@/contentful/blog/blog";
 import { BlogPageContainer } from "./components/BlogPageContainer";
 import { Metadata, ResolvingMetadata } from "next";
+import { draftMode } from "next/headers";
 
 type BlogPageProps = {
   params: {
@@ -33,7 +34,8 @@ export async function generateMetadata(
 }
 
 export default async function BlogPage(props: BlogPageProps) {
-  const data = await getBlogPost(props.params.slug);
+  const { isEnabled: isPreviewModeEnabled } = draftMode();
+  const data = await getBlogPost(props.params.slug, isPreviewModeEnabled);
 
   return <BlogPageContainer blogData={data} />;
 }

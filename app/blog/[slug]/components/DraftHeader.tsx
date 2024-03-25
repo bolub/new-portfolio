@@ -15,8 +15,14 @@ dayjs.extend(advancedFormat);
 import { CustomContainer } from "@/app/components/CustomContainer";
 import { BlogItem } from "@/contentful/blog/blog";
 import Link from "next/link";
+import { ContentfulLivePreview } from "@contentful/live-preview";
+import { useContentfulLiveUpdates } from "@contentful/live-preview/react";
 
-export const Header = ({ blogData }: { blogData: BlogItem }) => {
+export const DraftHeader = ({ blogData }: { blogData: BlogItem }) => {
+  const updatedEntries = useContentfulLiveUpdates(blogData);
+
+  if (!updatedEntries) return <>data not available</>;
+
   return (
     <CustomContainer
       display="flex"
@@ -48,21 +54,28 @@ export const Header = ({ blogData }: { blogData: BlogItem }) => {
           </Text>
         </HStack>
 
-        <chakra.h1 fontWeight={700} fontSize={{ base: "3xl", md: "4xl" }}>
-          {blogData.fields.title}
+        <chakra.h1
+          {...ContentfulLivePreview.getProps({
+            entryId: updatedEntries.sys.id,
+            fieldId: "title",
+          })}
+          fontWeight={700}
+          fontSize={{ base: "3xl", md: "4xl" }}
+        >
+          {updatedEntries.fields.title}
         </chakra.h1>
 
         <Text mt={2} fontWeight={600}>
           Bolu Abiola
         </Text>
-        <Text>{dayjs(blogData.sys.createdAt).format("Do MMM YYYY")}</Text>
+        <Text>{dayjs(updatedEntries.sys.createdAt).format("Do MMM YYYY")}</Text>
 
         <Box mt={5} w="100%" h="420px" pos="relative" borderWidth="1px">
           <Image
-            alt={blogData.fields.title || ""}
+            alt={updatedEntries.fields.title || ""}
             fill
             src={`${
-              blogData.fields.cover ||
+              updatedEntries.fields.cover ||
               "https://res.cloudinary.com/bolub/image/upload/v1623525073/Group_1_1.png"
             }`}
             placeholder="blur"

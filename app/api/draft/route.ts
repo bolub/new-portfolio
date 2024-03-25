@@ -20,7 +20,7 @@ export async function GET(request: Request) {
 
   // Fetch the headless CMS to check if the provided `slug` exists
   // getPostBySlug would implement the required fetching logic to the headless CMS
-  const post = await getBlogPost(slug);
+  const post = await getBlogPost(slug, true);
 
   // If the slug doesn't exist prevent draft mode from being enabled
   if (!post) {
@@ -31,5 +31,5 @@ export async function GET(request: Request) {
 
   // Redirect to the path from the fetched post
   // We don't redirect to searchParams.slug as that might lead to open redirect vulnerabilities
-  redirect(`/blog/${post.fields.slug}`);
+  redirect(`/blog/${post.fields.slug}?preview=true`);
 }

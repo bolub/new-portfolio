@@ -6,7 +6,10 @@ export type BlogItem = z.infer<typeof BlogItemSchema>;
 export type BlogItems = ReadonlyArray<BlogItem>;
 
 export const getBlogEntries = async (): Promise<BlogItems> => {
-  const entries = await client.getEntries({ content_type: "blogPost" });
+  const entries = await client.getEntries({
+    content_type: "blogPost",
+    order: "-sys.createdAt",
+  });
 
   return BlogItemsArraySchema.parse(entries.items);
 };

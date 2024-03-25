@@ -2,8 +2,8 @@
 
 import { CustomContainer } from "@/app/components/CustomContainer";
 import { BlogItems } from "@/contentful/blog/blog";
-import { Box, SimpleGrid, chakra } from "@chakra-ui/react";
-import GridCard from "./GridCard";
+import { Box, VStack, chakra } from "@chakra-ui/react";
+import { BlogCard } from "./BlogCard";
 
 export const BlogContainer = ({ data: blogData }: { data: BlogItems }) => {
   return (
@@ -14,12 +14,12 @@ export const BlogContainer = ({ data: blogData }: { data: BlogItems }) => {
             Blog ( {blogData?.length} posts )
           </chakra.h2>
 
-          <Box id="posts">
-            <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
+          <Box id="posts" mx="auto" maxW={{ md: "60%" }}>
+            <VStack spacing={8} w="full" align="start">
               {blogData?.map((postData) => {
-                return <GridCard key={postData.sys.id} data={postData} />;
+                return <BlogCard key={postData.sys.id} data={postData} />;
               })}
-            </SimpleGrid>
+            </VStack>
           </Box>
         </CustomContainer>
       </chakra.main>

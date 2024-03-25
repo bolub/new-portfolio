@@ -8,6 +8,7 @@ export type BlogItems = ReadonlyArray<BlogItem>;
 export const getBlogEntries = async (): Promise<BlogItems> => {
   const entries = await client.getEntries({
     content_type: "blogPost",
+    // @ts-ignore
     order: "-sys.createdAt",
   });
 

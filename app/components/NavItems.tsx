@@ -55,31 +55,6 @@ const NavItems = ({
 
   const allLinks = [
     {
-      name: "Home",
-      emoji: "🏠",
-      href: "/",
-      hide: hide === "home",
-      mobile: true,
-      isExternal: false,
-    },
-    {
-      name: "Projects",
-      emoji: "🔨",
-      href: "/projects",
-      hide: hide === "projects",
-      mobile: true,
-      isExternal: false,
-    },
-    {
-      name: "Blog",
-      emoji: "✍️",
-      href: routes.blogPost.home(),
-      hide: hide === "blog",
-      mobile: true,
-      isExternal: false,
-    },
-
-    {
       name: "Resources",
       emoji: "📚",
       href: "https://kokua.wiki/",
@@ -87,14 +62,6 @@ const NavItems = ({
       mobile: true,
       isExternal: true,
     },
-    // {
-    //   name: "Built with",
-    //   emoji: "🧰",
-    //   href: "/built-with",
-    //   hide: hide === "resources",
-    //   mobile: true,
-    //   isExternal: false,
-    // },
   ];
 
   const pathname = usePathname();

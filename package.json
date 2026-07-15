@@ -21,6 +21,7 @@
     "contentful": "^10.6.10",
     "dayjs": "^1.11.10",
     "framer-motion": "^10.16.5",
+    "google": "link:next/font/google",
     "next": "14.0.3",
     "prismjs": "^1.29.0",
     "react": "^18",

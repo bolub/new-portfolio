@@ -80,7 +80,7 @@ const NavItems = ({
             color={isActive ? "brand.500" : ""}
             borderBottomColor={isActive ? "brand.500" : ""}
             fontWeight={isActive ? 600 : ""}
-            fontSize={{ md: "18px" }}
+            fontSize={{ md: "16px" }}
             href={linkData.href}
             onClick={() => {
               if (!closeDrawer) return;

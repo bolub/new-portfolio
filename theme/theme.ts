@@ -8,8 +8,8 @@ export const customTheme = extendTheme(
     colors,
     components,
     fonts: {
-      heading: "var(--font-outfit)",
-      body: "var(--font-outfit)",
+      heading: "var(--font-onest)",
+      body: "var(--font-onest)",
     },
   },
   withProse({
@@ -33,5 +33,5 @@ export const customTheme = extendTheme(
         fontSize: "sm !important",
       },
     },
-  })
+  }),
 );

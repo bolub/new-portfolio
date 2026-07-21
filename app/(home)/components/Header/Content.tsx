@@ -11,18 +11,16 @@ export const Content = () => {
         I design and <br />
         Build Stuff
       </chakra.h1>
-      <Text mt={{ base: 6, md: 10 }} mb={6} fontSize={{ base: "lg", md: "xl" }}>
-        Hi{" "}
-        <Text as="span" fontWeight={"semibold"}>
-          {" "}
-          I&apos;m Boluwatife Abiola
-        </Text>{" "}
-        (My friends call me bolu), and welcome to my online cave.
-      </Text>
-      <Text mb={16} fontSize={{ base: "lg", md: "xl" }}>
-        Honestly doing this was a pain, but still did it anyways, gotta have an
-        online presence and all.
-      </Text>
+      <Box mt={{ base: 6, md: 10 }} mb={16}>
+        <Text fontSize={{ base: "lg", md: "xl" }}>
+          Hi
+          <Text as="span" fontWeight={"semibold"}>
+            {" "}
+            I&apos;m Boluwatife Abiola
+          </Text>{" "}
+          (My friends call me bolu).... That is all
+        </Text>
+      </Box>
 
       <HStack mb={10}>
         <Button

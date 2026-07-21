@@ -9,21 +9,13 @@ import {
   AiOutlineMail,
   AiOutlinePhone,
 } from "react-icons/ai";
-import NavItems from "../NavItems";
 import { CustomContainer } from "../CustomContainer";
 
 const Footer = () => {
   return (
-    <chakra.footer id="footer" mt={80} borderTopWidth="1px" py="80px">
+    <chakra.footer id="footer" mt={80} borderTopWidth="1px" pb="20px">
       <CustomContainer>
         <Center flexDir="column" w="full">
-          <Wrap
-            flexDir={{ base: "column", md: "row" }}
-            spacing={{ base: 8, md: 16 }}
-          >
-            <NavItems hide="contact" />
-          </Wrap>
-
           <Wrap my="60px" fontSize="2xl" color="brand.500" spacing={10}>
             <chakra.a href="https://github.com/bolub/">
               <AiFillGithub />

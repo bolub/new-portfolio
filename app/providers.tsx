@@ -3,11 +3,11 @@
 import { customTheme } from "@/theme/theme";
 import { CacheProvider } from "@chakra-ui/next-js";
 import { ChakraProvider } from "@chakra-ui/react";
-import { Outfit } from "next/font/google";
+import { Onest } from "next/font/google";
 import { MetricalpReactProvider } from "@metricalp/react";
 import { ContentfulLivePreviewProvider } from "@contentful/live-preview/react";
 
-const outfit = Outfit({ subsets: ["latin"] });
+const onest = Onest({ subsets: ["latin"] });
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
@@ -15,7 +15,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
       <style jsx global>
         {`
           :root {
-            --font-outfit: ${outfit.style.fontFamily};
+            --font-onest: ${onest.style.fontFamily};
           }
         `}
       </style>
